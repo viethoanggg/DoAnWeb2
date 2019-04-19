@@ -291,6 +291,11 @@
 		var x=document.forms['sua']['hinhanh'].value;
 		document.getElementById('xemhinhanhmoi').innerHTML="<img src='"+x+"' style='width:100%;height:100%'>";
 	}
+	function suasach()
+	{
+		if(confirm("Bạn có muốn sửa thông tin sách ?")==false)
+			return false;
+	}
 </script>
 <?php
 	if($matheloai!="")
