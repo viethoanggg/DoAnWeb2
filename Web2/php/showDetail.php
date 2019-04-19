@@ -14,9 +14,9 @@ class ShowDetail
 								
 							
 							//  Kết lại xem bảng chi tiết sách
-							$sql="SELECT sach.MaSach,chitietsach.NXB,chitietsach.KichThuoc,chitietsach.TrongLuong,chitietsach.SoTrang,chitietsach.DanhMuc,chitietsach.NgayPhatHanh,chitietsach.SoLuongTon,chitietsach.NoiDungGioiThieu,sach.TenSach,sach.HinhAnh,sach.Gia,tacgia.TenTacGia,theloai.MaTheLoai
-									FROM chitietsach,sach,tacgia,theloai
-									WHERE chitietsach.MaSach=sach.MaSach AND sach.MaTheLoai=theloai.MaTheLoai AND sach.MaTacGia=tacgia.MaTacGia AND sach.MaSach='".$MaSach."'";
+							$sql="SELECT sach.MaSach,chitietsach.NXB,chitietsach.KichThuoc,chitietsach.TrongLuong,chitietsach.SoTrang,chitietsach.DanhMuc,chitietsach.NgayPhatHanh,chitietsach.SoLuongTon,chitietsach.NoiDungGioiThieu,sach.TenSach,sach.HinhAnh,sach.Gia,sach.TenTacGia,theloai.MaTheLoai
+									FROM chitietsach,sach,theloai
+									WHERE chitietsach.MaSach=sach.MaSach AND sach.MaTheLoai=theloai.MaTheLoai AND sach.MaSach='".$MaSach."'";
 							$result=DataProvider::executeQuery($sql);
 							$row=mysqli_fetch_array($result);
 
