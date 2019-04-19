@@ -142,30 +142,9 @@
                                                     <label>Mã sách</label>
                                                     <input class="form-control" name="masach">
                                                 </div>
-												<div class="panel panel-default">
-													<div class="panel-heading">												
-														Tác giả
-														<select class="form-control" name="loaitacgia" style="width:170px;float:right;margin-top:-6px" onchange="chonloaitacgia()">
-															<option value="tacgiamoi" selected>Thêm tác giả mới</option>
-															<option value="tacgiacu">Tác giả cũ</option>
-														 </select>
-													</div>
-													<div class="panel-body" style="margin-bottom:10px;">
-														<div class="row" id="showloaitacgia">
-															<div class='col-lg-3'>
-																<div class='form-group'>
-																	<label>Mã tác giả</label>
-																	<input class='form-control' name='matacgia' id='matg' readonly>
-																</div>
-															</div>
-															<div class='col-lg-9'>
-																<div class='form-group'>
-																	<label>Tên tác giả</label>
-																	<input class='form-control' name='tentacgia'>
-																</div>
-															</div>
-														</div>
-													</div>
+												<div class='form-group'>
+													<label>Tên tác giả</label>
+													<input class='form-control' name='tentacgia'>
 												</div>
 												<div class="form-group">
                                                     <label>Giá</label>
@@ -252,48 +231,7 @@
     </div>
 
 </div>
-<script>
-	function chonloaitacgia()
-	{
-		var x=document.forms['them']['loaitacgia'].value;
-		var s="";
-		if(x=="tacgiamoi")
-		{
-			var s= "<div class='col-lg-3'>"
-						+"<div class='form-group'>"
-							+"<label>Mã tác giả</label>"
-							+"<input class='form-control' name='matacgia' id='matg' readonly>"
-						+"</div>"
-					+"</div>"
-					+"<div class='col-lg-9'>"
-						+"<div class='form-group'>"
-							+"<label>Tên tác giả</label>"
-							+"<input class='form-control' name='tentacgia'>"
-						+"</div>"
-					+"</div>";
-		}
-		else if(x=="tacgiacu")
-		{
-			s="<div class='col-lg-3'>"
-				+"<div class='form-group'>"
-					+"<label>Mã tác giả</label>"
-					+"<select class='form-control' name='matacgia' id='matg'>"
-						+"<option value=''>3</option>"
-						+"<option value=''>2</option>"
-						+"<option value=''>1</option>"
-					+"</select>"
-				+"</div>"
-			+"</div>"
-			+"<div class='col-lg-9'>"
-				+"<div class='form-group'>"
-					+"<label>Tên tác giả</label>"
-					+"<input class='form-control' name='tentacgia'>"
-				+"</div>"
-			+"</div>";
-		}
-		document.getElementById("showloaitacgia").innerHTML=s;
-	}
-</script>
+
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>
 
