@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 <script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
+<!--<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>-->
 <script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
 <!-- MetisMenu CSS -->
     <link href="../css/admin/metisMenu.min.css" rel="stylesheet">
@@ -78,7 +78,15 @@
                         <a href="#"><i class="fa fa-table fa-fw"></i> Thống kê sản phẩm</a>
                     </li>
 					<li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i> Quản lý người dùng</a>
+                        <a href="#"><i class="fa fa-user fa-fw"></i> Quản lý người dùng<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="quanlykhachhang.php">Khách hàng</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Admin và Quản lý</a>
+                                    </li>                 
+                        </ul>
                     </li>
                 </ul>
 
@@ -280,7 +288,7 @@
 		var x=document.getElementById('hienthisuahinh');
 		if(x.innerHTML=="")
 		{
-			var s="<input type='file' name='hinhanh' id='ha' accept='image/png,image/jpeg' onchange='hienanhmoi()'>";
+			var s="<input type='file' name='hinhanh' id='ha' accept='image/png,image/jpeg,image/jpg' onchange='hienanhmoi()'>";
 				s=s+"<center><div id='xemhinhanhmoi' style='width:120px;height:170px;'> </div></center>";
 			document.getElementById('hienthisuahinh').innerHTML=s;
 		}

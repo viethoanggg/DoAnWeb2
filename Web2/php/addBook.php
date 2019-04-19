@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 <script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
+<!--<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>-->
 <script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
 <!-- MetisMenu CSS -->
     <link href="../css/admin/metisMenu.min.css" rel="stylesheet">
@@ -78,7 +78,15 @@
                         <a href="#"><i class="fa fa-table fa-fw"></i> Thống kê sản phẩm</a>
                     </li>
 					<li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i> Quản lý người dùng</a>
+                        <a href="#"><i class="fa fa-user fa-fw"></i> Quản lý người dùng<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="quanlykhachhang.php">Khách hàng</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Admin và Quản lý</a>
+                                    </li>                 
+                        </ul>
                     </li>
                 </ul>
 
@@ -195,7 +203,7 @@
 													<div class="panel-heading">												
 														Thêm hình ảnh
 														<div class="form-group">
-															<input type="file" name="hinhanh" style="float:right;margin-top:-2px" onclick="themhinhanh()" accept="image/png,image/jpeg">
+															<input type="file" name="hinhanh" style="float:right;margin-top:-2px" onclick="themhinhanh()" accept="image/png,image/jpeg,image/jpg">
 														</div>
 												
 													</div>
