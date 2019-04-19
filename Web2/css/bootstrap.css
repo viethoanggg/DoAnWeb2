@@ -3731,13 +3731,13 @@ tbody.collapse.in {
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
 }
-/*.dropup,*/
-@media only screen and (min-width: 768px) {
+
+/*@media only screen and (min-width: 768px) {*/
   .dropdown:hover .dropdown-menu {
     display: block;
   }
-}
-
+/*}*/
+.dropup,
 .dropdown {
   position: relative;
 }
