@@ -175,8 +175,8 @@
 								
 								<div class="col-lg-12" id="sanpham">
 										<?php
-											require('showBook.php');
-											ShowBook::showBookInAdmin();
+											require('quanlyuser.php');
+											QuanLyUser::QuanLyKhachHang();
 										?>
 			
 								</div>
