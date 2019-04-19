@@ -217,19 +217,26 @@
 	<!---------------------content sach ----------------------->
 	<div class="container" >
 		<h3>Giỏ hàng</h3>
+		<hr style="border:1px solid black;">
 		<?php
 		include 'cart.php';
 		cart::addcart();
 		if(isset($_SESSION['cart'])){
 			echo "<pre />";
 			var_dump($_SESSION['cart']);
+
 		}
 		else {
 			echo "Không có sản phẩm nào trong giỏ hàng của bạn!!!";
 			echo "Tiếp tục mua sắm!!!";
 		}
 		?>
-		<hr style="border:1px solid black;">
+		<table class="table">
+			<tr>
+				<td style="background-color:lavender; height: 150px;text-align: center;padding-top:100px ">Không có sản phẩm nào trong giỏ hàng của bạn</td>
+			</tr>
+			<tr><td style="background-color:lavender;border: 0;height: 200px;text-align: center;"><button>Tiếp tục mua sắm</button></td></tr>
+		</table>
 		<table class="table table-striped">
 			<thead>
 				<tr style="background-color: #101010;">
@@ -307,8 +314,8 @@
 					</tbody>
 				</table>
 			</div>
-
 		</div>
+
 	</div>
 </div>
 
