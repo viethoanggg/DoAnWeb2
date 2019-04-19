@@ -142,7 +142,7 @@
 											<option value="CN">Chuyên ngành</option>
 											<option value="TN">Thiếu nhi</option>
 											<option value="TT">Tuổi teen</option>
-											<option value="VN">Văn học</option>
+											<option value="VH">Văn học</option>
 										</select>
 									</div>
 									
