@@ -7,6 +7,9 @@
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 	<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
+	<?php 
+	session_start();
+	?>
 </head>
 <body>
 
@@ -179,7 +182,7 @@
 			<div class="collapse navbar-collapse" id="myNavbar2">
 				
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.php">Trang chủ</a></li>
+					<li class="active"><a href="../index.php">Trang chủ</a></li>
 					<li><a href="#">About</a></li>
 					<li><a href="#">Contact</a></li>
 					<li class="dropdown">
@@ -217,6 +220,14 @@
 		<?php
 		include 'cart.php';
 		cart::addcart();
+		if(isset($_SESSION['cart'])){
+			echo "<pre />";
+			var_dump($_SESSION['cart']);
+		}
+		else {
+			echo "Không có sản phẩm nào trong giỏ hàng của bạn!!!";
+			echo "Tiếp tục mua sắm!!!";
+		}
 		?>
 		<hr style="border:1px solid black;">
 		<table class="table table-striped">
