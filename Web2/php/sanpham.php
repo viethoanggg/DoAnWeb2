@@ -8,7 +8,20 @@
 <script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
 <script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
+<!-- MetisMenu CSS -->
+    <link href="../css/admin/metisMenu.min.css" rel="stylesheet">
 
+    <!-- Timeline CSS -->
+    <link href="../css/admin/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/admin/startmin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../css/admin/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -211,6 +224,18 @@
 				</div>
 		</div>
 </div>
+
+<!-- jQuery -->
+<script src="../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../js/admin/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../js/admin/startmin.js"></script>
 </body>
 </html>
 
