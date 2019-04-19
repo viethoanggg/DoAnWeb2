@@ -4,16 +4,13 @@
 	if(isset($_POST['masach']))
 	{
 		$masach=$_POST['masach'];
-		$sql="select * from sach s,tacgia tg where s.MaTacGia=tg.MaTacGia and s.MaSach='".$masach."'";
-		$result=DataProvider::executeQuery($sql);
-		$row=mysqli_fetch_array($result);
-		$matacgia=$row['MaTacGia'];
 		
 		//------------------------Sua trong database sach-----------------------------------------------//
 		
 		$sql="UPDATE sach SET "
 		.	"MaTheLoai='".$_POST['matheloai']."', "
-		.	"TenSach='".$_POST['tensach']."', ";
+		.	"TenSach='".$_POST['tensach']."', "
+		.	"TenTacGia='".$_POST['tentacgia']."', ";
 		if(isset($_POST['hinhanh']))
 			$sql=$sql .	"HinhAnh='".$_POST['hinhanh']."', ";
 		$sql=$sql .	"Gia='".(int)$_POST['gia']."' "
@@ -34,13 +31,6 @@
 		.	"WHERE MaSach='".$_POST['masach']."'";
 		DataProvider::executeQuery($sql);
 		
-		//------------------------Sua trong database tac gia-----------------------------------------------//
-		
-		$sql="UPDATE tacgia SET "
-		.	"TenTacGia='".$_POST['tentacgia']."' "
-		.	"WHERE MaTacGia='".$_POST['tentacgia']."'";
-		DataProvider::executeQuery($sql);
-	
 	}
 		
 	//------------------------Quay ve trang quanlysanpham.php-----------------------------------------------//
