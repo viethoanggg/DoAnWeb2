@@ -110,7 +110,7 @@
 		if(isset($_GET['masach']))
 		{
 			$masach=$_GET['masach'];
-			$sql="select * from sach s,chitietsach ct,theloai tl,tacgia tg where s.MaSach=ct.MaSach and s.MaTacGia=tg.MaTacGia and s.MaTheLoai=tl.MaTheLoai and s.MaSach='".$masach."'";
+			$sql="select * from sach s,chitietsach ct,theloai tl where s.MaSach=ct.MaSach and s.MaTheLoai=tl.MaTheLoai and s.MaSach='".$masach."'";
 			$result=DataProvider::executeQuery($sql);
 			$row=mysqli_fetch_array($result);
 			$tensach=$row['TenSach'];
