@@ -4,9 +4,9 @@
 	<title>Nhà sách OnePiece</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" language="javascript" src="js/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+	<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
 </head>
 <body>
 
@@ -20,7 +20,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span> 
 				</button>
-				<a class="navbar-brand" href="index.php" title="Trang chủ"><img src="images/onepiece.PNG" style="margin:-16px" width="200px" height="52px" alt="logo-trang chủ"></a>
+				<a class="navbar-brand" href="../index.php" title="Trang chủ"><img src="../images/onepiece.PNG" style="margin:-16px" width="200px" height="52px" alt="logo-trang chủ"></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="myNavbar">
@@ -38,8 +38,8 @@
 						</form>	
 					</div>
 					<ul class="nav navbar-nav navbar-right" >
-						<li><a href="#"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
-						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
+						<li><a href="DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
+						<li><a href=DangKy.php><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
 					</ul>
 				</div>
 			</div>
@@ -60,32 +60,32 @@
 		<div class="carousel-inner" role="listbox">
 			<div class="item active" style="height:350px">
 				<div class="item__third" style="height:350px">
-					<img src="images/qc/0.png" alt="" style="height:350px">
+					<img src="../images/qc/0.png" alt="" style="height:350px">
 				</div>
 			</div>
 			<div class="item" style="height:350px">
 				<div class="item__third" style="height:350px">
-					<img src="images/qc/1.png" alt="" style="height:350px">
+					<img src="../images/qc/1.png" alt="" style="height:350px">
 				</div>
 			</div>
 			<div class="item" style="height:350px">
 				<div class="item__third" style="height:350px">
-					<img src="images/qc/2.png" alt="" style="height:350px">
+					<img src="../images/qc/2.png" alt="" style="height:350px">
 				</div>
 			</div>
 			<div class="item" style="height:350px">
 				<div class="item__third" style="height:350px">
-					<img src="images/qc/3.png" alt="" style="height:350px">
+					<img src="../images/qc/3.png" alt="" style="height:350px">
 				</div>
 			</div>
 			<div class="item" style="height:350px">
 				<div class="item__third" style="height:350px">
-					<img src="images/qc/4.png" alt="" style="height:350px">
+					<img src="../images/qc/4.png" alt="" style="height:350px">
 				</div>
 			</div>
 			<div class="item" style="height:350px">
 				<div class="item__third" style="height:350px">
-					<img src="images/qc/5.png" alt="" style="height:350px">
+					<img src="../images/qc/5.png" alt="" style="height:350px">
 				</div>
 			</div>
 
@@ -150,7 +150,6 @@
 			border-radius: 8px;
 			cursor: pointer;
 		}
-
 	</style>
 	<script>
 		$('.multi-item-carousel .item').each(function(){
@@ -186,17 +185,17 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Thể loại <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="php/sanpham.php?theloai=hocngoaingu&page=1" >Học ngoại ngữ</a></li>
-							<li><a href="php/sanpham.php?theloai=kinhte&page=1" >Kinh tế</a></li>
-							<li><a href="php/sanpham.php?theloai=kynangsong&page=1" >Kỹ năng sống</a></li>
-							<li><a href="php/sanpham.php?theloai=lichsu&page=1" >Lịch sử</a></li>
-							<li><a href="php/sanpham.php?theloai=chuyennganh&page=1" >Sách chuyên ngành</a></li>
-							<li><a href="php/sanpham.php?theloai=thieunhi&page=1" >Sách thiếu nhi</a></li>
-							<li><a href="php/sanpham.php?theloai=tuoiteen&page=1" >Sách tuổi teen</a></li>
-							<li><a href="php/sanpham.php?theloai=vanhoc&page=1" >Sách văn học</a></li>
+							<li><a href="sanpham.php?theloai=hocngoaingu&page=1" >Học ngoại ngữ</a></li>
+							<li><a href="sanpham.php?theloai=kinhte&page=1" >Kinh tế</a></li>
+							<li><a href="sanpham.php?theloai=kynangsong&page=1" >Kỹ năng sống</a></li>
+							<li><a href="sanpham.php?theloai=lichsu&page=1" >Lịch sử</a></li>
+							<li><a href="sanpham.php?theloai=chuyennganh&page=1" >Sách chuyên ngành</a></li>
+							<li><a href="sanpham.php?theloai=thieunhi&page=1" >Sách thiếu nhi</a></li>
+							<li><a href="sanpham.php?theloai=tuoiteen&page=1" >Sách tuổi teen</a></li>
+							<li><a href="sanpham.php?theloai=vanhoc&page=1" >Sách văn học</a></li>
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header"></li>
-							<li><a href="php/sanpham.php?theloai=tatca&page=1">Tất cả</a></li>
+							<li><a href="sanpham.php?theloai=tatca&page=1">Tất cả</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -204,7 +203,7 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a>
+						<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a>
 					</li>
 				</ul>
 			</div>
@@ -229,24 +228,24 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><a href=""><img class="icon" src="images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="images/kinhte/kt0.png" alt=""></td>
+					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="biasach" src="../images/kinhte/kt0.png" alt=""></td>
 					<td>Quyền năng làm giàu</td>
 					<td>84150đ</td>
 					<td>1</td>
 					<td>84150đ</td>
 				</tr>
 				<tr>
-					<td><a href=""><img class="icon" src="images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="images/kinhte/kt0.png" alt=""></td>
+					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="biasach" src="../images/kinhte/kt0.png" alt=""></td>
 					<td>Quyền năng làm giàu</td>
 					<td>84150đ</td>
 					<td>1</td>
 					<td>84150đ</td>
 				</tr>
 				<tr>
-					<td><a href=""><img class="icon" src="images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="images/kinhte/kt0.png" alt=""></td>
+					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="biasach" src="../images/kinhte/kt0.png" alt=""></td>
 					<td>Quyền năng làm giàu</td>
 					<td>84150đ</td>
 					<td>1</td>
@@ -338,4 +337,3 @@
 
 </body>
 </html>
-
