@@ -99,7 +99,7 @@
 			
 			
             <!-- ... Your content goes here ... -->
-			GGGGGGGGGGG
+			
         </div>
     </div>
 
