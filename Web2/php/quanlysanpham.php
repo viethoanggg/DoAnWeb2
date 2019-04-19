@@ -212,6 +212,17 @@
 										  xhttp.open("GET",url, true);
 										  xhttp.send();
 										}
+									
+								<!--------------------------------------------------------------------------------------------------------------->
+										
+										function xoasanpham()
+										{
+											if(confirm("Bạn có muốn xóa")==true)
+											{
+												var masach=document.getElementById("xoasach").value;
+												window.location.href="deleteBook.php?masach="+masach;
+											}
+										}
 								</script>
 							</div>
 							
