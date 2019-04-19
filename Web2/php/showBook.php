@@ -1011,7 +1011,7 @@ class ShowBook
 						if($matheloai=="" && $loai=="" && $chuoitimkiem=="")
 						{		
 							//  Đếm số lượng sách 
-							$sql="select COUNT(*) as numRows from sach s,chitietsach ct,tacgia tg where s.MaSach=ct.MaSach and s.MaTacGia=tg.MaTacGia";
+							$sql="select COUNT(*) as numRows from sach s,chitietsach ct where s.MaSach=ct.MaSach";
 							$result=DataProvider::executeQuery($sql);
 							$row=mysqli_fetch_array($result);
 							$numRows=$row['numRows'];
@@ -1028,7 +1028,7 @@ class ShowBook
 							
 							//  Lấy sản phẩm trong 1 trang
 							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select s.MaSach,s.MaTheLoai,TenSach,TenTheLoai,TenTacGia,Gia,HinhAnh from sach s,chitietsach ct,tacgia tg, theloai tl where s.MaSach=ct.MaSach and s.MaTacGia=tg.MaTacGia and s.MaTheLoai=tl.MaTheLoai LIMIT ".$offset.",".$rowsPerPage;
+							$sql="select s.MaSach,s.MaTheLoai,TenSach,TenTheLoai,TenTacGia,Gia,HinhAnh from sach s,chitietsach ct, theloai tl where s.MaSach=ct.MaSach and s.MaTheLoai=tl.MaTheLoai LIMIT ".$offset.",".$rowsPerPage;
 							
 							//  Tính tổng số trang sẽ hiện thị
 							$maxPage=ceil($numRows/$rowsPerPage);
@@ -1155,7 +1155,7 @@ class ShowBook
 						else
 						{
 							//  Đếm số lượng sách 
-							$sql="select COUNT(*) as numRows from sach s,chitietsach ct,tacgia tg where s.MaSach=ct.MaSach and s.MaTacGia=tg.MaTacGia";
+							$sql="select COUNT(*) as numRows from sach s,chitietsach ct where s.MaSach=ct.MaSach";
 							if($matheloai!="")
 								$sql=$sql . " and s.MaTheLoai='".$matheloai."'";
 							if($loai!="" && $chuoitimkiem!="")
@@ -1165,7 +1165,7 @@ class ShowBook
 								if($loai=="TenSach")
 									$sql=$sql." and s.TenSach LIKE '%".$chuoitimkiem."%'";
 								if($loai=="TenTacGia")
-									$sql=$sql." and tg.TenTacGia LIKE '%".$chuoitimkiem."%'";
+									$sql=$sql." and TenTacGia LIKE '%".$chuoitimkiem."%'";
 							}
 								
 							$result=DataProvider::executeQuery($sql);
@@ -1183,7 +1183,7 @@ class ShowBook
 							}
 							//  Lấy sản phẩm trong 1 trang
 							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select s.MaSach,s.MaTheLoai,TenSach,TenTheLoai,TenTacGia,Gia,HinhAnh from sach s,chitietsach ct,tacgia tg, theloai tl where s.MaSach=ct.MaSach and s.MaTacGia=tg.MaTacGia and s.MaTheLoai=tl.MaTheLoai ";
+							$sql="select s.MaSach,s.MaTheLoai,TenSach,TenTheLoai,TenTacGia,Gia,HinhAnh from sach s,chitietsach ct, theloai tl where s.MaSach=ct.MaSach and s.MaTheLoai=tl.MaTheLoai ";
 							if($matheloai!="")
 								$sql=$sql . " and s.MaTheLoai='".$matheloai."'";
 							if($loai!="" && $chuoitimkiem!="")
@@ -1193,7 +1193,7 @@ class ShowBook
 								if($loai=="TenSach")
 									$sql=$sql." and s.TenSach LIKE '%".$chuoitimkiem."%'";
 								if($loai=="TenTacGia")
-									$sql=$sql." and tg.TenTacGia LIKE '%".$chuoitimkiem."%'";
+									$sql=$sql." and TenTacGia LIKE '%".$chuoitimkiem."%'";
 							}
 							$sql=$sql. " LIMIT ".$offset.",".$rowsPerPage;
 							
