@@ -126,7 +126,8 @@
                                                 </div>
 												<div class="form-group">
                                                     <label>Thể loại</label>
-                                                    <select class="form-control" name="matheloai" id="theloai">
+                                                    <select class="form-control" name="matheloai" id="theloai" onchange="hienthimasach()">
+														<option value="">Chọn thể loại</option>
                                                         <option value="NN">Học ngoại ngữ</option>
                                                         <option value="KT">Kinh tế</option>
                                                         <option value="KNS">Kỹ năng sống</option>
@@ -140,7 +141,7 @@
                                                 </div>
 												<div class="form-group">
                                                     <label>Mã sách</label>
-                                                    <input class="form-control" name="masach">
+                                                    <input class="form-control" name="masach" readonly>
                                                 </div>
 												<div class='form-group'>
 													<label>Tên tác giả</label>
@@ -193,9 +194,7 @@
 												<div class="panel panel-default">
 													<div class="panel-heading">												
 														Thêm hình ảnh
-														<button type="button" style="float:right;margin-top:-4px" onclick="suahinh()">
-															Thêm hình
-														</button>
+														<input type="file" style="float:right;margin-top:-2px" onclick="themhinhanh()">
 													</div>
 													<div class="panel-body" style="margin-bottom:10px;">
 														
@@ -213,7 +212,7 @@
 										<div class="row">
 											<div class="col-lg-12">
 												<center>
-													<button type="submit" class="btn btn-default">Sửa</button>
+													<button type="submit" class="btn btn-default">Thêm</button>
 													<button type="reset" class="btn btn-default">Đặt lại</button>
 												</center>
 											</div>
@@ -231,7 +230,26 @@
     </div>
 
 </div>
-
+<script>
+	function hienthimasach() {
+		
+		var matheloai=document.forms['them']['matheloai'].value;
+			if(matheloai!="")
+			{
+				var xhttp;
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			document.forms['them']['masach'].value = this.responseText;
+				}
+			};
+			xhttp.open("GET","timkiem.php?cho=themsach&ma="+matheloai, true);
+			xhttp.send();
+			}
+			else alert("Hãy chọn một thể loại.");
+		}
+	
+</script>
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>
 
