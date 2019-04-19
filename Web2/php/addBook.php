@@ -117,7 +117,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									<form name="them" action="executeAddBook.php" method="post" enctype="multipart/form-data">
+									<form name="them" action="executeAddBook.php" method="post" >
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="form-group">
@@ -194,7 +194,10 @@
 												<div class="panel panel-default">
 													<div class="panel-heading">												
 														Thêm hình ảnh
-														<input type="file" style="float:right;margin-top:-2px" onclick="themhinhanh()">
+														<div class="form-group">
+															<input type="file" name="hinhanh" style="float:right;margin-top:-2px" onclick="themhinhanh()" accept="image/png,image/jpeg">
+														</div>
+												
 													</div>
 													<div class="panel-body" style="margin-bottom:10px;">
 														
