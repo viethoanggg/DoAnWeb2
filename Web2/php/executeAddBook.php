@@ -7,11 +7,20 @@
 		$sql=$sql."'".$_POST['matheloai']."', ";
 		$sql=$sql."'".$_POST['tentacgia']."', ";
 		$sql=$sql."'".$_POST['tensach']."', ";
+//-----------------------------------------------------------------------------------------------------------------------------//
 		$sql=$sql."'".$_POST['hinhanh']."', ";
+//-----------------------------------------------------------------------------------------------------------------------------//
 		$sql=$sql."'".$_POST['gia']."' )";
 		
 		DataProvider::executeQuery($sql);
 		
+	
+			$tmp_name=$_FILE['hinhanh']['tmp_name'];
+			$imageURL="../images/".$_FILE['hinhanh']['name'];
+			move_uploaded_file($tmp_name,$imageURL);
+		
+//-----------------------------------------------------------------------------------------------------------------------------//
+	
 		$sql="INSERT INTO chitietsach (MaSach, NXB, KichThuoc, TrongLuong, SoTrang, DanhMuc, NgayPhatHanh, SoLuongTon, NoiDungGioiThieu ) VALUES ( ";
 		$sql=$sql."'".$_POST['masach']."', ";
 		$sql=$sql."'".$_POST['nhaxuatban']."', ";
