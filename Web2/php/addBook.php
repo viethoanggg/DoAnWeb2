@@ -195,7 +195,7 @@
 													<div class="panel-heading">												
 														Thêm hình ảnh
 														<div class="form-group">
-															<input type="file" name="hinhanh" style="float:right;margin-top:-2px" onclick="themhinhanh()" accept="image/png,image/jpeg">
+															<input type="file" name="hinhanh" style="float:right;margin-top:-2px" onclick="themhinhanh()" accept="image/png,image/jpeg,image/jpg">
 														</div>
 												
 													</div>
