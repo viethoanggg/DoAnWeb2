@@ -78,7 +78,16 @@
                         <a href="#"><i class="fa fa-table fa-fw"></i> Thống kê sản phẩm</a>
                     </li>
 					<li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i> Quản lý người dùng</a>
+                        <a href="#"><i class="fa fa-user fa-fw"></i> Quản lý người dùng<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="#">Khách hàng</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Admin và Quản lý</a>
+                                    </li>                 
+                        </ul>
+                                <!-- /.nav-second-level -->
                     </li>
                 </ul>
 
