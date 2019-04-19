@@ -157,7 +157,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									<form name="sua" action="updateBook.php" method="post" enctype="multipart/form-data" onsubmit="return suasach()">
+									<form name="sua" action="updateBook.php" method="post" onsubmit="return suasach()">
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="form-group">
