@@ -280,7 +280,7 @@
 		var x=document.getElementById('hienthisuahinh');
 		if(x.innerHTML=="")
 		{
-			var s="<input type='file' name='hinhanh' id='ha' accept='image/png,image/jpeg' onchange='hienanhmoi()'>";
+			var s="<input type='file' name='hinhanh' id='ha' accept='image/png,image/jpeg,image/jpg' onchange='hienanhmoi()'>";
 				s=s+"<center><div id='xemhinhanhmoi' style='width:120px;height:170px;'> </div></center>";
 			document.getElementById('hienthisuahinh').innerHTML=s;
 		}
