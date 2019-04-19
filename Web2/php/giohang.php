@@ -214,6 +214,10 @@
 	<!---------------------content sach ----------------------->
 	<div class="container" >
 		<h3>Giỏ hàng</h3>
+		<?php
+		include 'cart.php';
+		cart::addcart();
+		?>
 		<hr style="border:1px solid black;">
 		<table class="table table-striped">
 			<thead>
