@@ -117,7 +117,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									<form name="them" action="executeAddBook.php" method="post">
+									<form name="them" action="executeAddBook.php" method="post" enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="form-group">
