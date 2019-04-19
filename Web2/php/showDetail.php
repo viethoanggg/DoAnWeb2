@@ -78,7 +78,7 @@ class ShowDetail
 																  .'<button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>'
 																.'</div>'
 															.'</div>'
-														.'<div><button type="button" class="btn btn-danger btn-lg m-t-22 m-l-5" onclick="datmua()">Đặt mua</button></div>'
+														.'<div><button type="button" class="btn btn-danger btn-lg m-t-22 m-l-5"><a href="" style="text-decoration: none;color: white;">Đặt mua</a></button></div>'
 													.'</div>'
 													.'<div class="intro">'
 														.'<div class="block ">'
