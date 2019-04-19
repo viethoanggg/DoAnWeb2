@@ -8,15 +8,15 @@
 		$sql=$sql."'".$_POST['tentacgia']."', ";
 		$sql=$sql."'".$_POST['tensach']."', ";
 //-----------------------------------------------------------------------------------------------------------------------------//
-		$sql=$sql."'".$_POST['hinhanh']."', ";
+		$sql=$sql."'".$_FILES['hinhanh']['name']."', ";
 //-----------------------------------------------------------------------------------------------------------------------------//
 		$sql=$sql."'".$_POST['gia']."' )";
 		
 		DataProvider::executeQuery($sql);
 		
 	
-			$tmp_name=$_FILE['hinhanh']['tmp_name'];
-			$imageURL="../images/".$_FILE['hinhanh']['name'];
+			$tmp_name=$_FILES['hinhanh']['tmp_name'];
+			$imageURL="../images/".$_FILES['hinhanh']['name'];
 			move_uploaded_file($tmp_name,$imageURL);
 		
 //-----------------------------------------------------------------------------------------------------------------------------//
