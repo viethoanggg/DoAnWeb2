@@ -44,7 +44,7 @@ CREATE TABLE `khachhang` (
 --
 
 INSERT INTO `khachhang` (`MaKH`, `TenKH`, `TenDangNhap`, `MatKhau`, `MaQuyen`, `NgaySinh`, `SDT`, `Email`) VALUES
-('KH001               ', 'Lê Việt Hoàng', 'viethoang', '123456', 1, '1999-01-01', '01234567890', 'viethoang@gmail.com'),
+('KH001', 'Lê Việt Hoàng', 'viethoang', '123456', 1, '1999-01-01', '01234567890', 'viethoang@gmail.com'),
 ('KH002', 'Hoàng Minh Triết', 'triet123', '654321', 1, '1999-01-01', '09876543210', 'hoangminhtriet@gmail.com'),
 ('KH003', 'Ninh Ngọc Hiếu', 'ninhngochieu', '987654', 1, '1999-01-01', '01239876540', 'ninhngochieu@gmail.com'),
 ('KH004', 'Nguyễn Văn A', 'nguyenvana', '789456', 2, '1998-02-02', '01236549870', 'nguyenvana@gmail.com'),
