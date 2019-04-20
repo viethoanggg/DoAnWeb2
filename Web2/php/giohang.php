@@ -140,18 +140,25 @@
 		.container table tr th{
 			color: white;
 		}
-		#thanhtoan {
+		.thanhtoan {
 			width: 200px;
 			height: 50px;
 			font-weight: normal;
 			font-size: 1.1em;
-			background-color: 00cc66;
+			background-color: #00cc66;
 			margin-top: 15px;
 			margin-left: 15px;
 			text-align: center;
 			padding: 12px;
 			border-radius: 8px;
 			cursor: pointer;
+			transition: 0.5s;
+		}
+		.thanhtoan:hover{
+			color: white;
+		}
+		td{
+			padding-top: 60px;
 		}
 	</style>
 	<script>
@@ -220,105 +227,101 @@
 		<hr style="border:1px solid black;">
 		<?php
 		include 'cart.php';
-		cart::addcart();
 		if(isset($_SESSION['cart'])){
 			echo "<pre />";
 			var_dump($_SESSION['cart']);
-
-		}
-		else {
-			echo "Không có sản phẩm nào trong giỏ hàng của bạn!!!";
-			echo "Tiếp tục mua sắm!!!";
-		}
-		?>
-		<table class="table">
-			<tr>
-				<td style="background-color:lavender; height: 150px;text-align: center;padding-top:100px ">Không có sản phẩm nào trong giỏ hàng của bạn</td>
-			</tr>
-			<tr><td style="background-color:lavender;border: 0;height: 200px;text-align: center;"><button>Tiếp tục mua sắm</button></td></tr>
-		</table>
-		<table class="table table-striped">
+			echo '<table class="table table-striped">
 			<thead>
-				<tr style="background-color: #101010;">
-					<th>Xoá</th>
-					<th>Sản phẩm</th>
-					<th>Tên sản phẩm</th>
-					<th>Giá</th>
-					<th>Số lượng</th>
-					<th>Tổng tiền</th>
-				</tr>
+			<tr style="background-color: #101010;">
+			<th>Xoá</th>
+			<th>Sản phẩm</th>
+			<th>Tên sản phẩm</th>
+			<th>Giá</th>
+			<th>Số lượng</th>
+			<th>Tổng tiền</th>
+			</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="../images/kinhte/kt0.png" alt=""></td>
-					<td>Quyền năng làm giàu</td>
-					<td>84150đ</td>
-					<td>1</td>
-					<td>84150đ</td>
-				</tr>
-				<tr>
-					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="../images/kinhte/kt0.png" alt=""></td>
-					<td>Quyền năng làm giàu</td>
-					<td>84150đ</td>
-					<td>1</td>
-					<td>84150đ</td>
-				</tr>
-				<tr>
-					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="../images/kinhte/kt0.png" alt=""></td>
-					<td>Quyền năng làm giàu</td>
-					<td>84150đ</td>
-					<td>1</td>
-					<td>84150đ</td>
-				</tr>	
+			<tr>
+			<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+			<td><img class="biasach" src="../images/kinhte/kt0.png" alt=""></td>
+			<td>Quyền năng làm giàu</td>
+			<td>84150đ</td>
+			<td>1</td>
+			<td>84150đ</td>
+			</tr>
+			<tr>
+			<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+			<td><img class="biasach" src="../images/kinhte/kt0.png" alt=""></td>
+			<td>Quyền năng làm giàu</td>
+			<td>84150đ</td>
+			<td>1</td>
+			<td>84150đ</td>
+			</tr>
+			<tr>
+			<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+			<td><img class="biasach" src="../images/kinhte/kt0.png" alt=""></td>
+			<td>Quyền năng làm giàu</td>
+			<td>84150đ</td>
+			<td>1</td>
+			<td>84150đ</td>
+			</tr>	
 			</tbody>
-		</table>
+			</table>
 
-		<div class="row">
+			<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4"></div>
 			<div  class="col-md-4">
-				<table class="table table-striped">
-					<thead>
-						<tr style="background-color: #101010;">
-							<th colspan="2" style="text-align: center;">Tổng giỏ hàng</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Số lượng sản phẩm</td>
-							<td>5</td>
-						</tr>
-						<tr>
-							<td>Tổng</td>
-							<td>630000đ</td>
-						</tr>
-						<tr>
-							<td>Phí vận chuyển</td>
-							<td>50000đ</td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center">
-								<hr width="70%" style="border: 1px solid;margin: 0">
-							</td>
-						</tr>	
-						<tr>
-							<td>Thành tiền</td>
-							<td>680000đ</td>
-						</tr>
-						<tr>
-							<td align="center" colspan="2"><input type="button" value="Thanh toán" id="thanhtoan"></td>
-						</tr>
-					</tbody>
-				</table>
+			<table class="table table-striped">
+			<thead>
+			<tr style="background-color: #101010;">
+			<th colspan="2" style="text-align: center;">Tổng giỏ hàng</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+			<td>Số lượng sản phẩm</td>
+			<td>5</td>
+			</tr>
+			<tr>
+			<td>Tổng</td>
+			<td>630000đ</td>
+			</tr>
+			<tr>
+			<td>Phí vận chuyển</td>
+			<td>50000đ</td>
+			</tr>
+			<tr>
+			<td colspan="2" align="center">
+			<hr width="70%" style="border: 1px solid;margin: 0">
+			</td>
+			</tr>	
+			<tr>
+			<td>Thành tiền</td>
+			<td>680000đ</td>
+			</tr>
+			<tr>
+			<td align="center" colspan="2"><input type="button" value="Thanh toán" class="thanhtoan"></td>
+			</tr>
+			</tbody>
+			</table>
 			</div>
-		</div>
+			</div>
+			';
 
+		}
+		else {
+			echo '<table class="table">
+			<tr>
+			<td style="background-color:#ddd; height: 150px;text-align: center;padding-top:100px ">Không có sản phẩm nào trong giỏ hàng của bạn</td>
+			</tr>
+			<tr><td style="background-color:#ddd;border: 0;height: 200px;text-align: center;"><button class="thanhtoan" onclick="window.location.assign(`../index.php`)">Tiếp tục mua sắm</button></td></tr>
+			</table>';
+		}
+		?>
 	</div>
 </div>
-
 
 <!---------------------- footer ----------------------->
 <div class="container">

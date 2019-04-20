@@ -19,7 +19,10 @@ class QuanLyUser
 									$chuoitimkiem=$_GET['timkiem'];
 								else $chuoitimkiem="";
 		
+
 								if($loai=="" || $chuoitimkiem=="")
+
+
 								{		
 								
 									$sql="select COUNT(*) as numRows from khachhang";
@@ -162,7 +165,7 @@ class QuanLyUser
 								{
 								$sql="select COUNT(*) as numRows from khachhang where";
 							
-							if($loai!="" && $chuoitimkiem!="")
+								if($loai!="" && $chuoitimkiem!="")
 								{
 									if($loai=="MaKH")
 										$sql=$sql."	MaKH LIKE '%".$chuoitimkiem."%'";
@@ -170,7 +173,10 @@ class QuanLyUser
 										$sql=$sql."  HoTen LIKE '%".$chuoitimkiem."%'";
 									if($loai=="Email")
 										$sql=$sql."  Email LIKE '%".$chuoitimkiem."%'";
-							}
+								}
+
+										
+
 								
 							$result=DataProvider::executeQuery($sql);
 							$row=mysqli_fetch_array($result);
@@ -192,7 +198,7 @@ class QuanLyUser
 							if($loai!="" && $chuoitimkiem!="")
 							{
 								if($loai=="MaKH")
-									$sql=$sql."MaKH LIKE '%".$chuoitimkiem."%'";
+									$sql=$sql." MaKH LIKE '%".$chuoitimkiem."%'";
 								if($loai=="HoTen")
 									$sql=$sql." HoTen LIKE '%".$chuoitimkiem."%'";
 								if($loai=="Email")
