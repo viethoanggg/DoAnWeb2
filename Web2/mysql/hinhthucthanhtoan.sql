@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 20, 2019 lúc 01:29 PM
+-- Thời gian đã tạo: Th4 20, 2019 lúc 01:28 PM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
 -- Phiên bản PHP: 7.2.16
 
@@ -25,25 +25,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `chitiethoadon`
+-- Cấu trúc bảng cho bảng `hinhthucthanhtoan`
 --
 
-CREATE TABLE `chitiethoadon` (
-  `MaHD` varchar(10) NOT NULL,
-  `MaSach` varchar(10) NOT NULL,
-  `SoLuong` int(20) NOT NULL,
-  `TongTienCT` int(20) NOT NULL,
-  `NgayGiaoHang` varchar(100) NOT NULL,
-  `MaTinhTrangCT` varchar(100) NOT NULL
+CREATE TABLE `hinhthucthanhtoan` (
+  `MaHinhThuc` varchar(10) NOT NULL,
+  `TenHinhThucTT` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `chitiethoadon`
+-- Đang đổ dữ liệu cho bảng `hinhthucthanhtoan`
 --
 
-INSERT INTO `chitiethoadon` (`MaHD`, `MaSach`, `SoLuong`, `TongTienCT`, `NgayGiaoHang`, `MaTinhTrangCT`) VALUES
-('HD1', 'CN1', 1, 68000, '14/02/2019', '7'),
-('HD2', 'KT0', 1, 84150, '08/01/2018', '6');
+INSERT INTO `hinhthucthanhtoan` (`MaHinhThuc`, `TenHinhThucTT`) VALUES
+('1', 'Thanh toán bằng thẻ ngân hàng'),
+('2', 'Thanh toán bằng thẻ ...'),
+('3', 'Thanh toán lúc nhận hàng');
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `hinhthucthanhtoan`
+--
+ALTER TABLE `hinhthucthanhtoan`
+  ADD PRIMARY KEY (`MaHinhThuc`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

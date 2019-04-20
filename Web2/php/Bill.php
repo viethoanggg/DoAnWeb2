@@ -243,7 +243,7 @@ public static function showDetailBill()
 										."<td>".$row['NgayGiaoHang']."</td>"
 										."<td>".$row['SoLuong']."</td>"
 										."<td>".$row['TongTienCT']."</td>"
-										."<td>".$row['MaTinhTrangCT']."</td>"
+										."<td>".$row['TenTinhTrang']."</td>"
 										."<td><a href='editCTHD.php?MaHD=".$row['MaHD']."&MaKH=".$row['MaKH']."&MaSach=".$row['MaSach']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
 										."<td><font style='color:#337ab7;cursor:pointer'><i class='fa fa-trash fa-fw'></i> Xóa</font><input type='hidden' value='".$row['MaHD']."'></td>"
 										."</tr>";

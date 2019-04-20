@@ -132,16 +132,24 @@
 												require('DataProvider.php');
 												if(isset($_GET['MaHD']) && isset($_GET['MaKH']))
 												{
-													$sql="select * from hoadon hd,khachhang kh where kh.MaKH=hd.MaKH and MaHD='".$_GET['MaHD']."'";
+													$sql="select * from hoadon hd,khachhang kh, hinhthucthanhtoan httt,hinhthucgiaohang htgh where kh.MaKH=hd.MaKH and hd.HinhThucThanhToan=httt.MaHinhThuc and  hd.HinhThucGiaoHang=htgh.MaHinhThuc and MaHD='".$_GET['MaHD']."'";
 													$result=DataProvider::executeQuery($sql);
 													$row=mysqli_fetch_array($result);
 													$tenkh=$row['HoTen'];
 													$ngaydathang=$row['NgayDatHang'];
+													$diachi=$row['DiaChi'];
+													$hinhthucthanhtoan=$row['TenHinhThucTT'];
+													$hinhthucgiaohang=$row['TenHinhThucGH'];
+													$sdt="gg";
 												}													
 												else 
 												{
 													$tenkh="";
 													$ngaydathang="";
+													$tenkh="";
+													$hinhthucthanhtoan="";
+													$hinhthucgiaohang="";
+													$sdt="";
 												}
 											?>
 												<div class="form-group">
@@ -154,7 +162,7 @@
                                                 </div>
 												<div class="form-group">
                                                     <label>Số điện thoại</label>
-                                                    <input type="text" class="form-control" name="sdt">
+                                                    <input type="text" class="form-control" name="sdt" value="<?php echo $sdt ?>">
                                                 </div>
 											</div>
 										</div>
@@ -166,15 +174,15 @@
 											<div class="panel-body">
 												<div class="form-group">
                                                     <label>Địa chỉ</label>
-                                                    <input type="text" class="form-control" name="diachi">
+                                                    <input type="text" class="form-control" name="diachi" value="<?php echo $diachi ?>">
                                                 </div>
 												<div class="form-group">
                                                     <label>Hình Thức thanh toán</label>
-                                                    <input type="text" class="form-control" name="hinhthucthanhtoan">
+                                                    <input type="text" class="form-control" name="hinhthucthanhtoan" value="<?php echo $hinhthucthanhtoan ?>">
                                                 </div>
 												<div class="form-group">
                                                     <label>Hình Thức giao hàng</label>
-                                                    <input type="text" class="form-control" name="hinhthucgiaohang">
+                                                    <input type="text" class="form-control" name="hinhthucgiaohang" value="<?php echo $hinhthucgiaohang ?>">
                                                 </div>
 											</div>
 										</div>

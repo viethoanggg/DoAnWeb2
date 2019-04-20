@@ -25,25 +25,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `chitiethoadon`
+-- Cấu trúc bảng cho bảng `tinhtrang`
 --
 
-CREATE TABLE `chitiethoadon` (
-  `MaHD` varchar(10) NOT NULL,
-  `MaSach` varchar(10) NOT NULL,
-  `SoLuong` int(20) NOT NULL,
-  `TongTienCT` int(20) NOT NULL,
-  `NgayGiaoHang` varchar(100) NOT NULL,
-  `MaTinhTrangCT` varchar(100) NOT NULL
+CREATE TABLE `tinhtrang` (
+  `MaTinhTrang` varchar(10) NOT NULL,
+  `TenTinhTrang` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `chitiethoadon`
+-- Đang đổ dữ liệu cho bảng `tinhtrang`
 --
 
-INSERT INTO `chitiethoadon` (`MaHD`, `MaSach`, `SoLuong`, `TongTienCT`, `NgayGiaoHang`, `MaTinhTrangCT`) VALUES
-('HD1', 'CN1', 1, 68000, '14/02/2019', '7'),
-('HD2', 'KT0', 1, 84150, '08/01/2018', '6');
+INSERT INTO `tinhtrang` (`MaTinhTrang`, `TenTinhTrang`) VALUES
+('1', 'Chưa thanh toán xong'),
+('2', 'Đã thanh toán xong'),
+('6', 'Đang lấy hàng từ kho'),
+('7', 'Đã giao hàng');
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `tinhtrang`
+--
+ALTER TABLE `tinhtrang`
+  ADD PRIMARY KEY (`MaTinhTrang`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
