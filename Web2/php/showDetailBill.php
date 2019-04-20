@@ -123,7 +123,7 @@
 						<div class="panel-body">
 							
 							<div class="row">
-								<form name="timkiemchitiethoadon">
+								<form name="chitiethoadon">
 									<div class="col-lg-4" style="">
 									
 										<div class="panel panel-default">
@@ -152,53 +152,33 @@
                                                     <label>Ngày đặt hàng</label>
                                                     <input type="text" class="form-control" name="ngaydathang" value="<?php echo $ngaydathang ?>">
                                                 </div>
+												<div class="form-group">
+                                                    <label>Số điện thoại</label>
+                                                    <input type="text" class="form-control" name="sdt">
+                                                </div>
 											</div>
 										</div>
 										
 									</div>
 									
 									<div class="col-lg-8">
-										
-										<select name="trangthai" class="form-control">
-											<option value="">Tất cả trạng thái</option>
-											<option value="1">Đã thanh toán xong</option>
-											<option value="0">Chưa thanh toán xong</option>
-										</select>
-									
-									
-									
-										<div class="panel panel-default" style="margin-top:10px;">
+										<div class="panel panel-default">
 											<div class="panel-body">
-												<div class="row">
-													<div class="col-lg-4">
-														<select name="timkiemtheoloai" class="form-control">
-															<option value="">Chọn</option>
-															<option value="MaSach">Mã sách</option>
-															<option value="MaKH">Tên sách</option>
-															<option value="NgayGiaoHang">Ngày giao hàng</option>
-														</select>
-													</div>
-									
-										
-													<div class="col-lg-8">
-											
-														<div class="input-group" >
-															<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem">
-															<div class="input-group-btn">
-																<button class="btn btn-default" type="submit">
-																	<i class="glyphicon glyphicon-search"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-													
-												</div>
+												<div class="form-group">
+                                                    <label>Địa chỉ</label>
+                                                    <input type="text" class="form-control" name="diachi">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Hình Thức thanh toán</label>
+                                                    <input type="text" class="form-control" name="hinhthucthanhtoan">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Hình Thức giao hàng</label>
+                                                    <input type="text" class="form-control" name="hinhthucgiaohang">
+                                                </div>
 											</div>
 										</div>
-									
-										<div>
-											<i style="color:red" id="thongbaoloi"></i>
-										</div>
+										
 									</div>
 								</form>	
 							</div>
