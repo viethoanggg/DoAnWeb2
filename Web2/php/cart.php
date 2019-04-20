@@ -12,8 +12,8 @@
 			/*Khởi tạo session*/
 			if(isset($MaSach)){
 				if(isset($_SESSION['cart'])){//Kiểm tra giỏ hàng đã tồn tại chưa
-				if(isset($_SESSION['cart'][$MaSach])){//Tồn tại mã sách này thì tăng lên 1
-					$_SESSION['cart'][$MaSach]['sl']+=1;
+				if(isset($_SESSION['cart'][$MaSach])){//Tồn tại mã sách này thì cộng số lượng sách được thêm
+					$_SESSION['cart'][$MaSach]['sl']+=$_GET['sl'];//
 				}
 				else{
 					$_SESSION['cart'][$MaSach]['sl'] = 1;//Chưa tồn tại mã sách này thì tạo giá trị ban đầu cho nó
@@ -24,7 +24,7 @@
 			}
 
 		}
-		header("Location: ../php/chitietsach.php?theloai=".$_GET['theloai']."&masach=".$MaSach."");exit();
+		//header("Location: ../php/chitietsach.php?theloai=".$_GET['theloai']."&masach=".$MaSach."");exit();
 	}
 }
 ?>

@@ -88,7 +88,7 @@
                                         <a href="#">Khách hàng</a>
                                     </li>
                                     <li>
-                                        <a href="#">Admin và Quản lý</a>
+                                        <a href="#">Nhân viên quản lý và Quản trị viên</a>
                                     </li>                 
                         </ul>
                                 <!-- /.nav-second-level -->
