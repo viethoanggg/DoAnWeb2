@@ -22,7 +22,6 @@
 
     <!-- Custom Fonts -->
     <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -88,7 +87,7 @@
                                         <a href="quanlykhachhang.php">Khách hàng</a>
                                     </li>
                                     <li>
-                                        <a href="quanlynhanvien.php">Nhân viên quản lý và Quản trị viên</a>
+                                        <a href="#">Admin và Quản lý</a>
                                     </li>                 
                         </ul>
                                 <!-- /.nav-second-level -->
@@ -105,18 +104,11 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Quản lý khách hàng</h1>
+                    <h1 class="page-header">Quản lý chi tiết hóa đơn</h1>
                 </div>
             </div>
 			
 	<!---------------------------------hien san pham ----------------------------------->
-	
-			<div class="row">
-                <div class="col-lg-12">
-                    <div class="">
-                </div>
-            </div>
-
             <!-- ... Your content goes here ... -->
 			
 			
@@ -125,50 +117,76 @@
 					<div class="panel panel-default">
 						
 						<div class="panel-heading">
-							Danh sách khách hàng
-							<div style="float:right">
-								<a href="DangKy.php"><i class="fa fa-plus fa-fw"></i> Thêm khách hàng</a>
-							</div>
+							Danh sách chi tiết hóa đơn
 						</div>
 						
 						<div class="panel-body">
 							
 							<div class="row">
-								<form name="timkiemkhachhang">
-							
-					
+								<form name="chitiethoadon">
+									<div class="col-lg-4" style="">
 									
-									<div class="col-lg-6">
 										<div class="panel panel-default">
 											<div class="panel-body">
-												<div class="row">
-													<div class="col-lg-4">
-														<select name="timkiemtheothongtin" class="form-control" onchange="showUserAjax()">
-															<option value="">Chọn</option>
-															<option value="MaKH">Mã khách hàng</option>
-															<option value="HoTen">Họ tên</option>
-															<option value="Email">Email</option>
-														</select>
-													</div>
-									
-										
-													<div class="col-lg-8">
-											
-														<div class="input-group" >
-															<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem" onkeyup="showUserAjax()">
-															<div class="input-group-btn">
-																<button class="btn btn-default" type="submit">
-																	<i class="glyphicon glyphicon-search"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-												</div>
+											<?php
+												require('DataProvider.php');
+												if(isset($_GET['MaHD']) && isset($_GET['MaKH']))
+												{
+													$sql="select * from hoadon hd,khachhang kh, hinhthucthanhtoan httt,hinhthucgiaohang htgh where kh.MaKH=hd.MaKH and hd.HinhThucThanhToan=httt.MaHinhThuc and  hd.HinhThucGiaoHang=htgh.MaHinhThuc and MaHD='".$_GET['MaHD']."'";
+													$result=DataProvider::executeQuery($sql);
+													$row=mysqli_fetch_array($result);
+													$tenkh=$row['HoTen'];
+													$ngaydathang=$row['NgayDatHang'];
+													$diachi=$row['DiaChi'];
+													$hinhthucthanhtoan=$row['TenHinhThucTT'];
+													$hinhthucgiaohang=$row['TenHinhThucGH'];
+													$sdt="gg";
+												}													
+												else 
+												{
+													$tenkh="";
+													$ngaydathang="";
+													$tenkh="";
+													$hinhthucthanhtoan="";
+													$hinhthucgiaohang="";
+													$sdt="";
+												}
+											?>
+												<div class="form-group">
+                                                    <label>Họ tên khách hàng</label>
+                                                    <input type="text" class="form-control" name="hoten" value="<?php echo $tenkh ?>">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Ngày đặt hàng</label>
+                                                    <input type="text" class="form-control" name="ngaydathang" value="<?php echo $ngaydathang ?>">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Số điện thoại</label>
+                                                    <input type="text" class="form-control" name="sdt" value="<?php echo $sdt ?>">
+                                                </div>
 											</div>
 										</div>
+										
 									</div>
-									<div class="col-lg-3" style="margin-top:20px;">
-										<i style="color:red" id="thongbaoloi"></i>
+									
+									<div class="col-lg-8">
+										<div class="panel panel-default">
+											<div class="panel-body">
+												<div class="form-group">
+                                                    <label>Địa chỉ</label>
+                                                    <input type="text" class="form-control" name="diachi" value="<?php echo $diachi ?>">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Hình Thức thanh toán</label>
+                                                    <input type="text" class="form-control" name="hinhthucthanhtoan" value="<?php echo $hinhthucthanhtoan ?>">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Hình Thức giao hàng</label>
+                                                    <input type="text" class="form-control" name="hinhthucgiaohang" value="<?php echo $hinhthucgiaohang ?>">
+                                                </div>
+											</div>
+										</div>
+										
 									</div>
 								</form>	
 							</div>
@@ -177,39 +195,13 @@
 							
 							<div class="row" style="margin-top:10px">
 								
-								<div class="col-lg-12" id="sanpham">
-										<?php
-											require('quanlyuser.php');
-											QuanLyUser::QuanLyKhachHang();
-										?>
-			
+								<div class="col-lg-12" id="hoadon">
+									<?php
+										require('Bill.php');
+										Bill::showDetailBill();
+									?>
 								</div>
-								<script>
-									
-									function showUserAjax() {
-										var xhttp;
-										
-										var loai=document.forms['timkiemkhachhang']['timkiemtheothongtin'].value;
-										var chuoitimkiem=document.forms['timkiemkhachhang']['timkiem'].value;
-										var url="showUserAjaxInAdmin.php?";
-										if(loai=="" && chuoitimkiem=="")
-											url=url+"timkiemtheothongtin=&timkiem=";
-										else 
-											url=url+"timkiemtheothongtin="+loai+"&timkiem="+chuoitimkiem;
-										if(loai=="" && chuoitimkiem!="")
-											document.getElementById("thongbaoloi").innerHTML ="Bạn phải chọn thông tin cần tìm kiếm.";
-										else document.getElementById("thongbaoloi").innerHTML ="";
-										
-										xhttp = new XMLHttpRequest();
-										xhttp.onreadystatechange = function() {
-										if (this.readyState == 4 && this.status == 200) {
-											document.getElementById("sanpham").innerHTML = this.responseText;
-											}
-										  };
-										  xhttp.open("GET",url, true);
-										  xhttp.send();
-										}
-								</script>
+								
 							</div>
 							
 						</div>

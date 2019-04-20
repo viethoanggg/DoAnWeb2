@@ -73,7 +73,7 @@
                         <a href="quanlysanpham.php"><i class="fa fa-product-hunt fa-fw"></i> Quản lý sản phẩm</a>
                     </li>
 					<li>
-                        <a href="quanlyhoadon.php"><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn</a>
+                        <a href="#"><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn</a>
                     </li>
 					<li>
                         <a href="quanlydonhang.php"><i class="fa fa-file-text-o fa-fw"></i> Quản lý đơn hàng</a>
@@ -105,7 +105,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Quản lý khách hàng</h1>
+                    <h1 class="page-header">Quản lý nhân viên</h1>
                 </div>
             </div>
 			
@@ -125,16 +125,16 @@
 					<div class="panel panel-default">
 						
 						<div class="panel-heading">
-							Danh sách khách hàng
+							Danh sách nhân viên
 							<div style="float:right">
-								<a href="DangKy.php"><i class="fa fa-plus fa-fw"></i> Thêm khách hàng</a>
+								<a href="DangKy.php"><i class="fa fa-plus fa-fw"></i> Thêm nhân viên</a>
 							</div>
 						</div>
 						
 						<div class="panel-body">
 							
 							<div class="row">
-								<form name="timkiemkhachhang">
+								<form name="timkiemnhanvien">
 							
 					
 									
@@ -143,11 +143,12 @@
 											<div class="panel-body">
 												<div class="row">
 													<div class="col-lg-4">
-														<select name="timkiemtheothongtin" class="form-control" onchange="showUserAjax()">
+														<select name="timkiemtheothongtin" class="form-control" onchange="showNhanVienAjax()">
 															<option value="">Chọn</option>
-															<option value="MaKH">Mã khách hàng</option>
+															<option value="MaNhanVien">Mã nhân viên</option>
 															<option value="HoTen">Họ tên</option>
 															<option value="Email">Email</option>
+															<option value="MaQuyen">Mã quyền</option>
 														</select>
 													</div>
 									
@@ -155,7 +156,7 @@
 													<div class="col-lg-8">
 											
 														<div class="input-group" >
-															<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem" onkeyup="showUserAjax()">
+															<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem" onkeyup="showNhanVienAjax()">
 															<div class="input-group-btn">
 																<button class="btn btn-default" type="submit">
 																	<i class="glyphicon glyphicon-search"></i>
@@ -180,18 +181,18 @@
 								<div class="col-lg-12" id="sanpham">
 										<?php
 											require('quanlyuser.php');
-											QuanLyUser::QuanLyKhachHang();
+											QuanLyUser::QuanLyNhanVien();
 										?>
 			
 								</div>
 								<script>
 									
-									function showUserAjax() {
+									function showNhanVienAjax() {
 										var xhttp;
 										
-										var loai=document.forms['timkiemkhachhang']['timkiemtheothongtin'].value;
-										var chuoitimkiem=document.forms['timkiemkhachhang']['timkiem'].value;
-										var url="showUserAjaxInAdmin.php?";
+										var loai=document.forms['timkiemnhanvien']['timkiemtheothongtin'].value;
+										var chuoitimkiem=document.forms['timkiemnhanvien']['timkiem'].value;
+										var url="showNhanVienAjaxInAdmin.php?";
 										if(loai=="" && chuoitimkiem=="")
 											url=url+"timkiemtheothongtin=&timkiem=";
 										else 
