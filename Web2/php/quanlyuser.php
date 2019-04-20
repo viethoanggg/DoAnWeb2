@@ -288,7 +288,12 @@ class QuanLyUser
 												."<td>".$row['HoTen']."</td>"
 												."<td>".$row['TenDangNhap']."</td>"
 												."<td>".$row['MatKhau']."</td>"
-												."<td>".$row['TrangThai']."</td>";
+												."<td>".$row['Email']."</td>";
+												
+												if($row['TrangThai']=="0")	
+													$s=$s."<td><i class='fa fa-check '></i></td>";
+												if($row['TrangThai']=="1")
+													$s=$s."<td><i class='fa fa-close '></i></td>";	
 												
 												
 												$s=$s. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-file-o fa-fw'></i> Xem</a></td>"
