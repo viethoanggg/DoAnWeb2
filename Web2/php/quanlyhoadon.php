@@ -31,10 +31,9 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="navbar-header">
             <img src="../images/onepiece.PNG" style="" width="250px" height="52px" alt="logo-trang chủ">
-			
         </div>
 
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -62,24 +61,24 @@
         </ul>
 
         <!-- Sidebar -->
-        <div class="navbar-default sidebar" role="navigation" >
-            <div class="sidebar-nav navbar-collapse" id="myNavbar">
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
 
                 <ul class="nav" id="side-menu">
                     <li>
                         <a href="admin.php" style=""><i class="fa fa-home fa-fw"></i> Trang chủ </a>
                     </li>
                     <li>
-                        <a href="quanlysanpham.php" style=""><i class="fa fa-product-hunt fa-fw"></i> Quản lý sản phẩm</a>
+                        <a href="quanlysanpham.php"><i class="fa fa-product-hunt fa-fw"></i> Quản lý sản phẩm</a>
                     </li>
 					<li>
-                        <a href="quanlyhoadon.php" style=""><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn</a>
+                        <a href="quanlyhoadon.php"><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn</a>
                     </li>
 					<li>
                         <a href="quanlydonhang.php"><i class="fa fa-file-text-o fa-fw"></i> Quản lý đơn hàng</a>
                     </li>
 					<li>
-                        <a href="#" style="" ><i class="fa fa-table fa-fw"></i> Thống kê sản phẩm</a>
+                        <a href="#"><i class="fa fa-table fa-fw"></i> Thống kê sản phẩm</a>
                     </li>
 					<li>
                         <a href="#"><i class="fa fa-user fa-fw"></i> Quản lý người dùng<span class="fa arrow"></span></a>
@@ -88,9 +87,8 @@
                                         <a href="quanlykhachhang.php">Khách hàng</a>
                                     </li>
                                     <li>
-                                        <a href="quanlynhanvien.php">Nhân viên quản lý và Quản trị viên</a>
-                                    </li>                
-
+                                        <a href="#">Admin và Quản lý</a>
+                                    </li>                 
                         </ul>
                                 <!-- /.nav-second-level -->
                     </li>
@@ -106,14 +104,88 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Trang chủ</h1>
+                    <h1 class="page-header">Quản lý hóa đơn</h1>
                 </div>
             </div>
-
 			
-			
+	<!---------------------------------hien san pham ----------------------------------->
             <!-- ... Your content goes here ... -->
-		
+			
+			
+			<div clas="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						
+						<div class="panel-heading">
+							Danh sách hóa đơn
+						</div>
+						
+						<div class="panel-body">
+							
+							<div class="row">
+								<form name="timkiemhoadon">
+							
+									<div class="col-lg-3" style="margin-top:17px;">
+										<select name="trangthai" class="form-control">
+											<option value="">Tất cả trạng thái</option>
+											<option value="1">Đã thanh toán xong</option>
+											<option value="0">Chưa thanh toán xong</option>
+										</select>
+									</div>
+									
+									<div class="col-lg-6">
+										<div class="panel panel-default">
+											<div class="panel-body">
+												<div class="row">
+													<div class="col-lg-4">
+														<select name="timkiemtheoloai" class="form-control">
+															<option value="">Chọn</option>
+															<option value="MaHD">Mã hóa đơn</option>
+															<option value="MaKH">Mã khách hàng</option>
+															<option value="NgayDatHang">Ngày đặt hàng</option>
+														</select>
+													</div>
+									
+										
+													<div class="col-lg-8">
+											
+														<div class="input-group" >
+															<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem">
+															<div class="input-group-btn">
+																<button class="btn btn-default" type="submit">
+																	<i class="glyphicon glyphicon-search"></i>
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-3" style="margin-top:20px;">
+										<i style="color:red" id="thongbaoloi"></i>
+									</div>
+								</form>	
+							</div>
+							
+							<!------------------------table-------------------------------------------------------------->
+							
+							<div class="row" style="margin-top:10px">
+								
+								<div class="col-lg-12" id="hoadon">
+									<?php
+										require('Bill.php');
+										Bill::showBill();
+									?>
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
         </div>
     </div>
 

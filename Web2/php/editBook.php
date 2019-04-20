@@ -72,7 +72,10 @@
                         <a href="quanlysanpham.php"><i class="fa fa-product-hunt fa-fw"></i> Quản lý sản phẩm</a>
                     </li>
 					<li>
-                        <a href="#"><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn</a>
+                        <a href="quanlyhoadon.php"><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn</a>
+                    </li>
+					<li>
+                        <a href="quanlydonhang.php"><i class="fa fa-file-text-o fa-fw"></i> Quản lý đơn hàng</a>
                     </li>
 					<li>
                         <a href="#"><i class="fa fa-table fa-fw"></i> Thống kê sản phẩm</a>
@@ -165,7 +168,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									<form name="sua" action="updateBook.php" method="post" onsubmit="return suasach()">
+									<form name="sua" action="updateBook.php" method="post" onsubmit="return suasach()" enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="form-group">
