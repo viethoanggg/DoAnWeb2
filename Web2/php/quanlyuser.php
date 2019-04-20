@@ -157,9 +157,9 @@ class QuanLyUser
 									if($loai=="MaKH")
 										$sql=$sql."	MaKH LIKE '%".$chuoitimkiem."%'";
 									if($loai=="HoTen")
-										$sql=$sql." and HoTen LIKE '%".$chuoitimkiem."%'";
+										$sql=$sql." HoTen LIKE '%".$chuoitimkiem."%'";
 									if($loai=="Email")
-										$sql=$sql." and Email LIKE '%".$chuoitimkiem."%'";
+										$sql=$sql." Email LIKE '%".$chuoitimkiem."%'";
 								}
 								
 							$result=DataProvider::executeQuery($sql);
