@@ -1101,6 +1101,7 @@ class ShowBook
 													<th>Sửa</th>
 													<th>Xóa</th>
                                                 </tr>
+											</thead>
 												<tbody>
 													<div id='data-product'>";
 							while($row=mysqli_fetch_array($result))
@@ -1138,7 +1139,6 @@ class ShowBook
 							
 							$s=$s					."</div>"
 												."</tbody>"
-                                            ."</thead>"
 										."</table>"
 									."</div>";
 							
