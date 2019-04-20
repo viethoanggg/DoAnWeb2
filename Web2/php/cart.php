@@ -22,7 +22,9 @@
 			else{//Chưa tồn tại thì tạo session với sl=1
 				$_SESSION['cart'][$MaSach]['sl'] = 1;
 			}
+
 		}
+		header("Location: ../php/chitietsach.php?theloai=".$_GET['theloai']."&masach=".$MaSach."");exit();
 	}
 }
 ?>
