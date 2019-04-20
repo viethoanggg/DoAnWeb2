@@ -227,9 +227,113 @@
 		<hr style="border:1px solid black;">
 		<?php
 		include 'cart.php';
-		if(isset($_SESSION['cart'])){
-			echo "<pre />";
-			var_dump($_SESSION['cart']);
+		if(!empty($_SESSION['cart'])){
+			// echo "<pre />";
+			 //var_dump($_SESSION['cart']);
+			$s="";
+			$demsl=0;
+			$tong=0;
+			$ship=50000;
+			foreach ($_SESSION['cart'] as $key => $value) {
+				//var_dump($key);
+				if($_SESSION['cart'][$key]['theloai']=='NN'){
+					$s=$s.'<tr>
+					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="biasach" src="../images/ngoaingu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+					</tr>';
+					$demsl+=$_SESSION["cart"][$key]["sl"];
+					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+				}
+				if($_SESSION['cart'][$key]['theloai']=='CN'){
+					$s=$s.'<tr>
+					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="biasach" src="../images/chuyennganh/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+					</tr>';
+					$demsl+=$_SESSION["cart"][$key]["sl"];
+					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+				}
+				if($_SESSION['cart'][$key]['theloai']=='KNS'){
+					$s=$s.'<tr>
+					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="biasach" src="../images/kynangsong/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+					</tr>';
+					$demsl+=$_SESSION["cart"][$key]["sl"];
+					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+				}
+				if($_SESSION['cart'][$key]['theloai']=='KT'){
+					$s=$s.'<tr>
+					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="biasach" src="../images/kinhte/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+					</tr>';
+					$demsl+=$_SESSION["cart"][$key]["sl"];
+					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+				}
+				if($_SESSION['cart'][$key]['theloai']=='LS'){
+					$s=$s.'<tr>
+					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="biasach" src="../images/lichsu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+					</tr>';
+					$demsl+=$_SESSION["cart"][$key]["sl"];
+					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+				}
+				if($_SESSION['cart'][$key]['theloai']=='TN'){
+					$s=$s.'<tr>
+					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="biasach" src="../images/thieunhi/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+					</tr>';
+					$demsl+=$_SESSION["cart"][$key]["sl"];
+					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+				}
+				if($_SESSION['cart'][$key]['theloai']=='TT'){
+					$s=$s.'<tr>
+					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="biasach" src="../images/tuoiteen/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+					</tr>';
+					$demsl+=$_SESSION["cart"][$key]["sl"];
+					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+				}
+				if($_SESSION['cart'][$key]['theloai']=='VH'){
+					$s=$s.'<tr>
+					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="biasach" src="../images/vanhoc/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+					<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+					</tr>';
+					$demsl+=$_SESSION["cart"][$key]["sl"];
+					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+				}
+					
+			}
 			echo '<table class="table table-striped">
 			<thead>
 			<tr style="background-color: #101010;">
@@ -242,34 +346,11 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr>
-			<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-			<td><img class="biasach" src="../images/kinhte/kt0.png" alt=""></td>
-			<td>Quyền năng làm giàu</td>
-			<td>84150đ</td>
-			<td>1</td>
-			<td>84150đ</td>
-			</tr>
-			<tr>
-			<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-			<td><img class="biasach" src="../images/kinhte/kt0.png" alt=""></td>
-			<td>Quyền năng làm giàu</td>
-			<td>84150đ</td>
-			<td>1</td>
-			<td>84150đ</td>
-			</tr>
-			<tr>
-			<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-			<td><img class="biasach" src="../images/kinhte/kt0.png" alt=""></td>
-			<td>Quyền năng làm giàu</td>
-			<td>84150đ</td>
-			<td>1</td>
-			<td>84150đ</td>
-			</tr>	
+			'.$s.'
 			</tbody>
-			</table>
+			</table>';
 
-			<div class="row">
+			echo '<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4"></div>
 			<div  class="col-md-4">
@@ -282,15 +363,15 @@
 			<tbody>
 			<tr>
 			<td>Số lượng sản phẩm</td>
-			<td>5</td>
+			<td>'.$demsl.'</td>
 			</tr>
 			<tr>
 			<td>Tổng</td>
-			<td>630000đ</td>
+			<td>'.number_format($tong).'đ</td>
 			</tr>
 			<tr>
 			<td>Phí vận chuyển</td>
-			<td>50000đ</td>
+			<td>'.number_format($ship).'đ</td>
 			</tr>
 			<tr>
 			<td colspan="2" align="center">
@@ -299,7 +380,7 @@
 			</tr>	
 			<tr>
 			<td>Thành tiền</td>
-			<td>680000đ</td>
+			<td>'.number_format($tong+$ship).'đ</td>
 			</tr>
 			<tr>
 			<td align="center" colspan="2"><input type="button" value="Thanh toán" class="thanhtoan"></td>
@@ -307,9 +388,7 @@
 			</tbody>
 			</table>
 			</div>
-			</div>
-			';
-
+			</div>';
 		}
 		else {
 			echo '<table class="table">
