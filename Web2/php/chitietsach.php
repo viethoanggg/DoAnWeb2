@@ -101,7 +101,7 @@
 				
 			  <ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a>
+					<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a>
 				</li>
 			  </ul>
 			</div>
