@@ -126,7 +126,7 @@ class QuanLyUser
 												."<td>".$row['MaKH']."</td>"
 												."<td>".$row['HoTen']."</td>"
 												."<td>".$row['TenDangNhap']."</td>"
-												."<td>".$row['MatKhau']."</td>"
+												."<td>".crypt($row['MatKhau'],100)."</td>"
 												."<td>".$row['Email']."</td>";
 												
 												if($row['TrangThai']=="0")	
@@ -287,7 +287,7 @@ class QuanLyUser
 												."<td>".$row['MaKH']."</td>"
 												."<td>".$row['HoTen']."</td>"
 												."<td>".$row['TenDangNhap']."</td>"
-												."<td>".$row['MatKhau']."</td>"
+												."<td>".crypt($row['MatKhau'],100)."</td>"
 												."<td>".$row['Email']."</td>";
 												
 												if($row['TrangThai']=="0")	
