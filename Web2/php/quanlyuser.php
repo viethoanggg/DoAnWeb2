@@ -12,8 +12,8 @@ class QuanLyUser
 								$MaKhachHang=$_GET['makhachhang'];
 							else $MaKhachHang="";
 								
-								if(isset($_GET['timkiemtheoloai']))
-									$loai=$_GET['timkiemtheoloai'];
+								if(isset($_GET['timkiemtheothongtin']))
+									$loai=$_GET['timkiemtheothongtin'];
 								else $loai="";
 								if(isset($_GET['timkiem']))
 									$chuoitimkiem=$_GET['timkiem'];
