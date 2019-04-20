@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 20, 2019 lúc 11:38 AM
+-- Thời gian đã tạo: Th4 20, 2019 lúc 01:29 PM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
 -- Phiên bản PHP: 7.2.16
 
@@ -34,16 +34,16 @@ CREATE TABLE `chitiethoadon` (
   `SoLuong` int(20) NOT NULL,
   `TongTienCT` int(20) NOT NULL,
   `NgayGiaoHang` varchar(100) NOT NULL,
-  `TinhTrangCT` varchar(100) NOT NULL
+  `MaTinhTrangCT` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `chitiethoadon`
 --
 
-INSERT INTO `chitiethoadon` (`MaHD`, `MaSach`, `SoLuong`, `TongTienCT`, `NgayGiaoHang`, `TinhTrangCT`) VALUES
-('HD1', 'CN1', 1, 68000, '14/02/2019', 'Đã giao hàng'),
-('HD2', 'KT0', 1, 84150, '08/01/2018', 'Đang lấy từ kho');
+INSERT INTO `chitiethoadon` (`MaHD`, `MaSach`, `SoLuong`, `TongTienCT`, `NgayGiaoHang`, `MaTinhTrangCT`) VALUES
+('HD1', 'CN1', 1, 68000, '14/02/2019', '7'),
+('HD2', 'KT0', 1, 84150, '08/01/2018', '6');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
