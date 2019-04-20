@@ -88,7 +88,7 @@
 			<div class="collapse navbar-collapse" id="myNavbar2">
 				
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.html">Trang chủ</a></li>
+					<li class="active"><a href="../index.php">Trang chủ</a></li>
 					<li><a href="#">About</a></li>
 					<li><a href="#">Contact</a></li>
 					<li class="dropdown">
@@ -112,7 +112,7 @@
 				
 			  <ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a>
+					<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a>
 				</li>
 			  </ul>
 			</div>
