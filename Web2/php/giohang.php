@@ -238,8 +238,8 @@
 				//var_dump($key);
 				if($_SESSION['cart'][$key]['theloai']=='NN'){
 					$s=$s.'<tr>
-					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="../images/ngoaingu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td><a href="chitietsach.php?theloai=hocngoaingu&masach='.$key.'"><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><a href="chitietsach.php?theloai=hocngoaingu&masach='.$key.'"><img class="biasach" src="../images/ngoaingu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
