@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 <script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
+<!--<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>-->
 <script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
 <!-- MetisMenu CSS -->
     <link href="../css/admin/metisMenu.min.css" rel="stylesheet">
@@ -78,7 +78,15 @@
                         <a href="#"><i class="fa fa-table fa-fw"></i> Thống kê sản phẩm</a>
                     </li>
 					<li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i> Quản lý người dùng</a>
+                        <a href="#"><i class="fa fa-user fa-fw"></i> Quản lý người dùng<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="quanlykhachhang.php">Khách hàng</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Admin và Quản lý</a>
+                                    </li>                 
+                        </ul>
                     </li>
                 </ul>
 
@@ -117,7 +125,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									<form name="them" action="executeAddBook.php" method="post" enctype="multipart/form-data">
+									<form name="them" action="executeAddBook.php" method="post"  enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="form-group">
@@ -194,7 +202,10 @@
 												<div class="panel panel-default">
 													<div class="panel-heading">												
 														Thêm hình ảnh
-														<input type="file" style="float:right;margin-top:-2px" onclick="themhinhanh()">
+														<div class="form-group">
+															<input type="file" name="hinhanh" style="float:right;margin-top:-2px" onclick="themhinhanh()" accept="image/png,image/jpeg,image/jpg">
+														</div>
+												
 													</div>
 													<div class="panel-body" style="margin-bottom:10px;">
 														

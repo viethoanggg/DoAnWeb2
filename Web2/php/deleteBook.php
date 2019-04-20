@@ -4,6 +4,8 @@
 	{
 		$sql="DELETE FROM sach WHERE MaSach='".$_GET['masach']."'";
 		DataProvider::executeQuery($sql);
+		$sql="DELETE FROM chitietsach WHERE MaSach='".$_GET['masach']."'";
+		DataProvider::executeQuery($sql);
 	}
 	header("Location:quanlysanpham.php");
 ?>

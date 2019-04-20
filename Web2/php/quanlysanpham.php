@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 <script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
+<!--<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>-->
 <script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
 <!-- MetisMenu CSS -->
     <link href="../css/admin/metisMenu.min.css" rel="stylesheet">
@@ -142,7 +142,7 @@
 											<option value="CN">Chuyên ngành</option>
 											<option value="TN">Thiếu nhi</option>
 											<option value="TT">Tuổi teen</option>
-											<option value="VN">Văn học</option>
+											<option value="VH">Văn học</option>
 										</select>
 									</div>
 									
