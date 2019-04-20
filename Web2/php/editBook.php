@@ -72,7 +72,10 @@
                         <a href="quanlysanpham.php"><i class="fa fa-product-hunt fa-fw"></i> Quản lý sản phẩm</a>
                     </li>
 					<li>
-                        <a href="#"><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn</a>
+                        <a href="quanlyhoadon.php"><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn</a>
+                    </li>
+					<li>
+                        <a href="quanlydonhang.php"><i class="fa fa-file-text-o fa-fw"></i> Quản lý đơn hàng</a>
                     </li>
 					<li>
                         <a href="#"><i class="fa fa-table fa-fw"></i> Thống kê sản phẩm</a>
