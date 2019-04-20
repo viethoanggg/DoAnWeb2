@@ -111,6 +111,7 @@ class QuanLyUser
 															<th>Tên_đăng_nhập</th>
 															<th>Mật_khẩu</th>
 															<th>Email</th>
+															<th>SĐT</th>
 															<th>Trạng_thái</th>
 															<th>Xem_đơn_hàng</th>
 															<th>Sửa</th>								
@@ -127,8 +128,8 @@ class QuanLyUser
 												."<td>".$row['HoTen']."</td>"
 												."<td>".$row['TenDangNhap']."</td>"
 												."<td>".crypt($row['MatKhau'],100)."</td>"
-												."<td>".$row['Email']."</td>";
-												
+												."<td>".$row['Email']."</td>"
+												."<td>".$row['SĐT']."</td>";
 												if($row['TrangThai']=="0")	
 													$s=$s."<td><i class='fa fa-check '></i></td>";
 												if($row['TrangThai']=="1")
@@ -271,7 +272,8 @@ class QuanLyUser
 															<th>Họ_Tên</th>										
 															<th>Tên_đăng_nhập</th>
 															<th>Mật_khẩu</th>
-															<th>Email</th>					
+															<th>Email</th>	
+															<th>SĐT</th>
 															<th>Trạng_thái</th>
 															<th>Xem_đơn_hàng</th>
 															<th>Sửa</th>								
@@ -288,8 +290,8 @@ class QuanLyUser
 												."<td>".$row['HoTen']."</td>"
 												."<td>".$row['TenDangNhap']."</td>"
 												."<td>".crypt($row['MatKhau'],100)."</td>"
-												."<td>".$row['Email']."</td>";
-												
+												."<td>".$row['Email']."</td>"
+												."<td>".$row['SĐT']."</td>";
 												if($row['TrangThai']=="0")	
 													$s=$s."<td><i class='fa fa-check '></i></td>";
 												if($row['TrangThai']=="1")

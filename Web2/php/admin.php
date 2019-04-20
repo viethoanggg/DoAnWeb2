@@ -82,10 +82,10 @@
                         <a href="#"><i class="fa fa-user fa-fw"></i> Quản lý người dùng<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">Khách hàng</a>
+                                        <a href="quanlykhachhang.php">Khách hàng</a>
                                     </li>
                                     <li>
-                                        <a href="#">Nhân viên quản lý và Quản trị viên</a>
+                                        <a href="quanlynhanvien.php">Nhân viên quản lý và Quản trị viên</a>
                                     </li>                 
                         </ul>
                                 <!-- /.nav-second-level -->
