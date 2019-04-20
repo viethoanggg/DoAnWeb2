@@ -88,8 +88,9 @@
                                         <a href="quanlykhachhang.php">Khách hàng</a>
                                     </li>
                                     <li>
-                                        <a href="#">Nhân viên quản lý và Quản trị viên</a>
-                                    </li>                  
+                                        <a href="quanlynhanvien.php">Nhân viên quản lý và Quản trị viên</a>
+                                    </li>                
+
                         </ul>
                                 <!-- /.nav-second-level -->
                     </li>
