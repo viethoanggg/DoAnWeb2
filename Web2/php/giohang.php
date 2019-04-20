@@ -238,8 +238,9 @@
 				//var_dump($key);
 				if($_SESSION['cart'][$key]['theloai']=='NN'){
 					$s=$s.'<tr>
-					<td><a href="chitietsach.php?theloai=hocngoaingu&masach='.$key.'"><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-					<td><a href="chitietsach.php?theloai=hocngoaingu&masach='.$key.'"><img class="biasach" src="../images/ngoaingu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td></td>
+					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td>
+					<a href="chitietsach.php?theloai=hocngoaingu&masach='.$key.'"><img class="biasach" src="../images/ngoaingu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
@@ -251,7 +252,8 @@
 				if($_SESSION['cart'][$key]['theloai']=='CN'){
 					$s=$s.'<tr>
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="../images/chuyennganh/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>
+					<a href="chitietsach.php?theloai=chuyennganh&masach='.$key.'"><img class="biasach" src="../images/chuyennganh/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
@@ -263,7 +265,8 @@
 				if($_SESSION['cart'][$key]['theloai']=='KNS'){
 					$s=$s.'<tr>
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="../images/kynangsong/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>
+					<a href="chitietsach.php?theloai=kynangsong&masach='.$key.'"><img class="biasach" src="../images/kynangsong/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
@@ -275,7 +278,8 @@
 				if($_SESSION['cart'][$key]['theloai']=='KT'){
 					$s=$s.'<tr>
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="../images/kinhte/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>
+					<a href="chitietsach.php?theloai=kinte&masach='.$key.'"><img class="biasach" src="../images/kinhte/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
@@ -287,7 +291,8 @@
 				if($_SESSION['cart'][$key]['theloai']=='LS'){
 					$s=$s.'<tr>
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="../images/lichsu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>
+					<a href="chitietsach.php?theloai=lichsu&masach='.$key.'"><img class="biasach" src="../images/lichsu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
@@ -299,7 +304,8 @@
 				if($_SESSION['cart'][$key]['theloai']=='TN'){
 					$s=$s.'<tr>
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="../images/thieunhi/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>
+					<a href="chitietsach.php?theloai=thieunhi&masach='.$key.'"><img class="biasach" src="../images/thieunhi/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
@@ -311,7 +317,8 @@
 				if($_SESSION['cart'][$key]['theloai']=='TT'){
 					$s=$s.'<tr>
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="../images/tuoiteen/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
+					<td>
+					<a href="chitietsach.php?theloai=tuoiteen&masach='.$key.'"><img class="biasach" src="../images/tuoiteen/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
@@ -323,8 +330,8 @@
 				if($_SESSION['cart'][$key]['theloai']=='VH'){
 					$s=$s.'<tr>
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
-					<td><img class="biasach" src="../images/vanhoc/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></td>
-					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+					<td>
+					<a href="chitietsach.php?theloai=vanhoc&masach='.$key.'"><img class="biasach" src="../images/vanhoc/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
 					<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
@@ -332,7 +339,7 @@
 					$demsl+=$_SESSION["cart"][$key]["sl"];
 					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
 				}
-					
+
 			}
 			echo '<table class="table table-striped">
 			<thead>
