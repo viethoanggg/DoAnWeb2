@@ -12,14 +12,14 @@ class QuanLyUser
 								$MaKhachHang=$_GET['makhachhang'];
 							else $MaKhachHang="";
 								
-								if(isset($_GET['timkiemtheoloai']))
-									$loai=$_GET['timkiemtheoloai'];
+								if(isset($_GET['timkiemtheothongtin']))
+									$loai=$_GET['timkiemtheothongtin'];
 								else $loai="";
 								if(isset($_GET['timkiem']))
 									$chuoitimkiem=$_GET['timkiem'];
 								else $chuoitimkiem="";
 		
-								if($loai=="" && $chuoitimkiem=="")
+								if($loai=="" || $chuoitimkiem=="")
 								{		
 								
 									$sql="select COUNT(*) as numRows from khachhang";
@@ -45,7 +45,7 @@ class QuanLyUser
 									$maxPage=ceil($numRows/$rowsPerPage);
 									
 									//  Lấy link của trang
-									$sefl="quanlykhachhang.php?timkiemtheoloai=&timkiem=&page=";
+									$sefl="quanlykhachhang.php?timkiemtheothongtin=&timkiem=&page=";
 									$nav="";
 									
 									for($page=1;$page<=$maxPage;$page++)
@@ -108,6 +108,8 @@ class QuanLyUser
 															<th>Tên_đăng_nhập</th>
 															<th>Mật_khẩu</th>
 															<th>Email</th>
+															<th>Trạng_thái</th>
+															<th>Xem_đơn_hàng</th>
 															<th>Sửa</th>								
 															<th>Khóa</th>
 														</tr>
@@ -124,9 +126,15 @@ class QuanLyUser
 												."<td>".$row['MatKhau']."</td>"
 												."<td>".$row['Email']."</td>";
 												
+												if($row['TrangThai']=="0")	
+													$s=$s."<td><i class='fa fa-check '></i></td>";
+												if($row['TrangThai']=="1")
+													$s=$s."<td><i class='fa fa-close '></i></td>";	
 												
 												
-												$s=$s. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
+												
+												$s=$s. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-file-o fa-fw'></i> Xem</a></td>"
+												. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
 												."<td><a href='deleteBook.php?masach=".$row['MaKH']."'><i class='fa fa-lock fa-fw'></i> Khóa</a></td>"
 											."</tr>";
 										$i++;
@@ -146,6 +154,8 @@ class QuanLyUser
 														<ul class='pagination'>".$first.$prev.$nav.$next.$last."</ul>
 													</div>
 										</center>";
+									// Kiểm tra trạng thái 
+									
 								}
 								
 								else
@@ -157,9 +167,9 @@ class QuanLyUser
 									if($loai=="MaKH")
 										$sql=$sql."	MaKH LIKE '%".$chuoitimkiem."%'";
 									if($loai=="HoTen")
-										$sql=$sql." and HoTen LIKE '%".$chuoitimkiem."%'";
+										$sql=$sql."  HoTen LIKE '%".$chuoitimkiem."%'";
 									if($loai=="Email")
-										$sql=$sql." and Email LIKE '%".$chuoitimkiem."%'";
+										$sql=$sql."  Email LIKE '%".$chuoitimkiem."%'";
 							}
 								
 							$result=DataProvider::executeQuery($sql);
@@ -184,9 +194,9 @@ class QuanLyUser
 								if($loai=="MaKH")
 									$sql=$sql."MaKH LIKE '%".$chuoitimkiem."%'";
 								if($loai=="HoTen")
-									$sql=$sql." and HoTen LIKE '%".$chuoitimkiem."%'";
+									$sql=$sql." HoTen LIKE '%".$chuoitimkiem."%'";
 								if($loai=="Email")
-									$sql=$sql." and Email LIKE '%".$chuoitimkiem."%'";
+									$sql=$sql." Email LIKE '%".$chuoitimkiem."%'";
 							}
 							$sql=$sql. " LIMIT ".$offset.",".$rowsPerPage;
 							
@@ -194,7 +204,7 @@ class QuanLyUser
 							$maxPage=ceil($numRows/$rowsPerPage);
 							
 							//  Lấy link của trang
-							$sefl="quanlykhachhang.php?loai=".$loai."&timkiem=".$chuoitimkiem."&page=";
+							$sefl="quanlykhachhang.php?timkiemtheothongtin=".$loai."&timkiem=".$chuoitimkiem."&page=";
 							$nav="";
 							
 							for($page=1;$page<=$maxPage;$page++)
@@ -255,7 +265,9 @@ class QuanLyUser
 															<th>Họ_Tên</th>										
 															<th>Tên_đăng_nhập</th>
 															<th>Mật_khẩu</th>
-															<th>Email</th>
+															<th>Email</th>					
+															<th>Trạng_thái</th>
+															<th>Xem_đơn_hàng</th>
 															<th>Sửa</th>								
 															<th>Khóa</th>
 														</tr>
@@ -270,11 +282,11 @@ class QuanLyUser
 												."<td>".$row['HoTen']."</td>"
 												."<td>".$row['TenDangNhap']."</td>"
 												."<td>".$row['MatKhau']."</td>"
-												."<td>".$row['Email']."</td>";
+												."<td>".$row['TrangThai']."</td>";
 												
 												
-												
-												$s=$s. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
+												$s=$s. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-file-o fa-fw'></i> Xem</a></td>"
+												. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
 												."<td><a href='deleteBook.php?masach=".$row['MaKH']."'><i class='fa fa-lock fa-fw'></i> Khóa</a></td>"
 											."</tr>";
 										$i++;
