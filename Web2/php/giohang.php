@@ -9,7 +9,7 @@
 	<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
 	<?php 
 	session_start();
-	?>
+	 ?>
 </head>
 <body>
 
