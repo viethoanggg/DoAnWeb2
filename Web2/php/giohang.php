@@ -9,6 +9,10 @@
 	<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
 	<?php 
 	session_start();
+	$sl=0;
+	foreach ($_SESSION["cart"] as $key => $value) {
+		$sl+=$_SESSION["cart"][$key]["sl"];
+	}
 	 ?>
 </head>
 <body>
@@ -213,7 +217,7 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a>
+						<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng <span class="badge badge-secondary " style="margin-bottom: 2px;"><?php echo $sl; ?></span></a>
 					</li>
 				</ul>
 			</div>
