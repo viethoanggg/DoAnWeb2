@@ -11,9 +11,10 @@
 <link rel="stylesheet" type="text/css" href="../css/chitietsach.css">
 <link rel="stylesheet" type="text/css" href="../css/util.css">
 <link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" language="javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
 </head>
 <body>
-
                                             <!--------------- header --------------->
 <nav class="navbar navbar-inverse " style="border-radius:0px">
   <div class="container">

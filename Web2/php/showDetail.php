@@ -69,7 +69,7 @@ class ShowDetail
 													.'</div>'
 													.'<div id="giasach">'.$row['Gia']. '<sup><u>đ</u></sup>'
 													.'</div>'
-													.'<form action="addcart.php">'
+													.'<form action="addcart.php" method="GET">'
 													.'<div id="buyandnumber">'
 														.'<div id="nhapsoluong">Nhập số lượng : </div>'
 														.'<input type="hidden" name="masach" value="'.$_GET['masach'].'" >'

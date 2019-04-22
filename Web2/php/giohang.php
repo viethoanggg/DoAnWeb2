@@ -7,12 +7,10 @@
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 	<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/jquery-3.3.1.min.js"></script>
 	<?php 
 	session_start();
-	$sl=0;
-	foreach ($_SESSION["cart"] as $key => $value) {
-		$sl+=$_SESSION["cart"][$key]["sl"];
-	}
 	 ?>
 </head>
 <body>
@@ -217,7 +215,7 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng <span class="badge badge-secondary " style="margin-bottom: 2px;"><?php echo $sl; ?></span></a>
+						<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng <span class="badge badge-secondary " style="margin-bottom: 2px;">1</span></a>
 					</li>
 				</ul>
 			</div>
