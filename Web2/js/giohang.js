@@ -1,9 +1,10 @@
-function addCart(id) {
+function addCart(id,sl) {
 	$.ajax({
 		type: "GET",
-		url: "assets/php/action/addToCart.php",
+		url: "addcart.php",
 		data: {
-			"id": id
+			"masach": id,
+			"sl": sl
 		}
 	})
 }
@@ -11,5 +12,6 @@ function addCart(id) {
 function hello(id,sl){
 	alert("Xin chao");
 	alert(id);
+	alert(sl);
 	//alert(document.getElementById("soluong").value);
 }
