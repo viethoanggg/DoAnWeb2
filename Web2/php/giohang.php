@@ -9,6 +9,7 @@
 	<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
 	<?php 
 	session_start();
 	 ?>
