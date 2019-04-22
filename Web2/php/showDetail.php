@@ -143,16 +143,8 @@ class ShowDetail
 												.'</tbody>'
 											  .'</table>'
 											.'</div>'
-										.'</div>';														
-											
-							
-							
+										.'</div>';												
 								echo $s;
-							
-							
-									
-							
-						
 					}		
 			}
 }
