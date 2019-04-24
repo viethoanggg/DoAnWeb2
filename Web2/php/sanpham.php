@@ -55,8 +55,8 @@
 				</div>
 		
 				<ul class="nav navbar-nav navbar-right" >
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
+					<li><a href="DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
+					<li><a href="DangKy.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
 				</ul>
 			</div>
 			
