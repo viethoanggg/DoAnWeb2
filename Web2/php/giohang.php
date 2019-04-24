@@ -240,7 +240,7 @@
 			foreach ($_SESSION['cart'] as $key => $value) {
 				//var_dump($key);
 				if($_SESSION['cart'][$key]['theloai']=='NN'){
-					$s=$s.'<tr>
+					$s=$s.'<tr id="'.$key.'">
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
 					<td>
 					<a href="chitietsach.php?theloai=hocngoaingu&masach='.$key.'"><img class="biasach" src="../images/ngoaingu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
@@ -253,7 +253,7 @@
 					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
 				}
 				if($_SESSION['cart'][$key]['theloai']=='CN'){
-					$s=$s.'<tr>
+					$s=$s.'<tr id="'.$key.'">
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
 					<td>
 					<a href="chitietsach.php?theloai=chuyennganh&masach='.$key.'"><img class="biasach" src="../images/chuyennganh/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
@@ -266,7 +266,7 @@
 					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
 				}
 				if($_SESSION['cart'][$key]['theloai']=='KNS'){
-					$s=$s.'<tr>
+					$s=$s.'<tr id="'.$key.'">
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
 					<td>
 					<a href="chitietsach.php?theloai=kynangsong&masach='.$key.'"><img class="biasach" src="../images/kynangsong/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
@@ -279,7 +279,7 @@
 					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
 				}
 				if($_SESSION['cart'][$key]['theloai']=='KT'){
-					$s=$s.'<tr>
+					$s=$s.'<tr id="'.$key.'">
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
 					<td>
 					<a href="chitietsach.php?theloai=kinte&masach='.$key.'"><img class="biasach" src="../images/kinhte/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
@@ -292,7 +292,7 @@
 					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
 				}
 				if($_SESSION['cart'][$key]['theloai']=='LS'){
-					$s=$s.'<tr>
+					$s=$s.'<tr id="'.$key.'">
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
 					<td>
 					<a href="chitietsach.php?theloai=lichsu&masach='.$key.'"><img class="biasach" src="../images/lichsu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
@@ -305,7 +305,7 @@
 					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
 				}
 				if($_SESSION['cart'][$key]['theloai']=='TN'){
-					$s=$s.'<tr>
+					$s=$s.'<tr id="'.$key.'">
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
 					<td>
 					<a href="chitietsach.php?theloai=thieunhi&masach='.$key.'"><img class="biasach" src="../images/thieunhi/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
@@ -318,7 +318,7 @@
 					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
 				}
 				if($_SESSION['cart'][$key]['theloai']=='TT'){
-					$s=$s.'<tr>
+					$s=$s.'<tr id="'.$key.'">
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
 					<td>
 					<a href="chitietsach.php?theloai=tuoiteen&masach='.$key.'"><img class="biasach" src="../images/tuoiteen/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
@@ -331,7 +331,7 @@
 					$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
 				}
 				if($_SESSION['cart'][$key]['theloai']=='VH'){
-					$s=$s.'<tr>
+					$s=$s.'<tr id="'.$key.'">
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
 					<td>
 					<a href="chitietsach.php?theloai=vanhoc&masach='.$key.'"><img class="biasach" src="../images/vanhoc/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>

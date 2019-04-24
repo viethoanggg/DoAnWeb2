@@ -9,7 +9,7 @@ function addCart(id,sl) {
 			}
 		}).done(function(data){
 				myFunction();
-				$.get('sl.php',function(data){
+				$.get('sl.php',{xh:1},function(data){
 									console.log(data);
 					$(".badge.badge-secondary ").html("<span>"+data+"</span>");	
 				})
