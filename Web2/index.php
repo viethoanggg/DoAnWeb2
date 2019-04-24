@@ -7,6 +7,9 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 	<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="js/bootstrap.js"></script>
+	<?php 
+		include 'php/sl.php';
+	 ?>
 </head>
 <body>
 
@@ -180,7 +183,7 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="php/giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng <span class="badge badge-secondary" style="margin-bottom: 2px;">1</span></a>
+						<a href="php/giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng <span class="badge badge-secondary" style="margin-bottom: 2px;"><?php echo $soluongsp ?></span></a>
 					</li>
 				</ul>
 			</div>

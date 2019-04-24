@@ -14,68 +14,7 @@
 	<script type="text/javascript" language="javascript" src="../js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
-	<style>
-		input[type="number"] {
-			-webkit-appearance: textfield;
-			-moz-appearance: textfield;
-			appearance: textfield;
-		}
-
-		input[type=number]::-webkit-inner-spin-button,
-		input[type=number]::-webkit-outer-spin-button {
-			-webkit-appearance: none;
-		}
-
-		.number-input {
-			border: 2px solid #ddd;
-			display: inline-flex;
-		}
-
-		.number-input,
-		.number-input * {
-			box-sizing: border-box;
-		}
-
-		.number-input button {
-			outline:none;
-			-webkit-appearance: none;
-			background-color: transparent;
-			border: none;
-			align-items: center;
-			justify-content: center;
-			width: 3rem;
-			height: 3rem;
-			cursor: pointer;
-			margin: 0;
-			position: relative;
-		}
-
-		.number-input button:before,
-		.number-input button:after {
-			display: inline-block;
-			position: absolute;
-			content: '';
-			width: 1rem;
-			height: 2px;
-			background-color: #212121;
-			transform: translate(-50%, -50%);
-		}
-		.number-input button.plus:after {
-			transform: translate(-50%, -50%) rotate(90deg);
-		}
-
-		.number-input input[type=number] {
-			font-family: sans-serif;
-			max-width: 5rem;
-			padding: .5rem;
-			border: solid #ddd;
-			border-width: 0 2px;
-			font-size: 2rem;
-			height: 3rem;
-			font-weight: bold;
-			text-align: center;
-		}
-	</style>
+	<?php include 'sl.php' ?>
 </head>
 <body>
 	<!--------------- header --------------->
@@ -161,7 +100,7 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng<span id="slm" class="badge badge-secondary " style="margin-bottom: 2px;">1</span></a>
+						<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng<span id="slm" class="badge badge-secondary " style="margin-bottom: 2px;"><?php echo $soluongsp?></span></a>
 					</li>
 				</ul>
 			</div>

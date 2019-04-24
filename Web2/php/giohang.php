@@ -11,7 +11,7 @@
 	<script type="text/javascript" language="javascript" src="../js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
 	<?php 
-	session_start();
+	include 'sl.php';
 	 ?>
 </head>
 <body>
@@ -216,7 +216,7 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng <span class="badge badge-secondary " style="margin-bottom: 2px;">1</span></a>
+						<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng <span class="badge badge-secondary " style="margin-bottom: 2px;"><?php echo $soluongsp ?></span></a>
 					</li>
 				</ul>
 			</div>

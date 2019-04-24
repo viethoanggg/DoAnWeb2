@@ -1,4 +1,3 @@
-var s=0;
 function addCart(id,sl) {
 	if(sl>0) {
 		$.ajax({
@@ -10,9 +9,11 @@ function addCart(id,sl) {
 			}
 		}).done(function(data){
 				myFunction();
-				s=s+Number(sl);
-				console.log(s);
-				$(".badge.badge-secondary ").html("<span>"+s+"</span>");
+				$.get('sl.php',function(data){
+									console.log(data);
+					$(".badge.badge-secondary ").html("<span>"+data+"</span>");	
+				})
+				// $(".badge.badge-secondary ").html("<span>"+s+"</span>");
 			})
 	}
 	else{
