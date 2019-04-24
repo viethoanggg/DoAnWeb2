@@ -69,21 +69,21 @@ class ShowDetail
 													.'</div>'
 													.'<div id="giasach">'.$row['Gia']. '<sup><u>đ</u></sup>'
 													.'</div>'
-													.'<form action="addcart.php">'
+													//.'<form action="addcart.php" method="get">'
 													.'<div id="buyandnumber">'
 														.'<div id="nhapsoluong">Nhập số lượng : </div>'
-														.'<input type="hidden" name="masach" value="'.$_GET['masach'].'" >'
-														.'<input type="hidden" name="theloai" value="'.$_GET['theloai'].'" >'
+														//.'<input type="hidden" name="masach" value="'.$_GET['masach'].'" >'
+														//.'<input type="hidden" name="theloai" value="'.$_GET['theloai'].'" >'
 															.'<div class="input-group spinner" id="nhapso">'
-																.'<input type="text" class="form-control" value="1" name="sl">'
+																.'<input type="number" class="form-control" value="1" name="sl" id="soluong" min="1">'
 																.'<div class="input-group-btn-vertical">'
 																  .'<button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>'
-																  .'<button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>'
+																  .'<button class="btn btn-default" type="button" onclick="drop()"><i class="fa fa-caret-down"></i></button>'
 																.'</div>'
 															.'</div>'
-														.'<div><button type="submit" class="btn btn-danger btn-lg m-t-22 m-l-5">Chọn mua</button></div>'
+														.'<div><button id="button" class="btn btn-danger btn-lg m-t-22 m-l-5" onclick="addCart(`'.$MaSach.'`,document.getElementById(`soluong`).value);">Chọn mua</button></div>'
 													.'</div>'
-													.'</form>'
+													//.'</form>'
 													.'<div class="intro">'
 														.'<div class="block ">'
 															.'<div class="blockcontent">'
@@ -143,16 +143,8 @@ class ShowDetail
 												.'</tbody>'
 											  .'</table>'
 											.'</div>'
-										.'</div>';														
-											
-							
-							
+										.'</div>';												
 								echo $s;
-							
-							
-									
-							
-						
 					}		
 			}
 }
