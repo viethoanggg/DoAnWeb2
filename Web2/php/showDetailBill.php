@@ -203,16 +203,17 @@
 								</div>
 								<script>
 									
-									function capnhathoadon() {
+									function capnhathoadon(value) {
 										var xhttp;
-										var trangthai=document.getElementById('tinhtrang').value;
-										var mhd=document.getElementById('mhd').value;
-										var ms=document.getElementById('ms').value;
-										var url="capnhathoadon.php?MaHD="+mhd+"&MaSach="+ms+"&tinhtrang="+trangthai;
+										//var trangthai=document.getElementById('tinhtrang').value;
+										//var mhd=document.getElementById('mhd').value;
+										//var ms=document.getElementById('ms').value;
+										var url="capnhathoadon.php?"+value;
 										xhttp = new XMLHttpRequest();							
 										xhttp.onreadystatechange = function() {
 										if (this.readyState == 4 && this.status == 200) {
 												alert("Đã thay đổi trạng thái");
+												alert(value);
 											}
 										  };
 										 // window.location.href=url;
@@ -243,7 +244,17 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="../js/admin/startmin.js"></script>
-
+<script>
+	$(document).ready(function(){
+		$('.tinhtrang').click(function(e){
+			
+			$(this).each(function(){
+				alert($(this).val());
+			});
+			
+		})
+	});
+</script>
 </body>
 </html>
 

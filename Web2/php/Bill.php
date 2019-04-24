@@ -242,9 +242,9 @@ public static function showDetailBill()
 										."<td>".$row['NgayGiaoHang']."</td>"
 										."<td>".$row['SoLuong']."</td>"
 										."<td>".$row['TongTienCT']."</td>"
-										."<td><select name='tinhtrangcthd' id='tinhtrang' onchange='capnhathoadon()'>"
-											."<option value='Hàng đang nhập từ kho' "; if($row['TinhTrangCT']=="Hàng đang nhập từ kho") $s=$s."selected" ; $s=$s.">Hàng đang nhập từ kho</option>"
-											."<option value='Đã giao hàng' "; if($row['TinhTrangCT']=="Đã giao hàng") $s=$s."selected" ; $s=$s.">Đã giao hàng</option>"
+										."<td><select name='tinhtrangcthd' onchange='capnhathoadon(this.value)'>"
+											."<option value='MaHD=".$row['MaHD']."&MaSach=".$row['MaSach']."&tinhtrang=".$row['TinhTrangCT']."'"; if($row['TinhTrangCT']=="Hàng đang nhập từ kho") $s=$s."selected" ; $s=$s.">Hàng đang nhập từ kho</option>"
+											."<option value='MaHD=".$row['MaHD']."&MaSach=".$row['MaSach']."&tinhtrang=".$row['TinhTrangCT']."'"; if($row['TinhTrangCT']=="Đã giao hàng") $s=$s."selected" ; $s=$s.">Đã giao hàng</option>"
 											."</select>"
 											."<input type='hidden' name='MaHD' id='mhd' value='".$row['MaHD']."'>"
 											."<input type='hidden' name='MaSach' id='ms' value='".$row['MaSach']."'>"
@@ -272,3 +272,8 @@ public static function showDetailBill()
 }
 
 ?>
+<script>
+	$('#tinhtrang').click(function(){
+		alert($(this).val());
+	});
+</script>
