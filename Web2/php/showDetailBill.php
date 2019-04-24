@@ -201,7 +201,25 @@
 										Bill::showDetailBill();
 									?>
 								</div>
-								
+								<script>
+									
+									function capnhathoadon() {
+										var xhttp;
+										var trangthai=document.getElementById('tinhtrang').value;
+										var mhd=document.getElementById('mhd').value;
+										var ms=document.getElementById('ms').value;
+										var url="capnhathoadon.php?MaHD="+mhd+"&MaSach="+ms+"&tinhtrang="+trangthai;
+										xhttp = new XMLHttpRequest();							
+										xhttp.onreadystatechange = function() {
+										if (this.readyState == 4 && this.status == 200) {
+												alert("Đã thay đổi trạng thái");
+											}
+										  };
+										 // window.location.href=url;
+										  xhttp.open("GET",url, true);
+										  xhttp.send();
+										}
+								</script>
 							</div>
 							
 						</div>
