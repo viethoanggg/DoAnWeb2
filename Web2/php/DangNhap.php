@@ -31,7 +31,7 @@
 	
 	
 	<div class="container-login100" style="background-image: url('../images/bg-01.jpg');">
-		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+		<div class="wrap-login100 p-l-55 p-r-55 p-t-40 p-b-30">
 			<form class="login100-form validate-form" name="formdangnhap" method="post" onsubmit="return ktdangnhap()">
 				<span class="login100-form-title p-b-37">
 					Đăng Nhập
@@ -74,7 +74,7 @@
 					</span>
 				</div>
 
-				<div class="flex-c p-b-112">
+				<div class="flex-c p-b-45">
 					<a href="#" class="login100-social-item">
 						<i class="fa fa-facebook-f"></i>
 					</a>
