@@ -26,7 +26,7 @@ class Bill
 							
 							//  Lấy sản phẩm trong 1 trang
 							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select * from hoadon hd, khachhang kh ,tinhtrang tt where hd.MaKH=kh.MaKH and hd.MaTinhTrang=tt.MaTinhTrang LIMIT ".$offset.",".$rowsPerPage;
+							$sql="select * from hoadon hd, khachhang kh  where hd.MaKH=kh.MaKH LIMIT ".$offset.",".$rowsPerPage;
 							
 							//  Tính tổng số trang sẽ hiện thị
 							$maxPage=ceil($numRows/$rowsPerPage);
@@ -112,7 +112,7 @@ class Bill
 										."<td>".$row['NgayDatHang']."</td>"
 										."<td>".$row['TongSoLuong']."</td>"
 										."<td>".$row['TongTien']."</td>"
-										."<td>".$row['TenTinhTrang']."</td>"
+										."<td>".$row['TinhTrang']."</td>"
 										."<td><a href='showDetailBill.php?MaHD=".$row['MaHD']."&MaKH=".$row['MaKH']."'><i class='fa fa-table fa-fw'></i> Xem</a></td>"
 										."<td><font style='color:#337ab7;cursor:pointer'><i class='fa fa-trash fa-fw'></i> Xóa</font><input type='hidden' value='".$row['MaHD']."'></td>"
 										."</tr>";
@@ -157,7 +157,7 @@ public static function showDetailBill()
 							
 							//  Lấy sản phẩm trong 1 trang
 							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select * from hoadon hd, khachhang kh,chitiethoadon ct,sach s,tinhtrang tt where hd.MaKH=kh.MaKH and hd.MaHD=ct.MaHD and ct.MaSach=s.MaSach and ct.MaTinhTrangCT=tt.MaTinhTrang and ct.MaHD='".$_GET['MaHD']."' LIMIT ".$offset.",".$rowsPerPage;
+							$sql="select * from hoadon hd, khachhang kh,chitiethoadon ct,sach s where hd.MaKH=kh.MaKH and hd.MaHD=ct.MaHD and ct.MaSach=s.MaSach and ct.MaHD='".$_GET['MaHD']."' LIMIT ".$offset.",".$rowsPerPage;
 							
 							//  Tính tổng số trang sẽ hiện thị
 							$maxPage=ceil($numRows/$rowsPerPage);
@@ -227,8 +227,7 @@ public static function showDetailBill()
                                                     <th>Ngày giao hàng</th>
 													<th>Số lượng</th>
 													<th>Tổng tiền</th>
-													<th>Tình trạng</th>
-													<th>Sửa tình trạng</th>
+													<th>Tình trạng</th>													
 													<th>Xóa chi tiết HD</th>
                                                 </tr>
 											</thead>
@@ -243,8 +242,13 @@ public static function showDetailBill()
 										."<td>".$row['NgayGiaoHang']."</td>"
 										."<td>".$row['SoLuong']."</td>"
 										."<td>".$row['TongTienCT']."</td>"
-										."<td>".$row['TenTinhTrang']."</td>"
-										."<td><a href='editCTHD.php?MaHD=".$row['MaHD']."&MaKH=".$row['MaKH']."&MaSach=".$row['MaSach']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
+										."<td><select name='tinhtrangcthd' id='tinhtrang' onchange='capnhathoadon()'>"
+											."<option value='Hàng đang nhập từ kho' "; if($row['TinhTrangCT']=="Hàng đang nhập từ kho") $s=$s."selected" ; $s=$s.">Hàng đang nhập từ kho</option>"
+											."<option value='Đã giao hàng' "; if($row['TinhTrangCT']=="Đã giao hàng") $s=$s."selected" ; $s=$s.">Đã giao hàng</option>"
+											."</select>"
+											."<input type='hidden' name='MaHD' id='mhd' value='".$row['MaHD']."'>"
+											."<input type='hidden' name='MaSach' id='ms' value='".$row['MaSach']."'>"
+										."</td>"
 										."<td><font style='color:#337ab7;cursor:pointer'><i class='fa fa-trash fa-fw'></i> Xóa</font><input type='hidden' value='".$row['MaHD']."'></td>"
 										."</tr>";
 								$i++;
