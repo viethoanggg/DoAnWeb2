@@ -161,7 +161,7 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a>
+						<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng<span id="slm" class="badge badge-secondary " style="margin-bottom: 2px;">1</span></a>
 					</li>
 				</ul>
 			</div>
@@ -226,7 +226,6 @@
 				ShowDetail::showChiTiet();
 				?>
 				<div id="snackbar">Đã thêm vào giỏ hàng</div>
-				<div id="error">Số lượng không hợp lệ</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12 col-xs-12 ">

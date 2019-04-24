@@ -1,3 +1,4 @@
+var s=0;
 function addCart(id,sl) {
 	if(sl>0) {
 		$.ajax({
@@ -9,10 +10,13 @@ function addCart(id,sl) {
 			}
 		}).done(function(data){
 				myFunction();
+				s=s+Number(sl);
+				console.log(s);
+				$(".badge.badge-secondary ").html("<span>"+s+"</span>");
 			})
 	}
 	else{
-		alert("Nhap lai so luong di ba");
+		alert("Bạn nhập số lượng không phù hợp!!!");
 		$('#soluong').val('1');
 	}
 }

@@ -335,6 +335,7 @@
 					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
 					<td>
 					<a href="chitietsach.php?theloai=vanhoc&masach='.$key.'"><img class="biasach" src="../images/vanhoc/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
+					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 					<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 					<td>'.$_SESSION["cart"][$key]["sl"].'</td>
 					<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>

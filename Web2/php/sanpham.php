@@ -112,7 +112,7 @@
 				
 			  <ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a>
+					<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng<span class="badge badge-secondary " style="margin-bottom: 2px;">1</span></a>
 				</li>
 			  </ul>
 			</div>
