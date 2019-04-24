@@ -85,9 +85,14 @@
 				</div>
 
 				<div class="text-center">
-					<a href="#" class="txt2 hov1">
+					<a href="#" class="txt2 hov1 m-r-10">
 						Đăng ký
 					</a>
+					|
+					<a href="../index.php" class="txt2 hov1 m-l-10">
+						Quay lại
+					</a>	
+						
 				</div>
 			</form>
 
