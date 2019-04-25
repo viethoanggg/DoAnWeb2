@@ -85,7 +85,7 @@ class Bill
 							$result=DataProvider::executeQuery($sql);
 							$i=1;
 							
-							$s="<div class='table-responsive'>
+							$s="<div class='table-responsive' id='gg'>
 										<table class='table table-striped table-bordered table-hover'>
 											<thead>
                                                 <tr>
@@ -216,7 +216,7 @@ public static function showDetailBill()
 							$result=DataProvider::executeQuery($sql);
 							$i=1;
 							
-							$s="<div class='table-responsive'>
+							$s="<div class='table-responsive' id='gg'>
 										<table class='table table-striped table-bordered table-hover'>
 											<thead>
                                                 <tr>
