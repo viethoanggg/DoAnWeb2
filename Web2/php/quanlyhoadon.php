@@ -174,7 +174,9 @@
 								
 								<div class="col-lg-12" id="hoadon">
 									<?php
+										require('DataProvider.php');
 										require('Bill.php');
+										Bill::updateBill();
 										Bill::showBill();
 									?>
 								</div>

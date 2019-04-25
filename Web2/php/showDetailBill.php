@@ -213,10 +213,10 @@
 										xhttp.onreadystatechange = function() {
 										if (this.readyState == 4 && this.status == 200) {
 												alert("Đã thay đổi trạng thái");
-												alert(value);
+												//alert(value);
 											}
 										  };
-										 // window.location.href=url;
+										//  window.location.href=url;
 										  xhttp.open("GET",url, true);
 										  xhttp.send();
 										}
