@@ -4,11 +4,11 @@
 	if(isset($_GET['MaHD']) && isset($_GET['MaSach']) )
 	{
 		//cap nhat trang thai chi tiet hoa don
-		$sql="update chitiethoadon set TinhTrangCT='".$_GET['tinhtrang']."' where MaHD='".$_GET['MaHD']."' and MaSach='".$_GET['MaSach']."'";
+		$sql="UPDATE chitiethoadon SET TinhTrangCT='".$_GET['tinhtrang']."' where chitiethoadon.MaHD='".$_GET['MaHD']."' and chitiethoadon.MaSach='".$_GET['MaSach']."'";
 		DataProvider::executeQuery($sql);
 		
 		//cap nhat trang thai hoa don
-		$sql="select * from  chitiethoadon where MaHD='".$_GET['MaHD']."'";
+		/*$sql="select * from  chitiethoadon where MaHD='".$_GET['MaHD']."'";
 		$result=DataProvider::executeQuery($sql);
 		$flag=1;
 		while($row=mysqli_fetch_array($result))
@@ -28,7 +28,7 @@
 		{
 			$sql="update hoadon set TinhTrang='Chưa thanh toán xong' where MaHD='".$_GET['MaHD']."'";
 			DataProvider::executeQuery($sql);
-		}
+		}*/
 		
 	}
 	

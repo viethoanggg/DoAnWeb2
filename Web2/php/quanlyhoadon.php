@@ -169,12 +169,20 @@
 							</div>
 							
 							<!------------------------table-------------------------------------------------------------->
-							
+							<style>
+								#gg td,#gg th
+								{
+									text-align:center;
+									vertical-align:middle;
+								}
+							</style>
 							<div class="row" style="margin-top:10px">
 								
 								<div class="col-lg-12" id="hoadon">
 									<?php
+										require('DataProvider.php');
 										require('Bill.php');
+										Bill::updateBill();
 										Bill::showBill();
 									?>
 								</div>

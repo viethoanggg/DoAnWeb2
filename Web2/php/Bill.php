@@ -5,7 +5,7 @@ class Bill
 {
 	public static function showBill()
 	{
-		require('DataProvider.php');
+		//require('DataProvider.php');
 		
 		
 							//  Đếm số lượng hóa đơn 
@@ -85,7 +85,7 @@ class Bill
 							$result=DataProvider::executeQuery($sql);
 							$i=1;
 							
-							$s="<div class='table-responsive'>
+							$s="<div class='table-responsive' id='gg'>
 										<table class='table table-striped table-bordered table-hover'>
 											<thead>
                                                 <tr>
@@ -216,19 +216,19 @@ public static function showDetailBill()
 							$result=DataProvider::executeQuery($sql);
 							$i=1;
 							
-							$s="<div class='table-responsive'>
+							$s="<div class='table-responsive' id='gg'>
 										<table class='table table-striped table-bordered table-hover'>
 											<thead>
                                                 <tr>
                                                     <th>STT</th>
-                                                    <th>Mã hóa đơn</th>
-                                                    <th>Mã sách</th>
-                                                    <th>Tên sách</th>
-                                                    <th>Ngày giao hàng</th>
-													<th>Số lượng</th>
-													<th>Tổng tiền</th>
-													<th>Tình trạng</th>													
-													<th>Xóa chi tiết HD</th>
+                                                    <th>Mã_HĐ</th>
+                                                    <th>Mã_sách</th>
+                                                    <th>Tên_sách</th>
+                                                    <th>Ngày_giao_hàng</th>
+													<th>Số_lượng</th>
+													<th>Tổng_tiền</th>
+													<th>Tình_trạng</th>													
+													<th>Xóa</th>
                                                 </tr>
 											</thead>
 											<tbody>";
@@ -242,12 +242,10 @@ public static function showDetailBill()
 										."<td>".$row['NgayGiaoHang']."</td>"
 										."<td>".$row['SoLuong']."</td>"
 										."<td>".$row['TongTienCT']."</td>"
-										."<td><select name='tinhtrangcthd' onchange='capnhathoadon(this.value)'>"
-											."<option value='MaHD=".$row['MaHD']."&MaSach=".$row['MaSach']."&tinhtrang=".$row['TinhTrangCT']."'"; if($row['TinhTrangCT']=="Hàng đang nhập từ kho") $s=$s."selected" ; $s=$s.">Hàng đang nhập từ kho</option>"
-											."<option value='MaHD=".$row['MaHD']."&MaSach=".$row['MaSach']."&tinhtrang=".$row['TinhTrangCT']."'"; if($row['TinhTrangCT']=="Đã giao hàng") $s=$s."selected" ; $s=$s.">Đã giao hàng</option>"
+										."<td><select name='tinhtrangcthd' onchange='capnhathoadon(this.value)' style='padding:5px'>"
+											."<option value='MaHD=".$row['MaHD']."&MaSach=".$row['MaSach']."&tinhtrang=Hàng đang nhập từ kho'"; if($row['TinhTrangCT']=="Hàng đang nhập từ kho") $s=$s."selected" ; $s=$s.">Hàng đang nhập từ kho</option>"
+											."<option value='MaHD=".$row['MaHD']."&MaSach=".$row['MaSach']."&tinhtrang=Đã giao hàng'"; if($row['TinhTrangCT']=="Đã giao hàng") $s=$s."selected" ; $s=$s.">Đã giao hàng</option>"
 											."</select>"
-											."<input type='hidden' name='MaHD' id='mhd' value='".$row['MaHD']."'>"
-											."<input type='hidden' name='MaSach' id='ms' value='".$row['MaSach']."'>"
 										."</td>"
 										."<td><font style='color:#337ab7;cursor:pointer'><i class='fa fa-trash fa-fw'></i> Xóa</font><input type='hidden' value='".$row['MaHD']."'></td>"
 										."</tr>";
@@ -269,6 +267,51 @@ public static function showDetailBill()
 									
 					}		
 	}//--------	------------------------------------------------------------------------------------------//
+	
+	public static function updateBill()
+	{
+		//require('DataProvider.php');
+		//Tinh tong tien va so luong hoadon
+		$sql="select MaHD ,sum(TongTienCT) as Tien,sum(SoLuong) as SL from  chitiethoadon group by MaHD";
+		$result=DataProvider::executeQuery($sql);
+		while($row=mysqli_fetch_array($result))
+		{
+			$sql="UPDATE hoadon SET TongTien=".$row['Tien'].", TongSoLuong=".$row['SL']." where MaHD='".$row['MaHD']."'";
+			DataProvider::executeQuery($sql);
+		}
+		//-----------------------------------------------------------------------------------------//
+		
+		//sua trang thai hoa don
+		$sql="select * from hoadon";
+		$result=DataProvider::executeQuery($sql);
+		while($row=mysqli_fetch_array($result))
+		{
+			//ket 1 hoa don voi chi tiet hoa don bang ma hd cua hoa don
+			$sql="select * from chitiethoadon where MaHD='".$row['MaHD']."'";
+			$rs=DataProvider::executeQuery($sql);
+			$f=1;//trang thai da giao hang
+			
+			//xet trang thai cua chi iet hoa don
+			while($row2=mysqli_fetch_array($rs))
+			{
+				if($row2['TinhTrangCT']=="Hàng đang nhập từ kho")
+					$f=0;
+			}
+			//thay doi trang thai cua hoa don
+			if($f==1)
+			{
+				$s="update hoadon set TinhTrang='Đã thanh toán xong' where MaHD='".$row['MaHD']."'";
+				DataProvider::executeQuery($s);
+			}
+			else if($f==0)
+			{
+				$s="update hoadon set TinhTrang='Chưa thanh toán xong' where MaHD='".$row['MaHD']."'";
+				DataProvider::executeQuery($s);
+			}
+				
+		}
+		////-------------------------------------------------------------------------------------------------//
+	}
 }
 
 ?>

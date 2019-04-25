@@ -192,7 +192,13 @@
 							</div>
 							
 							<!------------------------table-------------------------------------------------------------->
-							
+							<style>
+								#gg td,#gg th
+								{
+									text-align:center;
+									vertical-align:middle;
+								}
+							</style>
 							<div class="row" style="margin-top:10px">
 								
 								<div class="col-lg-12" id="hoadon">
@@ -213,10 +219,10 @@
 										xhttp.onreadystatechange = function() {
 										if (this.readyState == 4 && this.status == 200) {
 												alert("Đã thay đổi trạng thái");
-												alert(value);
+												//alert(value);
 											}
 										  };
-										 // window.location.href=url;
+										//  window.location.href=url;
 										  xhttp.open("GET",url, true);
 										  xhttp.send();
 										}

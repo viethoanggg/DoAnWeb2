@@ -1087,8 +1087,8 @@ class ShowBook
 							$result=DataProvider::executeQuery($sql);
 							$i=1;
 							
-							$s="<div class='table-responsive'>
-										<table class='table table-striped table-bordered table-hover'>
+							$s="<div class='table-responsive' >
+										<table class='table table-striped table-bordered table-hover' id='gg'>
 											<thead>
                                                 <tr>
                                                     <th>STT</th>
@@ -1255,7 +1255,7 @@ class ShowBook
 							$i=1;
 							
 							$s="<div class='table-responsive'>
-										<table class='table table-striped table-bordered table-hover'>
+										<table class='table table-striped table-bordered table-hover' id='gg'>
 											<thead>
                                                 <tr>
                                                     <th>STT</th>
