@@ -257,7 +257,6 @@
 </div>
 
 <?php
-	
 	if(isLogined()==true)
 	{
 		echo "<script>
