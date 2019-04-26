@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 25, 2019 lúc 01:33 PM
+-- Thời gian đã tạo: Th4 26, 2019 lúc 10:23 AM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
--- Phiên bản PHP: 7.2.16
+-- Phiên bản PHP: 7.2.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,28 +58,7 @@ INSERT INTO `chitiethoadon` (`MaHD`, `MaSach`, `SoLuong`, `TongTienCT`, `NgayGia
 ('HD4', 'VH10', 1, 148000, '30/4/2019', 'Hàng đang nhập từ kho'),
 ('HD4', 'VH3', 1, 67500, '30/4/2019', 'Hàng đang nhập từ kho'),
 ('HD4', 'VH5', 1, 76000, '30/4/2019', 'Hàng đang nhập từ kho');
-
---
--- Chỉ mục cho các bảng đã đổ
---
-
---
--- Chỉ mục cho bảng `chitiethoadon`
---
-/*ALTER TABLE `chitiethoadon`
-  ADD PRIMARY KEY (`MaHD`,`MaSach`);
-
---
--- Các ràng buộc cho các bảng đã đổ
---
-
---
--- Các ràng buộc cho bảng `chitiethoadon`
---
-ALTER TABLE `chitiethoadon`
-  ADD CONSTRAINT `HD_CTHD_FK` FOREIGN KEY (`MaHD`) REFERENCES `hoadon` (`MaHD`),
-  ADD CONSTRAINT `SACH_CTHD_FK` FOREIGN KEY (`MaSach`) REFERENCES `sach` (`MaSach`);
-COMMIT;*/
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

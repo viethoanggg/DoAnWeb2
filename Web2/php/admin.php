@@ -67,7 +67,7 @@
                     <i class="fa fa-user fa-fw"></i> <span id="ca_nhan"> <?php echo $_SESSION['login']['HoTen'] ?></span> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản </a>
+                    <li><a href="thongtincanhanAdmin.php"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản </a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="xulydangnhapAdmin.php?dangxuat=1"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất </a>
@@ -91,10 +91,7 @@
                         <a href="quanlyhoadon.php" style="" class='mg' ><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn <span class='mg_i' style="float:right;color:red"></span></a> 
                     </li>
 					<li>
-                        <a href="quanlydonhang.php" class='mg'><i class="fa fa-file-text-o fa-fw"></i> Quản lý đơn hàng <span class='mg_i' style="float:right;color:red"></span></a>
-                    </li>
-					<li>
-                        <a href="#" style="" ><i class="fa fa-table fa-fw"></i> Thống kê sản phẩm</a>
+                        <a href="#" style="" ><i class="fa fa-table fa-fw"></i> Thống kê </a>
                     </li>
 					<li>
                         <a href="#" class='ad' style=""><i class="fa fa-user fa-fw"></i> Quản lý người dùng<span class="fa arrow"> <span class='ad_i' style="float:right;color:red"></span></span></a>
@@ -141,11 +138,11 @@
 		echo "<script>
 				document.getElementsByClassName('mg')[0].setAttribute('style','pointer-events:none;');
 				document.getElementsByClassName('mg')[1].setAttribute('style','pointer-events:none;');
-				document.getElementsByClassName('mg')[2].setAttribute('style','pointer-events:none;');
+				
 				
 				document.getElementsByClassName('mg_i')[0].innerHTML='<i class=\'fa fa-ban fa-fw\'></i>';
 				document.getElementsByClassName('mg_i')[1].innerHTML='<i class=\'fa fa-ban fa-fw\'></i>';
-				document.getElementsByClassName('mg_i')[2].innerHTML='<i class=\'fa fa-ban fa-fw\'></i>';
+				
 			</script>";
 	}
 	if($_SESSION['login']['MaQuyen']=="2")
