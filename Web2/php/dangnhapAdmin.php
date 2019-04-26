@@ -66,7 +66,7 @@
                                         <label>
                                             <input name="remember" type="checkbox" value="nhomatkhau">Nhớ mật khẩu
                                         </label>
-                                    </div><i style="color:red" id='loidn'><?php if(isset($_GET['loidangnhap']) && $_GET['loidangnhap']=="1" ) echo "Tên đăng nhập hoặc mật khẩu không đúng" ?></i></div>
+                                    </div><i style="color:red" id='loidn'><?php if(isset($_GET['loidangnhap']) && $_GET['loidangnhap']=="1" ) echo "Tên đăng nhập hoặc mật khẩu không đúng" ?></i>
                                     <!-- Change this to a button or input when using this as a form -->
 									<div class="form-group">
                                         <input class="form-control" name="dangnhap" type="hidden" value="1">

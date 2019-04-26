@@ -32,7 +32,7 @@
 	
 	<div class="container-login100" style="background-image: url('../images/bg-01.jpg');">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-40 p-b-30">
-			<form class="login100-form validate-form" name="formdangnhap" method="post" onsubmit="return ktdangnhap()">
+			<form class="login100-form validate-form" name="formdangnhap" method="post"  action="xulydangnhapUser.php" onsubmit="return ktdangnhap()">
 				<span class="login100-form-title p-b-37">
 					Đăng Nhập
 				</span>
@@ -47,6 +47,11 @@
 					<span class="focus-input100"></span>
 				</div>
 				
+				<div class="wrap-input100 m-b-25">
+					<input class="input100" type="hidden" name="dangnhap" value="1">
+					<span class="focus-input100"></span>
+				</div>
+				
 				<div class="text-center p-t-10 p-b-20">
 					<span>
 						<input type="checkbox" name="nhomatkhau">
@@ -58,7 +63,7 @@
 
 				<div class="text-center p-t-5 p-b-20">
 					<span class="txt3" id="kiemtra">
-						
+						<i style="color:red"><?php if(isset($_GET['loidangnhap']) && $_GET['loidangnhap']=="1" ) echo "Tên đăng nhập hoặc mật khẩu không đúng" ?></i>
 					</span>
 				</div>
 				
