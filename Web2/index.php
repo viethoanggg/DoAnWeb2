@@ -43,6 +43,9 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 	<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="js/bootstrap.js"></script>
+	<?php 
+		include 'php/sl.php';
+	 ?>
 </head>
 <body>
 
