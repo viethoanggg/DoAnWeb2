@@ -1,5 +1,6 @@
 <?php
-	
+	ini_set('session.auto_start',0);
+	ini_set('session.cookie_lifetime',0);
 	session_start();
 	require('common.php');
 	if(isLogined()==false)
@@ -92,7 +93,7 @@
                         <a href="#" style="" ><i class="fa fa-table fa-fw"></i> Thống kê sản phẩm</a>
                     </li>
 					<li>
-                        <a href="#"><i class="fa fa-user fa-fw" class='ad' ></i> Quản lý người dùng<span class="fa arrow"></span> <span class='mg_i' style="float:right;color:red"></span></a>
+                        <a href="#" class='ad' style=""><i class="fa fa-user fa-fw"></i> Quản lý người dùng<span class="fa arrow"> <span class='ad_i' style="float:right;color:red"></span></span></a>
 						<ul class="nav nav-second-level">
                                     <li>
                                         <a href="quanlykhachhang.php">Khách hàng</a>
@@ -147,10 +148,28 @@
 	{
 		echo "<script>
 				document.getElementsByClassName('ad')[0].setAttribute('style','pointer-events:none;');
-		
+				document.getElementsByClassName('ad_i')[0].innerHTML='<i class=\'fa fa-ban fa-fw\'></i>';
 			</script>";
 	}
 ?>
+
+<script>
+	function duytridangnhap() {
+		
+										var xhttp;
+										xhttp = new XMLHttpRequest();
+										xhttp.onreadystatechange = function() {
+										if (this.readyState == 4 && this.status == 200) {
+											}
+										  };
+										  xhttp.open("GET","admin.php", true);
+										  xhttp.send();
+										}
+										
+	window.onload=function(){
+			duytridangnhap();
+	}
+</script>
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>
 

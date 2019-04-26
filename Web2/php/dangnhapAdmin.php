@@ -27,6 +27,8 @@
 		<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 		<!--<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>-->
 		<script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
+		<script type="text/javascript" language="javascript" src="../js/validateAdmin.js"></script>
+		
 		<!-- MetisMenu CSS -->
     <link href="../css/admin/metisMenu.min.css" rel="stylesheet">
 
@@ -52,7 +54,7 @@
                             <h3 class="panel-title">Đăng nhập</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" name='dangnhapadmin' action='xulydangnhapAdmin.php' method='post'>
+                            <form role="form" name='dangnhapadmin' action='xulydangnhapAdmin.php' method='post' onsubmit='return validateFormLoginAdmin()'>
                                 <fieldset>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Tên đăng nhập" name="tendangnhap" type="text" autofocus value="">
@@ -64,7 +66,7 @@
                                         <label>
                                             <input name="remember" type="checkbox" value="nhomatkhau">Nhớ mật khẩu
                                         </label>
-                                    </div><i style="color:red"><?php if(isset($_GET['loidangnhap']) && $_GET['loidangnhap']=="1" ) echo "Tên đăng nhập hoặc mật khẩu không đúng" ?></i></div>
+                                    </div><i style="color:red" id='loidn'><?php if(isset($_GET['loidangnhap']) && $_GET['loidangnhap']=="1" ) echo "Tên đăng nhập hoặc mật khẩu không đúng" ?></i></div>
                                     <!-- Change this to a button or input when using this as a form -->
 									<div class="form-group">
                                         <input class="form-control" name="dangnhap" type="hidden" value="1">
