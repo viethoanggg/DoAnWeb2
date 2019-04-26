@@ -6,6 +6,7 @@
 	{
 			header("Location:dangnhapAdmin.php");
 	}
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,22 +77,22 @@
 
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="admin.php" style=""><i class="fa fa-home fa-fw"></i> Trang chủ </a>
+                        <a href="admin.php" style="" class='active'><i class="fa fa-home fa-fw"></i> Trang chủ </a>
                     </li>
                     <li>
-                        <a href="quanlysanpham.php" style=""><i class="fa fa-product-hunt fa-fw"></i> Quản lý sản phẩm</a>
+                        <a href="quanlysanpham.php" style="" class='mg'><i class="fa fa-product-hunt fa-fw"></i> Quản lý sản phẩm <span class='mg_i' style="float:right;color:red"></span></a>
                     </li>
 					<li>
-                        <a href="quanlyhoadon.php" style=""><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn</a>
+                        <a href="quanlyhoadon.php" style="" class='mg' ><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn <span class='mg_i' style="float:right;color:red"></span></a> 
                     </li>
 					<li>
-                        <a href="quanlydonhang.php"><i class="fa fa-file-text-o fa-fw"></i> Quản lý đơn hàng</a>
+                        <a href="quanlydonhang.php" class='mg'><i class="fa fa-file-text-o fa-fw"></i> Quản lý đơn hàng <span class='mg_i' style="float:right;color:red"></span></a>
                     </li>
 					<li>
                         <a href="#" style="" ><i class="fa fa-table fa-fw"></i> Thống kê sản phẩm</a>
                     </li>
 					<li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i> Quản lý người dùng<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-user fa-fw" class='ad' ></i> Quản lý người dùng<span class="fa arrow"></span> <span class='mg_i' style="float:right;color:red"></span></a>
 						<ul class="nav nav-second-level">
                                     <li>
                                         <a href="quanlykhachhang.php">Khách hàng</a>
@@ -128,6 +129,28 @@
 
 </div>
 
+<?php
+	
+	if($_SESSION['login']['MaQuyen']=="1")
+	{
+		echo "<script>
+				document.getElementsByClassName('mg')[0].setAttribute('style','pointer-events:none;');
+				document.getElementsByClassName('mg')[1].setAttribute('style','pointer-events:none;');
+				document.getElementsByClassName('mg')[2].setAttribute('style','pointer-events:none;');
+				
+				document.getElementsByClassName('mg_i')[0].innerHTML='<i class=\'fa fa-ban fa-fw\'></i>';
+				document.getElementsByClassName('mg_i')[1].innerHTML='<i class=\'fa fa-ban fa-fw\'></i>';
+				document.getElementsByClassName('mg_i')[2].innerHTML='<i class=\'fa fa-ban fa-fw\'></i>';
+			</script>";
+	}
+	if($_SESSION['login']['MaQuyen']=="2")
+	{
+		echo "<script>
+				document.getElementsByClassName('ad')[0].setAttribute('style','pointer-events:none;');
+		
+			</script>";
+	}
+?>
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>
 

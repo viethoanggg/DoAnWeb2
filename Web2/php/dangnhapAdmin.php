@@ -55,7 +55,7 @@
                             <form role="form" name='dangnhapadmin' action='xulydangnhapAdmin.php' method='post'>
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Tên đăng nhập" name="tendangnhap" type="text" autofocus>
+                                        <input class="form-control" placeholder="Tên đăng nhập" name="tendangnhap" type="text" autofocus value="">
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Mật khẩu" name="matkhau" type="password">
