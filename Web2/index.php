@@ -4,12 +4,12 @@
 	include 'php/sl.php';
 	require('php/common.php');
 	//đã đang nhập
-	/*if(isLogined()==true)
+	if(isLogined()==true)
 		// kiểm tra đây là khách hàng thì về trang chủ kh
 		if($_SESSION['login']['MaQuyen'] == "1" || $_SESSION['login']['MaQuyen'] == "2" )
 		{
 				header("Location:php/admin.php");
-		}*/
+		}
 		
  ?>
 <!DOCTYPE html>

@@ -33,7 +33,7 @@
 			if($row['MatKhau']==$matkhau)
 			{
 				$_SESSION['login']=array('TenDangNhap' => $tendangnhap,
-										  
+										  'MaQuyen' => $row['MaQuyen'],
 										  'MaKH' => $row['MaKH']);
 				return true;
 			}
