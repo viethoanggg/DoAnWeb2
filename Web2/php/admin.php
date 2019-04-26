@@ -1,3 +1,12 @@
+<?php
+	
+	session_start();
+	require('common.php');
+	if(isLogined()==false)
+	{
+			header("Location:dangnhapAdmin.php");
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +64,7 @@
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Cài đặt </a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất </a>
+                    <li><a href="xulydangnhapAdmin.php?dangxuat=1"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất </a>
                     </li>
                 </ul>
             </li>
