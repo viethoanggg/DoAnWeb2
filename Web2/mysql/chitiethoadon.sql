@@ -66,7 +66,7 @@ INSERT INTO `chitiethoadon` (`MaHD`, `MaSach`, `SoLuong`, `TongTienCT`, `NgayGia
 --
 -- Chỉ mục cho bảng `chitiethoadon`
 --
-ALTER TABLE `chitiethoadon`
+/*ALTER TABLE `chitiethoadon`
   ADD PRIMARY KEY (`MaHD`,`MaSach`);
 
 --
@@ -79,7 +79,7 @@ ALTER TABLE `chitiethoadon`
 ALTER TABLE `chitiethoadon`
   ADD CONSTRAINT `HD_CTHD_FK` FOREIGN KEY (`MaHD`) REFERENCES `hoadon` (`MaHD`),
   ADD CONSTRAINT `SACH_CTHD_FK` FOREIGN KEY (`MaSach`) REFERENCES `sach` (`MaSach`);
-COMMIT;
+COMMIT;*/
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

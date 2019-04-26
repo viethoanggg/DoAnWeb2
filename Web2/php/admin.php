@@ -7,6 +7,12 @@
 	{
 			header("Location:dangnhapAdmin.php");
 	}
+	if(isLogined()==true)
+		if($_SESSION['login']['MaQuyen'] != "1" && $_SESSION['login']['MaQuyen'] != "2" )
+		{
+				header("Location:../index.php");
+		}
+	
 	
 ?>
 <!DOCTYPE html>
@@ -58,12 +64,10 @@
         <ul class="nav navbar-right navbar-top-links">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> Hoàng <b class="caret"></b>
+                    <i class="fa fa-user fa-fw"></i> <span id="ca_nhan"> <?php echo $_SESSION['login']['HoTen'] ?></span> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản </a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Cài đặt </a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="xulydangnhapAdmin.php?dangxuat=1"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất </a>
@@ -152,24 +156,6 @@
 			</script>";
 	}
 ?>
-
-<script>
-	function duytridangnhap() {
-		
-										var xhttp;
-										xhttp = new XMLHttpRequest();
-										xhttp.onreadystatechange = function() {
-										if (this.readyState == 4 && this.status == 200) {
-											}
-										  };
-										  xhttp.open("GET","admin.php", true);
-										  xhttp.send();
-										}
-										
-	window.onload=function(){
-			duytridangnhap();
-	}
-</script>
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>
 

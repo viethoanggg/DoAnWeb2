@@ -34,7 +34,8 @@
 			{
 				$_SESSION['login']=array('TenDangNhap' => $tendangnhap,
 										  'MaQuyen' => $row['MaQuyen'],
-										  'MaNhanVien' => $row['MaNhanVien']);
+										  'MaNhanVien' => $row['MaNhanVien'],
+										  'HoTen' => $row['HoTen']);
 				return true;
 			}
 		}
