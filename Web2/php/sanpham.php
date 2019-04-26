@@ -1,3 +1,18 @@
+<?php 
+	ini_set('session.auto_start',0);
+	ini_set('session.cookie_lifetime',0);
+	include 'sl.php';
+	require('common.php');
+	//đã đang nhập
+	if(isLogined()==true)
+		// kiểm tra đây là khách hàng thì về trang chủ kh
+		if($_SESSION['login']['MaQuyen'] == "1" || $_SESSION['login']['MaQuyen'] == "2" )
+		{
+				header("Location:admin.php");
+		}
+		
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +37,6 @@
 
     <!-- Custom Fonts -->
     <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <?php 
-		include 'sl.php';
-	 ?>
 </head>
 <body>
 
@@ -58,8 +70,8 @@
 				</div>
 		
 				<ul class="nav navbar-nav navbar-right" >
-					<li><a href="DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
-					<li><a href="DangKy.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
+					<li id="loginn"><a href="DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
+					<li id="logout"><a href="DangKy.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
 				</ul>
 			</div>
 			
@@ -227,6 +239,19 @@
 				</div>
 		</div>
 </div>
+
+<?php
+	if(isLogined()==true)
+	{
+		echo "<script>
+		document.getElementById('loginn').innerHTML='<a href=\"#\">Chào ".$_SESSION['login']['TenDangNhap']." '; 
+		</script>";
+		
+		echo "<script>
+		document.getElementById('logout').innerHTML='<a href=\"xulydangnhapUser.php?dangxuat=1\"><span class=\"glyphicon glyphicon-log-out\"></span>Đăng xuất</a>';
+		</script>";	
+	}
+?>
 
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>
