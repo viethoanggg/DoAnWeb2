@@ -1,3 +1,4 @@
+
 <?php
 	ini_set('session.auto_start',0);
 	ini_set('session.cookie_lifetime',0);
@@ -17,6 +18,22 @@
 	}
 ?>
 
+
+<?php 
+	ini_set('session.auto_start',0);
+	ini_set('session.cookie_lifetime',0);
+	include 'php/sl.php';
+	require('php/common.php');
+	//đã đang nhập
+	if(isLogined()==true)
+		// kiểm tra đây là khách hàng thì về trang chủ kh
+		if($_SESSION['login']['MaQuyen'] == "1" || $_SESSION['login']['MaQuyen'] == "2" )
+		{
+				header("Location:php/admin.php");
+		}
+		
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,9 +43,6 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 	<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="js/bootstrap.js"></script>
-	<?php 
-		include 'php/sl.php';
-	 ?>
 </head>
 <body>
 
@@ -62,6 +76,8 @@
 					<ul class="nav navbar-nav navbar-right" >
 						<li id="loginn"><a href="php/DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
 						<li id="logout"><a href="php/Dangky.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
+						<li id="loginn" style="color:white"><a href="php/DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
+						<li><a href="php/Dangky.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
 					</ul>
 				</div>
 			</div>
