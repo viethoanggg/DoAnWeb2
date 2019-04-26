@@ -41,7 +41,7 @@
 						</form>	
 					</div>
 					<ul class="nav navbar-nav navbar-right" >
-						<li><a href="php/DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
+						<li id="loginn"><a href="php/DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
 						<li><a href="php/Dangky.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
 					</ul>
 				</div>
@@ -243,6 +243,16 @@
 	</div>
 </div>
 
+
+<?php
+	require('common.php');
+	if(isLogined()==true)
+	{
+		echo "<script>
+		document.getElementById('loginn').innerHTML='Chào ".$_SESSION['login']['TenDangNhap']." '; 
+		</script>";
+	}
+?>
 </body>
 </html>
 
