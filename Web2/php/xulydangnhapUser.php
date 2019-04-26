@@ -15,7 +15,7 @@
 	else if(isset($_REQUEST['dangxuat']) && $_REQUEST['dangxuat']=="1")
 	{
 		$_SESSION['login']= NULL;
-		header("Location:DangNhap.php");
+		header("Location:../index.php");
 	}
 	
 	function login()
@@ -33,7 +33,7 @@
 			if($row['MatKhau']==$matkhau)
 			{
 				$_SESSION['login']=array('TenDangNhap' => $tendangnhap,
-										  
+										  'MaQuyen' => $row['MaQuyen'],
 										  'MaKH' => $row['MaKH']);
 				return true;
 			}
