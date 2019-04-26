@@ -10,13 +10,13 @@
 			header("Location:dangnhapAdmin.php");
 	}
 	//đã đang nhập
-	if(isLogined()==true)
+	else if(isLogined()==true)
 	{
 		// kiểm tra đây là khách hàng thì về trang chủ kh
 		if($_SESSION['login']['MaQuyen'] != "1" && $_SESSION['login']['MaQuyen'] != "2" )
 			header("Location:../index.php");
 		//kiểm tra nếu là manager thì về trang admin.php,vì đây là trang của admin
-		if($_SESSION['login']['MaQuyen']=="2")
+		else if($_SESSION['login']['MaQuyen']=="2")
 			header("Location:admin.php");
 	}
 	

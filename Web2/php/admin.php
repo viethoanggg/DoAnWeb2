@@ -3,11 +3,15 @@
 	ini_set('session.cookie_lifetime',0);
 	session_start();
 	require('common.php');
+	//kiểm tra đã đăng nhập chưa
+	//chưa đn
 	if(isLogined()==false)
 	{
 			header("Location:dangnhapAdmin.php");
 	}
-	if(isLogined()==true)
+	//đã đang nhập
+	else if(isLogined()==true)
+		// kiểm tra đây là khách hàng thì về trang chủ kh
 		if($_SESSION['login']['MaQuyen'] != "1" && $_SESSION['login']['MaQuyen'] != "2" )
 		{
 				header("Location:../index.php");

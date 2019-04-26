@@ -10,13 +10,13 @@
 			header("Location:dangnhapAdmin.php");
 	}
 	//đã đang nhập
-	if(isLogined()==true)
+	else if(isLogined()==true)
 	{
 		// kiểm tra đây là khách hàng thì về trang chủ kh
 		if($_SESSION['login']['MaQuyen'] != "1" && $_SESSION['login']['MaQuyen'] != "2" )
 			header("Location:../index.php");
 		//kiểm tra nếu là admin thì về trang admin.php, đây là trang của manager
-		if($_SESSION['login']['MaQuyen']=="1")
+		else if($_SESSION['login']['MaQuyen']=="1")
 			header("Location:admin.php");
 	}
 	
@@ -245,12 +245,11 @@
 									
 								<!--------------------------------------------------------------------------------------------------------------->
 										
-										function xoasanpham()
+										function xoasanpham(e)
 										{
 											if(confirm("Bạn có muốn xóa")==true)
 											{
-												var masach=document.getElementById("xoasach").value;
-												window.location.href="deleteBook.php?masach="+masach;
+												window.location.href="deleteBook.php?masach="+e;
 											}
 										}
 								</script>
