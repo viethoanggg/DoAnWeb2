@@ -34,7 +34,11 @@
 			{
 				$_SESSION['login']=array('TenDangNhap' => $tendangnhap,
 										  'MaQuyen' => $row['MaQuyen'],
-										  'MaKH' => $row['MaKH']);
+										  'HoTen' => $row['HoTen'],
+										  'MaKH' => $row['MaKH'],
+										  'Email' => $row['Email'],
+										  'SĐT' => $row['SĐT']);
+										  
 				return true;
 			}
 		}
