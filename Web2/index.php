@@ -257,7 +257,6 @@
 </div>
 
 <?php
-	require('php/common.php');
 	if(isLogined()==true)
 	{
 		echo "<script>
