@@ -1,24 +1,4 @@
 
-<?php
-	ini_set('session.auto_start',0);
-	ini_set('session.cookie_lifetime',0);
-	
-	require('php/common.php');
-	//đã đang nhập
-	
-	if(isLogined()==true)
-	{
-		// kiểm tra đây có phải là khách hàng
-		if($_SESSION['login']['MaQuyen'] == "1" || $_SESSION['login']['MaQuyen'] == "2" )
-		{
-			header("Location:php/admin.php");
-		}
-	
-	
-	}
-?>
-
-
 <?php 
 	ini_set('session.auto_start',0);
 	ini_set('session.cookie_lifetime',0);
