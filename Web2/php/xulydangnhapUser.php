@@ -22,8 +22,8 @@
 	{
 		
 		require('DataProvider.php');
-		$tendangnhap=$_POST['tendangnhap'];
-		$matkhau=$_POST['matkhau'];
+		$tendangnhap=$_POST['username'];
+		$matkhau=$_POST['pass'];
 		
 		$sql="select * from khachhang where TenDangNhap='".$tendangnhap."'";
 		$result=DataProvider::executeQuery($sql);
