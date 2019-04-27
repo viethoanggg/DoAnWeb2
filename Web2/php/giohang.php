@@ -11,7 +11,7 @@ if(isLogined()==true)
 		header("Location:admin.php");
 	}
 
-<<<<<<< HEAD
+//<!--<<<<<<< HEAD-->
 	?>
 
 	<!DOCTYPE html>
@@ -29,8 +29,8 @@ if(isLogined()==true)
 		?>
 	<!--
 	======= 
-	>>>>>>> 33a8894dd2dcbcf6dc4f17bb3763f9a74c8c17af -->
-=======
+	>>>>>>> 33a8894dd2dcbcf6dc4f17bb3763f9a74c8c17af 
+=======-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +43,7 @@ if(isLogined()==true)
 	<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
->>>>>>> e47f234336c92874654618743d663459c3123091
+<!-- >>>>>> e47f234336c92874654618743d663459c3123091-->
 </head>
 <body>
 
@@ -416,7 +416,7 @@ if(isLogined()==true)
 </div>
 
 <?php
-<<<<<<< HEAD
+//<<<<<<< HEAD
 if(isLogined()==true)
 {
 	echo "<script>
@@ -427,7 +427,7 @@ if(isLogined()==true)
 	document.getElementById('logout').innerHTML='<a href=\"xulydangnhapUser.php?dangxuat=1\"><span class=\"glyphicon glyphicon-log-out\"></span>Đăng xuất</a>';
 	</script>";	
 }
-=======
+//=======
 	if(isLogined()==true)
 	{
 		echo "<script>
@@ -450,7 +450,7 @@ if(isLogined()==true)
 		."document.getElementById('logout').innerHTML='".$s."';"
 		."</script>";
 	}
->>>>>>> e47f234336c92874654618743d663459c3123091
+//>>>>>>> e47f234336c92874654618743d663459c3123091
 ?>
 </body>
 </html>
