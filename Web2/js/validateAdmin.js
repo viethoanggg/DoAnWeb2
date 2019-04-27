@@ -320,5 +320,7 @@ function validateFormAddBook()
 		if(confirm("Bạn có muốn thêm sách ?")==false)
 			return false;
 	}
+	
+	
 
 }
