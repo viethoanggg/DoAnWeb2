@@ -25,7 +25,13 @@
 	<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
+<<<<<<< HEAD
+	<?php 
+	include 'sl.php';
+	?>
+=======
 	
+>>>>>>> 33a8894dd2dcbcf6dc4f17bb3763f9a74c8c17af
 </head>
 <body>
 
@@ -112,71 +118,6 @@
 		<a href="#carousel-1" class="left carousel-control" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
 		<a href="#carousel-1" class="right carousel-control" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
 	</div>
-
-	<style>
-		.multi-item-carousel {
-			overflow: hidden;
-		}
-		.multi-item-carousel img {
-			height: auto;
-			width: 100%;
-		}
-		.multi-item-carousel .carousel-control.left, 
-		.multi-item-carousel .carousel-control.right {
-			background: rgba(255, 255, 255, 0.3);
-			width: 25%;
-		}
-		.multi-item-carousel .carousel-inner {
-			width: 150%;
-			left: -25%;
-		}
-		.carousel-inner > .item.next, 
-		.carousel-inner > .item.active.right {
-			-webkit-transform: translate3d(33%, 0, 0);
-			transform: translate3d(33%, 0, 0);
-		}
-		.carousel-inner > .item.prev, 
-		.carousel-inner > .item.active.left {
-			-webkit-transform: translate3d(-33%, 0, 0);
-			transform: translate3d(-33%, 0, 0);
-		}
-		.item__third {
-			float: left;
-			position: relative;  /* captions can now be added */
-			width: 33.33333333%;
-		}
-		.biasach{
-			width: 100px;
-			height: 150px;
-		}
-		.icon{
-			width: 30px;
-			height: 30px;
-		}
-		.container table tr th{
-			color: white;
-		}
-		.thanhtoan {
-			width: 200px;
-			height: 50px;
-			font-weight: normal;
-			font-size: 1.1em;
-			background-color: #00cc66;
-			margin-top: 15px;
-			margin-left: 15px;
-			text-align: center;
-			padding: 12px;
-			border-radius: 8px;
-			cursor: pointer;
-			transition: 0.5s;
-		}
-		.thanhtoan:hover{
-			color: white;
-		}
-		td{
-			padding-top: 60px;
-		}
-	</style>
 	<script>
 		$('.multi-item-carousel .item').each(function(){
 			var next = $(this).next();
@@ -254,7 +195,7 @@
 				//var_dump($key);
 				if($_SESSION['cart'][$key]['theloai']=='NN'){
 					$s=$s.'<tr id="'.$key.'">
-					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
 					<td>
 					<a href="chitietsach.php?theloai=hocngoaingu&masach='.$key.'"><img class="biasach" src="../images/ngoaingu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
@@ -267,7 +208,7 @@
 				}
 				if($_SESSION['cart'][$key]['theloai']=='CN'){
 					$s=$s.'<tr id="'.$key.'">
-					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
 					<td>
 					<a href="chitietsach.php?theloai=chuyennganh&masach='.$key.'"><img class="biasach" src="../images/chuyennganh/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
@@ -280,7 +221,7 @@
 				}
 				if($_SESSION['cart'][$key]['theloai']=='KNS'){
 					$s=$s.'<tr id="'.$key.'">
-					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
 					<td>
 					<a href="chitietsach.php?theloai=kynangsong&masach='.$key.'"><img class="biasach" src="../images/kynangsong/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
@@ -293,7 +234,7 @@
 				}
 				if($_SESSION['cart'][$key]['theloai']=='KT'){
 					$s=$s.'<tr id="'.$key.'">
-					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
 					<td>
 					<a href="chitietsach.php?theloai=kinte&masach='.$key.'"><img class="biasach" src="../images/kinhte/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
@@ -306,7 +247,7 @@
 				}
 				if($_SESSION['cart'][$key]['theloai']=='LS'){
 					$s=$s.'<tr id="'.$key.'">
-					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
 					<td>
 					<a href="chitietsach.php?theloai=lichsu&masach='.$key.'"><img class="biasach" src="../images/lichsu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
@@ -319,7 +260,7 @@
 				}
 				if($_SESSION['cart'][$key]['theloai']=='TN'){
 					$s=$s.'<tr id="'.$key.'">
-					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
 					<td>
 					<a href="chitietsach.php?theloai=thieunhi&masach='.$key.'"><img class="biasach" src="../images/thieunhi/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
@@ -332,7 +273,7 @@
 				}
 				if($_SESSION['cart'][$key]['theloai']=='TT'){
 					$s=$s.'<tr id="'.$key.'">
-					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
 					<td>
 					<a href="chitietsach.php?theloai=tuoiteen&masach='.$key.'"><img class="biasach" src="../images/tuoiteen/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
@@ -345,7 +286,7 @@
 				}
 				if($_SESSION['cart'][$key]['theloai']=='VH'){
 					$s=$s.'<tr id="'.$key.'">
-					<td><a href=""><img class="icon" src="../images/thungrac.gif" alt=""></a></td>
+					<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
 					<td>
 					<a href="chitietsach.php?theloai=vanhoc&masach='.$key.'"><img class="biasach" src="../images/vanhoc/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 					<td>'.$_SESSION["cart"][$key]["tensach"].'</td>

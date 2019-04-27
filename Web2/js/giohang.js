@@ -8,17 +8,35 @@ function addCart(id,sl) {
 				"sl": sl
 			}
 		}).done(function(data){
-				myFunction();
-				$.get('sl.php',{xh:1},function(data){
-									console.log(data);
-					$(".badge.badge-secondary ").html("<span>"+data+"</span>");	
-				})
+			myFunction();
+			$.get('sl.php',{xh:1},function(data){
+				console.log(data);
+				$(".badge.badge-secondary ").html("<span>"+data+"</span>");	
+			})
 				// $(".badge.badge-secondary ").html("<span>"+s+"</span>");
 			})
 	}
 	else{
 		alert("Bạn nhập số lượng không phù hợp!!!");
 		$('#soluong').val('1');
+	}
+}
+function xoasp(masach){
+	if(confirm("Bạn có chắc muốn xoá???")){
+		$.ajax({
+			type: "GET",
+			url: "updategiohang.php",
+			data: {
+				"masach": masach,
+			}
+		}).done(function(data){
+			// console.log(data);
+			debugger;
+			alert(JSON.parse(data).masach);
+			alert(JSON.parse(data).sl);
+
+			$("tr#"+masach+"").hide();
+		})
 	}
 }
 function myFunction() {
