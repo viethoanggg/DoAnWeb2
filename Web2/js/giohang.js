@@ -21,9 +21,22 @@ function addCart(id,sl) {
 		$('#soluong').val('1');
 	}
 }
-function xoasp(masach,sl){
+function xoasp(masach){
 	if(confirm("Bạn có chắc muốn xoá???")){
-		$("tr#"+masach+"").hide();
+		$.ajax({
+			type: "GET",
+			url: "updategiohang.php",
+			data: {
+				"masach": masach,
+			}
+		}).done(function(data){
+			// console.log(data);
+			debugger;
+			alert(JSON.parse(data).masach);
+			alert(JSON.parse(data).sl);
+
+			$("tr#"+masach+"").hide();
+		})
 	}
 }
 function myFunction() {
