@@ -23,14 +23,6 @@ if(isLogined()==true)
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 		<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 		<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
-		<!-- //<<<<<<< HEAD -->
-		<?php 
-	//include 'sl.php';
-		?>
-	<!--
-	======= 
-	>>>>>>> 33a8894dd2dcbcf6dc4f17bb3763f9a74c8c17af 
-=======-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -416,18 +408,7 @@ if(isLogined()==true)
 </div>
 
 <?php
-//<<<<<<< HEAD
-if(isLogined()==true)
-{
-	echo "<script>
-	document.getElementById('loginn').innerHTML='<a href=\"#\">Chào ".$_SESSION['login']['TenDangNhap']." '; 
-	</script>";
 
-	echo "<script>
-	document.getElementById('logout').innerHTML='<a href=\"xulydangnhapUser.php?dangxuat=1\"><span class=\"glyphicon glyphicon-log-out\"></span>Đăng xuất</a>';
-	</script>";	
-}
-//=======
 	if(isLogined()==true)
 	{
 		echo "<script>
@@ -450,7 +431,6 @@ if(isLogined()==true)
 		."document.getElementById('logout').innerHTML='".$s."';"
 		."</script>";
 	}
-//>>>>>>> e47f234336c92874654618743d663459c3123091
 ?>
 </body>
 </html>
