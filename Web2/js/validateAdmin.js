@@ -42,6 +42,17 @@ function validateFormEditBook()
 	var ptntrongluong=/[0-9]+(.[0-9]+|)( |)[a-zA-Z]+$/;
 	var ptnngayphathanh=/^[0-9]{1,2}(\/[0-9]{1,2}\/|\-[0-9]{1,2}\-)[0-9]{4}$/;
 	//alert("jj");
+	document.getElementById('loitensach').innerHTML="";
+	document.getElementById('loitentacgia').innerHTML="";
+	document.getElementById('loigia').innerHTML="";
+	document.getElementById('loinoidunggioithieusach').innerHTML="";
+	document.getElementById('loinhaxuatban').innerHTML="";
+	document.getElementById('loikichthuoc').innerHTML="";
+	document.getElementById('loitrongluong').innerHTML="";
+	document.getElementById('loisotrang').innerHTML="";
+	document.getElementById('loidanhmuc').innerHTML="";
+	document.getElementById('loingayphathanh').innerHTML="";
+	document.getElementById('loisoluongton').innerHTML="";
 	if(tensach=="")
 	{
 		document.getElementById('loitensach').innerHTML="Tên sách không được để trống.";
@@ -188,6 +199,18 @@ function validateFormAddBook()
 	var ptntrongluong=/[0-9]+(.[0-9]+|)( |)[a-zA-Z]+$/;
 	var ptnngayphathanh=/^[0-9]{1,2}(\/[0-9]{1,2}\/|\-[0-9]{1,2}\-)[0-9]{4}$/;
 	//alert("jj");
+	document.getElementById('loitensach').innerHTML="";
+	document.getElementById('loitentacgia').innerHTML="";
+	document.getElementById('loigia').innerHTML="";
+	document.getElementById('loinoidunggioithieusach').innerHTML="";
+	document.getElementById('loinhaxuatban').innerHTML="";
+	document.getElementById('loikichthuoc').innerHTML="";
+	document.getElementById('loitrongluong').innerHTML="";
+	document.getElementById('loisotrang').innerHTML="";
+	document.getElementById('loidanhmuc').innerHTML="";
+	document.getElementById('loingayphathanh').innerHTML="";
+	document.getElementById('loisoluongton').innerHTML="";
+	document.getElementById('loihinhanh').innerHTML="";
 	if(tensach=="")
 	{
 		document.getElementById('loitensach').innerHTML="Tên sách không được để trống.";
