@@ -372,9 +372,9 @@
 		<script>
 		function ValidateFormEditUser()
 			{
-				var name=document.forms['suasuer']['hoten'].value;
-				var emaill=document.forms['suasuer']['email'].value;
-				var phone=document.forms['suasuer']['sdt'].value;
+				var name=document.forms['suauser']['hoten'].value;
+				var emaill=document.forms['suauser']['email'].value;
+				var phone=document.forms['suauser']['sdt'].value;
 				
 				var s=/^[a-zA-Z0-9 ]*$/;
 				var mail=/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
@@ -413,12 +413,11 @@
 						document.getElementById("loisdt").innerHTML="Số điện thoại không hợp lệ, vui lòng nhập lại.";	
 							return false;	
 						}
-					
-				else 
-					{
-						if(confirm("Bạn có muốn sửa thông tin của mình ?")==false)
-						return false;
-					}
+					else 
+						{
+							if(confirm("Bạn có muốn sửa thông tin của mình ?")==false)
+							return false;
+						}
 			}
 	</script>
 		
