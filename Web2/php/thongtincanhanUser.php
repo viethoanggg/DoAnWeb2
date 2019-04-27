@@ -27,6 +27,7 @@
 	<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/validateAdmin.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/chitietsach.css">
 	<link rel="stylesheet" type="text/css" href="../css/util.css">
 	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -66,8 +67,7 @@
 
 					<ul class="nav navbar-nav navbar-right" >
 						<li id="loginn"><a href="DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
-						<li id="logout"><a href="DangKy.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
-						<li id="infouser"></li>
+						<li id="logout" class=""><a href="DangKy.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
 					</ul>
 				</div>
 			</div>
@@ -278,7 +278,7 @@
 						<div class="panel panel-default">
 							<div class="panel-body">
 								<div class="row">
-								<form name="" action="" method="post">
+								<form name="suauser" action="updateUser.php" method="post"  onsubmit="return ValidateFormEditUser()">
 									<div class="col-lg-6">
 										
 											<div class="form-group">
@@ -288,10 +288,11 @@
 											<div class="form-group">
 												<label>Họ tên</label>
 												<input class="form-control" name="hoten" value="<?php echo $_SESSION['login']['HoTen']; ?>">
+												<i style="color:red" id='loihoten'></i>
 											</div>
 											<div class="form-group">
 												<label>Tên đăng nhập</label>
-												<input class="form-control" name="tendangnhap" value="<?php echo $_SESSION['login']['TenDangNhap']; ?>">
+												<input class="form-control" name="tendangnhap"  readonly value="<?php echo $_SESSION['login']['TenDangNhap']; ?>">
 											</div>
 											<div class="form-group">
 												<a href=""><i class='fa fa-lock fa-fw'></i>Đổi mật khẩu</a>
@@ -303,14 +304,24 @@
 											<div class="form-group">
 												<label>Email</label>
 												<input class="form-control" name="email" value="<?php echo $_SESSION['login']['Email']; ?>">
+												<i style="color:red" id='loiemail'></i>
 											</div>
 											<div class="form-group">
 												<label>Số điện thoại</label>
 												<input class="form-control" name="sdt" value="<?php echo $_SESSION['login']['SĐT']; ?>">
+												<i style="color:red" id='loisdt'></i>
 											</div>
 											
 										
 									</div>
+									<div class="row">
+											<div class="col-lg-12">
+												<center>
+													<button type="submit" class="btn btn-default">Sửa</button>
+													<button type="reset" class="btn btn-default">Đặt lại</button>
+												</center>
+											</div>
+										</div>
 								</form>
 								</div>
 							</div>
@@ -357,23 +368,82 @@
 				</div>
 			</div>
 		
-		
-		<?php
-			if(isLogined()==true)
+		<script>
+		function ValidateFormEditUser()
 			{
-				echo "<script>
-				document.getElementById('loginn').innerHTML='<a href=\"#\">Chào ".$_SESSION['login']['TenDangNhap']." '; 
-				</script>";
+				var name=document.forms['suauser']['hoten'].value;
+				var emaill=document.forms['suauser']['email'].value;
+				var phone=document.forms['suauser']['sdt'].value;
 				
-				echo "<script>
-				document.getElementById('logout').innerHTML='<a href=\"xulydangnhapUser.php?dangxuat=1\"><span class=\"glyphicon glyphicon-log-out\"></span>Đăng xuất</a>';
-				</script>";	
+				var s=/^[a-zA-Z0-9 ]*$/;
+				var mail=/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
+				var dt=/0([1-9]{9}|[1-9][0-9]{8})$/;
 				
-				echo "<script>
-				document.getElementById('infouser').innerHTML='<a href=\"thongtincanhanUser.php\"><span class=\"glyphicon glyphicon-user\"></span>Xem thông tin</a>';
-				</script>";
+				if(name=="")
+						{
+						document.getElementById("loihoten").innerHTML="Họ tên không được để trống";
+							return false;
+						}
+					else if(s.test(name)==false)
+						{
+						document.getElementById("loihoten").innerHTML="Họ tên không hợp lệ, vui lòng nhập lại.";
+							return false;
+						}		
+						
+					else if(emaill=="")
+						{
+							document.getElementById("loiemail").innerHTML="Email không được để trống";
+							return false;
+						}
+					else if(mail.test(emaill)==false)
+						{
+							document.getElementById("loiemail").innerHTML="Email không hợp lệ, vui lòng nhập lại.";	
+							return false;
+						}
+					
+					else if(phone=="")
+						{
+						document.getElementById("loisdt").innerHTML="Số điện thoại không được để trống";
+							return false;
+						}	
+					
+					else if(dt.test(phone)==false)
+						{
+						document.getElementById("loisdt").innerHTML="Số điện thoại không hợp lệ, vui lòng nhập lại.";	
+							return false;	
+						}
+					else 
+						{
+							if(confirm("Bạn có muốn sửa thông tin của mình ?")==false)
+							return false;
+						}
 			}
-		?>
+	</script>
+		
+<?php
+	if(isLogined()==true)
+	{
+		echo "<script>
+		document.getElementById('loginn').innerHTML=''; 
+		</script>";
+		 	$s="<a class=\'dropdown-toggle\' data-toggle=\'dropdown\' href=\'#\'>"
+                .    "<i class=\'glyphicon glyphicon-user\'></i> ".$_SESSION['login']['TenDangNhap']." <b class=\'caret\'></b>"
+                ."</a>"
+                ."<ul class=\'dropdown-menu\'>"
+                .    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
+                .    "</li>"
+				.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
+                .    "</li>"
+                .    "<li class=\'divider\'></li>"
+                .    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
+                .    "</li>"
+                ."</ul>";
+		echo "<script>"
+		."document.getElementById('logout').setAttribute('class','dropdown'); "
+		."document.getElementById('logout').innerHTML='".$s."';"
+		."</script>";
+	}
+?>
 	</body>
 	</html>
 

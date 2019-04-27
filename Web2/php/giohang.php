@@ -11,6 +11,7 @@ if(isLogined()==true)
 		header("Location:admin.php");
 	}
 
+<<<<<<< HEAD
 	?>
 
 	<!DOCTYPE html>
@@ -29,6 +30,20 @@ if(isLogined()==true)
 	<!--
 	======= 
 	>>>>>>> 33a8894dd2dcbcf6dc4f17bb3763f9a74c8c17af -->
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Nhà sách OnePiece</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+	<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
+>>>>>>> e47f234336c92874654618743d663459c3123091
 </head>
 <body>
 
@@ -64,7 +79,7 @@ if(isLogined()==true)
 					</div>
 					<ul class="nav navbar-nav navbar-right" >
 						<li id="loginn"><a href="DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
-						<li id="logout"><a href="DangKy.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
+						<li id="logout" class=""><a href="DangKy.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
 					</ul>
 				</div>
 			</div>
@@ -401,6 +416,7 @@ if(isLogined()==true)
 </div>
 
 <?php
+<<<<<<< HEAD
 if(isLogined()==true)
 {
 	echo "<script>
@@ -411,6 +427,30 @@ if(isLogined()==true)
 	document.getElementById('logout').innerHTML='<a href=\"xulydangnhapUser.php?dangxuat=1\"><span class=\"glyphicon glyphicon-log-out\"></span>Đăng xuất</a>';
 	</script>";	
 }
+=======
+	if(isLogined()==true)
+	{
+		echo "<script>
+		document.getElementById('loginn').innerHTML=''; 
+		</script>";
+		 	$s="<a class=\'dropdown-toggle\' data-toggle=\'dropdown\' href=\'#\'>"
+                .    "<i class=\'glyphicon glyphicon-user\'></i> ".$_SESSION['login']['TenDangNhap']." <b class=\'caret\'></b>"
+                ."</a>"
+                ."<ul class=\'dropdown-menu\'>"
+                .    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
+                .    "</li>"
+				.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
+                .    "</li>"
+                .    "<li class=\'divider\'></li>"
+                .    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
+                .    "</li>"
+                ."</ul>";
+		echo "<script>"
+		."document.getElementById('logout').setAttribute('class','dropdown'); "
+		."document.getElementById('logout').innerHTML='".$s."';"
+		."</script>";
+	}
+>>>>>>> e47f234336c92874654618743d663459c3123091
 ?>
 </body>
 </html>

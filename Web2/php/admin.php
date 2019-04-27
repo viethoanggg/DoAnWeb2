@@ -70,7 +70,7 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-user fa-fw"></i> <span id="ca_nhan"> <?php echo $_SESSION['login']['HoTen'] ?></span> <b class="caret"></b>
                 </a>
-                <ul class="dropdown-menu dropdown-user">
+                <ul class="dropdown-menu">
                     <li><a href="thongtincanhanAdmin.php"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản </a>
                     </li>
                     <li class="divider"></li>

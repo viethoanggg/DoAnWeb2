@@ -1,35 +1,34 @@
 <?php
-	
-	require('DataProvider.php');
-	if(isset($_GET['MaHD']) && isset($_GET['MaSach']) )
+	ini_set('session.auto_start',0);
+	ini_set('session.cookie_lifetime',0);
+	session_start();
+	require('common.php');
+	//kiểm tra đã đăng nhập chưa
+	//chưa đn
+	if(isLogined()==false)
 	{
-		//cap nhat trang thai chi tiet hoa don
-		$sql="UPDATE chitiethoadon SET TinhTrangCT='".$_GET['tinhtrang']."' where chitiethoadon.MaHD='".$_GET['MaHD']."' and chitiethoadon.MaSach='".$_GET['MaSach']."'";
-		DataProvider::executeQuery($sql);
-		
-		//cap nhat trang thai hoa don
-		/*$sql="select * from  chitiethoadon where MaHD='".$_GET['MaHD']."'";
-		$result=DataProvider::executeQuery($sql);
-		$flag=1;
-		while($row=mysqli_fetch_array($result))
-		{
-			if($row['TinhTrangCT']=="Hàng đang nhập từ kho")
-			{
-				$flag=0;
-				break;
-			}				
-		}
-		if($flag==1)
-		{
-			$sql="update hoadon set TinhTrang='Đã thanh toán xong' where MaHD='".$_GET['MaHD']."'";
-			DataProvider::executeQuery($sql);
-		}
-		else if($flag==0)
-		{
-			$sql="update hoadon set TinhTrang='Chưa thanh toán xong' where MaHD='".$_GET['MaHD']."'";
-			DataProvider::executeQuery($sql);
-		}*/
-		
+			header("Location:dangnhapAdmin.php");
 	}
+	//đã đang nhập
+	else if(isLogined()==true)
+	{
+		// kiểm tra đây là khách hàng thì về trang chủ kh
+		if($_SESSION['login']['MaQuyen'] != "1" && $_SESSION['login']['MaQuyen'] != "2" )
+			header("Location:../index.php");
+		//kiểm tra nếu là admin thì về trang admin.php, đây là trang của manager
+		else if($_SESSION['login']['MaQuyen']=="1")
+			header("Location:admin.php");
+		else
+		{
+			require('DataProvider.php');
+			if(isset($_GET['MaHD']) && isset($_GET['MaSach']) )
+			{
+				//cap nhat trang thai chi tiet hoa don
+				$sql="UPDATE chitiethoadon SET TinhTrangCT='".$_GET['tinhtrang']."' where chitiethoadon.MaHD='".$_GET['MaHD']."' and chitiethoadon.MaSach='".$_GET['MaSach']."'";
+				DataProvider::executeQuery($sql);
+			}
+		}
+	}
+	
 	
 ?>

@@ -6,7 +6,7 @@ function ktdangnhap()
 			
 			if(/^[a-zA-Z0-9 ]*$/.test(tdn) == false)
 					{
-						alert("Ký tự nhập không hợp lê, vui lòng nhập lại.");
+						alert("Ký tự nhập không hợp lệ, vui lòng nhập lại.");
 						return false;
 					}
 			else

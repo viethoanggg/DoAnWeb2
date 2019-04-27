@@ -55,8 +55,7 @@
 					</div>
 					<ul class="nav navbar-nav navbar-right" >
 						<li id="loginn"><a href="php/DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>					
-						<li id="logout"><a href="php/Dangky.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>	
-						<li id="info"></li>
+						<li id="logout" class=""><a href="php/Dangky.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>	
 					</ul>
 				</div>
 			</div>
@@ -261,17 +260,24 @@
 	if(isLogined()==true)
 	{
 		echo "<script>
-		document.getElementById('loginn').innerHTML='<a href=\"#\">Chào ".$_SESSION['login']['TenDangNhap']." '; 
+		document.getElementById('loginn').innerHTML=''; 
 		</script>";
-		
-		echo "<script>
-		document.getElementById('logout').innerHTML='<a href=\"php/xulydangnhapUser.php?dangxuat=1\"><span class=\"glyphicon glyphicon-log-out\"></span>Đăng xuất</a>';
-		</script>";	
-		
-		echo "<script>
-		document.getElementById('info').innerHTML='<a href=\"php/thongtincanhanUser.php\"><span class=\"glyphicon glyphicon-user\"></span>Xem thông tin</a>';
-		</script>";
-		
+		 	$s="<a class=\'dropdown-toggle\' data-toggle=\'dropdown\' href=\'#\'>"
+                .    "<i class=\'glyphicon glyphicon-user\'></i> ".$_SESSION['login']['TenDangNhap']." <b class=\'caret\'></b>"
+                ."</a>"
+                ."<ul class=\'dropdown-menu\'>"
+                .    "<li><a href=\'php/thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
+                .    "</li>"
+				.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
+                .    "</li>"
+                .    "<li class=\'divider\'></li>"
+                .    "<li><a href=\'php/xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
+                .    "</li>"
+                ."</ul>";
+		echo "<script>"
+		."document.getElementById('logout').setAttribute('class','dropdown'); "
+		."document.getElementById('logout').innerHTML='".$s."';"
+		."</script>";
 	}
 ?>
 

@@ -31,6 +31,7 @@
 <script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 <!--<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>-->
 <script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
+<script type="text/javascript" language="javascript" src="../js/validateAdmin.js"></script>
 <!-- MetisMenu CSS -->
     <link href="../css/admin/metisMenu.min.css" rel="stylesheet">
 
@@ -72,7 +73,7 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-user fa-fw"></i> <span id="ca_nhan"> <?php echo $_SESSION['login']['HoTen'] ?></span> <b class="caret"></b>
                 </a>
-                <ul class="dropdown-menu dropdown-user">
+                <ul class="dropdown-menu">
                     <li><a href="thongtincanhanAdmin.php"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản </a>
                     </li>
                     <li class="divider"></li>
@@ -149,12 +150,13 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									<form name="them" action="executeAddBook.php" method="post"  enctype="multipart/form-data">
+									<form name="them" action="executeAddBook.php" method="post"  enctype="multipart/form-data" onsubmit="return validateFormAddBook()">
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="form-group">
                                                     <label>Tên sách</label>
                                                     <input class="form-control" name="tensach">
+													<i style="color:red" id='loitensach'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Thể loại</label>
@@ -170,6 +172,7 @@
 														<option value="VN">Văn học</option>
                                                     </select>
 													<p><i>(Mã thể loại)</i></p>
+													<i style="color:red" id='loimatheloai'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Mã sách</label>
@@ -178,14 +181,17 @@
 												<div class='form-group'>
 													<label>Tên tác giả</label>
 													<input class='form-control' name='tentacgia'>
+													<i style="color:red" id='loitentacgia'></i>
 												</div>
 												<div class="form-group">
                                                     <label>Giá</label>
                                                     <input class="form-control" name="gia">
+													<i style="color:red" id='loigia'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Nội dung giới thiệu sách</label>
                                                     <textarea class="form-control" rows="3" name="noidunggioithieusach" ></textarea>
+													<i style="color:red" id='loinoidunggioithieusach'></i>
                                                 </div>
 											</div>
 											
@@ -193,30 +199,37 @@
 												<div class="form-group">
                                                     <label>Nhà xuất bản</label>
                                                     <input class="form-control" name="nhaxuatban">
+													<i style="color:red" id='loinhaxuatban'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Kích thước</label>
                                                     <input class="form-control" name="kichthuoc">
+													<i style="color:red" id='loikichthuoc'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Trọng lượng</label>
                                                     <input class="form-control" name="trongluong">
+													<i style="color:red" id='loitrongluong'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Số trang</label>
                                                     <input class="form-control" name="sotrang">
+													<i style="color:red" id='loisotrang'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Danh mục</label>
                                                     <input class="form-control" name="danhmuc">
+													<i style="color:red" id='loidanhmuc'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Ngày phát hành</label>
                                                     <input class="form-control" name="ngayphathanh">
+													<i style="color:red" id='loingayphathanh'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Số lượng tồn</label>
                                                     <input class="form-control" name="soluongton">
+													<i style="color:red" id='loisoluongton'></i>
                                                 </div>
 												
 											</div>
@@ -237,6 +250,7 @@
 															<div class="col-lg-12">
 																<center><label>Hình ảnh</label></center>
 																<center><div id="xemhinhanh" style="width:120px;height:170px;"> </div></center>
+																<i style="color:red" id='loihinhanh'></i>
 															</div>
 														</div>
 														

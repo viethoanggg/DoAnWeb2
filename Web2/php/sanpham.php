@@ -23,20 +23,10 @@
 <script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
 <script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
-<!-- MetisMenu CSS -->
-    <link href="../css/admin/metisMenu.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" language="javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
 
-    <!-- Timeline CSS -->
-    <link href="../css/admin/timeline.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../css/admin/startmin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="../css/admin/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -71,7 +61,7 @@
 		
 				<ul class="nav navbar-nav navbar-right" >
 					<li id="loginn"><a href="DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
-					<li id="logout"><a href="DangKy.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
+					<li id="logout" class=""><a href="DangKy.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
 				</ul>
 			</div>
 			
@@ -244,26 +234,26 @@
 	if(isLogined()==true)
 	{
 		echo "<script>
-		document.getElementById('loginn').innerHTML='<a href=\"#\">Chào ".$_SESSION['login']['TenDangNhap']." '; 
+		document.getElementById('loginn').innerHTML=''; 
 		</script>";
-		
-		echo "<script>
-		document.getElementById('logout').innerHTML='<a href=\"xulydangnhapUser.php?dangxuat=1\"><span class=\"glyphicon glyphicon-log-out\"></span>Đăng xuất</a>';
-		</script>";	
+		 	$s="<a class=\'dropdown-toggle\' data-toggle=\'dropdown\' href=\'#\'>"
+                .    "<i class=\'glyphicon glyphicon-user\'></i> ".$_SESSION['login']['TenDangNhap']." <b class=\'caret\'></b>"
+                ."</a>"
+                ."<ul class=\'dropdown-menu\'>"
+                .    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
+                .    "</li>"
+				.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
+                .    "</li>"
+                .    "<li class=\'divider\'></li>"
+                .    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
+                .    "</li>"
+                ."</ul>";
+		echo "<script>"
+		."document.getElementById('logout').setAttribute('class','dropdown'); "
+		."document.getElementById('logout').innerHTML='".$s."';"
+		."</script>";
 	}
 ?>
-
-<!-- jQuery -->
-<script src="../js/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="../js/bootstrap.min.js"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="../js/admin/metisMenu.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="../js/admin/startmin.js"></script>
 </body>
 </html>
 

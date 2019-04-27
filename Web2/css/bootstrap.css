@@ -3732,11 +3732,11 @@ tbody.collapse.in {
   border-left: 4px solid transparent;
 }
 
-/*@media only screen and (min-width: 768px) {*/
+@media only screen and (min-width: 768px) {
   .dropdown:hover .dropdown-menu {
     display: block;
   }
-/*}*/
+}
 .dropup,
 .dropdown {
   position: relative;
