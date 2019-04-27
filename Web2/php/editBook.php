@@ -31,6 +31,7 @@
 <script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 <!--<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>-->
 <script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
+<script type="text/javascript" language="javascript" src="../js/validateAdmin.js"></script>
 <!-- MetisMenu CSS -->
     <link href="../css/admin/metisMenu.min.css" rel="stylesheet">
 
@@ -189,7 +190,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									<form name="sua" action="updateBook.php" method="post" onsubmit="return suasach()" enctype="multipart/form-data">
+									<form name="sua" action="updateBook.php" method="post" onsubmit="return validateFormEditBook()" enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="form-group">
@@ -199,6 +200,7 @@
 												<div class="form-group">
                                                     <label>Tên sách</label>
                                                     <input class="form-control" name="tensach" value="<?php echo $tensach; ?>">
+													<i style="color:red" id='loitensach'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Thể loại</label>
@@ -217,14 +219,17 @@
 												<div class="form-group">
                                                     <label>Tên tác giả</label>
                                                     <input class="form-control" name="tentacgia" value="<?php echo $tentacgia; ?>">
+													<i style="color:red" id='loitentacgia'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Giá</label>
                                                     <input class="form-control" name="gia" value="<?php echo $gia; ?>">
+													<i style="color:red" id='loigia'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Nội dung giới thiệu sách</label>
                                                     <textarea class="form-control" rows="3" name="noidunggioithieusach" ><?php echo $noidunggioithieusach; ?></textarea>
+													<i style="color:red" id='loinoidunggioithieusach'></i>
                                                 </div>
 											</div>
 											
@@ -232,30 +237,37 @@
 												<div class="form-group">
                                                     <label>Nhà xuất bản</label>
                                                     <input class="form-control" name="nhaxuatban" value="<?php echo $nhaxuatban; ?>">
+													<i style="color:red" id='loinhaxuatban'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Kích thước</label>
                                                     <input class="form-control" name="kichthuoc" value="<?php echo $kichthuoc; ?>">
+													<i style="color:red" id='loikichthuoc'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Trọng lượng</label>
                                                     <input class="form-control" name="trongluong" value="<?php echo $trongluong; ?>">
+													<i style="color:red" id='loitrongluong'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Số trang</label>
                                                     <input class="form-control" name="sotrang" value="<?php echo $sotrang; ?>">
+													<i style="color:red" id='loisotrang'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Danh mục</label>
                                                     <input class="form-control" name="danhmuc" value="<?php echo $danhmuc; ?>">
+													<i style="color:red" id='loidanhmuc'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Ngày phát hành</label>
                                                     <input class="form-control" name="ngayphathanh" value="<?php echo $ngayphathanh; ?>">
+													<i style="color:red" id='loingayphathanh'></i>
                                                 </div>
 												<div class="form-group">
                                                     <label>Số lượng tồn</label>
                                                     <input class="form-control" name="soluongton" value="<?php echo $soluongton; ?>">
+													<i style="color:red" id='loisoluongton'></i>
                                                 </div>
 												
 											</div>
@@ -323,11 +335,7 @@
 		var x=document.forms['sua']['hinhanh'].value;
 		document.getElementById('xemhinhanhmoi').innerHTML="<img src='"+x+"' style='width:100%;height:100%'>";
 	}
-	function suasach()
-	{
-		if(confirm("Bạn có muốn sửa thông tin sách ?")==false)
-			return false;
-	}
+	
 </script>
 <?php
 	if($matheloai!="")
