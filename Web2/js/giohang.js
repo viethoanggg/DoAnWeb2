@@ -22,14 +22,13 @@ function addCart(id,sl) {
 	}
 }
 function xoasp(masach){
-	if(confirm("Bạn có chắc muốn xoá???")){
-		$.ajax({
-			type: "GET",
-			url: "updategiohang.php",
-			data: {
-				"masach": masach,
-			}
-		}).done(function(data){
+	$.ajax({
+		type: "GET",
+		url: "updategiohang.php",
+		data: {
+			"masach": masach,
+		}
+	}).done(function(data){
 			// console.log(data);
 			//debugger;
 			//alert(JSON.parse(data).masach);
@@ -43,10 +42,10 @@ function xoasp(masach){
 				$("tr#"+masach+"").hide();
 			}
 			else{
+				$('.badge.badge-secondary ').text(0);
 				document.getElementById('giohangrong').innerHTML=`<div><table class="table"><tr><td style="background-color:#ddd; height: 150px;text-align: center;padding-top:100px ">Không có sản phẩm nào trong giỏ hàng của bạn</td></tr><tr><td style="background-color:#ddd;border: 0;height: 200px;text-align: center;"><button class="thanhtoan" onclick="window.location.assign('../index.php')">Tiếp tục mua sắm</button></td></tr></table></div>`;
 			}
 		})
-	}
 }
 function myFunction() {
 	var x = document.getElementById("snackbar");
