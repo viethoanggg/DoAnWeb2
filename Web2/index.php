@@ -1,3 +1,18 @@
+<?php 
+	ini_set('session.auto_start',0);
+	ini_set('session.cookie_lifetime',0);
+	include 'php/sl.php';
+	require('php/common.php');
+	//đã đang nhập
+	if(isLogined()==true)
+		// kiểm tra đây là khách hàng thì về trang chủ kh
+		if($_SESSION['login']['MaQuyen'] == "1" || $_SESSION['login']['MaQuyen'] == "2" )
+		{
+				header("Location:php/admin.php");
+		}
+		
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +22,7 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 	<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="js/bootstrap.js"></script>
-	<?php 
-		include 'php/sl.php';
-	 ?>
+	
 </head>
 <body>
 
@@ -41,8 +54,9 @@
 						</form>	
 					</div>
 					<ul class="nav navbar-nav navbar-right" >
-						<li><a href="php/DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>
-						<li><a href="php/Dangky.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
+						<li id="loginn"><a href="php/DangNhap.php"><span class="glyphicon glyphicon-user"></span> Đăng nhập</a></li>					
+						<li id="logout"><a href="php/Dangky.php"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>	
+						<li id="info"></li>
 					</ul>
 				</div>
 			</div>
@@ -160,8 +174,8 @@
 				
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="index.php">Trang chủ</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="#">Về chúng tôi</a></li>
+					<li><a href="#">Liên hệ</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Thể loại <span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -242,6 +256,24 @@
 		</div>
 	</div>
 </div>
+
+<?php
+	if(isLogined()==true)
+	{
+		echo "<script>
+		document.getElementById('loginn').innerHTML='<a href=\"#\">Chào ".$_SESSION['login']['TenDangNhap']." '; 
+		</script>";
+		
+		echo "<script>
+		document.getElementById('logout').innerHTML='<a href=\"php/xulydangnhapUser.php?dangxuat=1\"><span class=\"glyphicon glyphicon-log-out\"></span>Đăng xuất</a>';
+		</script>";	
+		
+		echo "<script>
+		document.getElementById('info').innerHTML='<a href=\"php/thongtincanhanUser.php\"><span class=\"glyphicon glyphicon-user\"></span>Xem thông tin</a>';
+		</script>";
+		
+	}
+?>
 
 </body>
 </html>

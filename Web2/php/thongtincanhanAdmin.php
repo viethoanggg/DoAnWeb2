@@ -3,20 +3,15 @@
 	ini_set('session.cookie_lifetime',0);
 	session_start();
 	require('common.php');
-	//kiểm tra đã đăng nhập chưa
-	//chưa đn
 	if(isLogined()==false)
 	{
 			header("Location:dangnhapAdmin.php");
 	}
-	//đã đang nhập
-	else if(isLogined()==true)
-		// kiểm tra đây là khách hàng thì về trang chủ kh
+	if(isLogined()==true)
+	{
 		if($_SESSION['login']['MaQuyen'] != "1" && $_SESSION['login']['MaQuyen'] != "2" )
-		{
 				header("Location:../index.php");
-		}
-	
+	}
 	
 ?>
 <!DOCTYPE html>
@@ -71,7 +66,7 @@
                     <i class="fa fa-user fa-fw"></i> <span id="ca_nhan"> <?php echo $_SESSION['login']['HoTen'] ?></span> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="thongtincanhanAdmin.php"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản </a>
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản </a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="xulydangnhapAdmin.php?dangxuat=1"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất </a>
@@ -95,7 +90,7 @@
                         <a href="quanlyhoadon.php" style="" class='mg' ><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn <span class='mg_i' style="float:right;color:red"></span></a> 
                     </li>
 					<li>
-                        <a href="#" style="" ><i class="fa fa-table fa-fw"></i> Thống kê </a>
+                        <a href="#" style="" ><i class="fa fa-table fa-fw"></i> Thống kê sản phẩm</a>
                     </li>
 					<li>
                         <a href="#" class='ad' style=""><i class="fa fa-user fa-fw"></i> Quản lý người dùng<span class="fa arrow"> <span class='ad_i' style="float:right;color:red"></span></span></a>
@@ -122,14 +117,62 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Trang chủ</h1>
+                    <h1 class="page-header">Thông tin cá nhân</h1>
                 </div>
             </div>
 
-			
-			
             <!-- ... Your content goes here ... -->
-		
+			<div clas="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="row">
+							<form name="" action="" method="post">
+								<div class="col-lg-6">
+									
+										<div class="form-group">
+                                            <label>Mã nhân viên</label>
+                                            <input class="form-control" name="manhanhvien" readonly value="<?php echo $_SESSION['login']['MaNhanVien']; ?>">
+                                        </div>
+										<div class="form-group">
+                                            <label>Họ tên</label>
+                                            <input class="form-control" name="hoten" value="<?php echo $_SESSION['login']['HoTen']; ?>">
+                                        </div>
+										<div class="form-group">
+                                            <label>Tên đăng nhập</label>
+                                            <input class="form-control" name="tendangnhap" value="<?php echo $_SESSION['login']['TenDangNhap']; ?>">
+                                        </div>
+										<div class="form-group">
+                                            <a href=""><i class='fa fa-lock fa-fw'></i>Đổi mật khẩu</a>
+                                        </div>
+									
+								</div>
+								<div class="col-lg-6">
+									
+										<div class="form-group">
+                                            <label>Email</label>
+                                            <input class="form-control" name="email" value="<?php echo $_SESSION['login']['Email']; ?>">
+                                        </div>
+										<div class="form-group">
+                                            <label>Số điện thoại</label>
+                                            <input class="form-control" name="sdt" value="<?php echo $_SESSION['login']['SĐT']; ?>">
+                                        </div>
+										<div class="form-group">
+                                            <label>Quyền</label>
+                                            <select class="form-control" name="quyen">
+												<option value="1" <?php if($_SESSION['login']['MaQuyen']=="1") echo "selected"; ?> >Quản trị viên</option>
+                                                <option value="2" <?php if($_SESSION['login']['MaQuyen']=="2") echo "selected"; ?>>Nhân viên quản lý</option>        
+                                            </select>
+													
+                                        </div>
+									
+								</div>
+							</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
         </div>
     </div>
 
@@ -142,7 +185,7 @@
 		echo "<script>
 				document.getElementsByClassName('mg')[0].setAttribute('style','pointer-events:none;');
 				document.getElementsByClassName('mg')[1].setAttribute('style','pointer-events:none;');
-				
+			
 				
 				document.getElementsByClassName('mg_i')[0].innerHTML='<i class=\'fa fa-ban fa-fw\'></i>';
 				document.getElementsByClassName('mg_i')[1].innerHTML='<i class=\'fa fa-ban fa-fw\'></i>';

@@ -142,6 +142,7 @@ iframe {
   font-size: 16px;
   line-height: 1.4;
   color: #ff1a1a;
+  font-style:italic;
 }
 
 .hov1:hover {

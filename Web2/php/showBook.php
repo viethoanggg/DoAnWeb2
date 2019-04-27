@@ -1132,7 +1132,7 @@ class ShowBook
 											$s=$s. "<td><img style='width:100px;height:150px' src='../images/vanhoc/" . $row['HinhAnh'] . "'></td>";
 										
 										$s=$s. "<td><a href='editBook.php?masach=".$row['MaSach']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
-										."<td><font style='color:#337ab7;cursor:pointer' onclick='xoasanpham()'><i class='fa fa-trash fa-fw'></i> Xóa</font><input type='hidden' value='".$row['MaSach']."' id='xoasach'></td>"
+										."<td><font style='color:#337ab7;cursor:pointer' onclick='xoasanpham(".'"'.$row['MaSach'].'"'.")' data-id=><i class='fa fa-trash fa-fw'></i> Xóa</font></td>"
 									."</tr>";
 								$i++;
 							}
@@ -1299,7 +1299,7 @@ class ShowBook
 											$s=$s. "<td><img style='width:100px;height:150px' src='../images/vanhoc/" . $row['HinhAnh'] . "'></td>";
 										
 										$s=$s. "<td><a href='editBook.php?masach=".$row['MaSach']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
-										."<td><font style='color:#337ab7;cursor:pointer' onclick='xoasanpham()'><i class='fa fa-trash fa-fw'></i> Xóa</font><input type='hidden' value='".$row['MaSach']."' id='xoasach'></td>"
+										."<td><font style='color:#337ab7;cursor:pointer' onclick='xoasanpham(".'"'.$row['MaSach'].'"'.")' data-id=><i class='fa fa-trash fa-fw'></i> Xóa</font></td>"
 									."</tr>";
 								$i++;
 							}
