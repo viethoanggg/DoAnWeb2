@@ -10,19 +10,8 @@ if(isLogined()==true)
 	{
 		header("Location:admin.php");
 	}
+?>
 
-//<!--<<<<<<< HEAD-->
-	?>
-
-	<!DOCTYPE html>
-	<html lang="en">
-	<head>
-		<title>Nhà sách OnePiece</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
-		<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
-		<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,15 +24,10 @@ if(isLogined()==true)
 	<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
-<!-- >>>>>> e47f234336c92874654618743d663459c3123091-->
 </head>
 <body>
-
 	<!--------------- header --------------->
 	<nav class="navbar navbar-inverse " style="border-radius:0px">
-		<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
-		<script type="text/javascript" language="javascript" src="../js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
 		<div class="container">
 
 			<div class="navbar-header">
@@ -57,10 +41,10 @@ if(isLogined()==true)
 
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<div class="row">    
-					<div class="col-md-4 col-md-offset-2">
+					<div class="col-md-5 col-md-offset-2">
 						<form class="navbar-form navbar-left" action="" name="searchIndex">
 							<div class="input-group" >
-								<input type="text" class="form-control" placeholder="Tìm kiếm" name="search">
+								<input type="text" class="form-control" placeholder="Tìm kiếm" name="search" size="44">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="submit">
 										<i class="glyphicon glyphicon-search"></i>
