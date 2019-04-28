@@ -27,6 +27,7 @@ function xoasp(masach){
 		url: "updategiohang.php",
 		data: {
 			"masach": masach,
+			"update": 0//0 là xoá
 		}
 	}).done(function(data){
 			// console.log(data);
@@ -74,4 +75,35 @@ function formatNumber(nStr, decSeperate, groupSeperate) {
 		x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
 	}
 	return x1 + x2;
+}
+function tang(id){
+	//alert(id);
+	var i= Number($("#"+id+" "+"input").val());
+	//alert(i);
+	i++;
+	$("#"+id+" "+"input").val(i);
+	//$("#"+id+" "+"input").val();
+	$.ajax({
+		type: "GET",
+		url: "updategiohang.php",
+		data:{
+			"masach": id,
+			"slsach":i,
+			"update": 1//1 là update
+		}
+	}).done(function(data){
+		alert("hello");
+		if(data!="false"){
+			alert(data);
+		}
+	})
+}
+function giam(id){
+	//alert(id);
+	//alert("Giam");
+	var i= Number($("#"+id+" "+"input").val());
+	if(i>1){
+		i--;
+		$("#"+id+" "+"input").val(i);
+	}
 }
