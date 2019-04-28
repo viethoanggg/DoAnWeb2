@@ -160,7 +160,7 @@
 													$diachi=$row['DiaChi'];
 													$hinhthucthanhtoan=$row['TenHinhThucTT'];
 													$hinhthucgiaohang=$row['TenHinhThucGH'];
-													$sdt="gg";
+													$sdt=$row['SĐT'];
 												}													
 												else 
 												{
