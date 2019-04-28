@@ -97,7 +97,7 @@
                         <a href="quanlyhoadon.php" style="" class='mg' ><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn <span class='mg_i' style="float:right;color:red"></span></a> 
                     </li>
 					<li>
-                        <a href="#" style="" ><i class="fa fa-table fa-fw"></i> Thống kê </a>
+                        <a href="#" style="" class='mg' ><i class="fa fa-table fa-fw"></i> Thống kê <span class='mg_i' style="float:right;color:red"></span> </a>
                     </li>
 					<li>
                         <a href="#" class='ad' style=""><i class="fa fa-user fa-fw"></i> Quản lý người dùng<span class="fa arrow"> <span class='ad_i' style="float:right;color:red"></span></span></a>
@@ -249,11 +249,11 @@
 		echo "<script>
 				document.getElementsByClassName('mg')[0].setAttribute('style','pointer-events:none;');
 				document.getElementsByClassName('mg')[1].setAttribute('style','pointer-events:none;');
-				
+				document.getElementsByClassName('mg')[2].setAttribute('style','pointer-events:none;');
 				
 				document.getElementsByClassName('mg_i')[0].innerHTML='<i class=\'fa fa-ban fa-fw\'></i>';
 				document.getElementsByClassName('mg_i')[1].innerHTML='<i class=\'fa fa-ban fa-fw\'></i>';
-				
+				document.getElementsByClassName('mg_i')[2].innerHTML='<i class=\'fa fa-ban fa-fw\'></i>';
 			</script>";
 	}
 	if($_SESSION['login']['MaQuyen']=="2")

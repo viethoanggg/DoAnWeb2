@@ -44,7 +44,7 @@
 					<div class="col-md-5 col-md-offset-2">
 						<form class="navbar-form navbar-left" action="" name="searchIndex">
 							<div class="input-group" >
-								<input type="text" class="form-control" placeholder="Tìm kiếm" name="search" size="43">
+								<input type="text" class="form-control" placeholder="Tìm kiếm" name="search" size="44">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="submit">
 										<i class="glyphicon glyphicon-search"></i>

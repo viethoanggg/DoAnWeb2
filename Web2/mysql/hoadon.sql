@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 25, 2019 lúc 01:33 PM
+-- Thời gian đã tạo: Th4 27, 2019 lúc 07:20 PM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
--- Phiên bản PHP: 7.2.16
+-- Phiên bản PHP: 7.2.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `hoadon` (
   `MaHD` varchar(10) NOT NULL,
   `MaKH` varchar(10) NOT NULL,
-  `NgayDatHang` varchar(100) NOT NULL,
+  `NgayDatHang` datetime NOT NULL,
   `DiaChi` varchar(500) NOT NULL,
   `HinhThucThanhToan` varchar(100) NOT NULL,
   `HinhThucGiaoHang` varchar(100) NOT NULL,
@@ -45,11 +45,11 @@ CREATE TABLE `hoadon` (
 --
 
 INSERT INTO `hoadon` (`MaHD`, `MaKH`, `NgayDatHang`, `DiaChi`, `HinhThucThanhToan`, `HinhThucGiaoHang`, `TongSoLuong`, `TongTien`, `TinhTrang`) VALUES
-('HD0', 'KH0', '11/2/2017', '478 Cách Mạng Tháng Tám, phường 11, Quận 3, TP. Hồ Chí Minh', '3', '1', 4, 530650, 'Chưa thanh toán xong'),
-('HD1', 'KH1', '12/02/2019', '12/33 Ngyễn Sỹ Sách , P15, Q.Tân Bình, TP HCM', '3', '1', 3, 240400, 'Đã thanh toán xong'),
-('HD2', 'KH2', '03/01/2018', '123 Trường Trinh, Q.Tân Bình, TP HCM', '3', '1', 2, 207400, 'Đã thanh toán xong'),
-('HD3', 'KH3', '26/4/2019', '189A Cống Quỳnh, phường Nguyễn Cư Trinh, Quận 1, TP. Hồ Chí Minh', '3', '1', 2, 311200, 'Chưa thanh toán xong'),
-('HD4', 'KH4', '25/4/2019', '58 Nguyễn Trãi, Phường 3, Quận 5, TP. Hồ Chí Minh', '3', '1', 5, 422900, 'Chưa thanh toán xong');
+('HD0', 'KH0', '2017-02-11 10:33:08', '478 Cách Mạng Tháng Tám, phường 11, Quận 3, TP. Hồ Chí Minh', '3', '1', 4, 530650, 'Chưa thanh toán xong'),
+('HD1', 'KH1', '2019-02-12 17:28:25', '12/33 Ngyễn Sỹ Sách , P15, Q.Tân Bình, TP HCM', '3', '1', 3, 240400, 'Đã thanh toán xong'),
+('HD2', 'KH2', '2018-01-03 09:23:26', '123 Trường Trinh, Q.Tân Bình, TP HCM', '3', '1', 2, 207400, 'Đã thanh toán xong'),
+('HD3', 'KH3', '2019-04-26 14:18:38', '189A Cống Quỳnh, phường Nguyễn Cư Trinh, Quận 1, TP. Hồ Chí Minh', '3', '1', 2, 311200, 'Chưa thanh toán xong'),
+('HD4', 'KH4', '2019-04-25 07:44:31', '58 Nguyễn Trãi, Phường 3, Quận 5, TP. Hồ Chí Minh', '3', '1', 5, 422900, 'Chưa thanh toán xong');
 
 --
 -- Chỉ mục cho các bảng đã đổ

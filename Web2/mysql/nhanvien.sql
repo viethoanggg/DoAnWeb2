@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2019 at 12:58 PM
+-- Generation Time: Apr 28, 2019 at 03:04 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -35,6 +35,7 @@ CREATE TABLE `nhanvien` (
   `MatKhau` varchar(100) NOT NULL,
   `Email` varchar(200) NOT NULL,
   `SĐT` varchar(20) NOT NULL,
+  `TrangThai` varchar(5) NOT NULL,
   `MaQuyen` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -42,17 +43,17 @@ CREATE TABLE `nhanvien` (
 -- Dumping data for table `nhanvien`
 --
 
-INSERT INTO `nhanvien` (`MaNhanVien`, `HoTen`, `TenDangNhap`, `MatKhau`, `Email`, `SĐT`, `MaQuyen`) VALUES
-('A0', 'Lê Việt Hoàng', 'viethoang123', '123456', 'hoanga15@gmail.com', '0987775322', '1'),
-('A1', 'Hoàng Minh Triết', 'triet123', '123456', 'trieta15@gmail.com', '0122375758', '1'),
-('A2', 'Ninh Ngọc Hiếu', 'hieu123', '123456', 'hieua15@gmail.com', '0123124344', '1'),
-('A3', 'Võ Văn Đại', 'dai123', '654321', 'daia15@gmail.com', '0984357345', '1'),
-('A4', 'Bùi Tiến Thông', 'thong123', '123456789', 'thonga15@gmail.com', '0934327223', '1'),
-('M0', 'Lê Đại Hành', 'hanh123', 'hanhhanh456', 'hanhaaa@gmail.com', '0128374634', '2'),
-('M1', 'Nguyễn Hùng Vương', 'vuong123', 'vuongnguyen444', 'vuong999@gmail.com', '0434253443', '2'),
-('M2', 'Trần Quốc Trung', 'trung123456', '123456', 'trungtran@gmail.com', '0165456789', '2'),
-('M3', 'Trần Quốc Tùng', 'tunglun123', 'tungtungtung', 'tungtrang@gmail.com', '0248390122', '2'),
-('M4', 'Phạm Hùng Vĩ', 'vivuive123456', 'vivuvi123', 'vipham@gmail.com', '0988343472', '2');
+INSERT INTO `nhanvien` (`MaNhanVien`, `HoTen`, `TenDangNhap`, `MatKhau`, `Email`, `SĐT`, `TrangThai`, `MaQuyen`) VALUES
+('A0', 'Lê Việt Hoàng', 'viethoang123', '123456', 'hoanga15@gmail.com', '0987775322', '0', '1'),
+('A1', 'Hoàng Minh Triết', 'triet123', '123456', 'trieta15@gmail.com', '0122375758', '0', '1'),
+('A2', 'Ninh Ngọc Hiếu', 'hieu123', '123456', 'hieua15@gmail.com', '0123124344', '0', '1'),
+('A3', 'Võ Văn Đại', 'dai123', '654321', 'daia15@gmail.com', '0984357345', '0', '1'),
+('A4', 'Bùi Tiến Thông', 'thong123', '123456789', 'thonga15@gmail.com', '0934327223', '0', '1'),
+('M0', 'Lê Đại Hành', 'hanh123', 'hanhhanh456', 'hanhaaa@gmail.com', '0128374634', '0', '2'),
+('M1', 'Nguyễn Hùng Vương', 'vuong123', 'vuongnguyen444', 'vuong999@gmail.com', '0434253443', '0', '2'),
+('M2', 'Trần Quốc Trung', 'trung123456', '123456', 'trungtran@gmail.com', '0165456789', '0', '2'),
+('M3', 'Trần Quốc Tùng', 'tunglun123', 'tungtungtung', 'tungtrang@gmail.com', '0248390122', '0', '2'),
+('M4', 'Phạm Hùng Vĩ', 'vivuive123456', 'vivuvi123', 'vipham@gmail.com', '0988343472', '0', '2');
 
 --
 -- Indexes for dumped tables
