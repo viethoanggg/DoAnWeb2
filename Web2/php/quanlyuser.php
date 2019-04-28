@@ -131,15 +131,15 @@ class QuanLyUser
 												."<td>".$row['Email']."</td>"
 												."<td>".$row['SĐT']."</td>";
 												if($row['TrangThai']=="0")	
-													$s=$s."<td><i class='fa fa-check '></i></td>";
+													$s=$s."<td><i class='fa fa-check' id='".$row['MaKH']."'></i></td>";
 												if($row['TrangThai']=="1")
-													$s=$s."<td><i class='fa fa-close '></i></td>";	
+													$s=$s."<td><i class='fa fa-close' id='".$row['MaKH']."'></i></td>";	
 												
 												
 												
 												$s=$s. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-file-o fa-fw'></i> Xem</a></td>"
-												. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
-												."<td><a href='deleteBook.php?masach=".$row['MaKH']."'><i class='fa fa-lock fa-fw'></i> Khóa</a></td>"
+												. "<td><a href='#' ><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
+												."<td><font style='color:#337ab7;cursor:pointer' onclick='khoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>"
 											."</tr>";
 										$i++;
 									}
@@ -293,14 +293,14 @@ class QuanLyUser
 												."<td>".$row['Email']."</td>"
 												."<td>".$row['SĐT']."</td>";
 												if($row['TrangThai']=="0")	
-													$s=$s."<td><i class='fa fa-check '></i></td>";
+													$s=$s."<td><i class='fa fa-check ' id='".$row['MaKH']."'></i></td>";
 												if($row['TrangThai']=="1")
-													$s=$s."<td><i class='fa fa-close '></i></td>";	
+													$s=$s."<td><i class='fa fa-close' id='".$row['MaKH']."'></i></td>";	
 												
 												
 												$s=$s. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-file-o fa-fw'></i> Xem</a></td>"
-												. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
-												."<td><a href='deleteBook.php?masach=".$row['MaKH']."'><i class='fa fa-lock fa-fw'></i> Khóa</a></td>"
+												. "<td><a href='#'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
+												."<td><font style='color:#337ab7;cursor:pointer' onclick='khoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>"
 											."</tr>";
 										$i++;
 									}
@@ -454,7 +454,7 @@ class QuanLyUser
 												if($row['TrangThai']=="0")	
 													$s=$s."<td><i class='fa fa-check '></i></td>";
 												if($row['TrangThai']=="1")
-													$s=$s."<td><i class='fa fa-close '></i></td>";	
+													$s=$s."<td><i class='fa fa-close' id='".$row['MaNhanVien']."'></i></td>";	
 												$s=$s."<td>".$row['MaQuyen']."</td>";
 												
 												
@@ -619,7 +619,7 @@ class QuanLyUser
 												if($row['TrangThai']=="0")	
 													$s=$s."<td><i class='fa fa-check '></i></td>";
 												if($row['TrangThai']=="1")
-													$s=$s."<td><i class='fa fa-close '></i></td>";	
+													$s=$s."<td><i class='fa fa-close ' id='".$row['MaNhanVien']."'></i></td>";	
 												$s=$s."<td>".$row['MaQuyen']."</td>";
 												
 												$s=$s. "<td><a href='editBook.php?masach=".$row['MaNhanVien']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"

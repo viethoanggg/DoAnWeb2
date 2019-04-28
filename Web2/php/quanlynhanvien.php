@@ -229,6 +229,20 @@
 										  xhttp.open("GET",url, true);
 										  xhttp.send();
 										}
+										
+									function LockUser()
+									{
+										require('DataProvider.php');
+										$sql="select COUNT(*) as numRows from khachhang";
+										$result=DataProvider::executeQuery($sql);
+										while($row=mysqli_fetch_array($result))
+										{
+											if($row['TrangThai']=="0")	
+												$row['TrangThai']=="1";
+											else if($row['TrangThai']=="1")
+												$row['TrangThai']=="0";	
+										}
+									}										
 								</script>
 							</div>
 							

@@ -242,6 +242,37 @@
 </div>
 
 
+<script>
+									
+		function khoauser(value) {
+			if(confirm("Bạn chắc có muốn khóa")==true)
+			{
+				var a=value.split("&");
+				var b=a[0].split("\=");
+				var c=a[1].split("\=");
+				if(c[1]=="0")
+				{
+					document.getElementById('b[1]').class='fa fa-check';
+				}
+				else if(c[1]=="1")
+				{
+					document.getElementById('b[1]').class='fa fa-close';
+				}
+				var xhttp;						
+				var url="LockUser.php?"+value;
+				xhttp = new XMLHttpRequest();							
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					alert("Đã thay đổi trạng thái");							
+					}
+					};	
+				xhttp.open("GET",url, true);
+				xhttp.send();
+			}
+		}
+</script>
+
+
 <?php
 	
 	if($_SESSION['login']['MaQuyen']=="1")
