@@ -10,10 +10,7 @@ if(isLogined()==true)
 	{
 		header("Location:admin.php");
 	}
-?>
 
-<<<<<<< HEAD
-//<!--<<<<<<< HEAD-->
 	?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -23,35 +20,16 @@ if(isLogined()==true)
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 		<!-- <script type="text/javascript" language="javascript" src="../js/jquery.js"></script> -->
-		<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
-		<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-		<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
 		<script type="text/javascript" language="javascript" src="../js/jquery-3.4.0.min.js"></script>
+		<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
+		<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
+		<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 		<style>
 			
 			.intro i {
 				color: #00cc66;
 				padding-right: 5px;
 			}
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Nhà sách OnePiece</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
-	<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
-	<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
-	<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
-	<script type="text/javascript" language="javascript" src="../js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
-</head>
-<body>
-	<!--------------- header --------------->
-	<nav class="navbar navbar-inverse " style="border-radius:0px">
-		<div class="container">
->>>>>>> a9c1023833ac48ba485d35b387b2dbbf40a0c9eb
 
 			.spinner {
 				width: 100px;
@@ -108,7 +86,6 @@ if(isLogined()==true)
 			<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
 			<div class="container">
 
-<<<<<<< HEAD
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 						<span class="icon-bar"></span>
@@ -129,18 +106,6 @@ if(isLogined()==true)
 											<i class="glyphicon glyphicon-search"></i>
 										</button>
 									</div>
-=======
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<div class="row">    
-					<div class="col-md-5 col-md-offset-2">
-						<form class="navbar-form navbar-left" action="" name="searchIndex">
-							<div class="input-group" >
-								<input type="text" class="form-control" placeholder="Tìm kiếm" name="search" size="44">
-								<div class="input-group-btn">
-									<button class="btn btn-default" type="submit">
-										<i class="glyphicon glyphicon-search"></i>
-									</button>
->>>>>>> a9c1023833ac48ba485d35b387b2dbbf40a0c9eb
 								</div>
 							</form>	
 						</div>
@@ -262,7 +227,6 @@ if(isLogined()==true)
 		</nav>
 		<!---------------------content sach ----------------------->
 		<div class="container" >
-			<button id="tang">asdasd</button>
 			<h3>Giỏ hàng</h3>
 			<hr style="border:1px solid black;">
 			<div id="giohangrong">
@@ -286,10 +250,10 @@ if(isLogined()==true)
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 							<td>'.'<div id="buyandnumber">'
 							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="number" class="form-control" value="1" name="sl" id="soluong" min="1">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1">'
 							.'<div class="input-group-btn-vertical">'
-							.'<button class="btn btn-default tang" type="button" ><i class="fa fa-caret-up"></i></button>'
-							.'<button class="btn btn-default giam" type="button"  ><i class="fa fa-caret-down"></i></button>'
+							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
+							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
 							.'</div>'
 							.'</div>'
 							.'</div>'.'</td>
@@ -305,7 +269,15 @@ if(isLogined()==true)
 							<a href="chitietsach.php?theloai=chuyennganh&masach='.$key.'"><img class="biasach" src="../images/chuyennganh/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+							<td>'.'<div id="buyandnumber">'
+							.'<div class="input-group spinner" id="nhapso">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1">'
+							.'<div class="input-group-btn-vertical">'
+							.'<button class="btn btn-default tang" type="button" ><i class="fa fa-caret-up"></i></button>'
+							.'<button class="btn btn-default giam" type="button"  ><i class="fa fa-caret-down"></i></button>'
+							.'</div>'
+							.'</div>'
+							.'</div>'.'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
 							</tr>';
 							$demsl+=$_SESSION["cart"][$key]["sl"];
@@ -318,7 +290,15 @@ if(isLogined()==true)
 							<a href="chitietsach.php?theloai=kynangsong&masach='.$key.'"><img class="biasach" src="../images/kynangsong/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+							<td>'.'<div id="buyandnumber">'
+							.'<div class="input-group spinner" id="nhapso">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1">'
+							.'<div class="input-group-btn-vertical">'
+							.'<button class="btn btn-default tang" type="button" ><i class="fa fa-caret-up"></i></button>'
+							.'<button class="btn btn-default giam" type="button"  ><i class="fa fa-caret-down"></i></button>'
+							.'</div>'
+							.'</div>'
+							.'</div>'.'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
 							</tr>';
 							$demsl+=$_SESSION["cart"][$key]["sl"];
@@ -331,7 +311,15 @@ if(isLogined()==true)
 							<a href="chitietsach.php?theloai=kinte&masach='.$key.'"><img class="biasach" src="../images/kinhte/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+							<td>'.'<div id="buyandnumber">'
+							.'<div class="input-group spinner" id="nhapso">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1">'
+							.'<div class="input-group-btn-vertical">'
+							.'<button class="btn btn-default tang" type="button" ><i class="fa fa-caret-up"></i></button>'
+							.'<button class="btn btn-default giam" type="button"  ><i class="fa fa-caret-down"></i></button>'
+							.'</div>'
+							.'</div>'
+							.'</div>'.'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
 							</tr>';
 							$demsl+=$_SESSION["cart"][$key]["sl"];
@@ -344,7 +332,15 @@ if(isLogined()==true)
 							<a href="chitietsach.php?theloai=lichsu&masach='.$key.'"><img class="biasach" src="../images/lichsu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+							<td>'.'<div id="buyandnumber">'
+							.'<div class="input-group spinner" id="nhapso">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1">'
+							.'<div class="input-group-btn-vertical">'
+							.'<button class="btn btn-default tang" type="button" ><i class="fa fa-caret-up"></i></button>'
+							.'<button class="btn btn-default giam" type="button"  ><i class="fa fa-caret-down"></i></button>'
+							.'</div>'
+							.'</div>'
+							.'</div>'.'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
 							</tr>';
 							$demsl+=$_SESSION["cart"][$key]["sl"];
@@ -357,7 +353,15 @@ if(isLogined()==true)
 							<a href="chitietsach.php?theloai=thieunhi&masach='.$key.'"><img class="biasach" src="../images/thieunhi/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+							<td>'.'<div id="buyandnumber">'
+							.'<div class="input-group spinner" id="nhapso">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1">'
+							.'<div class="input-group-btn-vertical">'
+							.'<button class="btn btn-default tang" type="button" ><i class="fa fa-caret-up"></i></button>'
+							.'<button class="btn btn-default giam" type="button"  ><i class="fa fa-caret-down"></i></button>'
+							.'</div>'
+							.'</div>'
+							.'</div>'.'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
 							</tr>';
 							$demsl+=$_SESSION["cart"][$key]["sl"];
@@ -370,7 +374,15 @@ if(isLogined()==true)
 							<a href="chitietsach.php?theloai=tuoiteen&masach='.$key.'"><img class="biasach" src="../images/tuoiteen/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+							<td>'.'<div id="buyandnumber">'
+							.'<div class="input-group spinner" id="nhapso">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1">'
+							.'<div class="input-group-btn-vertical">'
+							.'<button class="btn btn-default tang" type="button" ><i class="fa fa-caret-up"></i></button>'
+							.'<button class="btn btn-default giam" type="button"  ><i class="fa fa-caret-down"></i></button>'
+							.'</div>'
+							.'</div>'
+							.'</div>'.'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
 							</tr>';
 							$demsl+=$_SESSION["cart"][$key]["sl"];
@@ -383,7 +395,15 @@ if(isLogined()==true)
 							<a href="chitietsach.php?theloai=vanhoc&masach='.$key.'"><img class="biasach" src="../images/vanhoc/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.$_SESSION["cart"][$key]["sl"].'</td>
+							<td>'.'<div id="buyandnumber">'
+							.'<div class="input-group spinner" id="nhapso">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1">'
+							.'<div class="input-group-btn-vertical">'
+							.'<button class="btn btn-default tang" type="button" ><i class="fa fa-caret-up"></i></button>'
+							.'<button class="btn btn-default giam" type="button"  ><i class="fa fa-caret-down"></i></button>'
+							.'</div>'
+							.'</div>'
+							.'</div>'.'</td>
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
 							</tr>';
 							$demsl+=$_SESSION["cart"][$key]["sl"];
