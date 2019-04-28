@@ -75,3 +75,9 @@ function formatNumber(nStr, decSeperate, groupSeperate) {
 	}
 	return x1 + x2;
 }
+$(document).ready(function(){
+	$("#tang").click(function(){
+		debugger;
+		alert("xin chao");
+	})
+});
