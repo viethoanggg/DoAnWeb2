@@ -252,11 +252,11 @@
 				var c=a[1].split("\=");
 				if(c[1]=="0")
 				{
-					document.getElementById('b[1]').class='fa fa-check';
+					document.getElementById(b[1]).setAttribute('class','fa fa-check');
 				}
 				else if(c[1]=="1")
 				{
-					document.getElementById('b[1]').class='fa fa-close';
+					document.getElementById(b[1]).setAttribute('class','fa fa-close');
 				}
 				var xhttp;						
 				var url="LockUser.php?"+value;
