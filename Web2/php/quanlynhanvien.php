@@ -229,20 +229,7 @@
 										  xhttp.open("GET",url, true);
 										  xhttp.send();
 										}
-										
-									function LockUser()
-									{
-										require('DataProvider.php');
-										$sql="select COUNT(*) as numRows from khachhang";
-										$result=DataProvider::executeQuery($sql);
-										while($row=mysqli_fetch_array($result))
-										{
-											if($row['TrangThai']=="0")	
-												$row['TrangThai']=="1";
-											else if($row['TrangThai']=="1")
-												$row['TrangThai']=="0";	
-										}
-									}										
+																		
 								</script>
 							</div>
 							
@@ -255,6 +242,37 @@
     </div>
 
 </div>
+
+<script>
+									
+		function khoanhanvien(value) {
+			if(confirm("Bạn chắc có muốn khóa")==true)
+			{
+				var a=value.split("&");
+				var b=a[0].split("\=");
+				var c=a[1].split("\=");
+				if(c[1]=="0")
+				{
+					document.getElementById(b[1]).setAttribute('class','fa fa-check');
+				}
+				else if(c[1]=="1")
+				{
+					document.getElementById(b[1]).setAttribute('class','fa fa-close');
+				}
+				var xhttp;						
+				var url="LockNhanVien.php?"+value;
+				xhttp = new XMLHttpRequest();							
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					alert("Đã thay đổi trạng thái");							
+					}
+					};	
+				xhttp.open("GET",url, true);
+				xhttp.send();
+			}
+		}
+</script>
+
 
 <?php
 	

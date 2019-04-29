@@ -4,7 +4,12 @@
 	require('common.php');
 	if(isLogined()==true)
 	{
-		if($_SESSION['login']['MaQuyen']=="1" || $_SESSION['login']['MaQuyen']=="2" )
+		if($_SESSION['login']['TrangThai']=='1')
+		{
+			echo "alert(\"Tài khoản đang bị tạm khóa\")";
+			header("Location:DangNhap.php");
+		}
+		else if($_SESSION['login']['MaQuyen']=="1" || $_SESSION['login']['MaQuyen']=="2" )
 			header("Location:admin.php");
 		else 
 		{
@@ -66,7 +71,10 @@
                                         <label>
                                             <input name="remember" type="checkbox" value="nhomatkhau">Nhớ mật khẩu
                                         </label>
-                                    </div><i style="color:red" id='loidn'><?php if(isset($_GET['loidangnhap']) && $_GET['loidangnhap']=="1" ) echo "Tên đăng nhập hoặc mật khẩu không đúng" ?></i>
+                                    </div><i style="color:red" id='loidn'><?php if(isset($_GET['loidangnhap']) && $_GET['loidangnhap']=="1" ) echo "Tên đăng nhập hoặc mật khẩu không đúng";
+																				else if(isset($_GET['loitrangthai']) && $_GET['loitrangthai']=="1") echo "Tài khoản đang bị tạm khóa";
+																		  ?>
+									</i>
                                     <!-- Change this to a button or input when using this as a form -->
 									<div class="form-group">
                                         <input class="form-control" name="dangnhap" type="hidden" value="1">
