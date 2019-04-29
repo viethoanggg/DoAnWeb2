@@ -97,14 +97,16 @@ function giam(id){
 	ajax(id,i);
 }
 function thaydoi(id){
-	var i= Number($("#"+id+" "+"input").val());
-	while(i<=0){
-		alert("Nhập số lượng không phù hợp!!!");
-		i=1;
-		$("#"+id+" "+"input").val(i);
+	var u=/^[0-9]+$/;
+		var i= Number($("#"+id+" "+"input").val());
+		while(i<1){
+			debugger;
+			alert("Nhập số lượng không phù hợp!!!");
+			i=1;
+			$("#"+id+" "+"input").val(i);
+			ajax(id,i);
+		}
 		ajax(id,i);
-	}
-	ajax(id,i);
 }
 function ajax(id,i){
 	$.ajax({
