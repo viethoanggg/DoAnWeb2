@@ -41,6 +41,7 @@ function xoasp(masach){
 				$('#tong').text(formatNumber(JSON.parse(data).tongtien,".",",")+"đ");
 				$('#thanhtien').text(formatNumber(JSON.parse(data).tongtien+50000,".",",")+"đ");
 				$("tr#"+masach+"").hide();
+				//alert(data);
 			}
 			else{
 				$('.badge.badge-secondary ').text(0);
@@ -92,9 +93,13 @@ function tang(id){
 			"update": 1//1 là update
 		}
 	}).done(function(data){
-		alert("hello");
 		if(data!="false"){
-			alert(data);
+			$('.badge.badge-secondary ').text(JSON.parse(data).sl);
+			$('#demsl').text(JSON.parse(data).sl);
+			$('tr#'+JSON.parse(data).masach+' td:last').text(formatNumber(JSON.parse(data).tiensach,".",",")+"đ");
+			$('#tong').text(formatNumber(JSON.parse(data).tongtien,".",",")+"đ");
+			$('#thanhtien').text(formatNumber(JSON.parse(data).tongtien+50000,".",",")+"đ");
+			//alert(JSON.parse(data).tiensach);
 		}
 	})
 }
