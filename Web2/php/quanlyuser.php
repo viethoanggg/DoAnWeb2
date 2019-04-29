@@ -459,7 +459,7 @@ class QuanLyUser
 												
 												
 												$s=$s. "<td><a href='editBook.php?masach=".$row['MaNhanVien']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
-												."<td><a href='deleteBook.php?masach=".$row['MaNhanVien']."'><i class='fa fa-lock fa-fw'></i> Khóa</a></td>"
+												."<td><font style='color:#337ab7;cursor:pointer' onclick='khoanhanvien(\"MaNhanVien=".$row['MaNhanVien']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>"
 											."</tr>";
 										$i++;
 									}
@@ -623,7 +623,7 @@ class QuanLyUser
 												$s=$s."<td>".$row['MaQuyen']."</td>";
 												
 												$s=$s. "<td><a href='editBook.php?masach=".$row['MaNhanVien']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
-												."<td><a href='deleteBook.php?masach=".$row['MaNhanVien']."'><i class='fa fa-lock fa-fw'></i> Khóa</a></td>"
+												."<td><font style='color:#337ab7;cursor:pointer' onclick='khoanhanvien(\"MaNhanVien=".$row['MaNhanVien']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>"
 											."</tr>";
 										$i++;
 									}

@@ -41,6 +41,7 @@ function xoasp(masach){
 				$('#tong').text(formatNumber(JSON.parse(data).tongtien,".",",")+"đ");
 				$('#thanhtien').text(formatNumber(JSON.parse(data).tongtien+50000,".",",")+"đ");
 				$("tr#"+masach+"").hide();
+				//alert(data);
 			}
 			else{
 				$('.badge.badge-secondary ').text(0);
@@ -83,20 +84,7 @@ function tang(id){
 	i++;
 	$("#"+id+" "+"input").val(i);
 	//$("#"+id+" "+"input").val();
-	$.ajax({
-		type: "GET",
-		url: "updategiohang.php",
-		data:{
-			"masach": id,
-			"slsach":i,
-			"update": 1//1 là update
-		}
-	}).done(function(data){
-		alert("hello");
-		if(data!="false"){
-			alert(data);
-		}
-	})
+	ajax(id,i);
 }
 function giam(id){
 	//alert(id);
@@ -106,4 +94,37 @@ function giam(id){
 		i--;
 		$("#"+id+" "+"input").val(i);
 	}
+	ajax(id,i);
+}
+function thaydoi(id){
+	var u=/^[0-9]+$/;
+		var i= Number($("#"+id+" "+"input").val());
+		while(i<1){
+			debugger;
+			alert("Nhập số lượng không phù hợp!!!");
+			i=1;
+			$("#"+id+" "+"input").val(i);
+			ajax(id,i);
+		}
+		ajax(id,i);
+}
+function ajax(id,i){
+	$.ajax({
+		type: "GET",
+		url: "updategiohang.php",
+		data:{
+			"masach": id,
+			"slsach":i,
+			"update": 1//1 là update
+		}
+	}).done(function(data){
+		if(data!="false"){
+			$('.badge.badge-secondary ').text(JSON.parse(data).sl);
+			$('#demsl').text(JSON.parse(data).sl);
+			$('tr#'+JSON.parse(data).masach+' td:last').text(formatNumber(JSON.parse(data).tiensach,".",",")+"đ");
+			$('#tong').text(formatNumber(JSON.parse(data).tongtien,".",",")+"đ");
+			$('#thanhtien').text(formatNumber(JSON.parse(data).tongtien+50000,".",",")+"đ");
+			//alert(JSON.parse(data).tiensach);
+		}
+	})
 }
