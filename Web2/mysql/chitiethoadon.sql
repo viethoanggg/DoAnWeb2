@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 26, 2019 lúc 10:23 AM
+-- Thời gian đã tạo: Th4 29, 2019 lúc 05:06 PM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
 -- Phiên bản PHP: 7.2.17
 
@@ -33,7 +33,7 @@ CREATE TABLE `chitiethoadon` (
   `MaSach` varchar(10) NOT NULL,
   `SoLuong` int(20) NOT NULL,
   `TongTienCT` int(20) NOT NULL,
-  `NgayGiaoHang` varchar(100) NOT NULL,
+  `NgayGiaoHang` date NOT NULL,
   `TinhTrangCT` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -42,22 +42,22 @@ CREATE TABLE `chitiethoadon` (
 --
 
 INSERT INTO `chitiethoadon` (`MaHD`, `MaSach`, `SoLuong`, `TongTienCT`, `NgayGiaoHang`, `TinhTrangCT`) VALUES
-('HD0', 'KNS0', 1, 169150, '15/2/2017', 'Hàng đang nhập từ kho'),
-('HD0', 'KT5', 1, 159200, '16/2/2017', 'Hàng đang nhập từ kho'),
-('HD0', 'TN4', 1, 127500, '17/2/2017', 'Hàng đang nhập từ kho'),
-('HD0', 'TT0', 1, 74800, '15/2/2017', 'Hàng đang nhập từ kho'),
-('HD1', 'CN1', 1, 68000, '14/02/2019', 'Đã giao hàng'),
-('HD1', 'CN11', 1, 94400, '14/02/2019', 'Đã giao hàng'),
-('HD1', 'TN1', 1, 78000, '15/2/2019', 'Đã giao hàng'),
-('HD2', 'KT0', 1, 84150, '08/01/2018', 'Đã giao hàng'),
-('HD2', 'TN2', 1, 123250, '08/01/2018', 'Đã giao hàng'),
-('HD3', 'LS0', 1, 160000, '29/4/2019', 'Hàng đang nhập từ kho'),
-('HD3', 'LS4', 1, 151200, '29/4/2019', 'Hàng đang nhập từ kho'),
-('HD4', 'NN0', 1, 74700, '30/4/2019', 'Hàng đang nhập từ kho'),
-('HD4', 'TT10', 1, 56700, '30/4/2019', 'Hàng đang nhập từ kho'),
-('HD4', 'VH10', 1, 148000, '30/4/2019', 'Hàng đang nhập từ kho'),
-('HD4', 'VH3', 1, 67500, '30/4/2019', 'Hàng đang nhập từ kho'),
-('HD4', 'VH5', 1, 76000, '30/4/2019', 'Hàng đang nhập từ kho');
+('HD0', 'KNS0', 1, 169150, '2017-02-15', 'Hàng đang nhập từ kho'),
+('HD0', 'KT5', 1, 159200, '2017-02-16', 'Hàng đang nhập từ kho'),
+('HD0', 'TN4', 1, 127500, '2017-02-17', 'Hàng đang nhập từ kho'),
+('HD0', 'TT0', 1, 74800, '2017-02-17', 'Hàng đang nhập từ kho'),
+('HD1', 'CN1', 1, 68000, '2019-02-14', 'Đã giao hàng'),
+('HD1', 'CN11', 1, 94400, '2019-02-15', 'Đã giao hàng'),
+('HD1', 'TN1', 1, 78000, '2019-02-15', 'Đã giao hàng'),
+('HD2', 'KT0', 1, 84150, '2018-01-08', 'Đã giao hàng'),
+('HD2', 'TN2', 1, 123250, '2018-01-08', 'Đã giao hàng'),
+('HD3', 'LS0', 1, 160000, '0000-00-00', 'Hàng đang nhập từ kho'),
+('HD3', 'LS4', 1, 151200, '2019-04-29', 'Hàng đang nhập từ kho'),
+('HD4', 'NN0', 1, 74700, '2019-04-29', 'Hàng đang nhập từ kho'),
+('HD4', 'TT10', 1, 56700, '2019-04-30', 'Hàng đang nhập từ kho'),
+('HD4', 'VH10', 1, 148000, '2019-04-30', 'Hàng đang nhập từ kho'),
+('HD4', 'VH3', 1, 67500, '2019-04-30', 'Hàng đang nhập từ kho'),
+('HD4', 'VH5', 1, 76000, '2019-04-30', 'Hàng đang nhập từ kho');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -231,20 +231,23 @@
 									
 									function capnhathoadon(value) {
 										var xhttp;
-										//var trangthai=document.getElementById('tinhtrang').value;
-										//var mhd=document.getElementById('mhd').value;
-										//var ms=document.getElementById('ms').value;
 										var url="capnhathoadon.php?"+value;
 										xhttp = new XMLHttpRequest();							
 										xhttp.onreadystatechange = function() {
 										if (this.readyState == 4 && this.status == 200) {
 												alert("Đã thay đổi trạng thái");
-												//alert(value);
 											}
 										  };
-										//  window.location.href=url;
+										
 										  xhttp.open("GET",url, true);
 										  xhttp.send();
+										}
+									function xoachitiethoadon(value)
+										{
+											if(confirm("Bạn có muốn xóa")==true)
+											{
+												window.location.href="deleteHoaDon.php?"+value;
+											}
 										}
 								</script>
 							</div>
