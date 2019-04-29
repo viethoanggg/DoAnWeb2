@@ -1,3 +1,24 @@
+<?php
+	ini_set('session.auto_start',0);
+	ini_set('session.cookie_lifetime',0);
+	session_start();
+	require('common.php');
+	//kiểm tra tk có bị khóa không
+	if(isLogined()==true)
+	{
+		if($_SESSION['login']['TrangThai']=='1')
+		{
+			echo "alert(\"Tài khoản đang bị tạm khóa\")";
+			header("Location:DangNhap.php");
+		}
+		else if($_SESSION['login']['MaQuyen']=="1" || $_SESSION['login']['MaQuyen']=="2" )
+		{
+			echo "alert('Bạn không có quyền vào trang này')";
+			header("Location:admin.php");
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,7 +84,10 @@
 
 				<div class="text-center p-t-5 p-b-20">
 					<span class="txt3" id="kiemtra">
-						<i style="color:red"><?php if(isset($_GET['loidangnhap']) && $_GET['loidangnhap']=="1" ) echo "Tên đăng nhập hoặc mật khẩu không đúng" ?></i>
+						<i style="color:red"><?php if(isset($_GET['loidangnhap']) && $_GET['loidangnhap']=="1" ) echo "Tên đăng nhập hoặc mật khẩu không đúng"; 
+												   else if(isset($_GET['loitrangthai']) && $_GET['loitrangthai']=="1") echo "Tài khoản đang bị tạm khóa";
+											 ?>
+						</i>
 					</span>
 				</div>
 				
