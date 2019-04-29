@@ -84,6 +84,29 @@ function tang(id){
 	i++;
 	$("#"+id+" "+"input").val(i);
 	//$("#"+id+" "+"input").val();
+	ajax(id,i);
+}
+function giam(id){
+	//alert(id);
+	//alert("Giam");
+	var i= Number($("#"+id+" "+"input").val());
+	if(i>1){
+		i--;
+		$("#"+id+" "+"input").val(i);
+	}
+	ajax(id,i);
+}
+function thaydoi(id){
+	var i= Number($("#"+id+" "+"input").val());
+	while(i<=0){
+		alert("Nhập số lượng không phù hợp!!!");
+		i=1;
+		$("#"+id+" "+"input").val(i);
+		ajax(id,i);
+	}
+	ajax(id,i);
+}
+function ajax(id,i){
 	$.ajax({
 		type: "GET",
 		url: "updategiohang.php",
@@ -102,13 +125,4 @@ function tang(id){
 			//alert(JSON.parse(data).tiensach);
 		}
 	})
-}
-function giam(id){
-	//alert(id);
-	//alert("Giam");
-	var i= Number($("#"+id+" "+"input").val());
-	if(i>1){
-		i--;
-		$("#"+id+" "+"input").val(i);
-	}
 }
