@@ -5,16 +5,28 @@
 	{
 		if(login()==true)
 		{
-			header("Location:../index.php");
+			if(kiemtratrangthai()==false)
+			{
+				header("Location:xulydangnhapUser.php?dangxuat=1&loitrangthai=1");
+			}
+			else
+				header("Location:../index.php");
 		}
 		else
 		{
 			header("Location:DangNhap.php?loidangnhap=1");
 		}
+		
+		
 	}
 	else if(isset($_REQUEST['dangxuat']) && $_REQUEST['dangxuat']=="1")
 	{
 		$_SESSION['login']= NULL;
+		if(isset($_REQUEST['loitrangthai']) && $_REQUEST['loitrangthai']=="1")
+		{
+			header("Location:DangNhap.php?loitrangthai=1");
+		}
+		else 
 		header("Location:../index.php");
 	}
 	
@@ -34,6 +46,7 @@
 			{
 				$_SESSION['login']=array('TenDangNhap' => $tendangnhap,
 										  'MaQuyen' => $row['MaQuyen'],
+										  'TrangThai' => $row['TrangThai'],
 										  'HoTen' => $row['HoTen'],
 										  'MaKH' => $row['MaKH'],
 										  'Email' => $row['Email'],
@@ -44,5 +57,22 @@
 		}
 		return false;
 			
+	}
+	
+	function kiemtratrangthai()
+	{
+		//require('DataProvider.php');
+		$tendangnhap=$_POST['username'];
+		$sql="select * from khachhang where TenDangNhap='".$tendangnhap."'";
+		$result=DataProvider::executeQuery($sql);
+		if(mysqli_num_rows($result)==1)
+		{
+			$row=mysqli_fetch_array($result);
+			if($row['TrangThai']=='1')
+			{						  
+				return false;
+			}
+		}
+		return true;
 	}
 ?>
