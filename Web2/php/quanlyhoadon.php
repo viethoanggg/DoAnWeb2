@@ -27,10 +27,11 @@
   <title>Nhà sách OnePiece</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" >
 <script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 <!--<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>-->
 <script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
+
 <!-- MetisMenu CSS -->
     <link href="../css/admin/metisMenu.min.css" rel="stylesheet">
 
@@ -141,53 +142,92 @@
 						</div>
 						
 						<div class="panel-body">
-							
-							<div class="row">
-								<form name="timkiemhoadon">
-							
-									<div class="col-lg-3" style="margin-top:17px;">
-										<select name="trangthai" class="form-control">
-											<option value="">Tất cả trạng thái</option>
-											<option value="1">Đã thanh toán xong</option>
-											<option value="0">Chưa thanh toán xong</option>
-										</select>
-									</div>
-									
+							<form name="timkiemhoadon" method="get" action="">
+								<div class="row">
+
 									<div class="col-lg-6">
 										<div class="panel panel-default">
-											<div class="panel-body">
-												<div class="row">
-													<div class="col-lg-4">
-														<select name="timkiemtheoloai" class="form-control">
-															<option value="">Chọn</option>
-															<option value="MaHD">Mã hóa đơn</option>
-															<option value="MaKH">Mã khách hàng</option>
-															<option value="NgayDatHang">Ngày đặt hàng</option>
-														</select>
-													</div>
-									
-										
-													<div class="col-lg-8">
-											
-														<div class="input-group" >
-															<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem">
-															<div class="input-group-btn">
-																<button class="btn btn-default" type="submit">
-																	<i class="glyphicon glyphicon-search"></i>
-																</button>
+												<div class="panel-heading">
+													Ngày đặt đơn hàng
+												</div>
+												<div class="panel-body">
+													<div class="row">
+														<div class="col-lg-6">
+															<div class="form-group">
+																<label>Từ</label>
+																<div class='input-group date' id='ngay-tu'>
+																	
+																	<input type='text' class="form-control" name='ngaytu'>
+																	<span class="input-group-addon">
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																</div>
 															</div>
 														</div>
+													
+														<div class="col-lg-6">
+															<div class="form-group">
+																<label>Đến</label>
+																<div class='input-group date' id='ngay-den'>
+																	
+																	<input type='text' class="form-control" name='ngayden'>
+																	<span class="input-group-addon">
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<script type="text/javascript">
+														$(function () {
+															$('#ngay-tu').datetimepicker({
+																format: 'YYYY-MM-DD hh:mm:ss',
+																useCurrent: false
+															});
+															$('#ngay-den').datetimepicker({
+																format: 'YYYY-MM-DD hh:mm:ss'
+																
+															});
+															$("#ngay-tu").on("dp.change", function (e) {
+																$('#ngay-den').data("DateTimePicker").minDate(e.date);
+															});
+															$("#ngay-den").on("dp.change", function (e) {
+																$('#ngay-tu').data("DateTimePicker").maxDate(e.date);
+															});
+														});
+													</script>
+												</div>
+										</div>
+										
+									</div>
+									
+									<div class="col-lg-6" style="margin-top:0px;">
+										<div class="panel panel-default">
+											<div class="panel-body" style="padding-bottom:12px;">
+												<label>Trạng thái đơn hàng</label>
+												<div class="input-group" >
+													<select name="tinhtrang" class="form-control">
+														<option value="">Tất cả trạng thái</option>
+														<option value="Đã thanh toán xong">Đã thanh toán xong</option>
+														<option value="Chưa thanh toán xong">Chưa thanh toán xong</option>
+													</select>
+												</div>
+												<label>Tìm tên KH</label>
+												<div class="input-group" >
+													<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem">
+													<div class="input-group-btn">
+														<button class="btn btn-default" type="submit">
+															<i class="glyphicon glyphicon-search"></i>
+														</button>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="col-lg-3" style="margin-top:20px;">
-										<i style="color:red" id="thongbaoloi"></i>
-									</div>
-								</form>	
-							</div>
-							
+								
+
+								</div>
+							</form>	
 							<!------------------------table-------------------------------------------------------------->
 							<style>
 								#gg td,#gg th
@@ -252,6 +292,10 @@
 <!-- Custom Theme JavaScript -->
 <script src="../js/admin/startmin.js"></script>
 
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-datetimepicker.css" />
+<script type="text/javascript" src="../js/moment.js"></script>
+<script type="text/javascript" src="../bootstrap/dist/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.js"></script>
 </body>
 </html>
 
