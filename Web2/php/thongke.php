@@ -11,14 +11,12 @@
 	}
 	//đã đang nhập
 	else if(isLogined()==true)
-	{
 		// kiểm tra đây là khách hàng thì về trang chủ kh
 		if($_SESSION['login']['MaQuyen'] != "1" && $_SESSION['login']['MaQuyen'] != "2" )
-			header("Location:../index.php");
-		//kiểm tra nếu là admin thì về trang admin.php, đây là trang của manager
-		else if($_SESSION['login']['MaQuyen']=="1")
-			header("Location:admin.php");
-	}
+		{
+				header("Location:../index.php");
+		}
+	
 	
 ?>
 <!DOCTYPE html>
@@ -27,11 +25,10 @@
   <title>Nhà sách OnePiece</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" >
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 <script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 <!--<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>-->
 <script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
-
 <!-- MetisMenu CSS -->
     <link href="../css/admin/metisMenu.min.css" rel="stylesheet">
 
@@ -125,185 +122,150 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Quản lý hóa đơn</h1>
+                    <h1 class="page-header">Thống kê</h1>
                 </div>
             </div>
-			
-	<!---------------------------------hien san pham ----------------------------------->
-            <!-- ... Your content goes here ... -->
-			
-			
-			<div clas="row">
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-						
-						<div class="panel-heading">
-							Danh sách hóa đơn
-						</div>
-						
-						<div class="panel-body">
-							<form name="timkiemhoadon" method="get" action="">
-								<div class="row">
 
-									<div class="col-lg-6">
-										<div class="panel panel-default">
-												<div class="panel-heading">
-													Ngày đặt đơn hàng
-												</div>
-												<div class="panel-body">
-													<div class="row">
-														<div class="col-lg-6">
-															<div class="form-group">
-																<label>Từ</label>
-																<div class='input-group date' id='ngay-tu'>
-																	
-																	<input type='text' class="form-control" name='ngaytu' onchange="showHoaDonAjax()" onkeyup="showHoaDonAjax()" value="<?php if(isset($_GET['ngaytu'])) echo $_GET['ngaytu']; ?>">
-																	<span class="input-group-addon">
-																		<span class="glyphicon glyphicon-calendar"></span>
-																	</span>
-																</div>
-																<p><i>(yyyy-mm-dd)</i></p>
-															</div>
-														</div>
+			
+			
+            <!-- ... Your content goes here ... -->
+			<form name="thongke" action="" method="get">
+				<div class="panel panel-default">
+					<div class="panel-body">			
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="col-lg-12"><div class="row"><label style="font-size:1.4em">Thời gian</label></div></div>
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="row">
+												<div class="col-lg-6">
 													
-														<div class="col-lg-6">
-															<div class="form-group">
-																<label>Đến</label>
-																<div class='input-group date' id='ngay-den'>
-																	
-																	<input type='text' class="form-control" name='ngayden' onchange="showHoaDonAjax()" onkeyup="showHoaDonAjax()" value="<?php if(isset($_GET['ngayden'])) echo $_GET['ngayden']; ?>">
-																	<span class="input-group-addon">
-																		<span class="glyphicon glyphicon-calendar"></span>
-																	</span>
-																</div>
-																<p><i>(yyyy-mm-dd)</i></p>
-															</div>
+													<div class="form-group">
+														<label>Từ</label>
+														<div class='input-group date' id='ngay-tu'>
+																						
+															<input type='text' class="form-control" name='ngaytu' value="<?php if(isset($_GET['ngaytu'])) echo $_GET['ngaytu']; ?>">
+																<span class="input-group-addon">
+																	<span class="glyphicon glyphicon-calendar"></span>
+																</span>
 														</div>
-													</div>
-													<script type="text/javascript">
-														$(function () {
-															$('#ngay-tu').datetimepicker({
-																format: 'YYYY-MM-DD hh:mm:ss',
-																useCurrent: false
-															});
-															$('#ngay-den').datetimepicker({
-																format: 'YYYY-MM-DD hh:mm:ss'
-																
-															});
-															$("#ngay-tu").on("dp.change", function (e) {
-																$('#ngay-den').data("DateTimePicker").minDate(e.date);
-															});
-															$("#ngay-den").on("dp.change", function (e) {
-																$('#ngay-tu').data("DateTimePicker").maxDate(e.date);
-															});
-														});
-													</script>
+														<p><i>(yyyy-mm-dd)</i></p>
+													</div>	
 												</div>
-										</div>
-										
-									</div>
-									
-									<div class="col-lg-6" style="margin-top:0px;">
-										<div class="panel panel-default">
-											<div class="panel-body" style="padding-bottom:20px;">
-												<label>Trạng thái đơn hàng</label>
-												<div class="input-group" >
-													<select name="tinhtrang" class="form-control" onchange="showHoaDonAjax()">
-														<option value="">Tất cả trạng thái</option>
-														<option value="Đã thanh toán xong">Đã thanh toán xong</option>
-														<option value="Chưa thanh toán xong">Chưa thanh toán xong</option>
-													</select>
-												</div>
-												<label style="margin-top:13px;">Tìm tên KH</label>
-												<div class="input-group" >
-													<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem" onkeyup="showHoaDonAjax()">
-													<div class="input-group-btn">
-														<button class="btn btn-default" type="submit">
-															<i class="glyphicon glyphicon-search"></i>
-														</button>
+												<div class="col-lg-6">
+													<div class="form-group">
+														<label>Đến</label>
+														
+														<div class='input-group date' id='ngay-den'>				
+															<input type='text' class="form-control" name='ngayden' value="<?php if(isset($_GET['ngayden'])) echo $_GET['ngayden']; ?>">
+															<span class="input-group-addon">
+																<span class="glyphicon glyphicon-calendar"></span>
+															</span>
+														</div>
+															<p><i>(yyyy-mm-dd)</i></p>
 													</div>
 												</div>
 											</div>
-										</div>
+										</div>		
 									</div>
-								
-
-								</div>
-							</form>	
-							<!------------------------table-------------------------------------------------------------->
-							<style>
-								#gg td,#gg th
-								{
-									text-align:center;
-									vertical-align:middle;
-								}
-							</style>
-							<div class="row" style="margin-top:10px">
-								
-								<div class="col-lg-12" id="hoadon">
-									<?php
-										require('DataProvider.php');
-										require('Bill.php');
-										Bill::updateBill();
-										Bill::showBill();
-									?>
-								</div>
-								
 							</div>
-							
+						<!--------------------------------------------------------------------------------------------------------->
+										<div class="col-lg-6">
+											<label style="font-size:1.4em">Thể loại</label>
+											<div class="input-group" style="margin-top:24px;">
+												<select name="theloai" class="form-control">
+													<option value="" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="") echo 'selected' ?> >Tất cả thể loại</option>
+													<option value="NN" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="NN") echo 'selected' ?>>Ngoại ngữ</option>
+													<option value="KT" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="KT") echo 'selected' ?>>Kinh tế</option>
+													<option value="KNS" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="KNS") echo 'selected' ?>>Kỹ năng sống</option>
+													<option value="LS" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="LS") echo 'selected' ?>>Lịch sử</option>
+													<option value="CN" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="CN") echo 'selected' ?>>Chuyên ngành</option>
+													<option value="TN" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="TN") echo 'selected' ?>>Thiếu nhi</option>
+													<option value="TT" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="TT") echo 'selected' ?>>Tuổi teen</option>
+													<option value="VH" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="VH") echo 'selected' ?>>Văn học</option>
+												</select>
+												<div class="input-group-btn">
+													<button class="btn btn-default" type="submit">
+														<i class="glyphicon glyphicon-search"></i>
+													</button>
+												</div>
+											</div>
+										</div>
 						</div>
 					</div>
 				</div>
-			</div>
-
-        </div>
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<p style="font-size:1.3em;">Tất cả loại sản phẩm</p>
+								<hr>
+								<div class="input-group" >
+									<b style="font-size:1.2em;margin-right:20px">Tổng Số lượng :</b>
+									<font style="font-size:1.2em" id="AllSoLuong">123</font>
+								</div>
+								<div class="input-group" >
+									<b style="font-size:1.2em;margin-right:20px">Tổng doanh thu :</b>
+									<font style="font-size:1.2em" id="AllDoanhThu">123</font>
+								</div>
+							</div>
+						</div>
+						<!----------------------------------------------------------------------------------->
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<p style="font-size:1.3em;">Một loại sản phẩm</p>
+								<hr>
+								<div class="input-group" >
+									<b style="font-size:1.2em;margin-right:20px">Tổng Số lượng :</b>
+									<font style="font-size:1.2em" id="SoLuong">123</font>
+								</div>
+								<div class="input-group" >
+									<b style="font-size:1.2em;margin-right:20px">Tổng doanh thu :</b>
+									<font style="font-size:1.2em" id="DoanhThu">123</font>
+								</div>
+								<div class="input-group" >
+									<b style="font-size:1.2em;margin-right:20px">Chiếm tỉ lệ :</b>
+									<font style="font-size:1.2em" id="ChiemTiLe">123</font>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<!------------------------------------------------------------------------------------------->
+					<div class="col-lg-8">
+						<div class="panel panel-default">
+							<div class="panel-body" id="thongkesanpham">
+								<?php
+									require('DataProvider.php');
+									require('ShowThongKe.php');
+									thongkesanpham();
+								?>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<b style="font-size:1.7em;">Sản phẩm bán chạy</b>
+						<span style="float:right;">
+							<i>Hiển thị : </i><input type="text" name="top" style="padding:5px" size="5" value="<?php if(isset($_GET['top']) && $_GET['top']!="" ) echo $_GET['top']; else echo "1" ?>">
+						</span>
+						<hr style="clear:both;">
+						<div id="sanphambanchay">
+							<?php
+									topsanphambanchay();
+								?>
+						</div>
+					</div>
+				</div>
+				
+			</form>
+		</div>
     </div>
 
 </div>
-								<script>
-									
-									function showHoaDonAjax() {
-										var xhttp;
-										var tinhtrang=document.forms['timkiemhoadon']['tinhtrang'].value;
-										var timkiem=document.forms['timkiemhoadon']['timkiem'].value;
-										var ngaytu=document.forms['timkiemhoadon']['ngaytu'].value;
-										var ngayden=document.forms['timkiemhoadon']['ngayden'].value;
-										var url="showHoaDonAjax.php?";
-										if (tinhtrang == "") 
-											url=url+"tinhtrang=&";
-										else 
-											url=url+"tinhtrang="+tinhtrang+"&";
-										if(ngaytu=="" && ngayden=="")
-											url=url+"ngaytu=&ngayden=&";
-										else 
-											url=url+"ngaytu="+ngaytu+"&ngayden="+ngayden+"&";
-										if(timkiem=="")
-											url=url+"timkiem=";
-										else
-											url=url+"timkiem="+timkiem;
-										/*alert(url);
-										window.location.href=url;*/
-										
-										xhttp = new XMLHttpRequest();
-										xhttp.onreadystatechange = function() {
-										if (this.readyState == 4 && this.status == 200) {
-											document.getElementById("hoadon").innerHTML = this.responseText;
-											}
-										  };
-										  xhttp.open("GET",url, true);
-										  xhttp.send();
-										}
-										<!--------------------------------------------------------------------------------------------------------------->
-										
-										function xoahoadon(e)
-										{
-											if(confirm("Bạn có muốn xóa")==true)
-											{
-												window.location.href="deleteHoaDon.php?xoahoadon=1&MaHD="+e;
-											}
-										}
-										
-								</script>
+
 <?php
 	
 	if($_SESSION['login']['MaQuyen']=="1")
@@ -337,11 +299,28 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="../js/admin/startmin.js"></script>
-
 <link rel="stylesheet" type="text/css" href="../css/bootstrap-datetimepicker.css" />
 <script type="text/javascript" src="../js/moment.js"></script>
 <script type="text/javascript" src="../bootstrap/dist/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap-datetimepicker.js"></script>
+													<script type="text/javascript">
+														$(function () {
+															$('#ngay-tu').datetimepicker({
+																format: 'YYYY-MM-DD hh:mm:ss',
+																useCurrent: false
+															});
+															$('#ngay-den').datetimepicker({
+																format: 'YYYY-MM-DD hh:mm:ss'
+																
+															});
+															$("#ngay-tu").on("dp.change", function (e) {
+																$('#ngay-den').data("DateTimePicker").minDate(e.date);
+															});
+															$("#ngay-den").on("dp.change", function (e) {
+																$('#ngay-tu').data("DateTimePicker").maxDate(e.date);
+															});
+														});
+													</script>
 </body>
 </html>
 
