@@ -14,7 +14,7 @@
 		else if($_SESSION['login']['MaQuyen']=="1" || $_SESSION['login']['MaQuyen']=="2" )
 		{
 			echo "alert('Bạn không có quyền vào trang này')";
-			header("Location:admin.php");
+			//header("Location:admin.php");
 		}
 	}
 ?>
