@@ -157,11 +157,12 @@
 																<label>Từ</label>
 																<div class='input-group date' id='ngay-tu'>
 																	
-																	<input type='text' class="form-control" name='ngaytu'>
+																	<input type='text' class="form-control" name='ngaytu' onchange="showHoaDonAjax()" onkeyup="showHoaDonAjax()">
 																	<span class="input-group-addon">
 																		<span class="glyphicon glyphicon-calendar"></span>
 																	</span>
 																</div>
+																<p><i>(yyyy-mm-dd)</i></p>
 															</div>
 														</div>
 													
@@ -170,11 +171,12 @@
 																<label>Đến</label>
 																<div class='input-group date' id='ngay-den'>
 																	
-																	<input type='text' class="form-control" name='ngayden'>
+																	<input type='text' class="form-control" name='ngayden' onchange="showHoaDonAjax()" onkeyup="showHoaDonAjax()">
 																	<span class="input-group-addon">
 																		<span class="glyphicon glyphicon-calendar"></span>
 																	</span>
 																</div>
+																<p><i>(yyyy-mm-dd)</i></p>
 															</div>
 														</div>
 													</div>
@@ -203,18 +205,18 @@
 									
 									<div class="col-lg-6" style="margin-top:0px;">
 										<div class="panel panel-default">
-											<div class="panel-body" style="padding-bottom:12px;">
+											<div class="panel-body" style="padding-bottom:20px;">
 												<label>Trạng thái đơn hàng</label>
 												<div class="input-group" >
-													<select name="tinhtrang" class="form-control">
+													<select name="tinhtrang" class="form-control" onchange="showHoaDonAjax()">
 														<option value="">Tất cả trạng thái</option>
 														<option value="Đã thanh toán xong">Đã thanh toán xong</option>
 														<option value="Chưa thanh toán xong">Chưa thanh toán xong</option>
 													</select>
 												</div>
-												<label>Tìm tên KH</label>
+												<label style="margin-top:13px;">Tìm tên KH</label>
 												<div class="input-group" >
-													<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem">
+													<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem" onkeyup="showHoaDonAjax()">
 													<div class="input-group-btn">
 														<button class="btn btn-default" type="submit">
 															<i class="glyphicon glyphicon-search"></i>
@@ -258,6 +260,50 @@
     </div>
 
 </div>
+								<script>
+									
+									function showHoaDonAjax() {
+										var xhttp;
+										var tinhtrang=document.forms['timkiemhoadon']['tinhtrang'].value;
+										var timkiem=document.forms['timkiemhoadon']['timkiem'].value;
+										var ngaytu=document.forms['timkiemhoadon']['ngaytu'].value;
+										var ngayden=document.forms['timkiemhoadon']['ngayden'].value;
+										var url="showHoaDonAjax.php?";
+										if (tinhtrang == "") 
+											url=url+"tinhtrang=&";
+										else 
+											url=url+"tinhtrang="+tinhtrang+"&";
+										if(ngaytu=="" && ngayden=="")
+											url=url+"ngaytu=&ngayden=&";
+										else 
+											url=url+"ngaytu="+ngaytu+"&ngayden="+ngayden+"&";
+										if(timkiem=="")
+											url=url+"timkiem=";
+										else
+											url=url+"timkiem="+timkiem;
+										/*alert(url);
+										window.location.href=url;*/
+										
+										xhttp = new XMLHttpRequest();
+										xhttp.onreadystatechange = function() {
+										if (this.readyState == 4 && this.status == 200) {
+											document.getElementById("hoadon").innerHTML = this.responseText;
+											}
+										  };
+										  xhttp.open("GET",url, true);
+										  xhttp.send();
+										}
+										<!--------------------------------------------------------------------------------------------------------------->
+										
+										function xoahoadon(e)
+										{
+											if(confirm("Bạn có muốn xóa")==true)
+											{
+												window.location.href="deleteHoaDon.php?xoahoadon=1&MaHD="+e;
+											}
+										}
+										
+								</script>
 <?php
 	
 	if($_SESSION['login']['MaQuyen']=="1")

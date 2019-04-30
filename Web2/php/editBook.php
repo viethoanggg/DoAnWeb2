@@ -262,6 +262,7 @@
 												<div class="form-group">
                                                     <label>Ngày phát hành</label>
                                                     <input class="form-control" name="ngayphathanh" value="<?php echo $ngayphathanh; ?>">
+													<p><i>(dd/mm/yyyy)</i></p>
 													<i style="color:red" id='loingayphathanh'></i>
                                                 </div>
 												<div class="form-group">
