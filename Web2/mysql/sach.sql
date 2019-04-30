@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 19, 2019 lúc 10:55 AM
--- Phiên bản máy phục vụ: 10.1.38-MariaDB
--- Phiên bản PHP: 7.2.16
+-- Host: 127.0.0.1
+-- Generation Time: Apr 30, 2019 at 06:05 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `webbansach`
+-- Database: `webbansach`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sach`
+-- Table structure for table `sach`
 --
 
 CREATE TABLE `sach` (
@@ -38,7 +38,7 @@ CREATE TABLE `sach` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `sach`
+-- Dumping data for table `sach`
 --
 
 INSERT INTO `sach` (`MaSach`, `MaTheLoai`, `TenTacGia`, `TenSach`, `HinhAnh`, `Gia`) VALUES
@@ -97,7 +97,7 @@ INSERT INTO `sach` (`MaSach`, `MaTheLoai`, `TenTacGia`, `TenSach`, `HinhAnh`, `G
 ('LS1', 'LS', 'Hoàng Quốc Hải', 'Bão táp triều Trần', 'LS1.png', 600000),
 ('LS2', 'LS', 'Alfred Thayer Mahan', 'Lịch sử của sức mạnh trên biển', 'LS2.png', 161500),
 ('LS3', 'LS', 'Nguyễn Đức Hiệp', 'SÀI GÒN - CHỢ LỚN QUA NHỮNG TƯ LIỆU QUÝ TRƯỚC 1945', 'LS3.png', 119000),
-('LS4', 'LS', 'Tôn Thất Hân - Hồng Nhung - Hồng Thiết', 'Việt sử diễn nghĩa ', 'LS4.png', 151200),
+('LS4', 'LS', 'Tôn Thất Hân', 'Việt sử diễn nghĩa ', 'LS4.png', 151200),
 ('LS5', 'LS', 'Vĩnh Sính', 'Giao điểm giữa hai nên văn hóa Việt Nam - Nhật Bản', 'LS5.png', 100000),
 ('NN0', 'NN', 'Romi Park', 'Thần Chú Ngữ Pháp Của Winnie - Học Tiếng Anh Dễ Như Ăn Bánh', 'NN0.PNG', 74700),
 ('NN1', 'NN', 'Richie Hahn', 'Master Toefl Junior Basic (CEFR Level A2) - Kèm 1 CD', 'NN1.PNG', 158000),
@@ -151,11 +151,11 @@ INSERT INTO `sach` (`MaSach`, `MaTheLoai`, `TenTacGia`, `TenSach`, `HinhAnh`, `G
 ('VH9', 'VH', 'Stephenie Meyer', 'Sinh Tử (Chạng Vạng Mới)', 'VH9.PNG', 153000);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `sach`
+-- Indexes for table `sach`
 --
 ALTER TABLE `sach`
   ADD PRIMARY KEY (`MaSach`);

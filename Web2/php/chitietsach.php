@@ -186,10 +186,10 @@
 						<div class="panel-heading">
 							Khu vực bình luận
 						</div>
-						<form action="" method="post" name="commentbox">
+						<form action="xulycomment.php" method="post" name="commentbox">
 							<div class="panel-body">
-								<textarea disabled placeholder="Bình luận của bạn!" class="pb-cmnt-textarea" style=""></textarea>						
-								<button class="btn btn-primary disabled pull-right" type="button" style="">Bình luận</button>								
+								<textarea disabled placeholder="Bình luận của bạn!" class="pb-cmnt-textarea" style="" id="cmt" name="cmtarea"></textarea>						
+								<button class="btn btn-primary disabled pull-right" type="submit" style="" id="btnCmt">Bình luận</button>								
 							</div>
 						</form>
 					</div>
