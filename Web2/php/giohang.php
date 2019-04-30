@@ -238,7 +238,7 @@ if(isLogined()==true)
 					$s="";
 					$demsl=0;
 					$tong=0;
-					$ship=50000;
+					$ship=25000;
 					foreach ($_SESSION['cart'] as $key => $value) {
 				//var_dump($key);
 						if($_SESSION['cart'][$key]['theloai']=='NN'){
@@ -454,7 +454,7 @@ if(isLogined()==true)
 					<td id="tong">'.number_format($tong).'đ</td>
 					</tr>
 					<tr>
-					<td>Phí vận chuyển</td>
+					<td>Phí vận chuyển(Tạm tính)</td>
 					<td>'.number_format($ship).'đ</td>
 					</tr>
 					<tr>
@@ -467,7 +467,7 @@ if(isLogined()==true)
 					<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
 					</tr>
 					<tr>
-					<td align="center" colspan="2"><input type="button" value="Thanh toán" class="thanhtoan"></td>
+					<td align="center" colspan="2"><a href="thanhtoan.php" style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan"></a></td>
 					</tr>
 					</tbody>
 					</table>
@@ -481,7 +481,6 @@ if(isLogined()==true)
 			</div>
 		</div>
 	</div>
-
 	<!---------------------- footer ----------------------->
 	<div class="container">
 		<hr style="border:1px solid black;">

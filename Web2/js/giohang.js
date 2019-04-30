@@ -39,7 +39,7 @@ function xoasp(masach){
 				$('.badge.badge-secondary ').text(JSON.parse(data).sl);
 				$('#demsl').text(JSON.parse(data).sl);
 				$('#tong').text(formatNumber(JSON.parse(data).tongtien,".",",")+"đ");
-				$('#thanhtien').text(formatNumber(JSON.parse(data).tongtien+50000,".",",")+"đ");
+				$('#thanhtien').text(formatNumber(JSON.parse(data).tongtien+25000,".",",")+"đ");
 				$("tr#"+masach+"").hide();
 				//alert(data);
 			}
@@ -123,7 +123,7 @@ function ajax(id,i){
 			$('#demsl').text(JSON.parse(data).sl);
 			$('tr#'+JSON.parse(data).masach+' td:last').text(formatNumber(JSON.parse(data).tiensach,".",",")+"đ");
 			$('#tong').text(formatNumber(JSON.parse(data).tongtien,".",",")+"đ");
-			$('#thanhtien').text(formatNumber(JSON.parse(data).tongtien+50000,".",",")+"đ");
+			$('#thanhtien').text(formatNumber(JSON.parse(data).tongtien+25000,".",",")+"đ");
 			//alert(JSON.parse(data).tiensach);
 		}
 	})
