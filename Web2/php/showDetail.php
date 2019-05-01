@@ -67,7 +67,7 @@ class ShowDetail
 													.'</div>'
 													.'<div id="tacgia">Tác giả: <font style="color:#33cc33">'.$row['TenTacGia'].'</font>'
 													.'</div>'
-													.'<div id="giasach">Giá: '.$row['Gia']. '<sup><u>đ</u></sup>'
+													.'<div id="giasach"><font style="color:black">Giá:</font> '.$row['Gia']. '<sup><u>đ</u></sup>'
 													.'</div>'
 													//.'<form action="addcart.php" method="get">'
 													.'<div id="buyandnumber">'
