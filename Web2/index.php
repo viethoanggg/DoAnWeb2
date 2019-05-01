@@ -42,8 +42,9 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<div class="row">    
 					<div class="col-md-5 col-md-offset-2">
-						<form class="navbar-form navbar-left" action="" name="searchIndex">
+						<form class="navbar-form navbar-left" action="php/sanpham.php" name="searchIndex">
 							<div class="input-group" >
+								<input type="hidden" name="theloai" value="tatca">
 								<input type="text" class="form-control" placeholder="Tìm kiếm" name="search" size="44">
 								<div class="input-group-btn">
 									<button class="btn btn-default" type="submit">
@@ -178,7 +179,7 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Thể loại <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="php/sanpham.php?theloai=hocngoaingu&page=1" >Học ngoại ngữ</a></li>
+							<li><a href="php/sanpham.php?theloai=ngoaingu&page=1" >Học ngoại ngữ</a></li>
 							<li><a href="php/sanpham.php?theloai=kinhte&page=1" >Kinh tế</a></li>
 							<li><a href="php/sanpham.php?theloai=kynangsong&page=1" >Kỹ năng sống</a></li>
 							<li><a href="php/sanpham.php?theloai=lichsu&page=1" >Lịch sử</a></li>

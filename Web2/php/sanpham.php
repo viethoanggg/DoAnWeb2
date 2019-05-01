@@ -47,14 +47,16 @@
 			
 			<div class="row">    
 				<div class="col-md-5 col-md-offset-2">
-					<form class="navbar-form navbar-left" action="" name="searchIndex">
+					<form class="navbar-form navbar-left" action="sanpham.php" name="searchIndex">
 						<div class="input-group" >
-							<input type="text" class="form-control" placeholder="Tìm kiếm" name="search" size="44">
+							<input type="hidden" name="theloai" value="tatca">
+							<input type="text" class="form-control" placeholder="Tìm kiếm" name="search" size="44" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>">
 							<div class="input-group-btn">
 								<button class="btn btn-default" type="submit">
 									<i class="glyphicon glyphicon-search"></i>
 								</button>
 							</div>
+							
 						</div>
 					</form>	
 				</div>
@@ -99,7 +101,7 @@
 					<li class="dropdown">
 					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Thể loại <span class="caret"></span></a>
 					  <ul class="dropdown-menu">
-							<li><a href="sanpham.php?theloai=hocngoaingu&page=1" >Học ngoại ngữ</a></li>
+							<li><a href="sanpham.php?theloai=ngoaingu&page=1" >Học ngoại ngữ</a></li>
 							<li><a href="sanpham.php?theloai=kinhte&page=1" >Kinh tế</a></li>
 							<li><a href="sanpham.php?theloai=kynangsong&page=1" >Kỹ năng sống</a></li>
 							<li><a href="sanpham.php?theloai=lichsu&page=1" >Lịch sử</a></li>
@@ -131,7 +133,7 @@
 			
 				<div class="col-md-2">
 					<div class="list-group" style="margin-top:20px">
-						<a href="sanpham.php?theloai=hocngoaingu&page=1" class="list-group-item" >Học ngoại ngữ</a>
+						<a href="sanpham.php?theloai=ngoaingu&page=1" class="list-group-item" >Học ngoại ngữ</a>
 						<a href="sanpham.php?theloai=kinhte&page=1" class="list-group-item" >Kinh tế</a>
 						<a href="sanpham.php?theloai=kynangsong&page=1" class="list-group-item" >Kỹ năng sống</a>
 						<a href="sanpham.php?theloai=lichsu&page=1" class="list-group-item" >Lịch sử</a>
@@ -146,29 +148,30 @@
 							<legend style="font-size:1.33em">Tìm kiếm nâng cao</legend>
 							
 								<legend style="font-size:1.2em;padding-left:10px">Thể loại</legend>
-									<select name ="theloai" style="padding:5px  10px;margin-left:3px">
-										<option>--Chọn--</option>
-										<option>Kinh tế</option>
-										<option>Kỹ năng sống</option>
-										<option>Sách thiếu nhi</option>
-										<option>Sách tuổi teen</option>
-										<option>Sách văn học</option>
-										<option>Học ngoại ngữ</option>
-										<option>Sách chuyên ngành</option>
-										<option>Sách lịch sử</option>
+									<select name ="theloai" style="padding:5px  10px;margin-left:3px" onchange="showBookAjaxIndex()">
+										<option value="tatca"  <?php if(isset($_GET['theloai']) && $_GET['theloai']=="tatca") echo "selected"; ?> >Tất cả thể loại</option>
+										<option value="kinhte"  <?php if(isset($_GET['theloai']) && $_GET['theloai']=="kinhte") echo "selected"; ?> >Kinh tế</option>
+										<option value="kynangsong" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="kynangsong") echo "selected"; ?> >Kỹ năng sống</option>
+										<option value="thieunhi"  <?php if(isset($_GET['theloai']) && $_GET['theloai']=="thieunhi") echo "selected"; ?> >Sách thiếu nhi</option>
+										<option value="tuoiteen"  <?php if(isset($_GET['theloai']) && $_GET['theloai']=="tuoiteen") echo "selected"; ?> >Sách tuổi teen</option>
+										<option value="vanhoc"  <?php if(isset($_GET['theloai']) && $_GET['theloai']=="vanhoc") echo "selected"; ?> >Sách văn học</option>
+										<option value="ngoaingu"  <?php if(isset($_GET['theloai']) && $_GET['theloai']=="ngoaingu") echo "selected"; ?> >Học ngoại ngữ</option>
+										<option value="chuyennganh"  <?php if(isset($_GET['theloai']) && $_GET['theloai']=="chuyennganh") echo "selected"; ?> >Sách chuyên ngành</option>
+										<option value="lichsu"  <?php if(isset($_GET['theloai']) && $_GET['theloai']=="lichsu") echo "selected"; ?> >Sách lịch sử</option>
 									</select>
 									
 								<legend style="font-size:1.2em;padding-left:10px;margin-top:20px">Nhập giá</legend>
-								Từ <input type="text" name="giatu" style="padding:5px  10px;margin-left:18px;width:125px;" ><br>
-								Đến <input type="text" name="giaden" style="padding:5px  10px;margin-left:10px;margin-top:10px;width:125px;" >
+								Từ <input type="text" name="giatu" style="padding:5px  10px;margin-left:18px;width:125px;" value="<?php if(isset($_GET['giatu'])) echo $_GET['giatu']; ?>" onkeyup="showBookAjaxIndex()"><br>
+								Đến <input type="text" name="giaden" style="padding:5px  10px;margin-left:10px;margin-top:10px;width:125px;" value="<?php if(isset($_GET['giaden'])) echo $_GET['giaden']; ?>" onkeyup="showBookAjaxIndex()"><br>
+								<i id="loigia" style="color:red"></i>
 								
 								<legend style="font-size:1.2em;padding-left:10px;margin-top:20px">Sắp xếp</legend>
-								<select name="sapxep"style="padding:5px  10px">
-									<option>--Chọn--</option>
-									<option>Giá từ thấp tới cao</option>
-									<option>Giá từ cao đến thấp</option>
-									<option>Theo tên từ A đến Z</option>
-									<option>Theo tên từ Z đến A</option>
+								<select name="sapxep"style="padding:5px  10px" onchange="showBookAjaxIndex()">
+									<option value="">--Chọn--</option>
+									<option value="giatangdan" <?php if(isset($_GET['sapxep']) && $_GET['sapxep']=="giatangdan") echo "selected"; ?> >Giá từ thấp tới cao</option>
+									<option value="giagiamdan" <?php if(isset($_GET['sapxep']) && $_GET['sapxep']=="giagiamdan") echo "selected"; ?> >Giá từ cao đến thấp</option>
+									<option value="tentangdan" <?php if(isset($_GET['sapxep']) && $_GET['sapxep']=="tentangdan") echo "selected"; ?> >Theo tên từ A đến Z</option>
+									<option value="tengiamdan" <?php if(isset($_GET['sapxep']) && $_GET['sapxep']=="tengiamdan") echo "selected"; ?> >Theo tên từ Z đến A</option>
 								</select>
 							
 						</fieldset>
@@ -190,7 +193,113 @@
 				</div>
 
 </div>
-
+									<script>
+									
+									function showBookAjaxIndex() {
+										var xhttp;
+										var matheloai=document.forms['timkiemnangcao']['theloai'].value;
+										var giatu=document.forms['timkiemnangcao']['giatu'].value;
+										var giaden=document.forms['timkiemnangcao']['giaden'].value;
+										var sapxep=document.forms['timkiemnangcao']['sapxep'].value;
+										
+										var ptnGia=/^[0-9]*$/;
+										if(ptnGia.test(giatu)==false || ptnGia.test(giaden)==false)
+											document.getElementById('loigia').innerHTML="Bạn phải nhập số.";
+										else document.getElementById('loigia').innerHTML="";
+										if( ptnGia.test(giatu)==true && ptnGia.test(giaden)==true && giatu!="" && giaden !="" )
+											if(Number(giatu)>Number(giaden))
+												document.getElementById('loigia').innerHTML="Khoảng giá nhập không hợp lê.";
+											else document.getElementById('loigia').innerHTML=""
+											
+										var url="showBookAjax.php?";
+										if (matheloai == "") 
+											url=url+"theloai=&";
+										else 
+											url=url+"theloai="+matheloai+"&";
+										if(giatu=="" && giaden=="")
+											url=url+"giatu=&giaden=&";
+										else 
+											url=url+"giatu="+giatu+"&giaden="+giaden+"&";
+										if (sapxep == "") 
+											url=url+"sapxep=&";
+										else 
+											url=url+"sapxep="+sapxep+"&";
+										url=url+"timkiemnangcao=1";
+										xhttp = new XMLHttpRequest();
+										xhttp.onreadystatechange = function() {
+										if (this.readyState == 4 && this.status == 200) {
+											document.getElementById("sanpham").innerHTML = this.responseText;	
+											}
+										  };
+										  xhttp.open("GET",url, true);
+										  xhttp.send();
+									//		window.location.href=url;
+		if(matheloai=="ngoaingu")
+		{
+			var x=document.getElementsByClassName('tieude');
+			x[0].innerHTML='SÁCH HỌC NGOẠI NGỮ';
+			x[1].innerHTML='Sách học ngoại ngữ';
+			document.getElementById("title-background").style.background=" url('../images/theme/HocNgoaiNgu.png') no-repeat center center";
+		}
+		if(matheloai=="kinhte")
+		{
+			var x=document.getElementsByClassName('tieude');
+			x[0].innerHTML='SÁCH KINH TẾ';
+			x[1].innerHTML='Sách kinh tế';
+			document.getElementById("title-background").style.background=" url('../images/theme/KinhTe.jpg') no-repeat center center";
+		}
+		if(matheloai=="kynangsong")
+		{
+			var x=document.getElementsByClassName('tieude');
+			x[0].innerHTML='SÁCH KỸ NĂNG SỐNG';
+			x[1].innerHTML='Sách kỹ năng sống';
+			document.getElementById("title-background").style.background=" url('../images/theme/KyNangSong.jpg') no-repeat center center";
+		}
+		if(matheloai=="tuoiteen")
+		{
+			var x=document.getElementsByClassName('tieude');
+			x[0].innerHTML='SÁCH TUỐI TEEN';
+			x[1].innerHTML='Sách tuổi teen';
+			document.getElementById("title-background").style.background=" url('../images/theme/TuoiTeen.jpg') no-repeat center center";
+		}
+		if(matheloai=="vanhoc")
+		{
+			var x=document.getElementsByClassName('tieude');
+			x[0].innerHTML='SÁCH VĂN HỌC';
+			x[1].innerHTML='Sách văn học';
+			document.getElementById("title-background").style.background=" url('../images/theme/VanHoc.jpg') no-repeat center center";
+		}
+		if(matheloai=="thieunhi")
+		{
+			var x=document.getElementsByClassName('tieude');
+			x[0].innerHTML='SÁCH THIẾU NHI';
+			x[1].innerHTML='Sách thiếu nhi';
+			document.getElementById("title-background").style.background=" url('../images/theme/ThieuNhi.jpg') no-repeat center center";
+		}
+		if(matheloai=="chuyennganh")
+		{
+			var x=document.getElementsByClassName('tieude');
+			x[0].innerHTML='SÁCH CHUYÊN NGÀNH';
+			x[1].innerHTML='Sách chuyên ngành';
+			document.getElementById("title-background").style.background=" url('../images/theme/ChuyenNganh.jpg') no-repeat center center";
+		}
+		if(matheloai=="lichsu")
+		{
+			var x=document.getElementsByClassName('tieude');
+			x[0].innerHTML='SÁCH LỊCH SỬ';
+			x[1].innerHTML='Sách lịch sử';
+			document.getElementById("title-background").style.background=" url('../images/theme/LichSu.jpg') no-repeat center center";
+		}
+		if(matheloai=="tatca")
+		{
+			var x=document.getElementsByClassName('tieude');
+			x[0].innerHTML='TẤT CẢ THỂ LOẠI SÁCH';
+			x[1].innerHTML='Tất cả các sách';
+			document.getElementById("title-background").style.background=" url('../images/theme/TatCa.png') no-repeat center center";
+		}
+										}
+									</script>
+									
 <script>
 	showBook();
 </script>                               <!---------------------- footer ----------------------->

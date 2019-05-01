@@ -8,830 +8,30 @@ class ShowBook
 					require('DataProvider.php');
 					if(isset($_GET['theloai']))
 						$tenTheLoai=$_GET['theloai'];
-					if(isset($tenTheLoai))
-					{
-			// -------------Sách Thiếu Nhi---------------------------------------------------------------------//
-			
-						if($tenTheLoai=="thieunhi")
-						{		
-							//  Đếm số lượng sách thiếu nhi
-							$sql="select COUNT(*) as numRows from sach where MaTheLoai='TN'";
-							$result=DataProvider::executeQuery($sql);
-							$row=mysqli_fetch_array($result);
-							$numRows=$row['numRows'];
-							
-							//  Xác định số sản phẩm tối đa hiện lên trong 1 trang
-							$rowsPerPage=8;
-							
-							//  Lấy số trang hiện hành
-							$pageNum=1;
-							if(isset($_GET['page']))
-							{
-								$pageNum=$_GET['page'];
-							}
-							
-							//  Lấy sản phẩm trong 1 trang
-							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select * from sach where MaTheLoai='TN' LIMIT " .$offset.",".$rowsPerPage;
-							
-							//  Tính tổng số trang sẽ hiện thị
-							$maxPage=ceil($numRows/$rowsPerPage);
-							
-							//  Lấy link của trang
-							$sefl="sanpham.php?theloai=thieunhi&page=";
-							$nav="";
-							
-							for($page=1;$page<=$maxPage;$page++)
-							{
-								if($maxPage>=10 && $page>=$pageNum-2 && $page<=$pageNum+2)
-								{
-									if($page==$pageNum-2 && $page>1)
-										$nav=$nav."<li><span>...</span></li>";
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-									if($page==$pageNum+2 && $page<$maxPage)
-										$nav=$nav."<li><span>...</span></li>";
-								}
-								else if($maxPage<10)
-								{
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-								}
-							}
-							
-							if($pageNum>1)
-							{
-								$page=$pageNum-1;
-								$prev="<li><a href='".$sefl.$page."'><i class='fa fa-angle-left fa-fw'></i></a></li>";
-								$first="<li><a href='".$sefl."1'><i class='fa fa-angle-double-left fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$prev="";
-								$first="";
-							}
-
-							if($pageNum<$maxPage)
-							{
-								$page=$pageNum+1;
-								$next="<li><a href='".$sefl.$page."'><i class='fa fa-angle-right fa-fw'></i></a></li>";
-								$last="<li><a href='".$sefl.$maxPage."'><i class='fa fa-angle-double-right fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$next="";
-								$last="";
-							}		
-							
-							//  Hiện sản phẩm
-							$result=DataProvider::executeQuery($sql);
-							$s="<div style='padding-left:10px'>";
-							while($row=mysqli_fetch_array($result))
-							{
-									$s=$s. "<div class='sach'>"
-											."<a href='chitietsach.php?theloai=thieunhi&masach=" . $row['MaSach']."'>"
-												
-												."<img src='../images/thieunhi/" . $row['HinhAnh'] . "'>"
-											."</a>"
-											."<div class='tensach'>" . $row['TenSach'] . "</div>"
-											."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>"
-										."</div>";
-										
-							}
-							$s=$s."</div>";
-							echo $s;
-							
-							//  In phân trang
-							echo "<center>
-											<div id='phantrang' style='clear:both'>
-												<ul class='pagination'>".$first.$prev.$nav.$next.$last."</ul>
-											</div>
-								</center>";
-									
-							
-						}
-				// -------------Sách chuyên ngành---------------------------------------------------------------------//
-				
-						if($tenTheLoai=="chuyennganh")
-							{
-							//  Đếm số lượng Sách chuyên ngành
-							$sql="select COUNT(*) as numRows from sach where MaTheLoai='CN'";
-							$result=DataProvider::executeQuery($sql);
-							$row=mysqli_fetch_array($result);
-							$numRows=$row['numRows'];
-							
-							//  Xác định số sản phẩm tối đa hiện lên trong 1 trang
-							$rowsPerPage=8;
-							
-							//  Lấy số trang hiện hành
-							$pageNum=1;
-							if(isset($_GET['page']))
-							{
-								$pageNum=$_GET['page'];
-							}
-							
-							//  Lấy sản phẩm trong 1 trang
-							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select * from sach where MaTheLoai='CN' LIMIT " .$offset.",".$rowsPerPage;
-							
-							//  Tính tổng số trang sẽ hiện thị
-							$maxPage=ceil($numRows/$rowsPerPage);
-							
-							//  Lấy link của trang
-							$sefl="sanpham.php?theloai=chuyennganh&page=";
-							$nav="";
-							
-							for($page=1;$page<=$maxPage;$page++)
-							{
-								if($maxPage>=10 && $page>=$pageNum-2 && $page<=$pageNum+2)
-								{
-									if($page==$pageNum-2 && $page>1)
-										$nav=$nav."<li><span>...</span></li>";
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-									if($page==$pageNum+2 && $page<$maxPage)
-										$nav=$nav."<li><span>...</span></li>";
-								}
-								else if($maxPage<10)
-								{
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-								}
-							}
-							
-							if($pageNum>1)
-							{
-								$page=$pageNum-1;
-								$prev="<li><a href='".$sefl.$page."'><i class='fa fa-angle-left fa-fw'></i></a></li>";
-								$first="<li><a href='".$sefl."1'><i class='fa fa-angle-double-left fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$prev="";
-								$first="";
-							}
-
-							if($pageNum<$maxPage)
-							{
-								$page=$pageNum+1;
-								$next="<li><a href='".$sefl.$page."'><i class='fa fa-angle-right fa-fw'></i></a></li>";
-								$last="<li><a href='".$sefl.$maxPage."'><i class='fa fa-angle-double-right fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$next="";
-								$last="";
-							}		
-							
-							//  Hiện sản phẩm
-							$result=DataProvider::executeQuery($sql);
-							$s="<div style='padding-left:10px'>";
-							while($row=mysqli_fetch_array($result))
-							{
-									$s=$s. "<div class='sach'>"
-											."<a href='chitietsach.php?theloai=chuyennganh&masach=" . $row['MaSach']."'>"
-												."<img src='../images/chuyennganh/" . $row['HinhAnh'] . "'>"
-											."</a>"
-											."<div class='tensach'>" . $row['TenSach'] . "</div>"
-											."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>"
-										."</div>";
-										
-							}
-							$s=$s."</div>";
-							echo $s;
-							echo "<center>
-											<div id='phantrang' style='clear:both'>
-												<ul class='pagination'>".$first.$prev.$nav.$next.$last."</ul>
-											</div>
-								</center>";
-							}
-							
-					// -------------Sách Lịch sử---------------------------------------------------------------------//
-						
-						if($tenTheLoai=="lichsu")
-							{
-								//  Đếm số lượng Sách chuyên ngành
-							$sql="select COUNT(*) as numRows from sach where MaTheLoai='LS'";
-							$result=DataProvider::executeQuery($sql);
-							$row=mysqli_fetch_array($result);
-							$numRows=$row['numRows'];
-							
-							//  Xác định số sản phẩm tối đa hiện lên trong 1 trang
-							$rowsPerPage=8;
-							
-							//  Lấy số trang hiện hành
-							$pageNum=1;
-							if(isset($_GET['page']))
-							{
-								$pageNum=$_GET['page'];
-							}
-							
-							//  Lấy sản phẩm trong 1 trang
-							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select * from sach where MaTheLoai='LS' LIMIT " .$offset.",".$rowsPerPage;
-							
-							//  Tính tổng số trang sẽ hiện thị
-							$maxPage=ceil($numRows/$rowsPerPage);
-							
-							//  Lấy link của trang
-							$sefl="sanpham.php?theloai=lichsu&page=";
-							$nav="";
-							
-							for($page=1;$page<=$maxPage;$page++)
-							{
-								if($maxPage>=10 && $page>=$pageNum-2 && $page<=$pageNum+2)
-								{
-									if($page==$pageNum-2 && $page>1)
-										$nav=$nav."<li><span>...</span></li>";
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-									if($page==$pageNum+2 && $page<$maxPage)
-										$nav=$nav."<li><span>...</span></li>";
-								}
-								else if($maxPage<10)
-								{
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-								}
-							}
-							
-							if($pageNum>1)
-							{
-								$page=$pageNum-1;
-								$prev="<li><a href='".$sefl.$page."'><i class='fa fa-angle-left fa-fw'></i></a></li>";
-								$first="<li><a href='".$sefl."1'><i class='fa fa-angle-double-left fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$prev="";
-								$first="";
-							}
-
-							if($pageNum<$maxPage)
-							{
-								$page=$pageNum+1;
-								$next="<li><a href='".$sefl.$page."'><i class='fa fa-angle-right fa-fw'></i></a></li>";
-								$last="<li><a href='".$sefl.$maxPage."'><i class='fa fa-angle-double-right fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$next="";
-								$last="";
-							}		
-							
-							//  Hiện sản phẩm
-							$result=DataProvider::executeQuery($sql);
-							$s="<div style='padding-left:10px'>";
-							while($row=mysqli_fetch_array($result))
-							{
-									$s=$s. "<div class='sach'>"
-											."<a href='chitietsach.php?theloai=lichsu&masach=" . $row['MaSach']."'>"
-												."<img src='../images/lichsu/" . $row['HinhAnh'] . "'>"
-											."</a>"
-											."<div class='tensach'>" . $row['TenSach'] . "</div>"
-											."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>"
-										."</div>";
-										
-							}
-							$s=$s."</div>";
-							echo $s;
-							
-							
-							echo "<center>
-											<div id='phantrang' style='clear:both'>
-												<ul class='pagination'>".$first.$prev.$nav.$next.$last."</ul>
-											</div>
-								</center>";
-							}
-						
-
-						// -------------Sách Kỹ Năng Sống---------------------------------------------------------------------//
-						
-						if($tenTheLoai=="kynangsong")
-							{
-								//  Đếm số lượng Sách chuyên ngành
-							$sql="select COUNT(*) as numRows from sach where MaTheLoai='KNS'";
-							$result=DataProvider::executeQuery($sql);
-							$row=mysqli_fetch_array($result);
-							$numRows=$row['numRows'];
-							
-							//  Xác định số sản phẩm tối đa hiện lên trong 1 trang
-							$rowsPerPage=8;
-							
-							//  Lấy số trang hiện hành
-							$pageNum=1;
-							if(isset($_GET['page']))
-							{
-								$pageNum=$_GET['page'];
-							}
-							
-							//  Lấy sản phẩm trong 1 trang
-							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select * from sach where MaTheLoai='KNS' LIMIT " .$offset.",".$rowsPerPage;
-							
-							//  Tính tổng số trang sẽ hiện thị
-							$maxPage=ceil($numRows/$rowsPerPage);
-							
-							//  Lấy link của trang
-							$sefl="sanpham.php?theloai=kynangsong&page=";
-							$nav="";
-							
-							for($page=1;$page<=$maxPage;$page++)
-							{
-								if($maxPage>=10 && $page>=$pageNum-2 && $page<=$pageNum+2)
-								{
-									if($page==$pageNum-2 && $page>1)
-										$nav=$nav."<li><span>...</span></li>";
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-									if($page==$pageNum+2 && $page<$maxPage)
-										$nav=$nav."<li><span>...</span></li>";
-								}
-								else if($maxPage<10)
-								{
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-								}
-							}
-							
-							if($pageNum>1)
-							{
-								$page=$pageNum-1;
-								$prev="<li><a href='".$sefl.$page."'><i class='fa fa-angle-left fa-fw'></i></a></li>";
-								$first="<li><a href='".$sefl."1'><i class='fa fa-angle-double-left fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$prev="";
-								$first="";
-							}
-
-							if($pageNum<$maxPage)
-							{
-								$page=$pageNum+1;
-								$next="<li><a href='".$sefl.$page."'><i class='fa fa-angle-right fa-fw'></i></a></li>";
-								$last="<li><a href='".$sefl.$maxPage."'><i class='fa fa-angle-double-right fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$next="";
-								$last="";
-							}		
-							
-							//  Hiện sản phẩm
-							$result=DataProvider::executeQuery($sql);
-							$s="<div style='padding-left:10px'>";
-							while($row=mysqli_fetch_array($result))
-							{
-									$s=$s. "<div class='sach'>"
-											."<a href='chitietsach.php?theloai=kynangsong&masach=" . $row['MaSach']."'>"
-												."<img src='../images/kynangsong/" . $row['HinhAnh'] . "'>"
-											."</a>"
-											."<div class='tensach'>" . $row['TenSach'] . "</div>"
-											."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>"
-										."</div>";
-										
-							}
-							$s=$s."</div>";
-							echo $s;
-							
-							
-							echo "<center>
-											<div id='phantrang' style='clear:both'>
-												<ul class='pagination'>".$first.$prev.$nav.$next.$last."</ul>
-											</div>
-								</center>";
-							}
-						
-						// -------------Sách Kinh tế---------------------------------------------------------------------//
-						
-						if($tenTheLoai=="kinhte")
-							{
-								//  Đếm số lượng Sách chuyên ngành
-							$sql="select COUNT(*) as numRows from sach where MaTheLoai='KT'";
-							$result=DataProvider::executeQuery($sql);
-							$row=mysqli_fetch_array($result);
-							$numRows=$row['numRows'];
-							
-							//  Xác định số sản phẩm tối đa hiện lên trong 1 trang
-							$rowsPerPage=8;
-							
-							//  Lấy số trang hiện hành
-							$pageNum=1;
-							if(isset($_GET['page']))
-							{
-								$pageNum=$_GET['page'];
-							}
-							
-							//  Lấy sản phẩm trong 1 trang
-							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select * from sach where MaTheLoai='KT' LIMIT " .$offset.",".$rowsPerPage;
-							
-							//  Tính tổng số trang sẽ hiện thị
-							$maxPage=ceil($numRows/$rowsPerPage);
-							
-							//  Lấy link của trang
-							$sefl="sanpham.php?theloai=kinhte&page=";
-							$nav="";
-							
-							for($page=1;$page<=$maxPage;$page++)
-							{
-								if($maxPage>=10 && $page>=$pageNum-2 && $page<=$pageNum+2)
-								{
-									if($page==$pageNum-2 && $page>1)
-										$nav=$nav."<li><span>...</span></li>";
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-									if($page==$pageNum+2 && $page<$maxPage)
-										$nav=$nav."<li><span>...</span></li>";
-								}
-								else if($maxPage<10)
-								{
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-								}
-							}
-							
-							if($pageNum>1)
-							{
-								$page=$pageNum-1;
-								$prev="<li><a href='".$sefl.$page."'><i class='fa fa-angle-left fa-fw'></i></a></li>";
-								$first="<li><a href='".$sefl."1'><i class='fa fa-angle-double-left fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$prev="";
-								$first="";
-							}
-
-							if($pageNum<$maxPage)
-							{
-								$page=$pageNum+1;
-								$next="<li><a href='".$sefl.$page."'><i class='fa fa-angle-right fa-fw'></i></a></li>";
-								$last="<li><a href='".$sefl.$maxPage."'><i class='fa fa-angle-double-right fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$next="";
-								$last="";
-							}		
-							
-							//  Hiện sản phẩm
-							$result=DataProvider::executeQuery($sql);
-							$s="<div style='padding-left:10px'>";
-							while($row=mysqli_fetch_array($result))
-							{
-									$s=$s. "<div class='sach'>"
-											."<a href='chitietsach.php?theloai=kinhte&masach=" . $row['MaSach']."'>"
-												."<img src='../images/kinhte/" . $row['HinhAnh'] . "'>"
-											."</a>"
-											."<div class='tensach'>" . $row['TenSach'] . "</div>"
-											."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>"
-										."</div>";
-										
-							}
-							$s=$s."</div>";
-							echo $s;
-							
-							
-							echo "<center>
-											<div id='phantrang' style='clear:both'>
-												<ul class='pagination'>".$first.$prev.$nav.$next.$last."</ul>
-											</div>
-								</center>";
-							}
-						
-						// -------------Sách Học ngoại ngữ---------------------------------------------------------------------//
-						
-						if($tenTheLoai=="hocngoaingu")
-							{
-								//  Đếm số lượng Sách chuyên ngành
-							$sql="select COUNT(*) as numRows from sach where MaTheLoai='NN'";
-							$result=DataProvider::executeQuery($sql);
-							$row=mysqli_fetch_array($result);
-							$numRows=$row['numRows'];
-							
-							//  Xác định số sản phẩm tối đa hiện lên trong 1 trang
-							$rowsPerPage=8;
-							
-							//  Lấy số trang hiện hành
-							$pageNum=1;
-							if(isset($_GET['page']))
-							{
-								$pageNum=$_GET['page'];
-							}
-							
-							//  Lấy sản phẩm trong 1 trang
-							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select * from sach where MaTheLoai='NN' LIMIT " .$offset.",".$rowsPerPage;
-							
-							//  Tính tổng số trang sẽ hiện thị
-							$maxPage=ceil($numRows/$rowsPerPage);
-							
-							//  Lấy link của trang
-							$sefl="sanpham.php?theloai=ngoaingu&page=";
-							$nav="";
-							
-							for($page=1;$page<=$maxPage;$page++)
-							{
-								if($maxPage>=10 && $page>=$pageNum-2 && $page<=$pageNum+2)
-								{
-									if($page==$pageNum-2 && $page>1)
-										$nav=$nav."<li><span>...</span></li>";
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-									if($page==$pageNum+2 && $page<$maxPage)
-										$nav=$nav."<li><span>...</span></li>";
-								}
-								else if($maxPage<10)
-								{
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-								}
-							}
-							
-							if($pageNum>1)
-							{
-								$page=$pageNum-1;
-								$prev="<li><a href='".$sefl.$page."'><i class='fa fa-angle-left fa-fw'></i></a></li>";
-								$first="<li><a href='".$sefl."1'><i class='fa fa-angle-double-left fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$prev="";
-								$first="";
-							}
-
-							if($pageNum<$maxPage)
-							{
-								$page=$pageNum+1;
-								$next="<li><a href='".$sefl.$page."'><i class='fa fa-angle-right fa-fw'></i></a></li>";
-								$last="<li><a href='".$sefl.$maxPage."'><i class='fa fa-angle-double-right fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$next="";
-								$last="";
-							}		
-							
-							//  Hiện sản phẩm
-							$result=DataProvider::executeQuery($sql);
-							$s="<div style='padding-left:10px'>";
-							while($row=mysqli_fetch_array($result))
-							{
-									$s=$s. "<div class='sach'>"
-											."<a href='chitietsach.php?theloai=hocngoaingu&masach=" . $row['MaSach']."'>"
-												."<img src='../images/ngoaingu/" . $row['HinhAnh'] . "'>"
-											."</a>"
-											."<div class='tensach'>" . $row['TenSach'] . "</div>"
-											."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>"
-										."</div>";
-										
-							}
-							$s=$s."</div>";
-							echo $s;
-							
-							
-							echo "<center>
-											<div id='phantrang' style='clear:both'>
-												<ul class='pagination'>".$first.$prev.$nav.$next.$last."</ul>
-											</div>
-								</center>";
-							}
-						// -------------Sách Học ngoại ngữ---------------------------------------------------------------------//
-						
-						if($tenTheLoai=="tuoiteen")
-							{
-								//  Đếm số lượng Sách chuyên ngành
-							$sql="select COUNT(*) as numRows from sach where MaTheLoai='TT'";
-							$result=DataProvider::executeQuery($sql);
-							$row=mysqli_fetch_array($result);
-							$numRows=$row['numRows'];
-							
-							//  Xác định số sản phẩm tối đa hiện lên trong 1 trang
-							$rowsPerPage=8;
-							
-							//  Lấy số trang hiện hành
-							$pageNum=1;
-							if(isset($_GET['page']))
-							{
-								$pageNum=$_GET['page'];
-							}
-							
-							//  Lấy sản phẩm trong 1 trang
-							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select * from sach where MaTheLoai='TT' LIMIT " .$offset.",".$rowsPerPage;
-							
-							//  Tính tổng số trang sẽ hiện thị
-							$maxPage=ceil($numRows/$rowsPerPage);
-							
-							//  Lấy link của trang
-							$sefl="sanpham.php?theloai=tuoiteen&page=";
-							$nav="";
-							
-							for($page=1;$page<=$maxPage;$page++)
-							{
-								if($maxPage>=10 && $page>=$pageNum-2 && $page<=$pageNum+2)
-								{
-									if($page==$pageNum-2 && $page>1)
-										$nav=$nav."<li><span>...</span></li>";
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-									if($page==$pageNum+2 && $page<$maxPage)
-										$nav=$nav."<li><span>...</span></li>";
-								}
-								else if($maxPage<10)
-								{
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-								}
-							}
-							
-							if($pageNum>1)
-							{
-								$page=$pageNum-1;
-								$prev="<li><a href='".$sefl.$page."'><i class='fa fa-angle-left fa-fw'></i></a></li>";
-								$first="<li><a href='".$sefl."1'><i class='fa fa-angle-double-left fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$prev="";
-								$first="";
-							}
-
-							if($pageNum<$maxPage)
-							{
-								$page=$pageNum+1;
-								$next="<li><a href='".$sefl.$page."'><i class='fa fa-angle-right fa-fw'></i></a></li>";
-								$last="<li><a href='".$sefl.$maxPage."'><i class='fa fa-angle-double-right fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$next="";
-								$last="";
-							}		
-							
-							//  Hiện sản phẩm
-							$result=DataProvider::executeQuery($sql);
-							$s="<div style='padding-left:10px'>";
-							while($row=mysqli_fetch_array($result))
-							{
-									$s=$s. "<div class='sach'>"
-											."<a href='chitietsach.php?theloai=hocngoaingu&masach=" . $row['MaSach']."'>"
-												."<img src='../images/tuoiteen/" . $row['HinhAnh'] . "'>"
-											."</a>"
-											."<div class='tensach'>" . $row['TenSach'] . "</div>"
-											."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>"
-										."</div>";
-										
-							}
-							$s=$s."</div>";
-							echo $s;
-							
-							
-							echo "<center>
-											<div id='phantrang' style='clear:both'>
-												<ul class='pagination'>".$first.$prev.$nav.$next.$last."</ul>
-											</div>
-								</center>";
-							}
-						
-						// -------------Sách Học ngoại ngữ---------------------------------------------------------------------//
-						
-						if($tenTheLoai=="vanhoc")
-							{
-								//  Đếm số lượng Sách chuyên ngành
-							$sql="select COUNT(*) as numRows from sach where MaTheLoai='VH'";
-							$result=DataProvider::executeQuery($sql);
-							$row=mysqli_fetch_array($result);
-							$numRows=$row['numRows'];
-							
-							//  Xác định số sản phẩm tối đa hiện lên trong 1 trang
-							$rowsPerPage=8;
-							
-							//  Lấy số trang hiện hành
-							$pageNum=1;
-							if(isset($_GET['page']))
-							{
-								$pageNum=$_GET['page'];
-							}
-							
-							//  Lấy sản phẩm trong 1 trang
-							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select * from sach where MaTheLoai='VH' LIMIT " .$offset.",".$rowsPerPage;
-							
-							//  Tính tổng số trang sẽ hiện thị
-							$maxPage=ceil($numRows/$rowsPerPage);
-							
-							//  Lấy link của trang
-							$sefl="sanpham.php?theloai=vanhoc&page=";
-							$nav="";
-							
-							for($page=1;$page<=$maxPage;$page++)
-							{
-								if($maxPage>=10 && $page>=$pageNum-2 && $page<=$pageNum+2)
-								{
-									if($page==$pageNum-2 && $page>1)
-										$nav=$nav."<li><span>...</span></li>";
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-									if($page==$pageNum+2 && $page<$maxPage)
-										$nav=$nav."<li><span>...</span></li>";
-								}
-								else if($maxPage<10)
-								{
-									if($page==$pageNum)
-										$nav=$nav."<li class='active'><span>". $page."</span></li>";
-									else
-										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
-								}
-							}
-							
-							if($pageNum>1)
-							{
-								$page=$pageNum-1;
-								$prev="<li><a href='".$sefl.$page."'><i class='fa fa-angle-left fa-fw'></i></a></li>";
-								$first="<li><a href='".$sefl."1'><i class='fa fa-angle-double-left fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$prev="";
-								$first="";
-							}
-
-							if($pageNum<$maxPage)
-							{
-								$page=$pageNum+1;
-								$next="<li><a href='".$sefl.$page."'><i class='fa fa-angle-right fa-fw'></i></a></li>";
-								$last="<li><a href='".$sefl.$maxPage."'><i class='fa fa-angle-double-right fa-fw'></i></a></li>";
-							}
-							else
-							{
-								$next="";
-								$last="";
-							}		
-							
-							//  Hiện sản phẩm
-							$result=DataProvider::executeQuery($sql);
-							$s="<div style='padding-left:10px'>";
-							while($row=mysqli_fetch_array($result))
-							{
-									$s=$s. "<div class='sach'>"
-											."<a href='chitietsach.php?theloai=hocngoaingu&masach=" . $row['MaSach']."'>"
-												."<img src='../images/vanhoc/" . $row['HinhAnh'] . "'>"
-											."</a>"
-											."<div class='tensach'>" . $row['TenSach'] . "</div>"
-											."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>"
-										."</div>";
-										
-							}
-							$s=$s."</div>";
-							echo $s;
-							
-							
-							echo "<center>
-											<div id='phantrang' style='clear:both'>
-												<ul class='pagination'>".$first.$prev.$nav.$next.$last."</ul>
-											</div>
-								</center>";
-							}
-						
-						
-						// -------------Tất cả sách---------------------------------------------------------------------//	
-						if($tenTheLoai=="tatca")
-						{		
+					else $tenTheLoai="tatca";
+					if($tenTheLoai=="")
+						$tenTheLoai="tatca";
+					if(isset($_GET['search']))
+						$timkiem=$_GET['search'];
+					else $timkiem="";
+					if(isset($_GET['giatu']))
+						$giatu=$_GET['giatu'];
+					else
+						$giatu="";
+					if(isset($_GET['giaden']))
+						$giaden=$_GET['giaden'];
+					else
+						$giaden="";
+					if(isset($_GET['sapxep']))
+						$sapxep=$_GET['sapxep'];
+					else
+						$sapxep="";
+					if(isset($tenTheLoai) && $tenTheLoai=="tatca" && isset($_GET['timkiemnangcao'])==false)
+					{						
+						// -------------Tất cả sách---------------------------------------------------------------------//			
 							//  Đếm số lượng sách 
 							$sql="select COUNT(*) as numRows from sach ";
+							$sql=$sql."where  TenSach LIKE '%".$timkiem."%' OR TenTacGia LIKE '%".$timkiem."%' ";
 							$result=DataProvider::executeQuery($sql);
 							$row=mysqli_fetch_array($result);
 							$numRows=$row['numRows'];
@@ -848,13 +48,15 @@ class ShowBook
 							
 							//  Lấy sản phẩm trong 1 trang
 							$offset=($pageNum-1)*$rowsPerPage;
-							$sql="select * from sach LIMIT " .$offset.",".$rowsPerPage;
+							$sql="select * from sach ";
+							$sql=$sql." where TenSach LIKE '%".$timkiem."%' OR TenTacGia LIKE '%".$timkiem."%' ";
+							$sql=$sql." LIMIT " .$offset.",".$rowsPerPage;
 							
 							//  Tính tổng số trang sẽ hiện thị
 							$maxPage=ceil($numRows/$rowsPerPage);
 							
 							//  Lấy link của trang
-							$sefl="sanpham.php?theloai=tatca&page=";
+							$sefl="sanpham.php?theloai=tatca&search=".$timkiem."&page=";
 							$nav="";
 							
 							for($page=1;$page<=$maxPage;$page++)
@@ -912,7 +114,7 @@ class ShowBook
 											."<a href='chitietsach.php?";
 										if($row['MaTheLoai']=="NN")
 										{
-											$s=$s."theloai=hocngoaingu&masach=" . $row['MaSach'] ."'>"
+											$s=$s."theloai=ngoaingu&masach=" . $row['MaSach'] ."'>"
 												 ."<img src='../images/ngoaingu/" . $row['HinhAnh']  ."'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
@@ -989,11 +191,208 @@ class ShowBook
 								</center>";
 									
 							
+						}//----------------------------------------------------------------------------------------------//
+						else if(isset($tenTheLoai) && $tenTheLoai!="")
+						{
+							//  Đếm số lượng sách 
+							$sql="select COUNT(*) as numRows from sach ";
+							$sql=$sql."where ( TenSach LIKE '%".$timkiem."%' OR TenTacGia LIKE '%".$timkiem."%' ) ";
+							if($tenTheLoai=="kinhte") $sql=$sql." and MaTheLoai='KT' ";
+							else if($tenTheLoai=="kynangsong") $sql=$sql." and MaTheLoai='KNS' ";
+							else if($tenTheLoai=="ngoaingu") $sql=$sql." and MaTheLoai='NN' ";
+							else if($tenTheLoai=="lichsu") $sql=$sql." and MaTheLoai='LS' ";
+							else if($tenTheLoai=="chuyennganh") $sql=$sql." and MaTheLoai='CN' ";
+							else if($tenTheLoai=="thieunhi") $sql=$sql." and MaTheLoai='TN' ";
+							else if($tenTheLoai=="tuoiteen") $sql=$sql." and MaTheLoai='TT' ";
+							else if($tenTheLoai=="vanhoc") $sql=$sql." and MaTheLoai='VH' ";
+							
+							if(isset($_GET['giatu']) && isset($_GET['giaden']) && $_GET['giatu']!="" && $_GET['giaden']!="" )
+							{
+								$sql=$sql." and Gia BETWEEN '".$_GET['giatu']."' and '".$_GET['giaden']."' ";
+							}
+							$result=DataProvider::executeQuery($sql);
+							$row=mysqli_fetch_array($result);
+							$numRows=$row['numRows'];
+						
+							//  Xác định số sản phẩm tối đa hiện lên trong 1 trang
+							$rowsPerPage=8;
+							
+							//  Lấy số trang hiện hành
+							$pageNum=1;
+							if(isset($_GET['page']))
+							{
+								$pageNum=$_GET['page'];
+							}
+							
+							//  Lấy sản phẩm trong 1 trang
+							$offset=($pageNum-1)*$rowsPerPage;
+							$sql="select * from sach ";
+							$sql=$sql." where ( TenSach LIKE '%".$timkiem."%' OR TenTacGia LIKE '%".$timkiem."%' ) ";
+							
+							if($tenTheLoai=="kinhte") $sql=$sql." and MaTheLoai='KT' ";
+							else if($tenTheLoai=="kynangsong") $sql=$sql." and MaTheLoai='KNS' ";
+							else if($tenTheLoai=="ngoaingu") $sql=$sql." and MaTheLoai='NN' ";
+							else if($tenTheLoai=="lichsu") $sql=$sql." and MaTheLoai='LS' ";
+							else if($tenTheLoai=="chuyennganh") $sql=$sql." and MaTheLoai='CN' ";
+							else if($tenTheLoai=="thieunhi") $sql=$sql." and MaTheLoai='TN' ";
+							else if($tenTheLoai=="tuoiteen") $sql=$sql." and MaTheLoai='TT' ";
+							else if($tenTheLoai=="vanhoc") $sql=$sql." and MaTheLoai='VH' ";
+							
+							if(isset($_GET['giatu']) && isset($_GET['giaden']) && $_GET['giatu']!="" && $_GET['giaden']!="")
+							{
+								$sql=$sql." and Gia BETWEEN '".$_GET['giatu']."' and '".$_GET['giaden']."' ";
+							}
+							if(isset($_GET['sapxep']) && $_GET['sapxep']!="")
+							{
+								if($_GET['sapxep']=="giatangdan") $sql=$sql." order by Gia ASC ";
+								if($_GET['sapxep']=="giagiamdan") $sql=$sql." order by Gia DESC ";
+								if($_GET['sapxep']=="tentangdan") $sql=$sql." order by TenSach ASC,TenTacGia ASC ";
+								if($_GET['sapxep']=="tengiamdan") $sql=$sql." order by TenSach DESC,TenTacGia DESC ";
+							}
+							$sql=$sql." LIMIT " .$offset.",".$rowsPerPage;
+						
+							//  Tính tổng số trang sẽ hiện thị
+							$maxPage=ceil($numRows/$rowsPerPage);
+							
+							//  Lấy link của trang
+							$sefl="sanpham.php?theloai=".$tenTheLoai."&giatu=".$giatu."&giaden=".$giaden."&sapxep=".$sapxep."&search=".$timkiem."&timkiemnangcao=1&page=";
+							$nav="";
+						
+							for($page=1;$page<=$maxPage;$page++)
+							{
+								if($maxPage>=10 && $page>=$pageNum-2 && $page<=$pageNum+2)
+								{
+									if($page==$pageNum-2 && $page>1)
+										$nav=$nav."<li><span>...</span></li>";
+									if($page==$pageNum)
+										$nav=$nav."<li class='active'><span>". $page."</span></li>";
+									else
+										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
+									if($page==$pageNum+2 && $page<$maxPage)
+										$nav=$nav."<li><span>...</span></li>";
+								}
+								else if($maxPage<10)
+								{
+									if($page==$pageNum)
+										$nav=$nav."<li class='active'><span>". $page."</span></li>";
+									else
+										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
+								}
+							}
+							
+							if($pageNum>1)
+							{
+								$page=$pageNum-1;
+								$prev="<li><a href='".$sefl.$page."'><i class='fa fa-angle-left fa-fw'></i></a></li>";
+								$first="<li><a href='".$sefl."1'><i class='fa fa-angle-double-left fa-fw'></i></a></li>";
+							}
+							else
+							{
+								$prev="";
+								$first="";
+							}
+
+							if($pageNum<$maxPage)
+							{
+								$page=$pageNum+1;
+								$next="<li><a href='".$sefl.$page."'><i class='fa fa-angle-right fa-fw'></i></a></li>";
+								$last="<li><a href='".$sefl.$maxPage."'><i class='fa fa-angle-double-right fa-fw'></i></a></li>";
+							}
+							else
+							{
+								$next="";
+								$last="";
+							}		
+							
+							//  Hiện sản phẩm
+							$result=DataProvider::executeQuery($sql);
+							$s="<div style='padding-left:10px'>";
+							while($row=mysqli_fetch_array($result))
+							{
+									$s=$s. "<div class='sach'>"
+											."<a href='chitietsach.php?";
+										if($row['MaTheLoai']=="NN")
+										{
+											$s=$s."theloai=ngoaingu&masach=" . $row['MaSach'] ."'>"
+												 ."<img src='../images/ngoaingu/" . $row['HinhAnh']  ."'>"
+												 ."</a>"
+												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
+										}
+										else if($row['MaTheLoai']=="KT")
+										{
+											$s=$s."theloai=kinhte&masach=" . $row['MaSach'] ."'>"
+												."<img src='../images/kinhte/" . $row['HinhAnh'] . "'>"
+												 ."</a>"
+												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
+										}
+										else if($row['MaTheLoai']=="KNS")
+										{
+											$s=$s."theloai=kynangsong&masach=" . $row['MaSach'] ."'>"
+												."<img src='../images/kynangsong/" . $row['HinhAnh'] . "'>"
+												 ."</a>"
+												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
+										}
+										else if($row['MaTheLoai']=="LS")
+										{
+											$s=$s."theloai=lichsu&masach=" . $row['MaSach'] ."'>"
+												."<img src='../images/lichsu/" . $row['HinhAnh'] . "'>"
+												 ."</a>"
+												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
+										}
+										else if($row['MaTheLoai']=="CN")
+										{
+											$s=$s."theloai=chuyennganh&masach=" . $row['MaSach'] ."'>"
+												."<img src='../images/chuyennganh/" . $row['HinhAnh'] . "'>"
+												 ."</a>"
+												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
+										}
+										else if($row['MaTheLoai']=="TN")
+										{
+											$s=$s."theloai=thieunhi&masach=" . $row['MaSach'] ."'>"
+												."<img src='../images/thieunhi/" . $row['HinhAnh'] . "'>"
+												 ."</a>"
+												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
+										}
+										else if($row['MaTheLoai']=="TT")
+										{
+											$s=$s."theloai=tuoiteen&masach=" . $row['MaSach'] ."'>"
+												."<img src='../images/tuoiteen/" . $row['HinhAnh'] . "'>"
+												 ."</a>"
+												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
+										}
+										else if($row['MaTheLoai']=="VH")
+										{
+											$s=$s."theloai=vanhoc&masach=" . $row['MaSach'] ."'>"
+												."<img src='../images/vanhoc/" . $row['HinhAnh'] . "'>"
+												 ."</a>"
+												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
+										}
+											
+										$s=$s."</div>";
+										
+							}
+							$s=$s."</div>";
+							echo $s;
+							
+							//  In phân trang
+							echo "<center>
+											<div id='phantrang' style='clear:both'>
+												<ul class='pagination'>".$first.$prev.$nav.$next.$last."</ul>
+											</div>
+								</center>";
 						}
-					}		
+							
 	
 			}
-			
+//------------------------------------////////////////////////////////////----------------------------------------------------------//
 	public static function showBookInAdmin()
 	{
 		require('DataProvider.php');
