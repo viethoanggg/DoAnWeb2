@@ -129,3 +129,15 @@ function ajax(id,i){
 		}
 	})
 }
+function thanhtoan(){
+	$.ajax({
+		url: "checkdangnhapajax.php"
+	}).done(function(data){
+		if(data=="false"){
+			alert("Bạn chưa đăng nhập");
+		}
+		else{
+			alert("Tiến hành thanh toán")
+		}
+	})
+}

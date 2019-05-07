@@ -468,7 +468,7 @@ if(isLogined()==true)
 					<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
 					</tr>
 					<tr>
-					<td align="center" colspan="2"><a href="thanhtoan.php" style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan"></a></td>
+					<td align="center" colspan="2"><a style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan" onclick="thanhtoan();"></a></td>
 					</tr>
 					</tbody>
 					</table>
