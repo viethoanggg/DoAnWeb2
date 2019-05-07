@@ -98,14 +98,15 @@ function giam(id){
 }
 function thaydoi(id){
 	var u=/^[0-9]+$/;
-		var i= Number($("#"+id+" "+"input").val());
-		while(i<1){
+		var i= $("#"+id+" "+"input").val();
+		if(i<1||i=="") {
 			debugger;
 			alert("Nhập số lượng không phù hợp!!!");
-			i=1;
+			i=Number(1);
 			$("#"+id+" "+"input").val(i);
 			ajax(id,i);
 		}
+		Number(i);
 		ajax(id,i);
 }
 function ajax(id,i){

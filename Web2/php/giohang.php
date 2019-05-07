@@ -251,7 +251,7 @@ if(isLogined()==true)
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 							<td>'.'<div id="buyandnumber">'
 							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="text" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
 							.'<div class="input-group-btn-vertical">'
 							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
 							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
@@ -272,7 +272,7 @@ if(isLogined()==true)
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 							<td>'.'<div id="buyandnumber">'
 							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="text" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
 							.'<div class="input-group-btn-vertical">'
 							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
 							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
@@ -294,7 +294,7 @@ if(isLogined()==true)
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 							<td>'.'<div id="buyandnumber">'
 							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="text" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
 							.'<div class="input-group-btn-vertical">'
 							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
 							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
@@ -316,7 +316,7 @@ if(isLogined()==true)
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 							<td>'.'<div id="buyandnumber">'
 							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="text" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
 							.'<div class="input-group-btn-vertical">'
 							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
 							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
@@ -338,7 +338,7 @@ if(isLogined()==true)
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 							<td>'.'<div id="buyandnumber">'
 							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="text" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
 							.'<div class="input-group-btn-vertical">'
 							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
 							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
@@ -360,7 +360,7 @@ if(isLogined()==true)
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 							<td>'.'<div id="buyandnumber">'
 							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="text" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
 							.'<div class="input-group-btn-vertical">'
 							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
 							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
@@ -382,7 +382,7 @@ if(isLogined()==true)
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 							<td>'.'<div id="buyandnumber">'
 							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="text" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
 							.'<div class="input-group-btn-vertical">'
 							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
 							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
@@ -404,7 +404,7 @@ if(isLogined()==true)
 							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 							<td>'.'<div id="buyandnumber">'
 							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="text" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
 							.'<div class="input-group-btn-vertical">'
 							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
 							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
