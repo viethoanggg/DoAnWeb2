@@ -134,10 +134,10 @@ function thanhtoan(){
 		url: "checkdangnhapajax.php"
 	}).done(function(data){
 		if(data=="false"){
-			alert("Bạn chưa đăng nhập");
+			$('#myModal').modal('show');
 		}
 		else{
-			alert("Tiến hành thanh toán")
+			alert("Tiến hành thanh toán");
 		}
 	})
 }
