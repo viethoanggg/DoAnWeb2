@@ -1,14 +1,14 @@
 <?php 
 	ini_set('session.auto_start',0);
 	ini_set('session.cookie_lifetime',0);
-	include 'php/sl.php';
-	require('php/common.php');
+	include 'sl.php';
+	require('common.php');
 	//đã đang nhập
 	if(isLogined()==true)
 		// kiểm tra đây là khách hàng thì về trang chủ kh
 		if($_SESSION['login']['MaQuyen'] == "1" || $_SESSION['login']['MaQuyen'] == "2" )
 		{
-				header("Location:php/admin.php");
+				header("Location:admin.php");
 		}
 		
  ?>
@@ -19,9 +19,10 @@
 	<title>Nhà sách OnePiece</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" language="javascript" src="js/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../css/Contact.css" />
+	<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
 	
 </head>
 <body>
@@ -36,7 +37,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span> 
 				</button>
-				<a class="navbar-brand" href="index.php" title="Trang chủ"><img src="images/onepiece.PNG" style="margin:-16px" width="200px" height="52px" alt="logo-trang chủ"></a>
+				<a class="navbar-brand" href="../index.php" title="Trang chủ"><img src="../images/onepiece.PNG" style="margin:-16px" width="200px" height="52px" alt="logo-trang chủ"></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="myNavbar">
@@ -77,32 +78,32 @@
 		<div class="carousel-inner" role="listbox">
 			<div class="item active" style="height:350px">
 				<div class="item__third" style="height:350px">
-					<img src="images/qc/0.png" alt="" style="height:350px">
+					<img src="../images/qc/0.png" alt="" style="height:350px">
 				</div>
 			</div>
 			<div class="item" style="height:350px">
 				<div class="item__third" style="height:350px">
-					<img src="images/qc/1.png" alt="" style="height:350px">
+					<img src="../images/qc/1.png" alt="" style="height:350px">
 				</div>
 			</div>
 			<div class="item" style="height:350px">
 				<div class="item__third" style="height:350px">
-					<img src="images/qc/2.png" alt="" style="height:350px">
+					<img src="../images/qc/2.png" alt="" style="height:350px">
 				</div>
 			</div>
 			<div class="item" style="height:350px">
 				<div class="item__third" style="height:350px">
-					<img src="images/qc/3.png" alt="" style="height:350px">
+					<img src="../images/qc/3.png" alt="" style="height:350px">
 				</div>
 			</div>
 			<div class="item" style="height:350px">
 				<div class="item__third" style="height:350px">
-					<img src="images/qc/4.png" alt="" style="height:350px">
+					<img src="../images/qc/4.png" alt="" style="height:350px">
 				</div>
 			</div>
 			<div class="item" style="height:350px">
 				<div class="item__third" style="height:350px">
-					<img src="images/qc/5.png" alt="" style="height:350px">
+					<img src="../images/qc/5.png" alt="" style="height:350px">
 				</div>
 			</div>
 
@@ -173,23 +174,23 @@
 			<div class="collapse navbar-collapse" id="myNavbar2">
 				
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.php">Trang chủ</a></li>
-					<li><a href="php/About.php">Về chúng tôi</a></li>
-					<li><a href="php/Contact.php">Liên hệ</a></li>
+					<li><a href="../index.php">Trang chủ</a></li>
+					<li><a href="About.php">Về chúng tôi</a></li>
+					<li class="active"><a href="Contact.php">Liên hệ</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Thể loại <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="php/sanpham.php?theloai=ngoaingu&page=1" >Học ngoại ngữ</a></li>
-							<li><a href="php/sanpham.php?theloai=kinhte&page=1" >Kinh tế</a></li>
-							<li><a href="php/sanpham.php?theloai=kynangsong&page=1" >Kỹ năng sống</a></li>
-							<li><a href="php/sanpham.php?theloai=lichsu&page=1" >Lịch sử</a></li>
-							<li><a href="php/sanpham.php?theloai=chuyennganh&page=1" >Sách chuyên ngành</a></li>
-							<li><a href="php/sanpham.php?theloai=thieunhi&page=1" >Sách thiếu nhi</a></li>
-							<li><a href="php/sanpham.php?theloai=tuoiteen&page=1" >Sách tuổi teen</a></li>
-							<li><a href="php/sanpham.php?theloai=vanhoc&page=1" >Sách văn học</a></li>
+							<li><a href="sanpham.php?theloai=ngoaingu&page=1" >Học ngoại ngữ</a></li>
+							<li><a href="sanpham.php?theloai=kinhte&page=1" >Kinh tế</a></li>
+							<li><a href="sanpham.php?theloai=kynangsong&page=1" >Kỹ năng sống</a></li>
+							<li><a href="sanpham.php?theloai=lichsu&page=1" >Lịch sử</a></li>
+							<li><a href="sanpham.php?theloai=chuyennganh&page=1" >Sách chuyên ngành</a></li>
+							<li><a href="sanpham.php?theloai=thieunhi&page=1" >Sách thiếu nhi</a></li>
+							<li><a href="sanpham.php?theloai=tuoiteen&page=1" >Sách tuổi teen</a></li>
+							<li><a href="sanpham.php?theloai=vanhoc&page=1" >Sách văn học</a></li>
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header"></li>
-							<li><a href="php/sanpham.php?theloai=tatca&page=1">Tất cả</a></li>
+							<li><a href="sanpham.php?theloai=tatca&page=1">Tất cả</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -197,7 +198,7 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="php/giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng <span class="badge badge-secondary" style="margin-bottom: 2px;"><?php echo $soluongsp ?></span></a>
+						<a href="giohang.php"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng <span class="badge badge-secondary" style="margin-bottom: 2px;"><?php echo $soluongsp ?></span></a>
 					</li>
 				</ul>
 			</div>
@@ -206,30 +207,62 @@
 		</div>
 	</nav>
 	<!---------------------content sach ----------------------->
-	<div class="container" >
-		<div class="bar"> 
-			<div class="tieude">Sách bán chạy</div>	
-		</div>
-		<div id="sanpham">
-			<div class="sach"> <a href="php/chitietsach.php?kinhte?0"><img src="images/kinhte/KT0.PNG"></a><div class="tensach">Quyền năng làm giàu</div><div class="gia">84.150 ₫</div></div>
-			<div class="sach"> <a href="php/chitietsach.php?kynangsong?1"><img src="images/kynangsong/KNS1.PNG"></a><div class="tensach">LAGOM – BIẾT ĐỦ MỚI LÀ TỰ DO</div><div class="gia">95.200 ₫</div></div>
-			<div class="sach"> <a href="php/chitietsach.php?sachthieunhi?2"><img src="images/thieunhi/TN2.PNG"></a><div class="tensach">Chó Xanh Lông Dài</div><div class="gia">90.100 ₫</div></div>
-			<div class="sach"> <a href="php/chitietsach.php?sachtuoiteen?3"><img src="images/tuoiteen/TT3.PNG"></a><div class="tensach">Ngàn Hạc Giấy Của Sadako</div><div class="gia">142.800 ₫</div></div>
-			<div class="sach"> <a href="php/chitietsach.php?sachvanhoc?4"><img src="images/vanhoc/VH4.PNG"></a><div class="tensach">Ở Đây Sửa Kỷ Niệm Xưa - Tập 1</div><div class="gia">82.170 ₫</div></div>
+	<div class="footer_center">
+	<div class="container">
+		<div class="info-foot">
+			<div class="title_c">
+			CỬA HÀNG ONE PIECE VN
+			</div>
+			<div class="address">
+				<div class="items">
+					<div class="title">Hà Nội</div>
+					<div class="item">
+					89 Hàng Bông </div>
+					<div class="item">
+					Số 26 ngõ 1 Phạm Tuấn Tài </div>
+					<div class="item">
+					45E Nguyễn Chí Thanh </div>
+				</div>
+				<div class="items">
+					<div class="title">Hồ Chí Minh</div>
+					<div class="item">
+					456/30A đường Cao Thắng, Q.10 </div>
+					<div class="item">
+					189/19 Hoàng Hoa Thám, Bình Thạnh </div>
+					<div class="item">
+					416/36 Dương Quảng Hàm, P.5, Gò Vấp </div>
+					<div class="item">
+					 4F Robins Crescent Mall - Quận 7 </div>
+					<div class="item">
+					15/7 Nguyễn Trãi, Quận 5 </div>
+					<div class="item">
+					Tầng 4, Vạn Hạnh Mall, 11 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh </div>
+				</div>
+				<div class="items">
+					<div class="title">Đà Nẵng</div>
+					<div class="item">
+					134 Nguyễn Đức Trung </div>
+					</div>
+					<div class="items">
+					<div class="title">Cần Thơ</div>
+					<div class="item">
+					85-87 Trương Định, Ninh Kiều </div>
+				</div>
+				<div class="items">
+					<div class="title">20+ CỬA HÀNG</div>
+					<div class="item">
+					<a href="#">Xem tất cả >></p></a>
+					</div>
+			</div>
+			</div>
 		</div>
 	</div>
-
+	</div>
 
 	<!---------------------- footer ----------------------->
 	<div class="container">
-		<hr style="border:1px solid black;">
-		<div class="gioithieu">
-			<h4>Mua Sách Online Tại Onepiece.Vn</h4><br>
-			<p>- Ra đời từ năm 2011, đến nay Onepiece.vn đã trở thành địa chỉ mua sách online quen thuộc của hàng ngàn độc giả trên cả nước. Với đầu sách phong phú, thuộc các thể loại: Văn học nước ngoại, Văn học trong nước, Kinh tế, Kỹ năng sống, Thiếu nhi, Sách học ngoại ngữ, Sách chuyên ngành,... được cập nhật liên tục từ các nhà xuất bản uy tín trong nước. </p><br>
-			<p>- Khi mua sách online tại Onepiece.vn, Quý khách được Bọc plastic miễn phí đến 99% (trừ sách bìa cứng, sách dạng hộp - dạng đặc biệt, sách khổ quá to, ...)</p><br>
-			<p>- Ngoài ra, với hình thức Giao hàng thu tiền tận nơi và Đổi hàng trong vòng 7 ngày nếu sách có bất kỳ lỗi nào trong quá trình in ấn sẽ giúp Quý khách yên tâm hơn khi mua sắm tại Onepiece.vn</p>
 
-		</div>
+		
 		<hr style="border:1px solid black;">
 		<div class="chitietfooter">
 			<h4>HỖ TRỢ KHÁCH HÀNG</h4><br>
@@ -255,7 +288,7 @@
 			Phương thức vận chuyển
 		</div>
 	</div>
-</div>
+
 
 <?php
 	if(isLogined()==true)
@@ -267,12 +300,12 @@
                 .    "<i class=\'glyphicon glyphicon-user\'></i> ".$_SESSION['login']['TenDangNhap']." <b class=\'caret\'></b>"
                 ."</a>"
                 ."<ul class=\'dropdown-menu\'>"
-                .    "<li><a href=\'php/thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
+                .    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
                 .    "</li>"
 				.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
                 .    "</li>"
                 .    "<li class=\'divider\'></li>"
-                .    "<li><a href=\'php/xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
+                .    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
                 .    "</li>"
                 ."</ul>";
 		echo "<script>"
@@ -284,4 +317,5 @@
 
 </body>
 </html>
+
 
