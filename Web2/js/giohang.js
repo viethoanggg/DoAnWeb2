@@ -137,7 +137,7 @@ function thanhtoan(){
 			$('#myModal').modal('show');
 		}
 		else{
-			alert("Tiến hành thanh toán");
+			alert("Hello");
 		}
 	})
 }
