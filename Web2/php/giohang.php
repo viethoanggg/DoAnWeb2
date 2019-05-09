@@ -209,8 +209,8 @@ if(isLogined()==true)
 
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="../index.php">Trang chủ</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="About.php">Về chúng tôi</a></li>
+						<li><a href="Contact.php">Liên hệ</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Thể loại <span class="caret"></span></a>
 							<ul class="dropdown-menu">
