@@ -92,8 +92,8 @@
 				
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="../index.php">Trang chủ</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="About.php">Về chúng tôi</a></li>
+					<li><a href="Contact.php">Liên hệ</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Thể loại <span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -181,22 +181,9 @@
 				?>
 				<div id="snackbar">Đã thêm vào giỏ hàng</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12 col-xs-12 ">
-					<div class="panel panel-info">			
-						<div class="panel-heading">
-							Khu vực bình luận
-						</div>
-						<form action="xulycomment.php" method="post" name="commentbox">
-							<div class="panel-body">
-								<textarea disabled placeholder="Bình luận của bạn!" class="pb-cmnt-textarea" style="" id="cmt" name="cmtarea"></textarea>						
-								<button class="btn btn-primary disabled pull-right" type="submit" style="" id="btnCmt">Bình luận</button>								
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-
+			
+				
+			<div class="tieude" style="color:white;background-color:white"></div>
 			<script>
 				showBook();
 			</script>                               <!---------------------- footer ----------------------->

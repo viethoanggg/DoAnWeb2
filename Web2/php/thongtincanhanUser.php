@@ -184,8 +184,8 @@
 				
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="../index.php">Trang chủ</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="About.php">Về chúng tôi</a></li>
+					<li><a href="Contact.php">Liên hệ</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Thể loại <span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -376,7 +376,7 @@
 				var emaill=document.forms['suauser']['email'].value;
 				var phone=document.forms['suauser']['sdt'].value;
 				
-				var s=/^[a-zA-Z0-9 ]*$/;
+				var s=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
 				var mail=/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
 				var dt=/0([1-9]{9}|[1-9][0-9]{8})$/;
 				
@@ -385,11 +385,11 @@
 						document.getElementById("loihoten").innerHTML="Họ tên không được để trống";
 							return false;
 						}
-					else if(s.test(name)==false)
+					else if(s.test(name)==true)
 						{
 						document.getElementById("loihoten").innerHTML="Họ tên không hợp lệ, vui lòng nhập lại.";
 							return false;
-						}		
+						}			
 						
 					else if(emaill=="")
 						{
