@@ -129,15 +129,3 @@ function ajax(id,i){
 		}
 	})
 }
-function thanhtoan(){
-	$.ajax({
-		url: "checkdangnhapajax.php"
-	}).done(function(data){
-		if(data=="false"){
-			$('#myModal').modal('show');
-		}
-		else{
-			alert("Hello");
-		}
-	})
-}

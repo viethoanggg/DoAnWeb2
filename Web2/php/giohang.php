@@ -482,7 +482,7 @@ if(isLogined()==true)
 					<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
 					</tr>
 					<tr>
-					<td align="center" colspan="2"><a style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan" onclick="thanhtoan();"></a></td>
+					<td align="center" colspan="2"><a style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal";"></a></td>
 					</tr>
 					</tbody>
 					</table>
@@ -531,91 +531,40 @@ if(isLogined()==true)
 		</div>
 	</div>
 	
-	<!-- Modal -->
-	<div class="modal fade myModal" id="myModal" role="dialog">
-		<div class="modal-dialog" style="width: 25%;">
-
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-40 p-b-30">
-				<form class="login100-form validate-form" name="formdangnhap" method="post" action="xuludangnhapkh.php" onsubmit="return ktdangnhap()">
-					<span class="login100-form-title p-b-37">
-						Đăng Nhập
-					</span>
-
-					<div class="wrap-input100 m-b-20" data-validate="Nhập tên đăng nhập hoặc email ">
-						<input class="input100" type="text" name="username" placeholder="Tên đăng nhập">
-						<span class="focus-input100"></span>
+	
+	<!-- The Modal -->
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<?php 
+				if(empty($_SESSION['login']))
+				{	
+					echo '<div class="modal-header">
+					<h4 class="modal-title"><label for="">Đăng nhập</label></h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 
-					<div class="wrap-input100 m-b-25" data-validate="Nhập mật khẩu">
-						<input class="input100" type="password" name="pass" placeholder="Mật khẩu">
-						<span class="focus-input100"></span>
+					<!-- Modal body -->
+					<div class="modal-body" style="text-align: center;">
+					Bạn chưa đăng nhập. Vui lòng đăng nhập để mua hàng!!!
 					</div>
 
-					<div class="wrap-input100 m-b-25">
-						<input class="input100" type="hidden" name="dangnhap" value="1">
-						<span class="focus-input100"></span>
+					<!-- Modal footer -->
+					<div class="modal-footer">
+					<div class="row">
+					<div class="col-sm-6"><a href="./DangNhap.php"><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger">Đăng nhập</button></a></div>
+					<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
 					</div>
-
-					<div class="text-center p-t-10 p-b-20">
-						<span>
-							<input type="checkbox" name="nhomatkhau">
-						</span>
-						<span class="txt1">
-							Nhớ mật khẩu
-						</span>
-					</div>
-					<div class="text-center p-t-5 p-b-20">
-						<span class="txt3" id="kiemtra">
-							<i style="color:red"><?php if(isset($_GET['loidangnhap']) && $_GET['loidangnhap']=="1" ) {
-								echo "Tên đăng nhập hoặc mật khẩu không đúng";
-								echo "<script>$('#myModal').modal()</script>";							} 
-							else if(isset($_GET['loitrangthai']) && $_GET['loitrangthai']=="1") {
-								echo "Tài khoản đang bị tạm khóa";
-								echo "<script>$('#myModal').modal()</script>";
-							}
-							?>
-						</i>
-					</span>
-				</div>
-
-				<div class="container-login100-form-btn">
-					<button class="login100-form-btn" type="submit">
-						Đăng nhập
-					</button>
-				</div>
-
-				<div class="text-center p-t-57 p-b-20">
-					<span class="txt1">
-						Hoặc đăng nhập với
-					</span>
-				</div>
-
-				<div class="flex-c p-b-45">
-					<a href="#" class="login100-social-item">
-						<i class="fa fa-facebook-f"></i>
-					</a>
-
-					<a href="#" class="login100-social-item">
-						<img src="../images/icons/icon-google.png" alt="GOOGLE">
-					</a>
-				</div>
-
-				<div class="text-center">
-					<a href="DangKy.php" class="txt2 hov1 m-r-10">
-						Đăng ký
-					</a>
-					|
-					<a href="../index.php" class="txt2 hov1 m-l-10">
-						Quay lại
-					</a>	
-
-				</div>
-			</form>
-
-
+					</div>';
+				}
+				else{
+					echo "hello";
+				}
+				?>
+			</div>
 		</div>
 	</div>
-</div>
+
 
 </div>
 <script src="../js/Validate.js"></script>

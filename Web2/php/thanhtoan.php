@@ -230,6 +230,20 @@ if(isLogined()==true)
 		<div class="container" >
 			<h3>Thanh toán</h3>
 			<hr style="border:1px solid black;">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<label for="">Địa chỉ nhận hàng</label>
+							<div class="row">
+								<label for="">Ninh Ngọc Hiếu</label>
+								<p>Địa chỉ: KTX Đại Học Sài Gòn, 18A Nguyễn Kim, Phường 12, Quận 5, Hồ Chí Minh Việt Nam</p>
+								<p>Điện thoại: 0329151221</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!---------------------- footer ----------------------->
