@@ -536,36 +536,26 @@ if(isLogined()==true)
 	<div class="modal fade" id="myModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<?php 
-				if(empty($_SESSION['login']))
-				{	
-					echo '<div class="modal-header">
+				<div class="modal-header">
 					<h4 class="modal-title"><label for="">Đăng nhập</label></h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-
-					<!-- Modal body -->
-					<div class="modal-body" style="text-align: center;">
+				</div>
+				<!-- Modal body -->
+				<div class="modal-body" style="text-align: center;">
 					Bạn chưa đăng nhập. Vui lòng đăng nhập để mua hàng!!!
-					</div>
+				</div>
 
-					<!-- Modal footer -->
-					<div class="modal-footer">
+				<!-- Modal footer -->
+				<div class="modal-footer">
 					<div class="row">
-					<div class="col-sm-6"><a href="./DangNhap.php"><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger">Đăng nhập</button></a></div>
-					<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
+						<div class="col-sm-6"><a href="./DangNhap.php"><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger">Đăng nhập</button></a></div>
+						<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
 					</div>
-					</div>';
-				}
-				else{
-					echo "hello";
-				}
-				?>
+				</div>
 			</div>
 		</div>
+
 	</div>
-
-
 </div>
 <script src="../js/Validate.js"></script>
 <?php
