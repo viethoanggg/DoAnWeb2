@@ -533,7 +533,9 @@ if(isLogined()==true)
 	
 	
 	<!-- The Modal -->
-	<div class="modal fade" id="myModal">
+	<?php 
+		if(empty($_SESSION['login'])){
+			echo '<div class="modal fade" id="myModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -554,8 +556,10 @@ if(isLogined()==true)
 				</div>
 			</div>
 		</div>
+	</div>';
+		}
+	 ?>
 
-	</div>
 </div>
 <script src="../js/Validate.js"></script>
 <?php
