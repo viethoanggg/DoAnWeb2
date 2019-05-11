@@ -568,13 +568,13 @@ if(isLogined()==true)
 		</div>
 		<!-- Modal body -->
 		<div class="modal-body" style="text-align: center;">
-		Tiến hành thanh toán
+		
 		</div>
 
 		<!-- Modal footer -->
 		<div class="modal-footer">
 		<div class="row">
-		<div class="col-sm-6"><a href="./DangNhap.php"><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger">Đăng nhập</button></a></div>
+		<div class="col-sm-6"><a href="./DangNhap.php"><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger">Thanh toán</button></a></div>
 		<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
 		</div>
 		</div>
