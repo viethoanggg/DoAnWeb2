@@ -568,7 +568,43 @@ if(isLogined()==true)
 		</div>
 		<!-- Modal body -->
 		<div class="modal-body" style="text-align: center;">
-		
+		<form>
+		<div class="form-group row">
+		<label for="inputPassword" class="col-sm-2 col-form-label">Họ và tên</label>
+		<div class="col-sm-10">
+		<input type="text" class="form-control" id="inputPassword" placeholder="Họ và tên">
+		</div>
+		</div>
+
+		<div class="form-group row">
+		<label for="inputPassword" class="col-sm-2 col-form-label">SDT</label>
+		<div class="col-sm-10">
+		<input type="text" class="form-control" id="inputPassword" placeholder="SDT">
+		</div>
+		</div>
+
+		<div class="form-group row">
+		<label for="inputPassword" class="col-sm-2 col-form-label">Địa chỉ</label>
+		<div class="col-sm-10">
+		<input type="text" class="form-control" id="" placeholder="Địa chỉ">
+		</div>
+		</div>
+	
+		<div class="form-group row">
+		<label for="inputPassword" class="col-sm-2 col-form-label">Hình thức thanh toán</label>
+		<div class="col-sm-10">
+		<input type="text" class="form-control" id="" placeholder="Địa chỉ">
+		</div>
+		</div>
+	
+		<div class="form-group row">
+		<label for="inputPassword" class="col-sm-2 col-form-label">Hình thức giao hàng</label>
+		<div class="col-sm-10">
+		<input type="text" class="form-control" id="" placeholder="Hình thức giao hàng">
+		</div>
+		</div>
+
+		</form>
 		</div>
 
 		<!-- Modal footer -->
