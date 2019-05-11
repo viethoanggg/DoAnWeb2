@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 29, 2019 lúc 05:06 PM
+-- Thời gian đã tạo: Th5 11, 2019 lúc 03:43 PM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
 -- Phiên bản PHP: 7.2.17
 
@@ -43,9 +43,9 @@ CREATE TABLE `chitiethoadon` (
 
 INSERT INTO `chitiethoadon` (`MaHD`, `MaSach`, `SoLuong`, `TongTienCT`, `NgayGiaoHang`, `TinhTrangCT`) VALUES
 ('HD0', 'KNS0', 1, 169150, '2017-02-15', 'Hàng đang nhập từ kho'),
-('HD0', 'KT5', 1, 159200, '2017-02-16', 'Hàng đang nhập từ kho'),
-('HD0', 'TN4', 1, 127500, '2017-02-17', 'Hàng đang nhập từ kho'),
-('HD0', 'TT0', 1, 74800, '2017-02-17', 'Hàng đang nhập từ kho'),
+('HD0', 'KT5', 1, 159200, '2017-02-16', 'Đã giao hàng'),
+('HD0', 'TN4', 1, 127500, '2017-02-17', 'Đã giao hàng'),
+('HD0', 'TT0', 1, 74800, '2017-02-17', 'Đã giao hàng'),
 ('HD1', 'CN1', 1, 68000, '2019-02-14', 'Đã giao hàng'),
 ('HD1', 'CN11', 1, 94400, '2019-02-15', 'Đã giao hàng'),
 ('HD1', 'TN1', 1, 78000, '2019-02-15', 'Đã giao hàng'),
