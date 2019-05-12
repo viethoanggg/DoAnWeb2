@@ -19,7 +19,6 @@ if(isLogined()==true)
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
-		<!-- <script type="text/javascript" language="javascript" src="../js/jquery.js"></script> -->
 		<script type="text/javascript" language="javascript" src="../js/jquery-3.4.0.min.js"></script>
 		<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
 		<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
@@ -244,408 +243,410 @@ if(isLogined()==true)
 		<div class="container" >
 			<h3>Giỏ hàng</h3>
 			<hr style="border:1px solid black;">
-			<div id="giohangrong">
-				<?php
-				include 'cart.php';
-				if(!empty($_SESSION['cart'])){
+			<div class="row">
+				<div id="giohangrong">
+					<div class="col-md-8">
+						<?php
+						include 'cart.php';
+						if(!empty($_SESSION['cart'])){
 			// echo "<pre />";
 			 //var_dump($_SESSION['cart']);
-					$s="";
-					$demsl=0;
-					$tong=0;
-					$ship=25000;
-					foreach ($_SESSION['cart'] as $key => $value) {
+							$s="";
+							$demsl=0;
+							$tong=0;
+							$ship=25000;
+							foreach ($_SESSION['cart'] as $key => $value) {
 				//var_dump($key);
-						if($_SESSION['cart'][$key]['theloai']=='NN'){
-							$s=$s.'<tr id="'.$key.'">
-							<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
-							<td>
-							<a href="chitietsach.php?theloai=hocngoaingu&masach='.$key.'"><img class="biasach" src="../images/ngoaingu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
-							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.'<div id="buyandnumber">'
-							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
-							.'<div class="input-group-btn-vertical">'
-							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
-							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
-							.'</div>'
-							.'</div>'
-							.'</div>'.'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
-							</tr>';
-							$demsl+=$_SESSION["cart"][$key]["sl"];
-							$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
-						}
-						if($_SESSION['cart'][$key]['theloai']=='CN'){
-							$s=$s.'<tr id="'.$key.'">
-							<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
-							<td>
-							<a href="chitietsach.php?theloai=chuyennganh&masach='.$key.'"><img class="biasach" src="../images/chuyennganh/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
-							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.'<div id="buyandnumber">'
-							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
-							.'<div class="input-group-btn-vertical">'
-							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
-							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
-							.'</div>'
-							.'</div>'
-							.'</div>'
-							.'</div>'.'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
-							</tr>';
-							$demsl+=$_SESSION["cart"][$key]["sl"];
-							$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
-						}
-						if($_SESSION['cart'][$key]['theloai']=='KNS'){
-							$s=$s.'<tr id="'.$key.'">
-							<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
-							<td>
-							<a href="chitietsach.php?theloai=kynangsong&masach='.$key.'"><img class="biasach" src="../images/kynangsong/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
-							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.'<div id="buyandnumber">'
-							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
-							.'<div class="input-group-btn-vertical">'
-							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
-							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
-							.'</div>'
-							.'</div>'
-							.'</div>'
-							.'</div>'.'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
-							</tr>';
-							$demsl+=$_SESSION["cart"][$key]["sl"];
-							$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
-						}
-						if($_SESSION['cart'][$key]['theloai']=='KT'){
-							$s=$s.'<tr id="'.$key.'">
-							<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
-							<td>
-							<a href="chitietsach.php?theloai=kinte&masach='.$key.'"><img class="biasach" src="../images/kinhte/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
-							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.'<div id="buyandnumber">'
-							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
-							.'<div class="input-group-btn-vertical">'
-							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
-							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
-							.'</div>'
-							.'</div>'
-							.'</div>'
-							.'</div>'.'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
-							</tr>';
-							$demsl+=$_SESSION["cart"][$key]["sl"];
-							$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
-						}
-						if($_SESSION['cart'][$key]['theloai']=='LS'){
-							$s=$s.'<tr id="'.$key.'">
-							<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
-							<td>
-							<a href="chitietsach.php?theloai=lichsu&masach='.$key.'"><img class="biasach" src="../images/lichsu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
-							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.'<div id="buyandnumber">'
-							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
-							.'<div class="input-group-btn-vertical">'
-							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
-							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
-							.'</div>'
-							.'</div>'
-							.'</div>'
-							.'</div>'.'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
-							</tr>';
-							$demsl+=$_SESSION["cart"][$key]["sl"];
-							$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
-						}
-						if($_SESSION['cart'][$key]['theloai']=='TN'){
-							$s=$s.'<tr id="'.$key.'">
-							<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
-							<td>
-							<a href="chitietsach.php?theloai=thieunhi&masach='.$key.'"><img class="biasach" src="../images/thieunhi/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
-							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.'<div id="buyandnumber">'
-							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
-							.'<div class="input-group-btn-vertical">'
-							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
-							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
-							.'</div>'
-							.'</div>'
-							.'</div>'
-							.'</div>'.'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
-							</tr>';
-							$demsl+=$_SESSION["cart"][$key]["sl"];
-							$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
-						}
-						if($_SESSION['cart'][$key]['theloai']=='TT'){
-							$s=$s.'<tr id="'.$key.'">
-							<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
-							<td>
-							<a href="chitietsach.php?theloai=tuoiteen&masach='.$key.'"><img class="biasach" src="../images/tuoiteen/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
-							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.'<div id="buyandnumber">'
-							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
-							.'<div class="input-group-btn-vertical">'
-							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
-							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
-							.'</div>'
-							.'</div>'
-							.'</div>'
-							.'</div>'.'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
-							</tr>';
-							$demsl+=$_SESSION["cart"][$key]["sl"];
-							$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
-						}
-						if($_SESSION['cart'][$key]['theloai']=='VH'){
-							$s=$s.'<tr id="'.$key.'">
-							<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
-							<td>
-							<a href="chitietsach.php?theloai=vanhoc&masach='.$key.'"><img class="biasach" src="../images/vanhoc/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
-							<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
-							<td>'.'<div id="buyandnumber">'
-							.'<div class="input-group spinner" id="nhapso">'
-							.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
-							.'<div class="input-group-btn-vertical">'
-							.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
-							.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
-							.'</div>'
-							.'</div>'
-							.'</div>'
-							.'</div>'.'</td>
-							<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
-							</tr>';
-							$demsl+=$_SESSION["cart"][$key]["sl"];
-							$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
-						}
+								if($_SESSION['cart'][$key]['theloai']=='NN'){
+									$s=$s.'<tr id="'.$key.'">
+									<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
+									<td>
+									<a href="chitietsach.php?theloai=hocngoaingu&masach='.$key.'"><img class="biasach" src="../images/ngoaingu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
+									<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+									<td>'.'<div id="buyandnumber">'
+									.'<div class="input-group spinner" id="nhapso">'
+									.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+									.'<div class="input-group-btn-vertical">'
+									.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
+									.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
+									.'</div>'
+									.'</div>'
+									.'</div>'.'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									</tr>';
+									$demsl+=$_SESSION["cart"][$key]["sl"];
+									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+								}
+								if($_SESSION['cart'][$key]['theloai']=='CN'){
+									$s=$s.'<tr id="'.$key.'">
+									<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
+									<td>
+									<a href="chitietsach.php?theloai=chuyennganh&masach='.$key.'"><img class="biasach" src="../images/chuyennganh/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
+									<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+									<td>'.'<div id="buyandnumber">'
+									.'<div class="input-group spinner" id="nhapso">'
+									.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+									.'<div class="input-group-btn-vertical">'
+									.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
+									.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
+									.'</div>'
+									.'</div>'
+									.'</div>'
+									.'</div>'.'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									</tr>';
+									$demsl+=$_SESSION["cart"][$key]["sl"];
+									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+								}
+								if($_SESSION['cart'][$key]['theloai']=='KNS'){
+									$s=$s.'<tr id="'.$key.'">
+									<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
+									<td>
+									<a href="chitietsach.php?theloai=kynangsong&masach='.$key.'"><img class="biasach" src="../images/kynangsong/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
+									<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+									<td>'.'<div id="buyandnumber">'
+									.'<div class="input-group spinner" id="nhapso">'
+									.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+									.'<div class="input-group-btn-vertical">'
+									.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
+									.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
+									.'</div>'
+									.'</div>'
+									.'</div>'
+									.'</div>'.'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									</tr>';
+									$demsl+=$_SESSION["cart"][$key]["sl"];
+									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+								}
+								if($_SESSION['cart'][$key]['theloai']=='KT'){
+									$s=$s.'<tr id="'.$key.'">
+									<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
+									<td>
+									<a href="chitietsach.php?theloai=kinte&masach='.$key.'"><img class="biasach" src="../images/kinhte/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
+									<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+									<td>'.'<div id="buyandnumber">'
+									.'<div class="input-group spinner" id="nhapso">'
+									.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+									.'<div class="input-group-btn-vertical">'
+									.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
+									.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
+									.'</div>'
+									.'</div>'
+									.'</div>'
+									.'</div>'.'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									</tr>';
+									$demsl+=$_SESSION["cart"][$key]["sl"];
+									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+								}
+								if($_SESSION['cart'][$key]['theloai']=='LS'){
+									$s=$s.'<tr id="'.$key.'">
+									<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
+									<td>
+									<a href="chitietsach.php?theloai=lichsu&masach='.$key.'"><img class="biasach" src="../images/lichsu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
+									<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+									<td>'.'<div id="buyandnumber">'
+									.'<div class="input-group spinner" id="nhapso">'
+									.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+									.'<div class="input-group-btn-vertical">'
+									.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
+									.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
+									.'</div>'
+									.'</div>'
+									.'</div>'
+									.'</div>'.'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									</tr>';
+									$demsl+=$_SESSION["cart"][$key]["sl"];
+									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+								}
+								if($_SESSION['cart'][$key]['theloai']=='TN'){
+									$s=$s.'<tr id="'.$key.'">
+									<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
+									<td>
+									<a href="chitietsach.php?theloai=thieunhi&masach='.$key.'"><img class="biasach" src="../images/thieunhi/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
+									<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+									<td>'.'<div id="buyandnumber">'
+									.'<div class="input-group spinner" id="nhapso">'
+									.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+									.'<div class="input-group-btn-vertical">'
+									.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
+									.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
+									.'</div>'
+									.'</div>'
+									.'</div>'
+									.'</div>'.'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									</tr>';
+									$demsl+=$_SESSION["cart"][$key]["sl"];
+									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+								}
+								if($_SESSION['cart'][$key]['theloai']=='TT'){
+									$s=$s.'<tr id="'.$key.'">
+									<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
+									<td>
+									<a href="chitietsach.php?theloai=tuoiteen&masach='.$key.'"><img class="biasach" src="../images/tuoiteen/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
+									<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+									<td>'.'<div id="buyandnumber">'
+									.'<div class="input-group spinner" id="nhapso">'
+									.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+									.'<div class="input-group-btn-vertical">'
+									.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
+									.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
+									.'</div>'
+									.'</div>'
+									.'</div>'
+									.'</div>'.'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									</tr>';
+									$demsl+=$_SESSION["cart"][$key]["sl"];
+									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+								}
+								if($_SESSION['cart'][$key]['theloai']=='VH'){
+									$s=$s.'<tr id="'.$key.'">
+									<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
+									<td>
+									<a href="chitietsach.php?theloai=vanhoc&masach='.$key.'"><img class="biasach" src="../images/vanhoc/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
+									<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
+									<td>'.'<div id="buyandnumber">'
+									.'<div class="input-group spinner" id="nhapso">'
+									.'<input type="number" class="form-control" value="'.$_SESSION["cart"][$key]["sl"].'" name="sl" id="soluong" min="1" onkeyup="thaydoi(`'.$key.'`)">'
+									.'<div class="input-group-btn-vertical">'
+									.'<button class="btn btn-default tang" type="button" onclick="tang(`'.$key.'`)"><i class="fa fa-caret-up"></i></button>'
+									.'<button class="btn btn-default giam" type="button" onclick="giam(`'.$key.'`)"><i class="fa fa-caret-down"></i></button>'
+									.'</div>'
+									.'</div>'
+									.'</div>'
+									.'</div>'.'</td>
+									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									</tr>';
+									$demsl+=$_SESSION["cart"][$key]["sl"];
+									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
+								}
 
-					}
-					echo '<table class="table table-striped" id="muahang">
-					<thead>
-					<tr style="background-color: #101010;">
-					<th>Xoá</th>
-					<th>Sản phẩm</th>
-					<th>Tên sản phẩm</th>
-					<th>Giá</th>
-					<th>Số lượng</th>
-					<th>Tổng tiền</th>
-					</tr>
-					</thead>
-					<tbody>
-					'.$s.'
-					</tbody>
-					</table>';
+							}
+							echo '<table class="table table-striped" id="muahang">
+							<thead>
+							<tr style="background-color: #101010;">
+							<th>Xoá</th>
+							<th>Sản phẩm</th>
+							<th>Tên sản phẩm</th>
+							<th>Giá</th>
+							<th>Số lượng</th>
+							<th>Tổng</th>
+							</tr>
+							</thead>
+							<tbody>
+							'.$s.'
+							</tbody>
+							</table>';
 
-					echo '<div class="row">
-					<div class="col-md-4"></div>
-					<div class="col-md-4"></div>
-					<div  class="col-md-4">
-					<table class="table table-striped">
-					<thead>
-					<tr style="background-color: #101010;">
-					<th colspan="2" style="text-align: center;">Tổng giỏ hàng</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr>
-					<td>Số lượng sản phẩm</td>
-					<td id="demsl">'.$demsl.'</td>
-					</tr>
-					<tr>
-					<td>Tổng</td>
-					<td id="tong">'.number_format($tong).'đ</td>
-					</tr>
-					<tr>
-					<td>Phí vận chuyển(Tạm tính)</td>
-					<td>'.number_format($ship).'đ</td>
-					</tr>
-					<tr>
-					<td colspan="2" align="center">
-					<hr width="70%" style="border: 1px solid;margin: 0">
-					</td>
-					</tr>	
-					<tr>
-					<td>Thành tiền</td>
-					<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
-					</tr>
-					<tr>
-					<td align="center" colspan="2"><a style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal";"></a></td>
-					</tr>
-					</tbody>
-					</table>
+
+						}
+						else {
+							echo '<script>
+							$(function(){
+								$(`#giohangrong`).html(`<table class="table"><tr><td style="background-color:#ddd; height: 150px;text-align: center;padding-top:100px ">Không có sản phẩm nào trong giỏ hàng của bạn</td></tr><tr><td style="background-color:#ddd;border: 0;height: 200px;text-align: center;"><button class="thanhtoan" onclick="back()">Tiếp tục mua sắm</button></td></tr></table>`);
+								})
+								</script>';
+							}
+							?>
+						</div>
+						<div class="col-md-4">
+							<?php echo '
+							<table class="table table-striped">
+							<thead>
+							<tr style="background-color: #101010;">
+							<th colspan="2" style="text-align: center;">Thanh toán vận chuyển</th>
+							</tr>
+							</thead>
+							<tr>
+							<td><span class="glyphicon glyphicon-map-marker"></span><b>Ninh Ngọc Hiếu</b><br>
+							18A Nguyễn Kim
+							</td>
+							<td id="demsl">'.$demsl.'</td>
+							</tr>
+							<tr>
+							<td><span class="glyphicon glyphicon-phone"></span>0329151221
+							</td>
+							<td id="demsl">'.$demsl.'</td>
+							</tr>
+							<tr>
+							<tr>
+							<td><span class="glyphicon glyphicon-envelope"> </span> ninhngochieu@gmail.com
+							</td>
+							<td id="demsl">'.$demsl.'</td>
+							</tr>
+							<tr>
+							<td><span class="glyphicon glyphicon-credit-card"></span> Hình thức thanh toán
+							</td>
+							<td id="demsl">'.$demsl.'</td>
+							</tr>
+							<tr>
+							<td><i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng
+							</td>
+							<td id="demsl">'.$demsl.'</td>
+							</tr>
+							<thead>
+							<tr style="background-color: #101010;">
+							<th colspan="2" style="text-align: center;">Thông tin đơn hàng</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+							<td>Số lượng sản phẩm</td>
+							<td id="demsl">'.$demsl.'</td>
+							</tr>
+							<tr>
+							<td>Tổng</td>
+							<td id="tong">'.number_format($tong).'đ</td>
+							</tr>
+							<tr>
+							<td>Phí vận chuyển(Tạm tính)</td>
+							<td>'.number_format($ship).'đ</td>
+							</tr>
+							<tr>
+							<td colspan="2" align="center">
+							<hr width="70%" style="border: 1px solid;margin: 0">
+							</td>
+							</tr>	
+							<tr>
+							<td>Thành tiền</td>
+							<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
+							</tr>
+							<tr>
+							<td align="center" colspan="2"><a style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal";"></a></td>
+							</tr>
+							</tbody>
+							</table>';
+							?>
+						</div>
 					</div>
-					</div>';
-				}
-				else {
-					echo '<table class="table"><tr><td style="background-color:#ddd; height: 150px;text-align: center;padding-top:100px ">Không có sản phẩm nào trong giỏ hàng của bạn</td></tr><tr><td style="background-color:#ddd;border: 0;height: 200px;text-align: center;"><button class="thanhtoan" onclick="window.location.assign(`../index.php`)">Tiếp tục mua sắm</button></td></tr></table>';
-				}
-				?>
+				</div>
 			</div>
 		</div>
+		<!---------------------- footer ----------------------->
+		<div class="container">
+			<hr style="border:1px solid black;">
+			<div class="gioithieu">
+				<h4>Mua Sách Online Tại Onepiece.Vn</h4><br>
+				<p>- Ra đời từ năm 2011, đến nay Onepiece.vn đã trở thành địa chỉ mua sách online quen thuộc của hàng ngàn độc giả trên cả nước. Với đầu sách phong phú, thuộc các thể loại: Văn học nước ngoại, Văn học trong nước, Kinh tế, Kỹ năng sống, Thiếu nhi, Sách học ngoại ngữ, Sách chuyên ngành,... được cập nhật liên tục từ các nhà xuất bản uy tín trong nước. </p><br>
+				<p>- Khi mua sách online tại Onepiece.vn, Quý khách được Bọc plastic miễn phí đến 99% (trừ sách bìa cứng, sách dạng hộp - dạng đặc biệt, sách khổ quá to, ...)</p><br>
+				<p>- Ngoài ra, với hình thức Giao hàng thu tiền tận nơi và Đổi hàng trong vòng 7 ngày nếu sách có bất kỳ lỗi nào trong quá trình in ấn sẽ giúp Quý khách yên tâm hơn khi mua sắm tại Onepiece.vn</p>
+			</div>
+			<hr style="border:1px solid black;">
+			<div class="chitietfooter">
+				<h4>HỖ TRỢ KHÁCH HÀNG</h4><br>
+				Email: admin@onepiece.vn<br>
+				Hotline: 0938 424 289
+			</div>
+			<div class="chitietfooter">
+				<h4>Giới Thiệu</h4><br>
+				Về Onepiece<br>
+				Tuyển dụng
+			</div>
+			<div class="chitietfooter">
+				<h4>Tài Khoản</h4><br>
+				Tài khoản<br>
+				Danh sách đơn hàng<br>
+				Thông báo
+			</div>
+			<div class="chitietfooter">
+				<h4>Hướng Dẫn</h4><br>
+				Hướng dẫn mua hàng<br>
+				Phương thức thanh toán<br>
+				Câu hỏi thường gặp<br>
+				Phương thức vận chuyển
+			</div>
+		</div>
+
+
+		<!-- The Modal -->
+		<?php 
+		if(empty($_SESSION['login'])){
+			echo '<div class="modal fade" id="myModal">
+			<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+			<h4 class="modal-title"><label for="">Đăng nhập</label></h4>
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<!-- Modal body -->
+			<div class="modal-body" style="text-align: center;">
+			Bạn chưa đăng nhập. Vui lòng đăng nhập để mua hàng!!!
+			</div>
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+			<div class="row">
+			<div class="col-sm-6"><a href="./DangNhap.php"><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger">Đăng nhập</button></a></div>
+			<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>';
+		}
+		?>
+		<div class="modal fade" id="myModal1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Modal Heading</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						Modal body..
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
 	</div>
-	<!---------------------- footer ----------------------->
-	<div class="container">
-		<hr style="border:1px solid black;">
-		<div class="gioithieu">
-			<h4>Mua Sách Online Tại Onepiece.Vn</h4><br>
-			<p>- Ra đời từ năm 2011, đến nay Onepiece.vn đã trở thành địa chỉ mua sách online quen thuộc của hàng ngàn độc giả trên cả nước. Với đầu sách phong phú, thuộc các thể loại: Văn học nước ngoại, Văn học trong nước, Kinh tế, Kỹ năng sống, Thiếu nhi, Sách học ngoại ngữ, Sách chuyên ngành,... được cập nhật liên tục từ các nhà xuất bản uy tín trong nước. </p><br>
-			<p>- Khi mua sách online tại Onepiece.vn, Quý khách được Bọc plastic miễn phí đến 99% (trừ sách bìa cứng, sách dạng hộp - dạng đặc biệt, sách khổ quá to, ...)</p><br>
-			<p>- Ngoài ra, với hình thức Giao hàng thu tiền tận nơi và Đổi hàng trong vòng 7 ngày nếu sách có bất kỳ lỗi nào trong quá trình in ấn sẽ giúp Quý khách yên tâm hơn khi mua sắm tại Onepiece.vn</p>
-		</div>
-		<hr style="border:1px solid black;">
-		<div class="chitietfooter">
-			<h4>HỖ TRỢ KHÁCH HÀNG</h4><br>
-			Email: admin@onepiece.vn<br>
-			Hotline: 0938 424 289
-		</div>
-		<div class="chitietfooter">
-			<h4>Giới Thiệu</h4><br>
-			Về Onepiece<br>
-			Tuyển dụng
-		</div>
-		<div class="chitietfooter">
-			<h4>Tài Khoản</h4><br>
-			Tài khoản<br>
-			Danh sách đơn hàng<br>
-			Thông báo
-		</div>
-		<div class="chitietfooter">
-			<h4>Hướng Dẫn</h4><br>
-			Hướng dẫn mua hàng<br>
-			Phương thức thanh toán<br>
-			Câu hỏi thường gặp<br>
-			Phương thức vận chuyển
-		</div>
-	</div>
-	
-	
-	<!-- The Modal -->
-	<?php 
-	if(empty($_SESSION['login'])){
-		echo '<div class="modal fade" id="myModal">
-		<div class="modal-dialog">
-		<div class="modal-content">
-		<div class="modal-header">
-		<h4 class="modal-title"><label for="">Đăng nhập</label></h4>
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		</div>
-		<!-- Modal body -->
-		<div class="modal-body" style="text-align: center;">
-		Bạn chưa đăng nhập. Vui lòng đăng nhập để mua hàng!!!
-		</div>
+	<script src="../js/Validate.js"></script>
+	<?php
 
-		<!-- Modal footer -->
-		<div class="modal-footer">
-		<div class="row">
-		<div class="col-sm-6"><a href="./DangNhap.php"><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger">Đăng nhập</button></a></div>
-		<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
-		</div>
-		</div>
-		</div>
-		</div>
-		</div>';
-	}
-	else{
-		echo '<div class="modal fade" id="myModal">
-		<div class="modal-dialog modal-xl">
-		<div class="modal-content">
-		<div class="modal-header">
-		<h4 class="modal-title"><label for="">XÁC NHẬN - THANH TOÁN</label></h4>
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		</div>
-		<!-- Modal body -->
-		<div class="modal-body" style="text-align: center;">
-		<form>
-		<div class="form-group row">
-		<label for="inputPassword" class="col-sm-2 col-form-label">Họ và tên</label>
-		<div class="col-sm-10">
-		<input type="text" class="form-control" id="inputPassword" placeholder="Họ và tên">
-		</div>
-		</div>
-
-		<div class="form-group row">
-		<label for="inputPassword" class="col-sm-2 col-form-label">SDT</label>
-		<div class="col-sm-10">
-		<input type="text" class="form-control" id="inputPassword" placeholder="SDT">
-		</div>
-		</div>
-
-		<div class="form-group row">
-		<label for="inputPassword" class="col-sm-2 col-form-label">Địa chỉ</label>
-		<div class="col-sm-10">
-		<input type="text" class="form-control" id="" placeholder="Địa chỉ">
-		</div>
-		</div>
-	
-		<div class="form-group row">
-		<label for="inputPassword" class="col-sm-2 col-form-label">Hình thức thanh toán</label>
-		<div class="col-sm-10">
-		<input type="text" class="form-control" id="" placeholder="Địa chỉ">
-		</div>
-		</div>
-	
-		<div class="form-group row">
-		<label for="inputPassword" class="col-sm-2 col-form-label">Hình thức giao hàng</label>
-		<div class="col-sm-10">
-		<input type="text" class="form-control" id="" placeholder="Hình thức giao hàng">
-		</div>
-		</div>
-
-		</form>
-		</div>
-
-		<!-- Modal footer -->
-		<div class="modal-footer">
-		<div class="row">
-		<div class="col-sm-6"><a href="./DangNhap.php"><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger">Thanh toán</button></a></div>
-		<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
-		</div>
-		</div>
-		</div>
-		</div>
-		</div>';
+	if(isLogined()==true)
+	{
+		echo "<script>
+		document.getElementById('loginn').innerHTML=''; 
+		</script>";
+		$s="<a class=\'dropdown-toggle\' data-toggle=\'dropdown\' href=\'#\'>"
+		.    "<i class=\'glyphicon glyphicon-user\'></i> ".$_SESSION['login']['TenDangNhap']." <b class=\'caret\'></b>"
+		."</a>"
+		."<ul class=\'dropdown-menu\'>"
+		.    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
+		.    "</li>"
+		.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
+		.    "</li>"
+		.    "<li class=\'divider\'></li>"
+		.    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
+		.    "</li>"
+		."</ul>";
+		echo "<script>"
+		."document.getElementById('logout').setAttribute('class','dropdown'); "
+		."document.getElementById('logout').innerHTML='".$s."';"
+		."</script>";
 	}
 	?>
-
-</div>
-<script src="../js/Validate.js"></script>
-<?php
-
-if(isLogined()==true)
-{
-	echo "<script>
-	document.getElementById('loginn').innerHTML=''; 
-	</script>";
-	$s="<a class=\'dropdown-toggle\' data-toggle=\'dropdown\' href=\'#\'>"
-	.    "<i class=\'glyphicon glyphicon-user\'></i> ".$_SESSION['login']['TenDangNhap']." <b class=\'caret\'></b>"
-	."</a>"
-	."<ul class=\'dropdown-menu\'>"
-	.    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
-	.    "</li>"
-	.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
-	.    "</li>"
-	.    "<li class=\'divider\'></li>"
-	.    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
-	.    "</li>"
-	."</ul>";
-	echo "<script>"
-	."document.getElementById('logout').setAttribute('class','dropdown'); "
-	."document.getElementById('logout').innerHTML='".$s."';"
-	."</script>";
-}
-?>
 </body>
 </html>

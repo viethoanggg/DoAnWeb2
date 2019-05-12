@@ -129,3 +129,7 @@ function ajax(id,i){
 		}
 	})
 }
+
+function back(){
+	window.location.assign("../index.php");
+}
