@@ -50,7 +50,8 @@
 										  'HoTen' => $row['HoTen'],
 										  'MaKH' => $row['MaKH'],
 										  'Email' => $row['Email'],
-										  'SĐT' => $row['SĐT']);
+										  'SĐT' => $row['SĐT'],
+											'DiaChi'=>'');
 										  
 				return true;
 			}

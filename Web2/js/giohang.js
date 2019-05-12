@@ -136,3 +136,9 @@ function back(){
 function chinhsua(){
 	$('#md').modal('show');
 }
+function hinhthucthanhtoan(){
+	$('#httt').modal('show');
+}
+function hinhthucgiaohang(){
+	alert("Giao hàng");
+}
