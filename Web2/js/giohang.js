@@ -146,18 +146,23 @@ function thenganhang(){
 	$('#theng').modal('show');
 	$('#httt').modal('hide');
 	$('#the').modal('hide');
+	$('#tng').prop('checked', true);
 }
 function the(){
 	$('#the').modal('show');
 	$('#httt').modal('hide');
 	$('#theng').modal('hide');
+	$('#t').prop('checked',true);
 }
 function ttbt(){
-	$('#httt').modal('show');
 	$('#htthanhtoan').val(3);
+	$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thanh toán khi nhận hàng)`);
+}
+function nhanhang(){
+	$('#httt').modal('show');
 	$('#the').modal('hide');
 	$('#theng').modal('hide');
-	$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thanh toán khi nhận hàng)`);
+	$('#bt').prop('checked',true);
 }
 function maht(){
 	$('#htthanhtoan').val(1);

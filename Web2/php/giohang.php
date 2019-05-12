@@ -718,8 +718,8 @@ if(isLogined()==true)
 						<div class="modal-body">
 							<div class="row" style="text-align: center;">
 								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" onclick="thenganhang()" >Thẻ ngân hàng</div>
-								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" onclick="the()" value="option1" >Thẻ...</div>
-								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Thanh toán khi nhận hàng</div>
+								<div class="col-sm-4"> <input type="radio" class="form-check-input" name="optradio" onclick="the()" value="option1" >Thẻ...</div>
+								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="bt" onclick="nhanhang()" name="optradio" value="option1" checked >Thanh toán khi nhận hàng</div>
 							</div>
 							<!-- Modal footer -->
 							<div class="modal-footer">
@@ -752,7 +752,7 @@ if(isLogined()==true)
 							<div class="row" style="text-align: center;">
 								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="tng" name="optradio" value="option1" onclick="thenganhang()" checked>Thẻ ngân hàng</div>
 								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" onclick="the()" value="option1" >Thẻ...</div>
-								<div class="col-sm-4"> <input type="radio" onclick="ttbt()" class="form-check-input" id="radio1" name="optradio" value="option1" >Thanh toán khi nhận hàng</div>
+								<div class="col-sm-4"> <input type="radio" onclick="nhanhang()" class="form-check-input" id="radio1" name="optradio" value="option1" >Thanh toán khi nhận hàng</div>
 							</div>
 							<div class="form-group row"></div>	
 							<div class="form-group row">
@@ -816,8 +816,8 @@ if(isLogined()==true)
 						<div class="modal-body">
 							<div class="row" style="text-align: center;">
 								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" onclick="thenganhang()" >Thẻ ngân hàng</div>
-								<div class="col-sm-4"> <input type="radio" class="form-check-input" checked id="radio1" name="optradio" onclick="the()" value="option1" >Thẻ...</div>
-								<div class="col-sm-4"> <input type="radio" onclick="ttbt()" class="form-check-input" id="radio1" name="optradio" value="option1" >Thanh toán khi nhận hàng</div>
+								<div class="col-sm-4"> <input type="radio" class="form-check-input" checked id="t" name="optradio" onclick="the()" value="option1" >Thẻ...</div>
+								<div class="col-sm-4"> <input type="radio" onclick="nhanhang()" class="form-check-input" id="radio1" name="optradio" value="option1" >Thanh toán khi nhận hàng</div>
 							</div>
 							<div class="form-group row"></div>	
 							<div class="form-group row">
