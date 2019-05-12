@@ -461,7 +461,7 @@ if(isLogined()==true)
 							}
 							?>
 						</div>
-						<form action="thanhtoan.php" method="GET">
+						<form action="thanhtoan.php" method="GET" onsubmit="return ktgiohang()">
 							<div class="col-md-4">
 								<?php 
 								include 'diachi.php';
@@ -469,7 +469,7 @@ if(isLogined()==true)
 									$dc=diachi::showdiachi($_SESSION['login']['MaKH']);
 									if($_SESSION['login']['DiaChi']!="") $dc=$_SESSION['login']['DiaChi'];
 									echo '
-									<table class="table table-striped">
+									<table class="table table-striped" id="thongtingiaohang">
 									<thead>
 									<tr style="background-color: #101010;">
 									<th colspan="2" style="text-align: center;">Thanh toán vận chuyển</th>
@@ -478,33 +478,33 @@ if(isLogined()==true)
 									<tr>
 									<td><i class="glyphicon glyphicon-user"></i><b>'.$_SESSION['login']['HoTen'].'
 									</td>
-									<td id="demsl"><a style="cursor: pointer;" onclick="chinhsua()">Chỉnh sửa</a></td>
+									<td id=""><a style="cursor: pointer;" onclick="chinhsua()">Chỉnh sửa</a></td>
 									</tr>
 									<tr>
 									<td><span class="glyphicon glyphicon-map-marker"></span><b>'.$dc.'
 									</td>
-									<td id="demsl"><a style="cursor: pointer;" onclick="chinhsua()">Chỉnh sửa</a></td>
+									<td id=""><a style="cursor: pointer;" onclick="chinhsua()">Chỉnh sửa</a></td>
 									</tr>
 									<tr>
 									<td><span class="glyphicon glyphicon-phone"></span>'.$_SESSION['login']['SĐT'].'
 									</td>
-									<td id="demsl"><a style="cursor: pointer;" onclick="chinhsua()">Chỉnh sửa</a></td>
+									<td id=""><a style="cursor: pointer;" onclick="chinhsua()">Chỉnh sửa</a></td>
 									</tr>
 									<tr>
 									<tr>
 									<td><span class="glyphicon glyphicon-envelope"> </span> '.$_SESSION['login']['Email'].'
 									</td>
-									<td id="demsl"><a onclick="chinhsua()" style="cursor: pointer;">Chỉnh sửa</a></td>
+									<td id=""><a onclick="chinhsua()" style="cursor: pointer;">Chỉnh sửa</a></td>
 									</tr>
 									<tr>
-									<td><span class="glyphicon glyphicon-credit-card" ></span> Hình thức thanh toán
+									<td><span class="glyphicon glyphicon-credit-card" ></span> Hình thức thanh toán (Thanh toán khi nhận hàng)
 									</td>
-									<td id="demsl"><a style="cursor: pointer;" onclick="hinhthucthanhtoan()">Chỉnh sửa</a></td>
+									<td id=""><a style="cursor: pointer;" onclick="hinhthucthanhtoan()">Chỉnh sửa</a></td>
 									</tr>
 									<tr>
-									<td><i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng
+									<td><i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng (Giao hàng bình thường-25.000đ)
 									</td>
-									<td id="demsl"><a onclick="hinhthucgiaohang()" style="cursor: pointer;">Chỉnh sửa</a></td>
+									<td id=""><a onclick="hinhthucgiaohang()" style="cursor: pointer;">Chỉnh sửa</a></td>
 									</tr>
 									<thead>
 									<tr style="background-color: #101010;">
@@ -534,7 +534,7 @@ if(isLogined()==true)
 									<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
 									</tr>
 									<tr>
-									<td align="center" colspan="2"><a style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal";"></a></td>
+									<td align="center" colspan="2"><a style="color:black;"><input type="submit" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal";"></a></td>
 									</tr>
 									</tbody>
 									</table>';
@@ -570,13 +570,15 @@ if(isLogined()==true)
 									<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
 									</tr>
 									<tr>
-									<td align="center" colspan="2"><a style="color:black;"><input type="submit" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal"></a></td>
+									<td align="center" colspan="2"><a style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal"></a></td>
 									</tr>
 									</tbody>
 									</table>';
 								}
 								?>
 							</div>
+							<input type="text" name="htthanhtoan" value="3" id="htthanhtoan">
+							<input type="text" name="htgiaohang" value="1" id="htgiaohang">
 						</form>
 					</div>
 				</div>
@@ -700,7 +702,7 @@ if(isLogined()==true)
 				</div>
 			</form>
 		</div>
-
+		<!--Hinh thức thanh toán-->
 		<div class="modal fade" id="httt">
 			<form action="suainfo.php" method="POST">
 				<div class="modal-dialog">
@@ -708,21 +710,21 @@ if(isLogined()==true)
 						<form action=""></form>
 						<!-- Modal Header -->
 						<div class="modal-header">
-							<h4 class="modal-title">Chỉnh sửa thông tin</h4>
+							<h4 class="modal-title">Phương thức thanh toán</h4>
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
 						<!-- Modal body -->
 						<div class="modal-body">
 							<div class="row" style="text-align: center;">
-								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" >Thẻ ngân hàng</div>
-								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" >Thẻ...</div>
+								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" onclick="thenganhang()" >Thẻ ngân hàng</div>
+								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" onclick="the()" value="option1" >Thẻ...</div>
 								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Thanh toán khi nhận hàng</div>
-							</div>	
+							</div>
 							<!-- Modal footer -->
 							<div class="modal-footer">
 								<div class="row">
-									<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="submit" class="btn btn-danger">Thay đổi</button></a></div>
+									<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger" data-dismiss="modal" onclick="ttbt()">Thay đổi</button></a></div>
 									<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
 								</div>
 							</div>
@@ -733,6 +735,154 @@ if(isLogined()==true)
 			</form>
 		</div>
 
+		<!--Thẻ ngân hàng-->
+		<div class="modal fade" id="theng">
+			<form action="suainfo.php" method="POST">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<form action=""></form>
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Phương thức thanh toán</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body">
+							<div class="row" style="text-align: center;">
+								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="tng" name="optradio" value="option1" onclick="thenganhang()" checked>Thẻ ngân hàng</div>
+								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" onclick="the()" value="option1" >Thẻ...</div>
+								<div class="col-sm-4"> <input type="radio" onclick="ttbt()" class="form-check-input" id="radio1" name="optradio" value="option1" >Thanh toán khi nhận hàng</div>
+							</div>
+							<div class="form-group row"></div>	
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-2 col-form-label">Ngân hàng</label>
+								<div class="col-sm-10">
+									<div class="form-group">
+										<select class="form-control" id="exampleFormControlSelect1">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-2 col-form-label">Họ và tên chủ thẻ</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="inputEmail3" placeholder="Họ tên chủ thẻ" value="" name="diachi">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-2 col-form-label">Số thẻ</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="inputEmail3" placeholder="Số thẻ" value="" name="diachi">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-2 col-form-label">Hiệu lực</label>
+								<div class="col-sm-10">
+									<input class="form-control" type="date" value="" id="example-date-input">
+								</div>
+							</div>
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<div class="row">
+									<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger" data-dismiss="modal" onclick="maht()">Thay đổi</button></a></div>
+									<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</form>
+		</div>
+		<!--Thẻ ...-->
+		<div class="modal fade" id="the">
+			<form action="suainfo.php" method="POST">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<form action=""></form>
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Phương thức thanh toán</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body">
+							<div class="row" style="text-align: center;">
+								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" onclick="thenganhang()" >Thẻ ngân hàng</div>
+								<div class="col-sm-4"> <input type="radio" class="form-check-input" checked id="radio1" name="optradio" onclick="the()" value="option1" >Thẻ...</div>
+								<div class="col-sm-4"> <input type="radio" onclick="ttbt()" class="form-check-input" id="radio1" name="optradio" value="option1" >Thanh toán khi nhận hàng</div>
+							</div>
+							<div class="form-group row"></div>	
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-2 col-form-label">Họ và tên chủ thẻ</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="inputEmail3" placeholder="Họ tên chủ thẻ" value="" name="diachi">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-2 col-form-label">Số thẻ</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="inputEmail3" placeholder="Số thẻ" value="" name="diachi">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-2 col-form-label">Hiệu lực</label>
+								<div class="col-sm-10">
+									<input class="form-control" type="date" value="" id="example-date-input">
+								</div>
+							</div>
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<div class="row">
+									<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger" data-dismiss="modal" onclick="maht2()">Thay đổi</button></a></div>
+									<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!--Hình thức giao hàng-->
+	<div class="modal fade" id="htgh">
+		<form action="suainfo.php" method="POST">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form action=""></form>
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Phương thức thanh toán</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						<div class="row" style="text-align: center;">
+							<div class="col-sm-6"> <input type="radio" class="form-check-input" id="radio1" checked name="optradio" value="option1" onclick="ght()" >Giao hàng bình thường - 25.000đ </div>
+							<div class="col-sm-6"> <input type="radio" class="form-check-input" id="radio1" name="optradio" onclick="" value="option2" >Giao hàng nhanh - 50.000đ</div>
+						</div>
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<div class="row">
+								<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger" data-dismiss="modal">Thay đổi</button></a></div>
+								<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</form>
 	</div>
 
 </div>

@@ -140,5 +140,33 @@ function hinhthucthanhtoan(){
 	$('#httt').modal('show');
 }
 function hinhthucgiaohang(){
-	alert("Giao hàng");
+	$('#htgh').modal('show');
+}
+function thenganhang(){
+	$('#theng').modal('show');
+	$('#httt').modal('hide');
+	$('#the').modal('hide');
+}
+function the(){
+	$('#the').modal('show');
+	$('#httt').modal('hide');
+	$('#theng').modal('hide');
+}
+function ttbt(){
+	$('#httt').modal('show');
+	$('#htthanhtoan').val(3);
+	$('#the').modal('hide');
+	$('#theng').modal('hide');
+	$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thanh toán khi nhận hàng)`);
+}
+function maht(){
+	$('#htthanhtoan').val(1);
+	$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thẻ ngân hàng)`);
+}
+function maht2(){
+	$('#htthanhtoan').val(2);
+	$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thẻ...)`);
+}
+function ght(){
+
 }
