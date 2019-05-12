@@ -462,72 +462,117 @@ if(isLogined()==true)
 							?>
 						</div>
 						<div class="col-md-4">
-							<?php echo '
-							<table class="table table-striped">
-							<thead>
-							<tr style="background-color: #101010;">
-							<th colspan="2" style="text-align: center;">Thanh toán vận chuyển</th>
-							</tr>
-							</thead>
-							<tr>
-							<td><span class="glyphicon glyphicon-map-marker"></span><b>Ninh Ngọc Hiếu</b><br>
-							18A Nguyễn Kim
-							</td>
-							<td id="demsl">'.$demsl.'</td>
-							</tr>
-							<tr>
-							<td><span class="glyphicon glyphicon-phone"></span>0329151221
-							</td>
-							<td id="demsl">'.$demsl.'</td>
-							</tr>
-							<tr>
-							<tr>
-							<td><span class="glyphicon glyphicon-envelope"> </span> ninhngochieu@gmail.com
-							</td>
-							<td id="demsl">'.$demsl.'</td>
-							</tr>
-							<tr>
-							<td><span class="glyphicon glyphicon-credit-card"></span> Hình thức thanh toán
-							</td>
-							<td id="demsl">'.$demsl.'</td>
-							</tr>
-							<tr>
-							<td><i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng
-							</td>
-							<td id="demsl">'.$demsl.'</td>
-							</tr>
-							<thead>
-							<tr style="background-color: #101010;">
-							<th colspan="2" style="text-align: center;">Thông tin đơn hàng</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr>
-							<td>Số lượng sản phẩm</td>
-							<td id="demsl">'.$demsl.'</td>
-							</tr>
-							<tr>
-							<td>Tổng</td>
-							<td id="tong">'.number_format($tong).'đ</td>
-							</tr>
-							<tr>
-							<td>Phí vận chuyển(Tạm tính)</td>
-							<td>'.number_format($ship).'đ</td>
-							</tr>
-							<tr>
-							<td colspan="2" align="center">
-							<hr width="70%" style="border: 1px solid;margin: 0">
-							</td>
-							</tr>	
-							<tr>
-							<td>Thành tiền</td>
-							<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
-							</tr>
-							<tr>
-							<td align="center" colspan="2"><a style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal";"></a></td>
-							</tr>
-							</tbody>
-							</table>';
+							<?php 
+							include 'diachi.php';
+							$dc=diachi::showdiachi($_SESSION['login']['MaKH']);
+							if(!empty($_SESSION['login'])){
+								echo '
+								<table class="table table-striped">
+								<thead>
+								<tr style="background-color: #101010;">
+								<th colspan="2" style="text-align: center;">Thanh toán vận chuyển</th>
+								</tr>
+								</thead>
+								<tr>
+								<td><i class="glyphicon glyphicon-user"></i><b>'.$_SESSION['login']['HoTen'].'
+								</td>
+								<td id="demsl"><a style="cursor: pointer;" onclick="chinhsua()">Chỉnh sửa</a></td>
+								</tr>
+								<tr>
+								<td><span class="glyphicon glyphicon-map-marker"></span><b>'.$dc.'
+								</td>
+								<td id="demsl"><a style="cursor: pointer;" onclick="chinhsua()">Chỉnh sửa</a></td>
+								</tr>
+								<tr>
+								<td><span class="glyphicon glyphicon-phone"></span>'.$_SESSION['login']['SĐT'].'
+								</td>
+								<td id="demsl"><a style="cursor: pointer;" onclick="chinhsua()">Chỉnh sửa</a></td>
+								</tr>
+								<tr>
+								<tr>
+								<td><span class="glyphicon glyphicon-envelope"> </span> '.$_SESSION['login']['Email'].'
+								</td>
+								<td id="demsl"><a onclick="chinhsua()" style="cursor: pointer;">Chỉnh sửa</a></td>
+								</tr>
+								<tr>
+								<td><span class="glyphicon glyphicon-credit-card"></span> Hình thức thanh toán
+								</td>
+								<td id="demsl"><a style="cursor: pointer;">Chỉnh sửa</a></td>
+								</tr>
+								<tr>
+								<td><i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng
+								</td>
+								<td id="demsl"><a style="cursor: pointer;">Chỉnh sửa</a></td>
+								</tr>
+								<thead>
+								<tr style="background-color: #101010;">
+								<th colspan="2" style="text-align: center;">Thông tin đơn hàng</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+								<td>Số lượng sản phẩm</td>
+								<td id="demsl">'.$demsl.'</td>
+								</tr>
+								<tr>
+								<td>Tổng</td>
+								<td id="tong">'.number_format($tong).'đ</td>
+								</tr>
+								<tr>
+								<td>Phí vận chuyển(Tạm tính)</td>
+								<td>'.number_format($ship).'đ</td>
+								</tr>
+								<tr>
+								<td colspan="2" align="center">
+								<hr width="70%" style="border: 1px solid;margin: 0">
+								</td>
+								</tr>	
+								<tr>
+								<td>Thành tiền</td>
+								<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
+								</tr>
+								<tr>
+								<td align="center" colspan="2"><a style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal";"></a></td>
+								</tr>
+								</tbody>
+								</table>';
+							}
+							else
+							{
+								echo '
+								<table class="table table-striped">
+								<tr style="background-color: #101010;">
+								<th colspan="2" style="text-align: center;">Thông tin đơn hàng</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+								<td>Số lượng sản phẩm</td>
+								<td id="demsl">'.$demsl.'</td>
+								</tr>
+								<tr>
+								<td>Tổng</td>
+								<td id="tong">'.number_format($tong).'đ</td>
+								</tr>
+								<tr>
+								<td>Phí vận chuyển(Tạm tính)</td>
+								<td>'.number_format($ship).'đ</td>
+								</tr>
+								<tr>
+								<td colspan="2" align="center">
+								<hr width="70%" style="border: 1px solid;margin: 0">
+								</td>
+								</tr>	
+								<tr>
+								<td>Thành tiền</td>
+								<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
+								</tr>
+								<tr>
+								<td align="center" colspan="2"><a style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal";"></a></td>
+								</tr>
+								</tbody>
+								</table>';
+							}
 							?>
 						</div>
 					</div>
@@ -597,56 +642,88 @@ if(isLogined()==true)
 			</div>';
 		}
 		?>
-		<div class="modal fade" id="myModal1">
-			<div class="modal-dialog">
-				<div class="modal-content">
+		<div class="modal fade" id="md">
+			<form action="updateUser.php" method="POST">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<form action=""></form>
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Chỉnh sửa thông tin</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
 
-					<!-- Modal Header -->
-					<div class="modal-header">
-						<h4 class="modal-title">Modal Heading</h4>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-
-					<!-- Modal body -->
-					<div class="modal-body">
-						Modal body..
-					</div>
-
-					<!-- Modal footer -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						<!-- Modal body -->
+						<div class="modal-body">
+							<?php 
+							echo '<div class="form-group row">
+							<label for="inputEmail3" class="col-sm-2 col-form-label">Họ tên</label>
+							<div class="col-sm-10">
+							<input type="email" name="makhachhang" class="form-control" id="inputEmail3" placeholder="Họ tên" value="'.$_SESSION['login']['HoTen'].'">
+							</div>
+							</div>
+							<div class="form-group row">
+							<label for="inputEmail3" class="col-sm-2 col-form-label">Địa chỉ</label>
+							<div class="col-sm-10">
+							<input type="email" class="form-control" id="inputEmail3" placeholder="Địa chỉ" value="'.$dc.'">
+							</div>
+							</div>
+							<div class="form-group row">
+							<label for="inputEmail3" class="col-sm-2 col-form-label">SĐT</label>
+							<div class="col-sm-10">
+							<input type="email" class="form-control" id="inputEmail3" placeholder="SĐT" value="'.$_SESSION['login']['SĐT'].'">
+							</div>
+							</div>
+							<div class="form-group row">
+							<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
+							<input type="email" class="form-control" id="inputEmail3" placeholder="Email" value="'.$_SESSION['login']['Email'].'">
+							</div>
+							</div>
+							</div>';
+							?>
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<div class="row">
+									<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="submit" class="btn btn-danger">Thay đổi</button></a></div>
+									<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
+								</div>
+							</div>
+						</div>
 					</div>
 
 				</div>
-			</div>
+			</form>
 		</div>
-
 	</div>
-	<script src="../js/Validate.js"></script>
-	<?php
 
-	if(isLogined()==true)
-	{
-		echo "<script>
-		document.getElementById('loginn').innerHTML=''; 
-		</script>";
-		$s="<a class=\'dropdown-toggle\' data-toggle=\'dropdown\' href=\'#\'>"
-		.    "<i class=\'glyphicon glyphicon-user\'></i> ".$_SESSION['login']['TenDangNhap']." <b class=\'caret\'></b>"
-		."</a>"
-		."<ul class=\'dropdown-menu\'>"
-		.    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
-		.    "</li>"
-		.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
-		.    "</li>"
-		.    "<li class=\'divider\'></li>"
-		.    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
-		.    "</li>"
-		."</ul>";
-		echo "<script>"
-		."document.getElementById('logout').setAttribute('class','dropdown'); "
-		."document.getElementById('logout').innerHTML='".$s."';"
-		."</script>";
-	}
-	?>
+</div>
+<script src="../js/Validate.js"></script>
+<?php
+echo '<pre/>';
+	//var_dump($_SESSION['login']);
+if(isLogined()==true)
+{
+	echo "<script>
+	document.getElementById('loginn').innerHTML=''; 
+	</script>";
+	$s="<a class=\'dropdown-toggle\' data-toggle=\'dropdown\' href=\'#\'>"
+	.    "<i class=\'glyphicon glyphicon-user\'></i> ".$_SESSION['login']['TenDangNhap']." <b class=\'caret\'></b>"
+	."</a>"
+	."<ul class=\'dropdown-menu\'>"
+	.    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
+	.    "</li>"
+	.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
+	.    "</li>"
+	.    "<li class=\'divider\'></li>"
+	.    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
+	.    "</li>"
+	."</ul>";
+	echo "<script>"
+	."document.getElementById('logout').setAttribute('class','dropdown'); "
+	."document.getElementById('logout').innerHTML='".$s."';"
+	."</script>";
+}
+?>
 </body>
 </html>
