@@ -172,6 +172,30 @@ function maht2(){
 	$('#htthanhtoan').val(2);
 	$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thẻ...)`);
 }
-function ght(){
-
+function checkgh(){
+	var s=0;
+	if($('input[name=gh]:checked').val()==1) s=25000;
+	if($('input[name=gh]:checked').val()==2) s=50000;
+	$.ajax({
+			type: "GET",
+			url: "ship.php",
+			data: {
+				"ship": s
+			}
+		}).done(function(data){
+			$('#thongtingiaohang td:eq(17)').text(formatNumber(data,".",",")+"đ");
+		})
+	if($('input[name=gh]:checked').val()==1) {
+		$('#thongtingiaohang td:eq(10)').html(`<i class=\"fa fa-truck\" aria-hidden=\"true\"></i> Hình thức giao hàng (Giao hàng bình thường - 25.000đ)`);
+	}
+	if($('input[name=gh]:checked').val()==2){
+		$('#thongtingiaohang td:eq(10)').html(`<i class=\"fa fa-truck\" aria-hidden=\"true\"></i> Hình thức giao hàng (Giao hàng nhanh - 50.000đ)`);
+	}
+	$('#htgiaohang').val($('input[name=gh]:checked').val());
+}
+function ktgiohang(){
+	if(document.forms['thanhtoan']['DiaChi'].value==""){
+		alert("Địa chỉ không được để trống!!!");
+		return false;
+	}
 }

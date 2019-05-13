@@ -50,7 +50,9 @@
 										  'HoTen' => $row['HoTen'],
 										  'MaKH' => $row['MaKH'],
 										  'Email' => $row['Email'],
-										  'SĐT' => $row['SĐT']);
+										  'SĐT' => $row['SĐT'],
+											'DiaChi'=>'',
+											'Phivanchuyen' => 25000);
 										  
 				return true;
 			}

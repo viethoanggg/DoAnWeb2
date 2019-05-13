@@ -51,7 +51,8 @@
 										  'MaKH' => $row['MaKH'],
 										  'Email' => $row['Email'],
 										  'SĐT' => $row['SĐT'],
-											'DiaChi'=>'');
+											'DiaChi'=>'',
+											'Phivanchuyen' => 25000);
 										  
 				return true;
 			}

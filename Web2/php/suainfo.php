@@ -25,7 +25,8 @@
 									'HoTen' => $_POST['hoten'],
 									'Email' => $_POST['email'],
 									'SĐT' => $_POST['sdt'],
-									'DiaChi' => $_POST['diachi']);
+									'DiaChi' => $_POST['diachi'],
+									'Phivanchuyen' => 25000);
 
 		
 	}

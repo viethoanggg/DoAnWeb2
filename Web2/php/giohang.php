@@ -254,7 +254,9 @@ if(isLogined()==true)
 							$s="";
 							$demsl=0;
 							$tong=0;
-							$ship=25000;
+							if(isset($_GET['ship'])){
+								$ship=$_GET['ship'];
+							}
 							foreach ($_SESSION['cart'] as $key => $value) {
 				//var_dump($key);
 								if($_SESSION['cart'][$key]['theloai']=='NN'){
@@ -461,9 +463,10 @@ if(isLogined()==true)
 							}
 							?>
 						</div>
-						<form action="thanhtoan.php" method="GET" onsubmit="return ktgiohang()">
+						<form name="thanhtoan" action="thanhtoan.php" method="GET" onsubmit="return ktgiohang()">
 							<div class="col-md-4">
 								<?php 
+								$MaHD="HD".(string)rand(1, 10000);
 								include 'diachi.php';
 								if(!empty($_SESSION['login'])){
 									$dc=diachi::showdiachi($_SESSION['login']['MaKH']);
@@ -521,8 +524,8 @@ if(isLogined()==true)
 									<td id="tong">'.number_format($tong).'đ</td>
 									</tr>
 									<tr>
-									<td>Phí vận chuyển(Tạm tính)</td>
-									<td>'.number_format($ship).'đ</td>
+									<td>Phí vận chuyển</td>
+									<td>'.number_format($_SESSION['login']['Phivanchuyen']).'đ</td>
 									</tr>
 									<tr>
 									<td colspan="2" align="center">
@@ -531,12 +534,18 @@ if(isLogined()==true)
 									</tr>	
 									<tr>
 									<td>Thành tiền</td>
-									<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
+									<td id="thanhtien">'.number_format($tong+$_SESSION['login']['Phivanchuyen']).'đ</td>
 									</tr>
 									<tr>
 									<td align="center" colspan="2"><a style="color:black;"><input type="submit" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal";"></a></td>
 									</tr>
 									</tbody>
+									<input type="hidden" name="MaHD" value="'.$MaHD.'">
+									<input type="hidden" name="MaKH" value="'.$_SESSION['login']['MaKH'].'">
+									<input type="hidden" name="DiaChi" value="'.$dc.'">
+									<input type="hidden" name="TongSoLuong" value="'.$demsl.'">
+									<input type="hidden" name="TongTien" value="'.($tong+$_SESSION['login']['Phivanchuyen']).'">
+									<input type="hidden" name="TinhTrang" value="Chưa thanh toán xong">
 									</table>';
 								}
 								else
@@ -558,7 +567,7 @@ if(isLogined()==true)
 									</tr>
 									<tr>
 									<td>Phí vận chuyển(Tạm tính)</td>
-									<td>'.number_format($ship).'đ</td>
+									<td>'.number_format(25000).'đ</td>
 									</tr>
 									<tr>
 									<td colspan="2" align="center">
@@ -567,7 +576,7 @@ if(isLogined()==true)
 									</tr>	
 									<tr>
 									<td>Thành tiền</td>
-									<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
+									<td id="thanhtien">'.number_format($tong+25000).'đ</td>
 									</tr>
 									<tr>
 									<td align="center" colspan="2"><a style="color:black;"><input type="button" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal"></a></td>
@@ -577,8 +586,10 @@ if(isLogined()==true)
 								}
 								?>
 							</div>
-							<input type="text" name="htthanhtoan" value="3" id="htthanhtoan">
-							<input type="text" name="htgiaohang" value="1" id="htgiaohang">
+							
+							<input type="hidden" name="htthanhtoan" value="3" id="htthanhtoan">
+							<input type="hidden" name="htgiaohang" value="1" id="htgiaohang">
+
 						</form>
 					</div>
 				</div>
@@ -861,20 +872,20 @@ if(isLogined()==true)
 					<form action=""></form>
 					<!-- Modal Header -->
 					<div class="modal-header">
-						<h4 class="modal-title">Phương thức thanh toán</h4>
+						<h4 class="modal-title">Hình thức giao hàng</h4>
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 
 					<!-- Modal body -->
 					<div class="modal-body">
 						<div class="row" style="text-align: center;">
-							<div class="col-sm-6"> <input type="radio" class="form-check-input" id="radio1" checked name="optradio" value="option1" onclick="ght()" >Giao hàng bình thường - 25.000đ </div>
-							<div class="col-sm-6"> <input type="radio" class="form-check-input" id="radio1" name="optradio" onclick="" value="option2" >Giao hàng nhanh - 50.000đ</div>
+							<div class="col-sm-6"> <input type="radio" class="form-check-input" id="radio1" checked name="gh" value="1" >Giao hàng bình thường - 25.000đ </div>
+							<div class="col-sm-6"> <input type="radio" class="form-check-input" id="radio1" name="gh"  value="2">Giao hàng nhanh - 50.000đ</div>
 						</div>
 						<!-- Modal footer -->
 						<div class="modal-footer">
 							<div class="row">
-								<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger" data-dismiss="modal">Thay đổi</button></a></div>
+								<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger" data-dismiss="modal" onclick="checkgh()">Thay đổi</button></a></div>
 								<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
 							</div>
 						</div>
@@ -884,7 +895,7 @@ if(isLogined()==true)
 			</div>
 		</form>
 	</div>
-
+	<div id="php"></div>
 </div>
 <script src="../js/Validate.js"></script>
 <?php
