@@ -25,5 +25,6 @@
 			$insertCTHD="INSERT INTO `chitiethoadon`(`MaHD`, `MaSach`, `SoLuong`, `TongTienCT`, `NgayGiaoHang`, `TinhTrangCT`) VALUES ('".$MaHD."','".$key."','".$_SESSION['cart'][$key]['sl']."','".$_SESSION['cart'][$key]['sl']*$_SESSION['cart'][$key]['gia']."','".$date."','Hàng đang nhập từ kho')";
 				DataProvider::executeQuery($insertCTHD);
 		}
+		unset($_SESSION['cart']);
 	}
 ?>
