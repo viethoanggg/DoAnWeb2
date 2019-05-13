@@ -463,10 +463,9 @@ if(isLogined()==true)
 							}
 							?>
 						</div>
-						<form name="thanhtoan" action="thanhtoan.php" method="GET" onsubmit="return ktgiohang()">
+						<form name="thanhtoan" action="xulythanhtoan.php" method="GET" onsubmit="return ktgiohang()">
 							<div class="col-md-4">
 								<?php 
-								$MaHD="HD".(string)rand(1, 10000);
 								include 'diachi.php';
 								if(!empty($_SESSION['login'])){
 									$dc=diachi::showdiachi($_SESSION['login']['MaKH']);
@@ -540,7 +539,6 @@ if(isLogined()==true)
 									<td align="center" colspan="2"><a style="color:black;"><input type="submit" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal";"></a></td>
 									</tr>
 									</tbody>
-									<input type="hidden" name="MaHD" value="'.$MaHD.'">
 									<input type="hidden" name="MaKH" value="'.$_SESSION['login']['MaKH'].'">
 									<input type="hidden" name="DiaChi" value="'.$dc.'">
 									<input type="hidden" name="TongSoLuong" value="'.$demsl.'">
@@ -901,6 +899,7 @@ if(isLogined()==true)
 <?php
 echo '<pre/>';
 var_dump($_SESSION['login']);
+var_dump($_SESSION['cart']);
 if(isLogined()==true)
 {
 	echo "<script>
