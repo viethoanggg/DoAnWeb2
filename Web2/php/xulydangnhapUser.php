@@ -52,7 +52,8 @@
 										  'Email' => $row['Email'],
 										  'SĐT' => $row['SĐT'],
 											'DiaChi'=>'',
-											'Phivanchuyen' => 25000);
+											'htgh' => 1,
+											'httt' => 3);
 										  
 				return true;
 			}

@@ -258,7 +258,7 @@ if(isLogined()==true)
 								else{//Khi đã đăng nhập
 									if(isset($_GET['MaHD']) && isset($_GET['MaKH'])){//Nếu có MaHD và MaKH
 										include 'hoadon.php';
-										if(Chitiet::KTHD($_GET['MaHD'])==1&& $_GET['MaKH']==$_SESSION['login']['MaKH']){
+										if(Chitiet::KTHD($_GET['MaHD'],$_GET['MaKH'])==1&& $_GET['MaKH']==$_SESSION['login']['MaKH']){
 											echo '<div class="row">
 											<div class="col-md-12">
 

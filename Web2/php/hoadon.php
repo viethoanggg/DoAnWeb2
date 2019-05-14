@@ -59,25 +59,88 @@
 		}
 		public static function thongtinchitiet($MaHD){
 			$s="";
-			$sql="SELECT `MATHELOAI`,`TENSACH`,`HinhAnh`,`SoLuong`,`Gia`,`TongTienCT` FROM `chitiethoadon`,`sach` WHERE `chitiethoadon`.`MaSach`=`sach`.`MaSach` AND MAHD='".$MaHD."'";
-			echo "<pre/>";
+			$sql="SELECT `MATHELOAI`,`TENSACH`,`HinhAnh`,`SoLuong`,`Gia`,`TongTienCT`,`chitiethoadon`.`MaSach` FROM `chitiethoadon`,`sach` WHERE `chitiethoadon`.`MaSach`=`sach`.`MaSach` AND MAHD='".$MaHD."'";
 			$result=DataProvider::executeQuery($sql);
 			while ($row=mysqli_fetch_array($result)) {
-				var_dump($row);
-				$s=$s.'<tr>
-				<td>'.$row["MATHELOAI"].'</td>
-				<td>'.$row["TENSACH"].'</td>
-				<td>'.$row["Gia"].'</td>
-				<td>'.$row["SoLuong"].'</td>
-				<td>'.$row["TongTienCT"].'</td>
-				</tr>';
+				if($row["MATHELOAI"]=="NN"){
+					$s=$s.'<tr>
+					<td><a href="chitietsach.php?theloai=ngoaingu&masach='.$row["MaSach"].'"><img class="biasach" src="../images/ngoaingu/'.$row["HinhAnh"].'" alt=""></a></td>
+					<td>'.$row["TENSACH"].'</td>
+					<td>'.number_format($row["Gia"]).'đ</td>
+					<td>'.$row["SoLuong"].'</td>
+					<td>'.number_format($row["TongTienCT"]).'đ</td>
+					</tr>';	
+				}
+				if($row["MATHELOAI"]=="KT"){
+					$s=$s.'<tr>
+					<td><a href="chitietsach.php?theloai=kinhte&masach='.$row["MaSach"].'"><img class="biasach" src="../images/kinhte/'.$row["HinhAnh"].'" alt=""></a></td>
+					<td>'.$row["TENSACH"].'</td>
+					<td>'.number_format($row["Gia"]).'đ</td>
+					<td>'.$row["SoLuong"].'</td>
+					<td>'.number_format($row["TongTienCT"]).'đ</td>
+					</tr>';	
+				}
+				if($row["MATHELOAI"]=="KNS"){
+					$s=$s.'<tr>
+					<td><a href="chitietsach.php?theloai=kynangsong&masach='.$row["MaSach"].'"><img class="biasach" src="../images/kynangsong/'.$row["HinhAnh"].'" alt=""></a></td>
+					<td>'.$row["TENSACH"].'</td>
+					<td>'.number_format($row["Gia"]).'đ</td>
+					<td>'.$row["SoLuong"].'</td>
+					<td>'.number_format($row["TongTienCT"]).'đ</td>
+					</tr>';	
+				}
+				if($row["MATHELOAI"]=="LS"){
+					$s=$s.'<tr>
+					<td><a href="chitietsach.php?theloai=lichsu&masach='.$row["MaSach"].'"><img class="biasach" src="../images/lichsu/'.$row["HinhAnh"].'" alt=""></a></td>
+					<td>'.$row["TENSACH"].'</td>
+					<td>'.number_format($row["Gia"]).'đ</td>
+					<td>'.$row["SoLuong"].'</td>
+					<td>'.number_format($row["TongTienCT"]).'đ</td>
+					</tr>';	
+				}
+				if($row["MATHELOAI"]=="CN"){
+					$s=$s.'<tr>
+					<td><a href="chitietsach.php?theloai=chuyennganh&masach='.$row["MaSach"].'"><img class="biasach" src="../images/chuyennganh/'.$row["HinhAnh"].'" alt=""></a></td>
+					<td>'.$row["TENSACH"].'</td>
+					<td>'.number_format($row["Gia"]).'đ</td>
+					<td>'.$row["SoLuong"].'</td>
+					<td>'.number_format($row["TongTienCT"]).'đ</td>
+					</tr>';	
+				}
+				if($row["MATHELOAI"]=="TN"){
+					$s=$s.'<tr>
+					<td><a href="chitietsach.php?theloai=thieunhi&masach='.$row["MaSach"].'"><img class="biasach" src="../images/thieunhi/'.$row["HinhAnh"].'" alt=""></a></td>
+					<td>'.$row["TENSACH"].'</td>
+					<td>'.number_format($row["Gia"]).'đ</td>
+					<td>'.$row["SoLuong"].'</td>
+					<td>'.number_format($row["TongTienCT"]).'đ</td>
+					</tr>';	
+				}
+				if($row["MATHELOAI"]=="TT"){
+					$s=$s.'<tr>
+					<td><a href="chitietsach.php?theloai=tuoiteen&masach='.$row["MaSach"].'"><img class="biasach" src="../images/tuoiteen/'.$row["HinhAnh"].'" alt=""></a></td>
+					<td>'.$row["TENSACH"].'</td>
+					<td>'.number_format($row["Gia"]).'đ</td>
+					<td>'.$row["SoLuong"].'</td>
+					<td>'.number_format($row["TongTienCT"]).'đ</td>
+					</tr>';	
+				}
+				if($row["MATHELOAI"]=="VH"){
+					$s=$s.'<tr>
+					<td><a href="chitietsach.php?theloai=vanhoc&masach='.$row["MaSach"].'"><img class="biasach" src="../images/vanhoc/'.$row["HinhAnh"].'" alt=""></a></td>
+					<td>'.$row["TENSACH"].'</td>
+					<td>'.number_format($row["Gia"]).'đ</td>
+					<td>'.$row["SoLuong"].'</td>
+					<td>'.number_format($row["TongTienCT"]).'đ</td>
+					</tr>';	
+				}
 			}
 			return $s;
 
 		}
-		public static function KTHD($MaHD){
+		public static function KTHD($MaHD,$MaKH){
 			require 'DataProvider.php';
-			$sql="SELECT MAHD FROM `hoadon` WHERE MAHD='".$MaHD."'";
+			$sql="SELECT MAHD FROM `hoadon` WHERE MAKH='".$MaKH."' and MAHD='".$MaHD."'";
 			$result=DataProvider::executeQuery($sql);
 			$row=mysqli_fetch_array($result);
 			if(!empty($row)){
