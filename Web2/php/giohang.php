@@ -254,16 +254,13 @@ if(isLogined()==true)
 							$s="";
 							$demsl=0;
 							$tong=0;
-							if(isset($_GET['ship'])){
-								$ship=$_GET['ship'];
-							}
 							foreach ($_SESSION['cart'] as $key => $value) {
 				//var_dump($key);
 								if($_SESSION['cart'][$key]['theloai']=='NN'){
 									$s=$s.'<tr id="'.$key.'">
 									<td><img class="icon" src="../images/thungrac.gif" alt="" onclick="xoasp(`'.$key.'`)"></td>
 									<td>
-									<a href="chitietsach.php?theloai=hocngoaingu&masach='.$key.'"><img class="biasach" src="../images/ngoaingu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
+									<a href="chitietsach.php?theloai=ngoaingu&masach='.$key.'"><img class="biasach" src="../images/ngoaingu/'.$_SESSION["cart"][$key]["hinhanh"].'" alt=""></a></td>
 									<td>'.$_SESSION["cart"][$key]["tensach"].'</td>
 									<td>'.number_format($_SESSION["cart"][$key]["gia"]).'đ</td>
 									<td>'.'<div id="buyandnumber">'
@@ -468,6 +465,14 @@ if(isLogined()==true)
 								<?php 
 								include 'diachi.php';
 								if(!empty($_SESSION['login'])){
+									if($_SESSION['login']['htgh']==1) {
+										$htgh="Hình thức giao hàng (Giao hàng bình thường - 25.000đ)";
+										$ship=25000;
+									}
+									if($_SESSION['login']['htgh']==2) {
+										$htgh="Hình thức giao hàng (Giao hàng nhanh - 50.000đ)";
+										$ship=50000;
+									}
 									$dc=diachi::showdiachi($_SESSION['login']['MaKH']);
 									if($_SESSION['login']['DiaChi']!="") $dc=$_SESSION['login']['DiaChi'];
 									echo '
@@ -504,7 +509,7 @@ if(isLogined()==true)
 									<td id=""><a style="cursor: pointer;" onclick="hinhthucthanhtoan()">Chỉnh sửa</a></td>
 									</tr>
 									<tr>
-									<td><i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng (Giao hàng bình thường-25.000đ)
+									<td><i class="fa fa-truck" aria-hidden="true"></i> '.$htgh.'
 									</td>
 									<td id=""><a onclick="hinhthucgiaohang()" style="cursor: pointer;">Chỉnh sửa</a></td>
 									</tr>
@@ -524,7 +529,7 @@ if(isLogined()==true)
 									</tr>
 									<tr>
 									<td>Phí vận chuyển</td>
-									<td>'.number_format($_SESSION['login']['Phivanchuyen']).'đ</td>
+									<td>'.number_format($ship).'đ</td>
 									</tr>
 									<tr>
 									<td colspan="2" align="center">
@@ -533,7 +538,7 @@ if(isLogined()==true)
 									</tr>	
 									<tr>
 									<td>Thành tiền</td>
-									<td id="thanhtien">'.number_format($tong+$_SESSION['login']['Phivanchuyen']).'đ</td>
+									<td id="thanhtien">'.number_format($tong+$ship).'đ</td>
 									</tr>
 									<tr>
 									<td align="center" colspan="2"><a style="color:black;"><input type="submit" value="Thanh toán" class="thanhtoan" data-toggle="modal" data-target="#myModal";"></a></td>
@@ -542,7 +547,7 @@ if(isLogined()==true)
 									<input type="hidden" name="MaKH" value="'.$_SESSION['login']['MaKH'].'">
 									<input type="hidden" name="DiaChi" value="'.$dc.'">
 									<input type="hidden" name="TongSoLuong" value="'.$demsl.'">
-									<input type="hidden" name="TongTien" value="'.($tong+$_SESSION['login']['Phivanchuyen']).'">
+									<input type="hidden" name="TongTien" value="'.($tong+$ship).'">
 									<input type="hidden" name="TinhTrang" value="Chưa thanh toán xong">
 									</table>';
 								}
