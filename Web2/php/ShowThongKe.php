@@ -2,12 +2,12 @@
 function thongkesanpham(){
 		//require('DataProvider.php');
 		if(isset($_GET['theloai']))
-			$matheloai=$_GET['theloai'];
+			$matheloai=addslashes($_GET['theloai']);
 		else $matheloai="";
 		if(isset($_GET['ngaytu']) && isset($_GET['ngayden']))
 		{
-			$nt=$_GET['ngaytu'];
-			$nd=$_GET['ngayden'];
+			$nt=addslashes($_GET['ngaytu']);
+			$nd=addslashes($_GET['ngayden']);
 		}
 		else{
 			$nt="";
@@ -277,6 +277,8 @@ function thongkesanpham(){
 							$result=DataProvider::executeQuery($sql);
 							$row=mysqli_fetch_array($result);
 							$alldt=$row['tt'];
+							if($alldt==0 || $alldt=="")
+								$alldt=1;
 							echo "<script>
 									document.getElementById('AllSoLuong').innerHTML='".$row['sl']."'; 
 									document.getElementById('AllDoanhThu').innerHTML='".$row['tt']."';
@@ -303,12 +305,12 @@ function thongkesanpham(){
 function topsanphambanchay(){
 		//require('DataProvider.php');
 		if(isset($_GET['theloai']))
-			$matheloai=$_GET['theloai'];
+			$matheloai=addslashes($_GET['theloai']);
 		else $matheloai="";
 		if(isset($_GET['ngaytu']) && isset($_GET['ngayden']))
 		{
-			$nt=$_GET['ngaytu'];
-			$nd=$_GET['ngayden'];
+			$nt=addslashes($_GET['ngaytu']);
+			$nd=addslashes($_GET['ngayden']);
 		}
 		else{
 			$nt="";
@@ -319,7 +321,7 @@ function topsanphambanchay(){
 			if($_GET['top']=="" || (int)$_GET['top']<=0)
 				$top="1";
 			else
-				$top=$_GET['top'];
+				$top=addslashes($_GET['top']);
 		}
 		else $top="1";
 					if($matheloai=="" && $nt=="" && $nd=="" && $top =="1")
