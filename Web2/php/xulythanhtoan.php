@@ -26,5 +26,6 @@
 				DataProvider::executeQuery($insertCTHD);
 		}
 		unset($_SESSION['cart']);
+		header("Location:chitiethd.php");
 	}
 ?>

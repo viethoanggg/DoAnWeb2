@@ -198,4 +198,13 @@ function ktgiohang(){
 		alert("Địa chỉ không được để trống!!!");
 		return false;
 	}
+	alert("Thanh toán thành công!!!");
+	return true;
+}
+function dangnhap(){
+	window.location.assign("Dangnhap.php");
+}
+function hd(MaHD){
+	//alert(MaHD);
+	$('#MaHD').val(MaHD);
 }
