@@ -241,7 +241,7 @@
 													<div class="panel-heading">												
 														Thêm hình ảnh
 														<div class="form-group">
-															<input type="file" name="hinhanh" style="float:right;margin-top:-2px" onclick="themhinhanh()" accept="image/png,image/jpeg,image/jpg">
+															<input type="file" name="hinhanh" style="float:right;margin-top:-2px" onchange="loading(event)" accept="image/png,image/jpeg,image/jpg">
 														</div>
 												
 													</div>
@@ -250,7 +250,7 @@
 														<div class="row">
 															<div class="col-lg-12">
 																<center><label>Hình ảnh</label></center>
-																<center><div id="xemhinhanh" style="width:120px;height:170px;"> </div></center>
+																<center><img id="xemhinhanh" style="width:120px;height:170px;" src="../images/null.png"></center>
 																<i style="color:red" id='loihinhanh'></i>
 															</div>
 														</div>
@@ -297,8 +297,14 @@
 			xhttp.send();
 			}
 			else alert("Hãy chọn một thể loại.");
+			
+			
 		}
-	
+	var loading=function(event)
+	{
+		var ou=document.getElementById("xemhinhanh");
+		ou.src=URL.createObjectURL(event.target.files[0]);
+	}
 </script>
 
 <?php

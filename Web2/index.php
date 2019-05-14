@@ -207,16 +207,11 @@
 	</nav>
 	<!---------------------content sach ----------------------->
 	<div class="container" >
-		<div class="bar"> 
-			<div class="tieude">Sách bán chạy</div>	
-		</div>
-		<div id="sanpham">
-			<div class="sach"> <a href="php/chitietsach.php?kinhte?0"><img src="images/kinhte/KT0.PNG"></a><div class="tensach">Quyền năng làm giàu</div><div class="gia">84.150 ₫</div></div>
-			<div class="sach"> <a href="php/chitietsach.php?kynangsong?1"><img src="images/kynangsong/KNS1.PNG"></a><div class="tensach">LAGOM – BIẾT ĐỦ MỚI LÀ TỰ DO</div><div class="gia">95.200 ₫</div></div>
-			<div class="sach"> <a href="php/chitietsach.php?sachthieunhi?2"><img src="images/thieunhi/TN2.PNG"></a><div class="tensach">Chó Xanh Lông Dài</div><div class="gia">90.100 ₫</div></div>
-			<div class="sach"> <a href="php/chitietsach.php?sachtuoiteen?3"><img src="images/tuoiteen/TT3.PNG"></a><div class="tensach">Ngàn Hạc Giấy Của Sadako</div><div class="gia">142.800 ₫</div></div>
-			<div class="sach"> <a href="php/chitietsach.php?sachvanhoc?4"><img src="images/vanhoc/VH4.PNG"></a><div class="tensach">Ở Đây Sửa Kỷ Niệm Xưa - Tập 1</div><div class="gia">82.170 ₫</div></div>
-		</div>
+		
+			<?php
+				require("php/sanphambanchay.php");
+			?>
+		
 	</div>
 
 
