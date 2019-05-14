@@ -148,7 +148,7 @@
 								<form name="timkiemsanpham">
 							
 									<div class="col-lg-2" style="margin-top:17px;">
-										<select name="theloai" class="form-control" onchange="showBookAjax()">
+										<select name="theloai" class="form-control" onchange="showBookAjax('')">
 											<option value="">Thể loại</option>
 											<option value="NN">Học ngoại ngữ</option>
 											<option value="KT">Kinh tế</option>
@@ -166,7 +166,7 @@
 											<div class="panel-body">
 												<div class="row">
 													<div class="col-lg-4">
-														<select name="timkiemtheoloai" class="form-control" onchange="showBookAjax()">
+														<select name="timkiemtheoloai" class="form-control" onchange="showBookAjax('')">
 															<option value="">Chọn</option>
 															<option value="MaSach">Mã sách</option>
 															<option value="TenSach">Tên sách</option>
@@ -178,7 +178,7 @@
 													<div class="col-lg-8">
 											
 														<div class="input-group" >
-															<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem" onkeyup="showBookAjax()">
+															<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem" onkeyup="showBookAjax('')">
 															<div class="input-group-btn">
 																<button class="btn btn-default" type="submit">
 																	<i class="glyphicon glyphicon-search"></i>
@@ -215,7 +215,7 @@
 								</div>
 								<script>
 									
-									function showBookAjax() {
+									function showBookAjax(x) {
 										var xhttp;
 										var matheloai=document.forms['timkiemsanpham']['theloai'].value;
 										var loai=document.forms['timkiemsanpham']['timkiemtheoloai'].value;
@@ -226,13 +226,17 @@
 										else 
 											url=url+"theloai="+matheloai+"&";
 										if(loai=="" && chuoitimkiem=="")
-											url=url+"timkiemtheoloai=&timkiem=";
+											url=url+"timkiemtheoloai=&timkiem=&";
 										else 
-											url=url+"timkiemtheoloai="+loai+"&timkiem="+chuoitimkiem;
+											url=url+"timkiemtheoloai="+loai+"&timkiem="+chuoitimkiem+"&";
+										if(x=="")
+											url=url+"sort=";
+										else
+											url=url+"sort="+x;
 										if(loai=="" && chuoitimkiem!="")
 											document.getElementById("thongbaoloi").innerHTML ="Bạn phải chọn loại cần tìm kiếm.";
 										else document.getElementById("thongbaoloi").innerHTML ="";
-										
+										//window.location.href=url;
 										xhttp = new XMLHttpRequest();
 										xhttp.onreadystatechange = function() {
 										if (this.readyState == 4 && this.status == 200) {

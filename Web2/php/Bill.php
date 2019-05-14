@@ -11,15 +11,15 @@ class Bill
 		else $tt="";
 		if(isset($_GET['ngaytu']) && isset($_GET['ngayden']))
 		{
-			$nt=$_GET['ngaytu'];
-			$nd=$_GET['ngayden'];
+			$nt=addslashes($_GET['ngaytu']);
+			$nd=addslashes($_GET['ngayden']);
 		}
 		else{
 			$nt="";
 			$nd="";
 		}
 		if(isset($_GET['timkiem']))
-			$tk=$_GET['timkiem'];
+			$tk=addslashes($_GET['timkiem']);
 		else
 			$tk="";
 					if($tt=="" && $nt=="" && $nd=="" && $tk=="")

@@ -24,12 +24,12 @@
 			if(isset($_POST['masach']))
 			{
 				$sql="INSERT INTO sach(MaSach, MaTheLoai, TenTacGia, TenSach, HinhAnh, Gia) VALUES ( ";
-				$sql=$sql."'".$_POST['masach']."', ";
-				$sql=$sql."'".$_POST['matheloai']."', ";
-				$sql=$sql."'".$_POST['tentacgia']."', ";
-				$sql=$sql."'".$_POST['tensach']."', ";		
-				$sql=$sql."'".$_FILES['hinhanh']['name']."', ";
-				$sql=$sql."'".$_POST['gia']."' )";
+				$sql=$sql."'".addslashes($_POST['masach'])."', ";
+				$sql=$sql."'".addslashes($_POST['matheloai'])."', ";
+				$sql=$sql."'".addslashes($_POST['tentacgia'])."', ";
+				$sql=$sql."'".addslashes($_POST['tensach'])."', ";		
+				$sql=$sql."'".addslashes($_FILES['hinhanh']['name'])."', ";
+				$sql=$sql."'".addslashes($_POST['gia'])."' )";
 				DataProvider::executeQuery($sql);
 		//------------------------------------------------Xử lý chuyển file ảnh-------------------------------------------------------------------//	
 				if($_FILES['hinhanh']['size'] < 2000000 )
@@ -57,15 +57,15 @@
 		//-----------------------------------------------------------------------------------------------------------------------------//
 			
 				$sql="INSERT INTO chitietsach(MaSach, NXB, KichThuoc, TrongLuong, SoTrang, DanhMuc, NgayPhatHanh, SoLuongTon, NoiDungGioiThieu ) VALUES ( ";
-				$sql=$sql."'".$_POST['masach']."', ";
-				$sql=$sql."'".$_POST['nhaxuatban']."', ";
-				$sql=$sql."'".$_POST['kichthuoc']."', ";
-				$sql=$sql."'".$_POST['trongluong']."', ";
-				$sql=$sql."'".$_POST['sotrang']."', ";
-				$sql=$sql."'".$_POST['danhmuc']."', ";
-				$sql=$sql."'".$_POST['ngayphathanh']."', ";
-				$sql=$sql."'".$_POST['soluongton']."', ";
-				$sql=$sql."'".$_POST['noidunggioithieusach']."' )";
+				$sql=$sql."'".addslashes($_POST['masach'])."', ";
+				$sql=$sql."'".addslashes($_POST['nhaxuatban'])."', ";
+				$sql=$sql."'".addslashes($_POST['kichthuoc'])."', ";
+				$sql=$sql."'".addslashes($_POST['trongluong'])."', ";
+				$sql=$sql."'".addslashes($_POST['sotrang'])."', ";
+				$sql=$sql."'".addslashes($_POST['danhmuc'])."', ";
+				$sql=$sql."'".addslashes($_POST['ngayphathanh'])."', ";
+				$sql=$sql."'".addslashes($_POST['soluongton'])."', ";
+				$sql=$sql."'".addslashes($_POST['noidunggioithieusach'])."' )";
 				DataProvider::executeQuery($sql);
 				
 			}

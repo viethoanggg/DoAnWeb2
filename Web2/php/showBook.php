@@ -7,23 +7,23 @@ class ShowBook
 			{
 					require('DataProvider.php');
 					if(isset($_GET['theloai']))
-						$tenTheLoai=$_GET['theloai'];
+						$tenTheLoai=addcslashes($_GET['theloai']);
 					else $tenTheLoai="tatca";
 					if($tenTheLoai=="")
 						$tenTheLoai="tatca";
 					if(isset($_GET['search']))
-						$timkiem=$_GET['search'];
+						$timkiem=addcslashes($_GET['search']);
 					else $timkiem="";
 					if(isset($_GET['giatu']))
-						$giatu=$_GET['giatu'];
+						$giatu=addcslashes($_GET['giatu']);
 					else
 						$giatu="";
 					if(isset($_GET['giaden']))
-						$giaden=$_GET['giaden'];
+						$giaden=addcslashes($_GET['giaden']);
 					else
 						$giaden="";
 					if(isset($_GET['sapxep']))
-						$sapxep=$_GET['sapxep'];
+						$sapxep=addcslashes($_GET['sapxep']);
 					else
 						$sapxep="";
 					if(isset($tenTheLoai) && $tenTheLoai=="tatca" && isset($_GET['timkiemnangcao'])==false)
@@ -398,16 +398,38 @@ class ShowBook
 		require('DataProvider.php');
 		
 		if(isset($_GET['theloai']))
-			$matheloai=$_GET['theloai'];
+			$matheloai=addcslashes($_GET['theloai']);
 		else $matheloai="";
 		if(isset($_GET['timkiemtheoloai']))
-			$loai=$_GET['timkiemtheoloai'];
+			$loai=addcslashes($_GET['timkiemtheoloai']);
 		else $loai="";
 		if(isset($_GET['timkiem']))
-			$chuoitimkiem=$_GET['timkiem'];
+			$chuoitimkiem=addslashes($_GET['timkiem']);
 		else $chuoitimkiem="";
+		$loaiSapXep="";
+		if(isset($_GET['sort']) && str_word_count($_GET['sort'])==1)
+			$loaiSapXep="asc";
+		if(isset($_GET['sort']) && str_word_count($_GET['sort'])>1)
+		{
+			$sort=addcslashes($_GET['sort']);
+			if($sort!="")
+			{
+				$a=explode(" ",$sort);
+				if($a[1]=="asc" || $a[1]=="ASC")
+				{
+					$loaiSapXep="desc";
+				}
+				else if($a[1]=="desc" || $a[1]=="DESC")
+				{
+					$loaiSapXep="asc";
+				}
+			}
+			
+		}
+		else
+			$sort="";
 		
-						if($matheloai=="" && $loai=="" && $chuoitimkiem=="")
+						if($matheloai=="" && $loai=="" && $chuoitimkiem=="" && $sort=="")
 						{		
 							//  Đếm số lượng sách 
 							$sql="select COUNT(*) as numRows from sach s,chitietsach ct where s.MaSach=ct.MaSach";
@@ -433,7 +455,7 @@ class ShowBook
 							$maxPage=ceil($numRows/$rowsPerPage);
 							
 							//  Lấy link của trang
-							$sefl="quanlysanpham.php?theloai=&loai=&timkiem=&page=";
+							$sefl="quanlysanpham.php?theloai=&loai=&timkiem=&page=&sort=";
 							$nav="";
 							
 							for($page=1;$page<=$maxPage;$page++)
@@ -490,15 +512,15 @@ class ShowBook
 										<table class='table table-striped table-bordered table-hover' id='gg'>
 											<thead>
                                                 <tr>
-                                                    <th>STT</th>
-                                                    <th>Mã_sách</th>
-                                                    <th>Tên_sách</th>
-                                                    <th>Thể_loại</th>
-                                                    <th>Tên_tác_giả</th>
-													<th>Giá</th>
-													<th>Hình_ảnh</th>
-													<th>Sửa</th>
-													<th>Xóa</th>
+                                                    <th >STT</th>
+                                                    <th onclick='showBookAjax(\"s.MaSach asc\")' style='cursor:pointer;'>Mã_sách</th>
+                                                    <th onclick='showBookAjax(\"TenSach asc\")' style='cursor:pointer;'>Tên_sách</th>
+                                                    <th onclick='showBookAjax(\"TenTheLoai asc\")' style='cursor:pointer;'>Thể_loại</th>
+                                                    <th onclick='showBookAjax(\"TenTacGia asc\")' style='cursor:pointer;'>Tên_tác_giả</th>
+													<th onclick='showBookAjax(\"Gia asc\")' style='cursor:pointer;'>Giá</th>
+													<th >Hình_ảnh</th>
+													<th >Sửa</th>
+													<th >Xóa</th>
                                                 </tr>
 											</thead>
 												<tbody>
@@ -566,7 +588,8 @@ class ShowBook
 								if($loai=="TenTacGia")
 									$sql=$sql." and TenTacGia LIKE '%".$chuoitimkiem."%'";
 							}
-								
+							
+							
 							$result=DataProvider::executeQuery($sql);
 							$row=mysqli_fetch_array($result);
 							$numRows=$row['numRows'];
@@ -588,19 +611,21 @@ class ShowBook
 							if($loai!="" && $chuoitimkiem!="")
 							{
 								if($loai=="MaSach")
-									$sql=$sql." and s.MaSach LIKE '%".$chuoitimkiem."%'";
+									$sql=$sql." and s.MaSach LIKE '%".$chuoitimkiem."%' ";
 								if($loai=="TenSach")
-									$sql=$sql." and s.TenSach LIKE '%".$chuoitimkiem."%'";
+									$sql=$sql." and s.TenSach LIKE '%".$chuoitimkiem."%' ";
 								if($loai=="TenTacGia")
-									$sql=$sql." and TenTacGia LIKE '%".$chuoitimkiem."%'";
+									$sql=$sql." and TenTacGia LIKE '%".$chuoitimkiem."%' ";
 							}
+							if($sort!="")
+								$sql=$sql."order by ".$sort;
 							$sql=$sql. " LIMIT ".$offset.",".$rowsPerPage;
 							
 							//  Tính tổng số trang sẽ hiện thị
 							$maxPage=ceil($numRows/$rowsPerPage);
 							
 							//  Lấy link của trang
-							$sefl="quanlysanpham.php?theloai=". $matheloai."&loai=".$loai."&timkiem=".$chuoitimkiem."&page=";
+							$sefl="quanlysanpham.php?theloai=". $matheloai."&loai=".$loai."&timkiem=".$chuoitimkiem."&sort=".$sort."&page=";
 							$nav="";
 							
 							for($page=1;$page<=$maxPage;$page++)
@@ -658,11 +683,11 @@ class ShowBook
 											<thead>
                                                 <tr>
                                                     <th>STT</th>
-                                                    <th>Mã_sách</th>
-                                                    <th>Tên_sách</th>
-                                                    <th>Thể_loại</th>
-                                                    <th>Tên_tác_giả</th>
-													<th>Giá</th>
+                                                    <th onclick='showBookAjax(\"MaSach ".$loaiSapXep."\")' style='cursor:pointer;'>Mã_sách</th>
+                                                    <th onclick='showBookAjax(\"TenSach ".$loaiSapXep."\")' style='cursor:pointer;'>Tên_sách</th>
+                                                    <th onclick='showBookAjax(\"TenTheLoai ".$loaiSapXep."\")' style='cursor:pointer;'>Thể_loại</th>
+                                                    <th onclick='showBookAjax(\"TenTacGia ".$loaiSapXep."\")' style='cursor:pointer;'>Tên_tác_giả</th>
+													<th onclick='showBookAjax(\"Gia ".$loaiSapXep."\")' style='cursor:pointer;'>Giá</th>
 													<th>Hình_ảnh</th>
 													<th>Sửa</th>
 													<th>Xóa</th>

@@ -23,18 +23,18 @@
 			require('DataProvider.php');
 			if(isset($_POST['masach']))
 			{
-				$masach=$_POST['masach'];
+				$masach=addcslashes($_POST['masach']);
 				
 				//------------------------Sua trong database sach-----------------------------------------------//
 				
 				$sql="UPDATE sach SET "
-				.	"MaTheLoai='".$_POST['matheloai']."', "
-				.	"TenSach='".$_POST['tensach']."', "
-				.	"TenTacGia='".$_POST['tentacgia']."', ";
+				.	"MaTheLoai='".addslashes($_POST['matheloai'])."', "
+				.	"TenSach='".addslashes($_POST['tensach'])."', "
+				.	"TenTacGia='".addslashes($_POST['tentacgia'])."', ";
 				if(isset($_FILES['hinhanh']))
-					$sql=$sql .	"HinhAnh='".$_FILES['hinhanh']['name']."', ";
+					$sql=$sql .	"HinhAnh='".addslashes($_FILES['hinhanh']['name'])."', ";
 				$sql=$sql .	"Gia='".(int)$_POST['gia']."' "
-				.	"WHERE MaSach='".$_POST['masach']."'";
+				.	"WHERE MaSach='".addslashes($_POST['masach'])."'";
 				DataProvider::executeQuery($sql);
 
 		//------------------------------------------------Xử lý chuyển file ảnh-------------------------------------------------------------------//	
@@ -65,15 +65,15 @@
 				//------------------------Sua trong database chi tiet sach-----------------------------------------------//
 				
 				$sql="UPDATE chitietsach SET "
-				.	"NXB='".$_POST['nhaxuatban']."', "
-				.	"KichThuoc='".$_POST['kichthuoc']."', "
-				.	"TrongLuong='".$_POST['trongluong']."', "
+				.	"NXB='".addslashes($_POST['nhaxuatban'])."', "
+				.	"KichThuoc='".addslashes($_POST['kichthuoc'])."', "
+				.	"TrongLuong='".addslashes($_POST['trongluong'])."', "
 				.	"SoTrang='".(int)$_POST['sotrang']."', "
-				.	"DanhMuc='".$_POST['danhmuc']."', "
-				.	"NgayPhatHanh='".$_POST['ngayphathanh']."', "
+				.	"DanhMuc='".addslashes($_POST['danhmuc'])."', "
+				.	"NgayPhatHanh='".addcslashes($_POST['ngayphathanh'])."', "
 				.	"SoLuongTon='".(int)$_POST['soluongton']."', "
-				.	"NoiDungGioiThieu='".$_POST['noidunggioithieusach']."' "
-				.	"WHERE MaSach='".$_POST['masach']."'";
+				.	"NoiDungGioiThieu='".addslashes($_POST['noidunggioithieusach'])."' "
+				.	"WHERE MaSach='".addslashes($_POST['masach'])."'";
 				DataProvider::executeQuery($sql);
 				
 			}
