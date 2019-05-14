@@ -7,23 +7,23 @@ class ShowBook
 			{
 					require('DataProvider.php');
 					if(isset($_GET['theloai']))
-						$tenTheLoai=addcslashes($_GET['theloai']);
+						$tenTheLoai=addslashes($_GET['theloai']);
 					else $tenTheLoai="tatca";
 					if($tenTheLoai=="")
 						$tenTheLoai="tatca";
 					if(isset($_GET['search']))
-						$timkiem=addcslashes($_GET['search']);
+						$timkiem=addslashes($_GET['search']);
 					else $timkiem="";
 					if(isset($_GET['giatu']))
-						$giatu=addcslashes($_GET['giatu']);
+						$giatu=addslashes($_GET['giatu']);
 					else
 						$giatu="";
 					if(isset($_GET['giaden']))
-						$giaden=addcslashes($_GET['giaden']);
+						$giaden=addslashes($_GET['giaden']);
 					else
 						$giaden="";
 					if(isset($_GET['sapxep']))
-						$sapxep=addcslashes($_GET['sapxep']);
+						$sapxep=addslashes($_GET['sapxep']);
 					else
 						$sapxep="";
 					if(isset($tenTheLoai) && $tenTheLoai=="tatca" && isset($_GET['timkiemnangcao'])==false)
@@ -398,10 +398,10 @@ class ShowBook
 		require('DataProvider.php');
 		
 		if(isset($_GET['theloai']))
-			$matheloai=addcslashes($_GET['theloai']);
+			$matheloai=addslashes($_GET['theloai']);
 		else $matheloai="";
 		if(isset($_GET['timkiemtheoloai']))
-			$loai=addcslashes($_GET['timkiemtheoloai']);
+			$loai=addslashes($_GET['timkiemtheoloai']);
 		else $loai="";
 		if(isset($_GET['timkiem']))
 			$chuoitimkiem=addslashes($_GET['timkiem']);
@@ -411,7 +411,7 @@ class ShowBook
 			$loaiSapXep="asc";
 		if(isset($_GET['sort']) && str_word_count($_GET['sort'])>1)
 		{
-			$sort=addcslashes($_GET['sort']);
+			$sort=addslashes($_GET['sort']);
 			if($sort!="")
 			{
 				$a=explode(" ",$sort);
