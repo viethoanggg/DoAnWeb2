@@ -598,7 +598,7 @@ if(isLogined()==true)
 								}
 								?>
 							</div>
-							<input type="text" name="htthanhtoan" value="<?php echo $_SESSION['login']['httt']; ?>" id="htthanhtoan">
+							<input type="hidden" name="htthanhtoan" value="<?php echo $_SESSION['login']['httt']; ?>" id="htthanhtoan">
 							<input type="hidden" name="htgiaohang" value="<?php echo $_SESSION['login']['htgh'];?>" id="htgiaohang">
 
 						</form>

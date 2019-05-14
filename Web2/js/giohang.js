@@ -182,9 +182,17 @@ function checkgh(){
 		data: {
 			"ship": s
 		}
+	}).done(function(data){
+		if(data==1){
+			$('#thongtingiaohang td:eq(10)').html(`<i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng (Giao hàng bình thường - 25.000đ)`);
+			$('#thongtingiaohang td:eq(17)').text("25.000 đ");
+		}
+		if(data==2){
+			$('#thongtingiaohang td:eq(10)').html(`<i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng (Giao hàng nhanh - 50.000đ)`);
+			$('#thongtingiaohang td:eq(17)').text("50.000 đ");
+		}
 	})
 	$('#htgiaohang').val($('input[name=gh]:checked').val());
-	window.location.assign("giohang.php");
 }
 function ktgiohang(){
 	if(document.forms['thanhtoan']['DiaChi'].value==""){
