@@ -23,7 +23,7 @@
 			require('DataProvider.php');
 			if(isset($_POST['masach']))
 			{
-				$masach=addcslashes($_POST['masach']);
+				$masach=addslashes($_POST['masach']);
 				
 				//------------------------Sua trong database sach-----------------------------------------------//
 				
@@ -70,7 +70,7 @@
 				.	"TrongLuong='".addslashes($_POST['trongluong'])."', "
 				.	"SoTrang='".(int)$_POST['sotrang']."', "
 				.	"DanhMuc='".addslashes($_POST['danhmuc'])."', "
-				.	"NgayPhatHanh='".addcslashes($_POST['ngayphathanh'])."', "
+				.	"NgayPhatHanh='".addslashes($_POST['ngayphathanh'])."', "
 				.	"SoLuongTon='".(int)$_POST['soluongton']."', "
 				.	"NoiDungGioiThieu='".addslashes($_POST['noidunggioithieusach'])."' "
 				.	"WHERE MaSach='".addslashes($_POST['masach'])."'";

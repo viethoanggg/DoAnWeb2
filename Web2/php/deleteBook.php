@@ -24,6 +24,38 @@
 			require('DataProvider.php');
 			if(isset($_GET['masach']))
 			{
+				//xoa hinh anh 
+				$hinhanh="";
+				$matheloai="";
+				$sql="select * from sach where MaSach='".$_GET['masach']."' ";
+				$result=DataProvider::executeQuery($sql);
+				if(mysqli_num_rows($result)==1)
+				{
+					while($row=mysqli_fetch_array($result))
+					{
+						$matheloai=$row['MaTheLoai'];
+						$hinhanh=$row['HinhAnh'];
+					}
+				}
+				$imageURL="";
+					if($matheloai=="NN")
+						$imageURL="../images/ngoaingu/".$hinhanh;
+					else if($matheloai=="KT")
+						$imageURL="../images/kinhte/".$hinhanh;
+					else if($matheloai=="KNS")
+						$imageURL="../images/kynangsong/".$hinhanh;
+					else if($matheloai=="LS")
+						$imageURL="../images/lichsu/".$hinhanh;
+					else if($matheloai=="CN")
+						$imageURL="../images/chuyennganh/".$hinhanh;
+					else if($matheloai=="TN")
+						$imageURL="../images/thieunhi/".$hinhanh;
+					else if($matheloai=="TT")
+						$imageURL="../images/tuoiteen/".$hinhanh;
+					else if($matheloai=="VH")
+						$imageURL="../images/vanhoc/".$hinhanh;
+				
+				//xoa sach
 				$sql="DELETE FROM sach WHERE MaSach='".$_GET['masach']."'";
 				DataProvider::executeQuery($sql);
 				$sql="DELETE FROM chitietsach WHERE MaSach='".$_GET['masach']."'";
