@@ -455,7 +455,7 @@ class ShowBook
 							$maxPage=ceil($numRows/$rowsPerPage);
 							
 							//  Lấy link của trang
-							$sefl="quanlysanpham.php?theloai=&loai=&timkiem=&page=&sort=";
+							$sefl="quanlysanpham.php?theloai=&loai=&timkiem=&sort=&page=";
 							$nav="";
 							
 							for($page=1;$page<=$maxPage;$page++)
