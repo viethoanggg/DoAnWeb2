@@ -325,18 +325,20 @@
 		var x=document.getElementById('hienthisuahinh');
 		if(x.innerHTML=="")
 		{
-			var s="<input type='file' name='hinhanh' id='ha' accept='image/png,image/jpeg,image/jpg' onchange='hienanhmoi()'>";
-				s=s+"<center><div id='xemhinhanhmoi' style='width:120px;height:170px;'> </div></center>";
+			var s="<input type='file' name='hinhanh' id='ha' accept='image/png,image/jpeg,image/jpg' onchange='loading(event)'>";
+				s=s+"<center><img id='xemhinhanhmoi' style='width:120px;height:170px;' src='../images/null.png'></center>";
 			document.getElementById('hienthisuahinh').innerHTML=s;
 		}
 		else document.getElementById('hienthisuahinh').innerHTML="";
 	}
-	function hienanhmoi()
-	{
-		var x=document.forms['sua']['hinhanh'].value;
-		document.getElementById('xemhinhanhmoi').innerHTML="<img src='"+x+"' style='width:100%;height:100%'>";
-	}
 	
+	
+	
+	var loading=function(event)
+	{
+		var ou=document.getElementById("xemhinhanhmoi");
+		ou.src=URL.createObjectURL(event.target.files[0]);
+	}
 </script>
 <?php
 	if($matheloai!="")
