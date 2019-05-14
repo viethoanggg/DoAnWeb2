@@ -241,108 +241,150 @@ if(isLogined()==true)
 		</nav>
 		<!---------------------content sach ----------------------->
 		<div class="container" >
-			<h3>Giỏ hàng</h3>
+			<h3>Hoá đơn</h3>
 			<hr style="border:1px solid black;">
 			<div class="row">
 				<div id="hoadon">
 					<form action="xulyxoadonhang.php" method="GET">
 						<div class="col-md-12">
 							<?php 
-							if(empty($_SESSION['login'])){
+							if(empty($_SESSION['login'])){//Check xem có session login, nếu ko có thì bắt đăng nhập;
 								echo '<script>
 								$(function(){
 									$(`#hoadon`).html(`<table class="table"><tr><td style="background-color:#ddd; height: 150px;text-align: center;padding-top:100px ">Bạn chưa đăng nhập!!Vui lòng đăng nhập để xem hoá đơn</td></tr><tr><td style="background-color:#ddd;border: 0;height: 200px;text-align: center;"><button class="thanhtoan" onclick="dangnhap()">Đăng nhập</button></td></tr></table>`);
 									})
 									</script>';
 								}
-								else{
-									include 'hoadon.php';
-									echo '<table class="table table-striped" id="muahang">
-									<thead>
-									<tr style="background-color: #101010;">
-									<th>Xoá đơn hàng</th>
-									<th>Chi tiết</th>
-									<th>Mã hoá đơn</th>
-									<th>Ngày đặt hàng</th>
-									<th>Địa chỉ</th>
-									<th>Hình thức thanh toán</th>
-									<th>Hình thức giao hàng</th>
-									<th>Tổng sản phẩm</th>
-									<th>Tổng tiền</th>
-									<th>Tình trạng</th>
-									</tr>
-									</thead>
-									<tbody>'.Chitiet::ChitietHD($_SESSION['login']['MaKH']).'
-									</tbody>
-									</table>';
-								}
-								?>
-								<input type="hidden" id="MaHD" name="MaHD" value="">
+								else{//Khi đã đăng nhập
+									if(isset($_GET['MaHD']) && isset($_GET['MaKH'])){//Nếu có MaHD và MaKH
+										include 'hoadon.php';
+										if(Chitiet::KTHD($_GET['MaHD'])==1&& $_GET['MaKH']==$_SESSION['login']['MaKH']){
+											echo '<div class="row">
+											<div class="col-md-12">
+
+											<table class="table table-striped" id="muahang">
+											<thead>
+											<tr style="background-color: #101010;">
+											<th>Sản phẩm</th>
+											<th>Tên sách</th>
+											<th>Giá</th>
+											<th>Số lượng</th>
+											<th>Tổng</th>
+											</tr>
+											</thead>
+											<tbody>
+											'.Chitiet::thongtinchitiet($_GET['MaHD']).'
+											</tbody>
+											</table>
+
+											</div>
+											</div>';
+										}
+										else{//Sai
+											echo '<script>
+													index();		
+												</script>';
+											}
+										}
+										else{
+											include 'hoadon.php';
+											if(Chitiet::KTKH($_SESSION['login']['MaKH'])==1)
+											{	
+												echo '<table class="table table-striped" id="muahang">
+												<thead>
+												<tr style="background-color: #101010;">
+												<th>Xoá đơn hàng</th>
+												<th>Chi tiết</th>
+												<th>Mã hoá đơn</th>
+												<th>Ngày đặt hàng</th>
+												<th>Địa chỉ</th>
+												<th>Hình thức thanh toán</th>
+												<th>Hình thức giao hàng</th>
+												<th>Tổng sản phẩm</th>
+												<th>Tổng tiền</th>
+												<th>Tình trạng</th>
+												</tr>
+												</thead>
+												<tbody>'.Chitiet::ChitietHD($_SESSION['login']['MaKH']).'
+												</tbody>
+												</table>';
+											}
+											else{
+												echo '<script>
+												$(function(){
+													$(`#hoadon`).html(`<table class="table"><tr><td style="background-color:#ddd; height: 150px;text-align: center;padding-top:100px ">Bạn chưa có đơn hàng nào!!!</td></tr><tr><td style="background-color:#ddd;border: 0;height: 200px;text-align: center;"><button class="thanhtoan" onclick="index()">Trang chủ</button></td></tr></table>`);
+													})
+													</script>';
+												}
+											}
+										}
+										?>
+										<input type="hidden" id="MaHD" name="MaHD" value="">
+									</div>
+								</form>
 							</div>
-						</form>
+						</div>
 					</div>
+					<!---------------------- footer ----------------------->
+					<div class="container">
+						<hr style="border:1px solid black;">
+						<div class="gioithieu">
+							<h4>Mua Sách Online Tại Onepiece.Vn</h4><br>
+							<p>- Ra đời từ năm 2011, đến nay Onepiece.vn đã trở thành địa chỉ mua sách online quen thuộc của hàng ngàn độc giả trên cả nước. Với đầu sách phong phú, thuộc các thể loại: Văn học nước ngoại, Văn học trong nước, Kinh tế, Kỹ năng sống, Thiếu nhi, Sách học ngoại ngữ, Sách chuyên ngành,... được cập nhật liên tục từ các nhà xuất bản uy tín trong nước. </p><br>
+							<p>- Khi mua sách online tại Onepiece.vn, Quý khách được Bọc plastic miễn phí đến 99% (trừ sách bìa cứng, sách dạng hộp - dạng đặc biệt, sách khổ quá to, ...)</p><br>
+							<p>- Ngoài ra, với hình thức Giao hàng thu tiền tận nơi và Đổi hàng trong vòng 7 ngày nếu sách có bất kỳ lỗi nào trong quá trình in ấn sẽ giúp Quý khách yên tâm hơn khi mua sắm tại Onepiece.vn</p>
+						</div>
+						<hr style="border:1px solid black;">
+						<div class="chitietfooter">
+							<h4>HỖ TRỢ KHÁCH HÀNG</h4><br>
+							Email: admin@onepiece.vn<br>
+							Hotline: 0938 424 289
+						</div>
+						<div class="chitietfooter">
+							<h4>Giới Thiệu</h4><br>
+							Về Onepiece<br>
+							Tuyển dụng
+						</div>
+						<div class="chitietfooter">
+							<h4>Tài Khoản</h4><br>
+							Tài khoản<br>
+							Danh sách đơn hàng<br>
+							Thông báo
+						</div>
+						<div class="chitietfooter">
+							<h4>Hướng Dẫn</h4><br>
+							Hướng dẫn mua hàng<br>
+							Phương thức thanh toán<br>
+							Câu hỏi thường gặp<br>
+							Phương thức vận chuyển
+						</div>
+					</div>
+					<div id="php"></div>
 				</div>
-			</div>
-			<!---------------------- footer ----------------------->
-			<div class="container">
-				<hr style="border:1px solid black;">
-				<div class="gioithieu">
-					<h4>Mua Sách Online Tại Onepiece.Vn</h4><br>
-					<p>- Ra đời từ năm 2011, đến nay Onepiece.vn đã trở thành địa chỉ mua sách online quen thuộc của hàng ngàn độc giả trên cả nước. Với đầu sách phong phú, thuộc các thể loại: Văn học nước ngoại, Văn học trong nước, Kinh tế, Kỹ năng sống, Thiếu nhi, Sách học ngoại ngữ, Sách chuyên ngành,... được cập nhật liên tục từ các nhà xuất bản uy tín trong nước. </p><br>
-					<p>- Khi mua sách online tại Onepiece.vn, Quý khách được Bọc plastic miễn phí đến 99% (trừ sách bìa cứng, sách dạng hộp - dạng đặc biệt, sách khổ quá to, ...)</p><br>
-					<p>- Ngoài ra, với hình thức Giao hàng thu tiền tận nơi và Đổi hàng trong vòng 7 ngày nếu sách có bất kỳ lỗi nào trong quá trình in ấn sẽ giúp Quý khách yên tâm hơn khi mua sắm tại Onepiece.vn</p>
-				</div>
-				<hr style="border:1px solid black;">
-				<div class="chitietfooter">
-					<h4>HỖ TRỢ KHÁCH HÀNG</h4><br>
-					Email: admin@onepiece.vn<br>
-					Hotline: 0938 424 289
-				</div>
-				<div class="chitietfooter">
-					<h4>Giới Thiệu</h4><br>
-					Về Onepiece<br>
-					Tuyển dụng
-				</div>
-				<div class="chitietfooter">
-					<h4>Tài Khoản</h4><br>
-					Tài khoản<br>
-					Danh sách đơn hàng<br>
-					Thông báo
-				</div>
-				<div class="chitietfooter">
-					<h4>Hướng Dẫn</h4><br>
-					Hướng dẫn mua hàng<br>
-					Phương thức thanh toán<br>
-					Câu hỏi thường gặp<br>
-					Phương thức vận chuyển
-				</div>
-			</div>
-			<div id="php"></div>
-		</div>
-		<script src="../js/Validate.js"></script>
-		<?php
-		if(isLogined()==true)
-		{
-			echo "<script>
-			document.getElementById('loginn').innerHTML=''; 
-			</script>";
-			$s="<a class=\'dropdown-toggle\' data-toggle=\'dropdown\' href=\'#\'>"
-			.    "<i class=\'glyphicon glyphicon-user\'></i> ".$_SESSION['login']['TenDangNhap']." <b class=\'caret\'></b>"
-			."</a>"
-			."<ul class=\'dropdown-menu\'>"
-			.    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
-			.    "</li>"
-			.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
-			.    "</li>"
-			.    "<li class=\'divider\'></li>"
-			.    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
-			.    "</li>"
-			."</ul>";
-			echo "<script>"
-			."document.getElementById('logout').setAttribute('class','dropdown'); "
-			."document.getElementById('logout').innerHTML='".$s."';"
-			."</script>";
-		}
-		?>
-	</body>
-	</html>
+				<script src="../js/Validate.js"></script>
+				<?php
+				if(isLogined()==true)
+				{
+					echo "<script>
+					document.getElementById('loginn').innerHTML=''; 
+					</script>";
+					$s="<a class=\'dropdown-toggle\' data-toggle=\'dropdown\' href=\'#\'>"
+					.    "<i class=\'glyphicon glyphicon-user\'></i> ".$_SESSION['login']['TenDangNhap']." <b class=\'caret\'></b>"
+					."</a>"
+					."<ul class=\'dropdown-menu\'>"
+					.    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
+					.    "</li>"
+					.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
+					.    "</li>"
+					.    "<li class=\'divider\'></li>"
+					.    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
+					.    "</li>"
+					."</ul>";
+					echo "<script>"
+					."document.getElementById('logout').setAttribute('class','dropdown'); "
+					."document.getElementById('logout').innerHTML='".$s."';"
+					."</script>";
+				}
+				?>
+			</body>
+			</html>

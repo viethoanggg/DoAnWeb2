@@ -208,3 +208,6 @@ function hd(MaHD){
 	//alert(MaHD);
 	$('#MaHD').val(MaHD);
 }
+function index(){
+	window.location.assign("../index.php");
+}
