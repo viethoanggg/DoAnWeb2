@@ -113,8 +113,7 @@ class QuanLyUser
 															<th>Email</th>
 															<th>SĐT</th>
 															<th>Trạng_thái</th>
-															
-															<th>Sửa</th>								
+															<th>Đặt_lại</th>								
 															<th>Khóa</th>
 														</tr>
 														<tbody>
@@ -138,7 +137,7 @@ class QuanLyUser
 												
 												
 												$s=$s
-												. "<td><a href='#' ><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
+												. "<td><a href='#' ><i class='fa fa-pencil fa-fw'></i> Đặt lại</a></td>"
 												."<td><font style='color:#337ab7;cursor:pointer' onclick='khoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>"
 											."</tr>";
 										$i++;
@@ -276,7 +275,7 @@ class QuanLyUser
 															<th>SĐT</th>
 															<th>Trạng_thái</th>
 															<th>Xem_đơn_hàng</th>
-															<th>Sửa</th>								
+															<th>Đặt_lại</th>								
 															<th>Khóa</th>
 														</tr>
 														<tbody>
@@ -299,7 +298,7 @@ class QuanLyUser
 												
 												
 												$s=$s. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-file-o fa-fw'></i> Xem</a></td>"
-												. "<td><a href='#'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
+												. "<td><a href='#'><i class='fa fa-pencil fa-fw'></i> Đặt lại</a></td>"
 												."<td><font style='color:#337ab7;cursor:pointer' onclick='khoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>"
 											."</tr>";
 										$i++;
@@ -435,7 +434,7 @@ class QuanLyUser
 															<th>SĐT</th>
 															<th>Trạng_thái</th>
 															<th>Mã_Quyền</th>
-															<th>Sửa</th>								
+															<th>Đặt_lại</th>								
 															<th>Khóa</th>
 														</tr>
 														<tbody>
@@ -458,7 +457,7 @@ class QuanLyUser
 												$s=$s."<td>".$row['MaQuyen']."</td>";
 												
 												
-												$s=$s. "<td><a href='editBook.php?masach=".$row['MaNhanVien']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
+												$s=$s. "<td><a href='editBook.php?masach=".$row['MaNhanVien']."'><i class='fa fa-pencil fa-fw'></i> Đặt lại</a></td>"
 												."<td><font style='color:#337ab7;cursor:pointer' onclick='khoanhanvien(\"MaNhanVien=".$row['MaNhanVien']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>"
 											."</tr>";
 										$i++;
@@ -600,7 +599,7 @@ class QuanLyUser
 															<th>SĐT</th>
 															<th>Trạng_thái</th>	
 															<th>Mã_Quyền</th>
-															<th>Sửa</th>								
+															<th>Đặt_lại</th>								
 															<th>Khóa</th>
 														</tr>
 														<tbody>
@@ -622,7 +621,7 @@ class QuanLyUser
 													$s=$s."<td><i class='fa fa-close ' id='".$row['MaNhanVien']."'></i></td>";	
 												$s=$s."<td>".$row['MaQuyen']."</td>";
 												
-												$s=$s. "<td><a href='editBook.php?masach=".$row['MaNhanVien']."'><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
+												$s=$s. "<td><a href='editBook.php?masach=".$row['MaNhanVien']."'><i class='fa fa-pencil fa-fw'></i> Đặt lại</a></td>"
 												."<td><font style='color:#337ab7;cursor:pointer' onclick='khoanhanvien(\"MaNhanVien=".$row['MaNhanVien']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>"
 											."</tr>";
 										$i++;
