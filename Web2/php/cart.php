@@ -5,9 +5,8 @@ class cart
 	public static function addcart(){
 		require('DataProvider.php');
 		if(isset($_GET['masach'])){//Kiểm tra sản phẩm có tồn tại hay không
-			$sql="SELECT *
-			FROM sach
-			WHERE MaSach='".$_GET['masach']."'";
+			$sql="SELECT * from `chitietsach`,`sach` WHERE `chitietsach`.`MaSach`=`sach`.`MaSach`AND `sach`.`MaSach`='".$_GET['masach']."'";
+			echo $sql;
 			$result=DataProvider::executeQuery($sql);
 			$row=mysqli_fetch_array($result);
 			var_dump($row);
@@ -25,7 +24,8 @@ class cart
 							"tensach"=>$row['TenSach'],
 							"hinhanh"=>$row['HinhAnh'],
 							"gia"=>$row['Gia'],
-							"theloai"=>$row['MaTheLoai']
+							"theloai"=>$row['MaTheLoai'],
+							"slton"=>$row['SoLuongTon']
 						);
 					}
 					else{
@@ -34,7 +34,8 @@ class cart
 							"tensach"=>$row['TenSach'],
 							"hinhanh"=>$row['HinhAnh'],
 							"gia"=>$row['Gia'],
-							"theloai"=>$row['MaTheLoai']
+							"theloai"=>$row['MaTheLoai'],
+							"slton"=>$row['SoLuongTon']
 						);	
 					}
 				}
@@ -45,7 +46,8 @@ class cart
 						"tensach"=>$row['TenSach'],
 						"hinhanh"=>$row['HinhAnh'],
 						"gia"=>$row['Gia'],
-						"theloai"=>$row['MaTheLoai']
+						"theloai"=>$row['MaTheLoai'],
+						"slton"=>$row['SoLuongTon']
 					);	
 				}
 				$_SESSION["cart"]=$cart;

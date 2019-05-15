@@ -275,6 +275,7 @@ if(isLogined()==true)
 									.'</div>'
 									.'</div>'.'</td>
 									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									<input type="hidden" id="ma_'.$key.'" value="'.$_SESSION["cart"][$key]["slton"].'">
 									</tr>';
 									$demsl+=$_SESSION["cart"][$key]["sl"];
 									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
@@ -297,6 +298,7 @@ if(isLogined()==true)
 									.'</div>'
 									.'</div>'.'</td>
 									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									<input type="hidden" id="ma_'.$key.'" value="'.$_SESSION["cart"][$key]["slton"].'">
 									</tr>';
 									$demsl+=$_SESSION["cart"][$key]["sl"];
 									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
@@ -319,6 +321,7 @@ if(isLogined()==true)
 									.'</div>'
 									.'</div>'.'</td>
 									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									<input type="hidden" id="ma_'.$key.'" value="'.$_SESSION["cart"][$key]["slton"].'">
 									</tr>';
 									$demsl+=$_SESSION["cart"][$key]["sl"];
 									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
@@ -341,6 +344,7 @@ if(isLogined()==true)
 									.'</div>'
 									.'</div>'.'</td>
 									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									<input type="hidden" id="ma_'.$key.'" value="'.$_SESSION["cart"][$key]["slton"].'">
 									</tr>';
 									$demsl+=$_SESSION["cart"][$key]["sl"];
 									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
@@ -363,6 +367,7 @@ if(isLogined()==true)
 									.'</div>'
 									.'</div>'.'</td>
 									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									<input type="hidden" id="ma_'.$key.'" value="'.$_SESSION["cart"][$key]["slton"].'">
 									</tr>';
 									$demsl+=$_SESSION["cart"][$key]["sl"];
 									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
@@ -385,6 +390,7 @@ if(isLogined()==true)
 									.'</div>'
 									.'</div>'.'</td>
 									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									<input type="hidden" id="ma_'.$key.'" value="'.$_SESSION["cart"][$key]["slton"].'">
 									</tr>';
 									$demsl+=$_SESSION["cart"][$key]["sl"];
 									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
@@ -407,6 +413,7 @@ if(isLogined()==true)
 									.'</div>'
 									.'</div>'.'</td>
 									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									<input type="hidden" id="ma_'.$key.'" value="'.$_SESSION["cart"][$key]["slton"].'">
 									</tr>';
 									$demsl+=$_SESSION["cart"][$key]["sl"];
 									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
@@ -429,6 +436,7 @@ if(isLogined()==true)
 									.'</div>'
 									.'</div>'.'</td>
 									<td>'.number_format($_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"]).'đ</td>
+									<input type="hidden" id="ma_'.$key.'" value="'.$_SESSION["cart"][$key]["slton"].'">
 									</tr>';
 									$demsl+=$_SESSION["cart"][$key]["sl"];
 									$tong+=$_SESSION["cart"][$key]["gia"]*$_SESSION["cart"][$key]["sl"];
@@ -479,7 +487,7 @@ if(isLogined()==true)
 										$httt="Hình thức thanh toán (Thẻ ngân hàng)";
 									}
 									if($_SESSION['login']['httt']==2){
-										$httt="Hình thức thanh toán (Thẻ..)";
+										$httt="Hình thức thanh toán (Thẻ Visa/Master Card)";
 									}
 									if($_SESSION['login']['httt']==3){
 										$httt="Hình thức thanh toán (Thanh toán khi nhận hàng)";
@@ -746,7 +754,7 @@ if(isLogined()==true)
 						<div class="modal-body">
 							<div class="row" style="text-align: center;">
 								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" onclick="thenganhang()" >Thẻ ngân hàng</div>
-								<div class="col-sm-4"> <input type="radio" class="form-check-input" name="optradio" onclick="the()" value="option1" >Thẻ...</div>
+								<div class="col-sm-4"> <input type="radio" class="form-check-input" name="optradio" onclick="the()" value="option1" >Thẻ Visa/Master Card</div>
 								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="bt" onclick="nhanhang()" name="optradio" value="option1" checked >Thanh toán khi nhận hàng</div>
 							</div>
 							<!-- Modal footer -->
@@ -779,7 +787,7 @@ if(isLogined()==true)
 						<div class="modal-body">
 							<div class="row" style="text-align: center;">
 								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="tng" name="optradio" value="option1" onclick="thenganhang()" checked>Thẻ ngân hàng</div>
-								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" onclick="the()" value="option1" >Thẻ...</div>
+								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" onclick="the()" value="option1" >Thẻ Visa/Master Card</div>
 								<div class="col-sm-4"> <input type="radio" onclick="nhanhang()" class="form-check-input" id="radio1" name="optradio" value="option1" >Thanh toán khi nhận hàng</div>
 							</div>
 							<div class="form-group row"></div>	
@@ -844,7 +852,7 @@ if(isLogined()==true)
 						<div class="modal-body">
 							<div class="row" style="text-align: center;">
 								<div class="col-sm-4"> <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" onclick="thenganhang()" >Thẻ ngân hàng</div>
-								<div class="col-sm-4"> <input type="radio" class="form-check-input" checked id="t" name="optradio" onclick="the()" value="option1" >Thẻ...</div>
+								<div class="col-sm-4"> <input type="radio" class="form-check-input" checked id="t" name="optradio" onclick="the()" value="option1" >Thẻ Visa/Master Card</div>
 								<div class="col-sm-4"> <input type="radio" onclick="nhanhang()" class="form-check-input" id="radio1" name="optradio" value="option1" >Thanh toán khi nhận hàng</div>
 							</div>
 							<div class="form-group row"></div>	
