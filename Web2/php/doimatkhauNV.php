@@ -191,7 +191,25 @@
 </div>
 
 <script>
+	function	ValidatePassword()
+	{
+		var mkcu=document.forms['suauser']['mkcu'].value;
+		var mkmoi=document.forms['suauser']['mkmoi'].value;
+		var xnmkmo=document.forms['suauser']['xacnhanmkmoi'].value;
 		
+		if(mkcu="")
+		{
+			alert("Mật khẩu cũ không được để trống.");
+		}
+		else if(mkmoi="")
+		{
+			alert("Mật khẩu mới không được để trống.");
+		}
+		else if(xnmkmoi="")
+		{
+			alert("Xác nhận mật khẩu mới không được để trống.");
+		}
+	}
 </script>
 
 <?php
