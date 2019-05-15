@@ -283,8 +283,8 @@ function confirmxoa(){
 function checkinfo(){
 	ptnKyTuHopLe=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
 	ptnKyTu=/[\!@#\$%\^&\*_\=\+\-\<\>\?\\"\[\]\{\}\(\)]/gi;
-	if(document.forms['info']['hoten'].value==""||document.forms['info']['diachi'].value==""||document.forms['info']['sdt'].value==""||document.forms['info']['email'].value==""||ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true||ptnKyTu.test(document.forms['info']['diachi'].value)==true||/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value)==false||/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false){
-		debugger;
+			debugger;
+	if(document.forms['info']['hoten'].value==""||document.forms['info']['duong'].value==""||document.forms['info']['phuong'].value==""||document.forms['info']['quan'].value==""||document.forms['info']['TP'].value==""||document.forms['info']['sdt'].value==""||document.forms['info']['email'].value==""||ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true||ptnKyTuHopLe.test(document.forms['info']['duong'].value)==true||ptnKyTuHopLe.test(document.forms['info']['phuong'].value)==true||ptnKyTuHopLe.test(document.forms['info']['quan'].value)==true||ptnKyTuHopLe.test(document.forms['info']['TP'].value)==true||/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value)==false||/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false){
 		if(ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true||document.forms['info']['hoten'].value==""){
 			$('#hoten').text("*");
 			alert("Họ và tên không phù hợp!!");
@@ -292,9 +292,30 @@ function checkinfo(){
 		else{
 			$('#hoten').text(" ");
 		}
-		if(ptnKyTu.test(document.forms['info']['diachi'].value)==true||document.forms['info']['diachi'].value==""){
+		if(ptnKyTuHopLe.test(document.forms['info']['duong'].value)==true||document.forms['info']['duong'].value==""){
 			$('#diachi').text("*");
-			alert("Địa chỉ không phù hợp!!");
+			alert("Số đường không hợp lệ!!")
+		}
+		else{
+			$('#diachi').text(" ");
+		}
+		if(ptnKyTuHopLe.test(document.forms['info']['phuong'].value)==true||document.forms['info']['phuong'].value==""){
+			$('#diachi').text("*");
+			alert("Địa chỉ phường không hợp lệ!!")
+		}
+		else{
+			$('#diachi').text(" ");
+		}
+		if(ptnKyTuHopLe.test(document.forms['info']['quan'].value)==true||document.forms['info']['quan'].value==""){
+			$('#diachi').text("*");
+			alert("Địa chỉ quận không hợp lệ!!")
+		}
+		else{
+			$('#diachi').text(" ");
+		}
+		if(ptnKyTuHopLe.test(document.forms['info']['TP'].value)==true||document.forms['info']['TP'].value==""){
+			$('#diachi').text("*");
+			alert("TP/Tỉnh không hợp lệ!!")
 		}
 		else{
 			$('#diachi').text(" ");
