@@ -249,57 +249,33 @@ function confirmxoa(){
 function checkinfo(){
 	ptnKyTuHopLe=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
 	ptnKyTu=/[\!@#\$%\^&\*_\=\+\-\<\>\?\\"\[\]\{\}\(\)]/gi;
-	debugger;
+	//debugger;
 	if(document.forms['info']['hoten'].value==""||document.forms['info']['diachi'].value==""||document.forms['info']['sdt'].value==""||document.forms['info']['email'].value==""||ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true||ptnKyTu.test(document.forms['info']['diachi'].value)==true||/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value==false)||/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false){
-		if(document.forms['info']['hoten'].value==""){
+		if(ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true||document.forms['info']['hoten'].value==""){
 			$('#hoten').text("*");
 		}
 		else{
 			$('#hoten').text(" ");
 		}
-		if(ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true){
-			$('#hoten').text("*");
-		}
-		else{
-			$('#hoten').text(" ");
-		}
-		if(document.forms['info']['diachi'].value==""){
+		if(ptnKyTu.test(document.forms['info']['diachi'].value)==true||document.forms['info']['diachi'].value==""){
 			$('#diachi').text("*");
 		}
 		else{
 			$('#diachi').text(" ");
 		}
-		if(ptnKyTu.test(document.forms['info']['diachi'].value)==true){
-			$('#diachi').text("*");
-		}
-		else{
-			$('#diachi').text(" ");
-		}
-		if(document.forms['info']['sdt'].value==""){
-			$('#sdt').text("*");
+		if(/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value)==false||document.forms['info']['sdt'].value==""){
+			$('#sdt').text("*")
 		}
 		else{
 			$('#sdt').text(" ");
 		}
-		if(document.forms['info']['email'].value==""){
+		if(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false||document.forms['info']['email'].value==""){
 			$('#email').text("*");
 		}
 		else{
 			$('#email').text(" ");
 		}
 		/*Check input phù hợp*/
-		if(/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value)==false){
-			$('#sdt').text("*")
-		}
-		else{
-			$('#sdt').text(" ");
-		}
-		if(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false){
-			$('#email').text("*");
-		}
-		else{
-			$('#email').text(" ");
-		}
 		return false;
 	}
 	else{
