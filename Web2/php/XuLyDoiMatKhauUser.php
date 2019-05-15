@@ -1,5 +1,8 @@
 <?php
+ini_set('session.auto_start',0);
+ini_set('session.cookie_lifetime',0);
 session_start();
+require('DataProvider.php');
 require('common.php');
 	if(isLogined()==true)
 	{
@@ -9,11 +12,11 @@ require('common.php');
 		}
 		else if(kiemtramatkhau()==false)
 		{
-				header("Location:doimatkhauUser.php?MaKH=".$_SESSION['login']['MaKH']."&loitrangthai=1");
+				header("Location:doimatkhauUser.php?loitrangthai=1");
 		}
 		else if(kiemtraxacnhanmatkhau()==false)
 		{
-			header("Location:doimatkhauUser.php?MaKH=".$_SESSION['login']['MaKH']."&loitrangthai=2");
+			header("Location:doimatkhauUser.php?loitrangthai=2");
 		}
 		else 
 		{
@@ -46,7 +49,7 @@ require('common.php');
 	
 	function kiemtramatkhau()
 	{
-		require('DataProvider.php');
+		
 		$matkhau=$_POST['mkcu'];
 		$matkhaumoi=$_POST['mkmoi'];
 		$xacnhanmk=$_POST['xacnhanmkmoi'];
@@ -56,7 +59,7 @@ require('common.php');
 		if(mysqli_num_rows($result)==1)
 		{
 			$row=mysqli_fetch_array($result);
-			if($_POST['mkcu']!=$matkhau)
+			if($row['MatKhau']!=$matkhau)
 			{						  
 				return false;
 			}		
@@ -75,7 +78,7 @@ require('common.php');
 		if(mysqli_num_rows($result)==1)
 		{
 			$row=mysqli_fetch_array($result);
-			if($_POST['mkcu']==$matkhau && $matkhaumoi!=$xacnhanmk)
+			if($row['MatKhau']==$matkhau && $matkhaumoi!=$xacnhanmk)
 			{
 				return false;
 			}

@@ -10,11 +10,11 @@ require('common.php');
 		}
 		else if(kiemtramatkhau()==false)
 		{
-				header("Location:doimatkhauNV.php?MaNhanVien=".$_SESSION['login']['MaNhanVien']."&loitrangthai=1");
+				header("Location:doimatkhauNV.php?loitrangthai=1");
 		}
 		else if(kiemtraxacnhanmatkhau()==false)
 		{
-			header("Location:doimatkhauNV.php?MaNhanVien=".$_SESSION['login']['MaNhanVien']."&loitrangthai=2");
+			header("Location:doimatkhauNV.php?loitrangthai=2");
 		}
 		else 
 		{
