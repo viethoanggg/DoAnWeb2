@@ -72,6 +72,7 @@
 				.	"DanhMuc='".addslashes($_POST['danhmuc'])."', "
 				.	"NgayPhatHanh='".addslashes($_POST['ngayphathanh'])."', "
 				.	"SoLuongTon='".(int)$_POST['soluongton']."', "
+				.	"SLTToiThieu='".(int)$_POST['slttoithieu']."', "
 				.	"NoiDungGioiThieu='".addslashes($_POST['noidunggioithieusach'])."' "
 				.	"WHERE MaSach='".addslashes($_POST['masach'])."'";
 				DataProvider::executeQuery($sql);

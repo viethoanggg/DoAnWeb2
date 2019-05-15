@@ -35,8 +35,9 @@ function validateFormEditBook()
 	var ngayphathanh=document.forms['sua']['ngayphathanh'].value;
 	var soluongton=document.forms['sua']['soluongton'].value;
 	var noidunggioithieusach=document.forms['sua']['noidunggioithieusach'].value;
+	var slttoithieu=document.forms['sua']['slttoithieu'].value;
 	
-	var ptnKyTuHopLe=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
+	var ptnKyTuHopLe=/[\!@#\$%\^&\*\=\+\<\>\?\/;\[\]\{\}\(\)]/gi;
 	var ptnSoHopLe=/^[0-9]*$/;
 	var ptnkichthuoc=/[0-9]+(.[0-9]+|)( |)(x|X)( |)[0-9]+(.[0-9]+|)( |)[a-zA-Z]+$/;
 	var ptntrongluong=/[0-9]+(.[0-9]+|)( |)[a-zA-Z]+$/;
@@ -53,6 +54,7 @@ function validateFormEditBook()
 	document.getElementById('loidanhmuc').innerHTML="";
 	document.getElementById('loingayphathanh').innerHTML="";
 	document.getElementById('loisoluongton').innerHTML="";
+	document.getElementById('loislttoithieu').innerHTML="";
 	if(tensach=="")
 	{
 		document.getElementById('loitensach').innerHTML="Tên sách không được để trống.";
@@ -169,6 +171,12 @@ function validateFormEditBook()
 		return false;
 	}
 	//-------------------------------------------------------------------------------------//
+	else if(ptnSoHopLe.test(slttoithieu)==false)
+	{
+		document.getElementById('loislttoithieu').innerHTML="Số lượng tồn tối thiểu không hợp lệ.";
+		return false;
+	}
+	//-------------------------------------------------------------------------------------//
 	else
 	{
 		if(confirm("Bạn có muốn sửa thông tin sách ?")==false)
@@ -192,8 +200,9 @@ function validateFormAddBook()
 	var noidunggioithieusach=document.forms['them']['noidunggioithieusach'].value;
 	var hinhanh=document.forms['them']['hinhanh'].value;
 	var matheloai=document.forms['them']['matheloai'].value;
+	var slttoithieu=document.forms['them']['slttoithieu'].value;
 	
-	var ptnKyTuHopLe=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
+	var ptnKyTuHopLe=/[\!@#\$%\^&\*\=\+\<\>\?\/;\"\[\]\{\}\(\)]/gi;
 	var ptnSoHopLe=/^[0-9]*$/;
 	var ptnkichthuoc=/[0-9]+(.[0-9]+|)( |)(x|X)( |)[0-9]+(.[0-9]+|)( |)[a-zA-Z]+$/;
 	var ptntrongluong=/[0-9]+(.[0-9]+|)( |)[a-zA-Z]+$/;
@@ -211,6 +220,7 @@ function validateFormAddBook()
 	document.getElementById('loingayphathanh').innerHTML="";
 	document.getElementById('loisoluongton').innerHTML="";
 	document.getElementById('loihinhanh').innerHTML="";
+	document.getElementById('loislttoithieu').innerHTML="";
 	if(tensach=="")
 	{
 		document.getElementById('loitensach').innerHTML="Tên sách không được để trống.";
@@ -335,6 +345,12 @@ function validateFormAddBook()
 	else if(hinhanh=="")
 	{
 		document.getElementById('loihinhanh').innerHTML="Hình ảnh không được để trống.";
+		return false;
+	}
+	//-------------------------------------------------------------------------------------//
+	else if(ptnSoHopLe.test(slttoithieu)==false)
+	{
+		document.getElementById('loislttoithieu').innerHTML="Số lượng tồn tối thiểu không hợp lệ.";
 		return false;
 	}
 	//-------------------------------------------------------------------------------------//
