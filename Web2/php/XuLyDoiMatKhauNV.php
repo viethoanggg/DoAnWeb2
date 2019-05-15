@@ -1,4 +1,6 @@
 <?php
+ini_set('session.auto_start',0);
+ini_set('session.cookie_lifetime',0);
 session_start();
 require('DataProvider.php');
 require('common.php');
