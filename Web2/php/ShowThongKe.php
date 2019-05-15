@@ -4,16 +4,24 @@ function thongkesanpham(){
 		if(isset($_GET['theloai']))
 			$matheloai=addslashes($_GET['theloai']);
 		else $matheloai="";
-		if(isset($_GET['ngaytu']) && isset($_GET['ngayden']))
-		{
+		if(isset($_GET['ngaytu']))
 			$nt=addslashes($_GET['ngaytu']);
-			$nd=addslashes($_GET['ngayden']);
-		}
-		else{
+		else
 			$nt="";
+		if(isset($_GET['ngayden']))
+			$nd=addslashes($_GET['ngayden']);
+		else
 			$nd="";
-		}
-					if($matheloai=="" && $nt=="" && $nd=="")
+					if(isset($_GET['giatu']))
+						$giatu=addslashes($_GET['giatu']);
+					else
+						$giatu="";
+					if(isset($_GET['giaden']))
+						$giaden=addslashes($_GET['giaden']);
+					else
+						$giaden="";
+					
+					if($matheloai=="" && $nt=="" && $nd=="" && $giatu=="" && $giaden=="")
 					{		//  Đếm số lượng hóa đơn 
 							$sql="select COUNT(*) as numRows from chitiethoadon where TinhTrangCT='Đã giao hàng'";
 							$result=DataProvider::executeQuery($sql);
@@ -144,12 +152,19 @@ function thongkesanpham(){
 						//  Đếm số lượng hóa đơn
 							$sql="select COUNT(*) as numRows from chitiethoadon ct,sach s where TinhTrangCT='Đã giao hàng' and s.MaSach=ct.MaSach ";
 							if($nt!="" && $nd!="")
-							{
 								$sql=$sql." and NgayGiaoHang BETWEEN '".$nt."' and '".$nd."' ";
-							}
+							else if($nt!="" && $nd=="")
+								$sql=$sql." and NgayGiaoHang >= '".$nt."'";
+							else if($nt=="" && $nd!="")
+								$sql=$sql." and NgayGiaoHang <= '".$nd."'";
 							if($matheloai!="")
 								$sql=$sql." and s.MaTheLoai='".$matheloai."' ";
-							
+							if(is_numeric($giatu) && is_numeric($giaden) && $giatu != "" && $giaden !="")
+								$sql=$sql." and Gia BETWEEN '".$giatu."' and '".$giaden."' ";
+							else if( is_numeric($giatu) && $giatu != "" && $giaden =="")
+								$sql=$sql." and Gia >= ".$giatu;
+							else if( is_numeric($giaden) && $giatu == "" && $giaden !="")
+								$sql=$sql." and Gia <= ".$giaden;
 							$result=DataProvider::executeQuery($sql);
 							$row=mysqli_fetch_array($result);
 							$numRows=$row['numRows'];
@@ -168,9 +183,17 @@ function thongkesanpham(){
 							$offset=($pageNum-1)*$rowsPerPage;
 							$sql="select s.MaSach,TenSach,Sum(SoLuong) as 'SoLuong',Sum(TongTienCT) as 'TongTienCT' from chitiethoadon ct,sach s where TinhTrangCT='Đã giao hàng' and s.MaSach=ct.MaSach ";
 							if($nt!="" && $nd!="")
-							{
 								$sql=$sql."and NgayGiaoHang BETWEEN '".$nt."' and '".$nd."' ";
-							}
+							else if($nt!="" && $nd=="")
+								$sql=$sql." and NgayGiaoHang >= '".$nt."'";
+							else if($nt=="" && $nd!="")
+								$sql=$sql." and NgayGiaoHang <= '".$nd."'";
+							if(is_numeric($giatu) && is_numeric($giaden) && $giatu != "" && $giaden !="")
+								$sql=$sql." and Gia BETWEEN '".$giatu."' and '".$giaden."' ";
+							else if( is_numeric($giatu) && $giatu != "" && $giaden =="")
+								$sql=$sql." and Gia >= ".$giatu;
+							else if( is_numeric($giaden) && $giatu == "" && $giaden !="")
+								$sql=$sql." and Gia <= ".$giaden;
 							if($matheloai!="")
 								$sql=$sql." and MaTheLoai='".$matheloai."' ";
 							 $sql=$sql." group by ct.MaSach LIMIT ".$offset.",".$rowsPerPage;
@@ -270,9 +293,20 @@ function thongkesanpham(){
 											</div>
 								</center>";
 							///-------------------------------------------------//
+							
+							$sql="select Sum(SoLuong) as 'sl',Sum(TongTienCT) as 'tt' from chitiethoadon ct ,sach s where TinhTrangCT='Đã giao hàng' ";
 							if($nt!="" && $nd!="")
-								$sql="select Sum(SoLuong) as 'sl',Sum(TongTienCT) as 'tt' from chitiethoadon ct where TinhTrangCT='Đã giao hàng'and NgayGiaoHang BETWEEN '".$nt."' and '".$nd."' ";
-							else $sql="select Sum(SoLuong) as 'sl',Sum(TongTienCT) as 'tt' from chitiethoadon ct where TinhTrangCT='Đã giao hàng'";
+								$sql=$sql." and NgayGiaoHang BETWEEN '".$nt."' and '".$nd."' ";
+							else if($nt!="" && $nd=="")
+								$sql=$sql." and NgayGiaoHang >= '".$nt."'";
+							else if($nt=="" && $nd!="")
+								$sql=$sql." and NgayGiaoHang <= '".$nd."'";
+							if(is_numeric($giatu) && is_numeric($giaden) && $giatu != "" && $giaden !="")
+								$sql=$sql." and Gia BETWEEN '".$giatu."' and '".$giaden."' ";
+							else if( is_numeric($giatu) && $giatu != "" && $giaden =="")
+								$sql=$sql." and Gia >= ".$giatu;
+							else if( is_numeric($giaden) && $giatu == "" && $giaden !="")
+								$sql=$sql." and Gia <= ".$giaden;
 							
 							$result=DataProvider::executeQuery($sql);
 							$row=mysqli_fetch_array($result);
@@ -286,11 +320,20 @@ function thongkesanpham(){
 								
 							$sql="select Sum(SoLuong) as 'sl',Sum(TongTienCT) as 'tt' from chitiethoadon ct ,sach s where TinhTrangCT='Đã giao hàng' and ct.MaSach=s.MaSach ";
 							if($nt!="" && $nd!="")
-							{
-								$sql=$sql."and NgayGiaoHang BETWEEN '".$nt."' and '".$nd."' ";
-							}
+								$sql=$sql." and NgayGiaoHang BETWEEN '".$nt."' and '".$nd."' ";
+							else if($nt!="" && $nd=="")
+								$sql=$sql." and NgayGiaoHang >= '".$nt."'";
+							else if($nt=="" && $nd!="")
+								$sql=$sql." and NgayGiaoHang <= '".$nd."'";
 							if($matheloai!="")
 								$sql=$sql." and MaTheLoai='".$matheloai."' ";
+							if(is_numeric($giatu) && is_numeric($giaden) && $giatu != "" && $giaden !="")
+								$sql=$sql." and Gia BETWEEN '".$giatu."' and '".$giaden."' ";
+							else if( is_numeric($giatu) && $giatu != "" && $giaden =="")
+								$sql=$sql." and Gia >= ".$giatu;
+							else if( is_numeric($giaden) && $giatu == "" && $giaden !="")
+								$sql=$sql." and Gia <= ".$giaden;
+							
 							$result=DataProvider::executeQuery($sql);
 							$row=mysqli_fetch_array($result);
 							echo "<script>
@@ -324,7 +367,16 @@ function topsanphambanchay(){
 				$top=addslashes($_GET['top']);
 		}
 		else $top="1";
-					if($matheloai=="" && $nt=="" && $nd=="" && $top =="1")
+		
+					if(isset($_GET['giatu']))
+						$giatu=addslashes($_GET['giatu']);
+					else
+						$giatu="";
+					if(isset($_GET['giaden']))
+						$giaden=addslashes($_GET['giaden']);
+					else
+						$giaden="";
+					if($matheloai=="" && $nt=="" && $nd=="" && $top =="1" && $giatu=="" && $giaden=="")
 					{		
 							$sql="select *,sum(SoLuong) as 'SoLuongg', sum(TongTienCT) as 'TongTienCT' from chitiethoadon ct,sach s where TinhTrangCT='Đã giao hàng' and s.MaSach=ct.MaSach group by ct.MaSach having sum(SoLuong)>=ALL(select sum(soluong) from chitiethoadon where TinhTrangCT='Đã giao hàng' GROUP BY MaSach) ORDER by sum(TongTienCT) DESC LIMIT 1";
 							$result=DataProvider::executeQuery($sql);
@@ -365,21 +417,29 @@ function topsanphambanchay(){
 					else
 					{
 						//  Đếm số lượng hóa đơn
-							$sql="select count(*) as 'numRows',sum(SoLuong) as 'SoLuong', sum(TongTienCT) as 'TongTienCT' from chitiethoadon ct,sach s where TinhTrangCT='Đã giao hàng' and s.MaSach=ct.MaSach";
+							$sql="select count(*) as 'numRows',sum(SoLuong) as 'SoLuong', sum(TongTienCT) as 'TongTienCT' from chitiethoadon ct,sach s where TinhTrangCT='Đã giao hàng' and s.MaSach=ct.MaSach ";
 							if($nt!="" && $nd!="")
-							{
 								$sql=$sql." and NgayGiaoHang BETWEEN '".$nt."' and '".$nd."' ";
-							}
+							else if($nt!="" && $nd=="")
+								$sql=$sql." and NgayGiaoHang >= '".$nt."'";
+							else if($nt=="" && $nd!="")
+								$sql=$sql." and NgayGiaoHang <= '".$nd."'";
+							if(is_numeric($giatu) && is_numeric($giaden) && $giatu != "" && $giaden !="")
+								$sql=$sql." and Gia BETWEEN '".$giatu."' and '".$giaden."' ";
+							else if( is_numeric($giatu) && $giatu != "" && $giaden =="")
+								$sql=$sql." and Gia >= ".$giatu;
+							else if( is_numeric($giaden) && $giatu == "" && $giaden !="")
+								$sql=$sql." and Gia <= ".$giaden;
 							if($matheloai!="")
 								$sql=$sql." and s.MaTheLoai='".$matheloai."' ";
-							$sql=$sql." ORDER by sum(SoLuong) DESC,sum(TongTienCT) DESC LIMIT ".$top;
+							//$sql=$sql." ORDER by sum(SoLuong) DESC,sum(TongTienCT) DESC LIMIT ".$top;
 							
 							$result=DataProvider::executeQuery($sql);
 							
 							$row=mysqli_fetch_array($result);
 							$numRows=$row['numRows'];
 							//  Xác định số hóa đơn tối đa hiện lên trong 1 trang
-							$rowsPerPage=6;
+							$rowsPerPage=$top;
 							
 							//  Lấy số trang hiện hành
 							$pageNum=1;
@@ -393,9 +453,17 @@ function topsanphambanchay(){
 			
 							$sql="select ct.MaSach,TenSach,Sum(SoLuong) as 'SoLuong',Sum(TongTienCT) as 'TongTienCT' from chitiethoadon ct,sach s where TinhTrangCT='Đã giao hàng' and s.MaSach=ct.MaSach ";
 							if($nt!="" && $nd!="")
-							{
 								$sql=$sql." and NgayGiaoHang BETWEEN '".$nt."' and '".$nd."' ";
-							}
+							else if($nt!="" && $nd=="")
+								$sql=$sql." and NgayGiaoHang >= '".$nt."'";
+							else if($nt=="" && $nd!="")
+								$sql=$sql." and NgayGiaoHang <= '".$nd."'";
+							if(is_numeric($giatu) && is_numeric($giaden) && $giatu != "" && $giaden !="")
+								$sql=$sql." and Gia BETWEEN '".$giatu."' and '".$giaden."' ";
+							else if( is_numeric($giatu) && $giatu != "" && $giaden =="")
+								$sql=$sql." and Gia >= ".$giatu;
+							else if( is_numeric($giaden) && $giatu == "" && $giaden !="")
+								$sql=$sql." and Gia <= ".$giaden;
 							if($matheloai!="")
 								$sql=$sql." and s.MaTheLoai='".$matheloai."' ";
 							 $sql=$sql." group by ct.MaSach,TenSach ";
@@ -480,7 +548,7 @@ function topsanphambanchay(){
 										."<td>".$row['TongTienCT']."</td>"
 										."</tr>";
 								$i++;
-								if($i==$top) break;
+								//if($i==$top) break;
 							}
 							
 							$s=$s.			"</tbody>"
@@ -516,9 +584,9 @@ function thongketinhtrangsp(){
 							if($tinhtrangsp=="0")
 								$sql=$sql." and SoLuongTon=0 ";
 							else if($tinhtrangsp=="1")
-								$sql=$sql." and SoLuongTon>10 ";
+								$sql=$sql." and SoLuongTon > SLTToiThieu ";
 							else if($tinhtrangsp=="2")
-								$sql=$sql." and SoLuongTon>0 and SoLuongTon<=10 ";
+								$sql=$sql." and SoLuongTon > 0 and SoLuongTon <= SLTToiThieu ";
 
 							$result=DataProvider::executeQuery($sql);
 							
@@ -541,11 +609,11 @@ function thongketinhtrangsp(){
 							if($matheloai!="")
 								$sql=$sql." and s.MaTheLoai='".$matheloai."' ";
 							if($tinhtrangsp=="0")
-								$sql=$sql." and SoLuongTon=0 ";
+								$sql=$sql." and SoLuongTon = 0 ";
 							else if($tinhtrangsp=="1")
-								$sql=$sql." and SoLuongTon>10 ";
+								$sql=$sql." and SoLuongTon > SLTToiThieu ";
 							else if($tinhtrangsp=="2")
-								$sql=$sql." and SoLuongTon>0 and SoLuongTon<=10 ";
+								$sql=$sql." and SoLuongTon > 0 and SoLuongTon <= SLTToiThieu ";
 							$sql=$sql." LIMIT ".$offset.",".$rowsPerPage;
 							//  Tính tổng số trang sẽ hiện thị
 							$maxPage=ceil($numRows/$rowsPerPage);
@@ -629,9 +697,9 @@ function thongketinhtrangsp(){
 										."<td>".$row['SoLuongTon']."</td>";
 										if($row['SoLuongTon']==0)
 											$s=$s."<td>Hết hàng</td>";
-										else if($row['SoLuongTon']>10)
+										else if($row['SoLuongTon']>$row['SLTToiThieu'])
 											$s=$s."<td>Còn hàng</td>";
-										else if($row['SoLuongTon']>0 && $row['SoLuongTon']<10)
+										else if($row['SoLuongTon']>0 && $row['SoLuongTon']<$row['SLTToiThieu'])
 											$s=$s."<td>Cảnh báo</td>";
 										$s=$s."</tr>";
 								$i++;

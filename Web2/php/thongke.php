@@ -179,7 +179,7 @@
 									</div>
 							</div>
 						<!--------------------------------------------------------------------------------------------------------->
-										<div class="col-lg-6">
+										<div class="col-lg-3">
 											<label style="font-size:1.4em">Thể loại</label>
 											<div class="input-group" style="margin-top:24px;">
 												<select name="theloai" class="form-control">
@@ -200,6 +200,11 @@
 												</div>
 											</div>
 										</div>
+									<div class="col-lg-3">
+										<label style="font-size:1.4em">Nhập giá của 1 cuốn</label><br>
+										Từ <input type="text" name="giatu" style="padding:5px  10px;margin-left:18px;width:125px;" value="<?php if(isset($_GET['giatu'])) echo $_GET['giatu']; ?>"><br>
+										Đến <input type="text" name="giaden" style="padding:5px  10px;margin-left:10px;margin-top:10px;width:125px;" value="<?php if(isset($_GET['giaden'])) echo $_GET['giaden']; ?>"><br>
+									</div>
 						</div>
 					</div>
 				</div>
