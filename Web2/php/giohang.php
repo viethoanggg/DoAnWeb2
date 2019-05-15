@@ -473,6 +473,15 @@ if(isLogined()==true)
 										$htgh="Hình thức giao hàng (Giao hàng nhanh - 50.000đ)";
 										$ship=50000;
 									}
+									if($_SESSION['login']['httt']==1){
+										$httt="Hình thức thanh toán (Thẻ ngân hàng)";
+									}
+									if($_SESSION['login']['httt']==2){
+										$httt="Hình thức thanh toán (Thẻ..)";
+									}
+									if($_SESSION['login']['httt']==3){
+										$httt="Hình thức thanh toán (Thanh toán khi nhận hàng)";
+									}
 									$dc=diachi::showdiachi($_SESSION['login']['MaKH']);
 									if($_SESSION['login']['DiaChi']!="") $dc=$_SESSION['login']['DiaChi'];
 									echo '
@@ -504,7 +513,7 @@ if(isLogined()==true)
 									<td id=""><a onclick="chinhsua()" style="cursor: pointer;">Chỉnh sửa</a></td>
 									</tr>
 									<tr>
-									<td><span class="glyphicon glyphicon-credit-card" ></span> Hình thức thanh toán (Thanh toán khi nhận hàng)
+									<td><span class="glyphicon glyphicon-credit-card" ></span> '.$httt.'
 									</td>
 									<td id=""><a style="cursor: pointer;" onclick="hinhthucthanhtoan()">Chỉnh sửa</a></td>
 									</tr>
@@ -589,9 +598,8 @@ if(isLogined()==true)
 								}
 								?>
 							</div>
-							
-							<input type="hidden" name="htthanhtoan" value="3" id="htthanhtoan">
-							<input type="hidden" name="htgiaohang" value="1" id="htgiaohang">
+							<input type="hidden" name="htthanhtoan" value="<?php echo $_SESSION['login']['httt']; ?>" id="htthanhtoan">
+							<input type="hidden" name="htgiaohang" value="<?php echo $_SESSION['login']['htgh'];?>" id="htgiaohang">
 
 						</form>
 					</div>
@@ -738,7 +746,7 @@ if(isLogined()==true)
 							<!-- Modal footer -->
 							<div class="modal-footer">
 								<div class="row">
-									<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger" data-dismiss="modal" onclick="ttbt()">Thay đổi</button></a></div>
+									<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger" data-dismiss="modal" onclick="httt()">Thay đổi</button></a></div>
 									<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
 								</div>
 							</div>
@@ -804,7 +812,7 @@ if(isLogined()==true)
 							<!-- Modal footer -->
 							<div class="modal-footer">
 								<div class="row">
-									<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger" data-dismiss="modal" onclick="maht()">Thay đổi</button></a></div>
+									<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger" data-dismiss="modal" onclick="ttnganhang()">Thay đổi</button></a></div>
 									<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
 								</div>
 							</div>
@@ -855,7 +863,7 @@ if(isLogined()==true)
 							<!-- Modal footer -->
 							<div class="modal-footer">
 								<div class="row">
-									<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger" data-dismiss="modal" onclick="maht2()">Thay đổi</button></a></div>
+									<div class="col-sm-6"><a><button style="background-color: #007bff;border-color:#007bff" type="button" class="btn btn-danger" data-dismiss="modal" onclick="ttthe()">Thay đổi</button></a></div>
 									<div class="col-sm-6" style="text-align: left;"><button type="button" style="width: 90px" class="btn btn-danger" data-dismiss="modal">Quay lại</button></div>
 								</div>
 							</div>

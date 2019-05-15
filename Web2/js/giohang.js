@@ -98,16 +98,16 @@ function giam(id){
 }
 function thaydoi(id){
 	var u=/^[0-9]+$/;
-		var i= $("#"+id+" "+"input").val();
-		if(i<1||i=="") {
-			debugger;
-			alert("Nhập số lượng không phù hợp!!!");
-			i=Number(1);
-			$("#"+id+" "+"input").val(i);
-			ajax(id,i);
-		}
-		Number(i);
+	var i= $("#"+id+" "+"input").val();
+	if(i<1||i=="") {
+		debugger;
+		alert("Nhập số lượng không phù hợp!!!");
+		i=Number(1);
+		$("#"+id+" "+"input").val(i);
 		ajax(id,i);
+	}
+	Number(i);
+	ajax(id,i);
 }
 function ajax(id,i){
 	$.ajax({
@@ -177,14 +177,22 @@ function checkgh(){
 	if($('input[name=gh]:checked').val()==1) s=1;
 	if($('input[name=gh]:checked').val()==2) s=2;
 	$.ajax({
-			type: "GET",
-			url: "ship.php",
-			data: {
-				"ship": s
-			}
-		})
+		type: "GET",
+		url: "ship.php",
+		data: {
+			"ship": s
+		}
+	}).done(function(data){
+		if(data==1){
+			$('#thongtingiaohang td:eq(10)').html(`<i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng (Giao hàng bình thường - 25.000đ)`);
+			$('#thongtingiaohang td:eq(17)').text("25.000 đ");
+		}
+		if(data==2){
+			$('#thongtingiaohang td:eq(10)').html(`<i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng (Giao hàng nhanh - 50.000đ)`);
+			$('#thongtingiaohang td:eq(17)').text("50.000 đ");
+		}
+	})
 	$('#htgiaohang').val($('input[name=gh]:checked').val());
-	window.location.assign("giohang.php");
 }
 function ktgiohang(){
 	if(document.forms['thanhtoan']['DiaChi'].value==""){
@@ -204,3 +212,33 @@ function hd(MaHD){
 function index(){
 	window.location.assign("../index.php");
 }
+function httt(){
+	ajaxhttt(3);
+}
+function ttthe(){
+	ajaxhttt(2);
+}
+function ttnganhang(){
+	ajaxhttt(1);
+}
+function ajaxhttt(x){
+	$.ajax({
+		type: "GET",
+		url: "httt.php",
+		data: {
+			"httt": x
+		}
+	}).done(function(data){
+		$('#htthanhtoan').val(data);
+		if(data==1){
+			$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thẻ ngân hàng)`);
+		}
+		if(data==2){
+			$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thẻ...)`);
+		}
+		if(data==3){
+			$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thanh toán khi nhận hàng)`);
+		}
+	})
+}
+
