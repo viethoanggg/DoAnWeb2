@@ -5,14 +5,14 @@
 	require('common.php');
 	if(isLogined()==false)
 	{
-			header("Location:DangNhap.php");
+			header("Location:admin.php");
 	}
 	//đã đang nhập
 	if(isLogined()==true)
 		// kiểm tra đây là khách hàng thì về trang chủ kh
-		if($_SESSION['login']['MaQuyen'] == "1" || $_SESSION['login']['MaQuyen'] == "2" )
+		if($_SESSION['login']['MaQuyen'] != "1" )
 		{
-				header("Location:admin.php");
+				header("Location:../index.php");
 		}
 		
  ?>
@@ -248,7 +248,7 @@
 						<div class="panel panel-default">
 							<div class="panel-body">
 								<div class="row">
-								<form name="suauser" action="XuLyDoiMatKhauUser.php" method="post" onsubmit="return ValidatePassword()" >
+								<form name="suauser" action="XuLyDoiMatKhauNV.php" method="post" onsubmit="return ValidatePassword()" >
 									<div class="col-lg-3">
 									</div>
 									<div class="col-lg-6">
@@ -276,7 +276,7 @@
 											 ?>
 											</i>
 											<div class="form-group">
-												<a href="thongtincanhanUser.php">Quay lại</a>
+												<a href="thongtincanhanAdmin.php">Quay lại</a>
 											</div>
 										
 									</div>
@@ -337,8 +337,57 @@
 				</div>
 			</div>
 		
-	<script>
-		
+		<script>
+		function ValidateFormEditUser()
+			{
+				var name=document.forms['suauser']['hoten'].value;
+				var emaill=document.forms['suauser']['email'].value;
+				var phone=document.forms['suauser']['sdt'].value;
+				
+				var s=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
+				var mail=/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
+				var dt=/0([1-9]{9}|[1-9][0-9]{8})$/;
+				
+				
+				if(name=="")
+						{
+						document.getElementById("loihoten").innerHTML="Họ tên không được để trống";
+							return false;
+						}
+					else if(s.test(name)==true)
+						{
+						document.getElementById("loihoten").innerHTML="Họ tên không hợp lệ, vui lòng nhập lại.";
+							return false;
+						}			
+						
+					else if(emaill=="")
+						{
+							document.getElementById("loiemail").innerHTML="Email không được để trống";
+							return false;
+						}
+					else if(mail.test(emaill)==false)
+						{
+							document.getElementById("loiemail").innerHTML="Email không hợp lệ, vui lòng nhập lại.";	
+							return false;
+						}
+					
+					else if(phone=="")
+						{
+						document.getElementById("loisdt").innerHTML="Số điện thoại không được để trống";
+							return false;
+						}	
+					
+					else if(dt.test(phone)==false)
+						{
+						document.getElementById("loisdt").innerHTML="Số điện thoại không hợp lệ, vui lòng nhập lại.";	
+							return false;	
+						}
+					else 
+						{
+							if(confirm("Bạn có muốn sửa thông tin của mình ?")==false)
+							return false;
+						}
+			}
 	</script>
 		
 <?php

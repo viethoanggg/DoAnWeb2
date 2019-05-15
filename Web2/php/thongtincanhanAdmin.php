@@ -150,7 +150,7 @@
                                         </div>
 										
 										<div class="form-group">
-                                            <a href=""><i class='fa fa-lock fa-fw'></i>Đổi mật khẩu</a>
+                                            <a href="doimatkhauNV.php"><i class='fa fa-lock fa-fw'></i>Đổi mật khẩu</a>
                                         </div>
 									
 								</div>

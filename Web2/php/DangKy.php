@@ -70,8 +70,9 @@
 				</div>
 				
 				<div class="text-center p-t-5 p-b-20">
+				<?php if(isset($_GET['loitrangthai']) && $_GET['loitrangthai']=="1") echo "<i style=\"color:red\">Tài khoản bị trùng</i>";?>	
 					<span class="txt3" id="kiemtra">
-						
+					
 					</span>
 				</div>
 				
