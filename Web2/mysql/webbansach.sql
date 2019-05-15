@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2019 at 06:04 PM
+-- Generation Time: May 15, 2019 at 07:39 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -241,40 +241,6 @@ INSERT INTO `chitietsach` (`MaSach`, `NXB`, `KichThuoc`, `TrongLuong`, `SoTrang`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
---
-
-CREATE TABLE `comment` (
-  `MaKH` varchar(10) NOT NULL,
-  `MaSach` varchar(10) NOT NULL,
-  `NoiDungCMT` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `comment`
---
-
-INSERT INTO `comment` (`MaKH`, `MaSach`, `NoiDungCMT`) VALUES
-('KH0', 'KNS0', ''),
-('KH0', 'KT5', ''),
-('KH0', 'TN4', ''),
-('KH0', 'TT0', ''),
-('KH1', 'CN1', ''),
-('KH1', 'CN11', ''),
-('KH1', 'TN1', ''),
-('KH2', 'KT0', ''),
-('KH2', 'TN2', ''),
-('KH3', 'LS0', ''),
-('KH3', 'LS4', ''),
-('KH4', 'NN0', ''),
-('KH4', 'TT10', ''),
-('KH4', 'VH10', ''),
-('KH4', 'VH3', ''),
-('KH4', 'VH5', '');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `hinhthucgiaohang`
 --
 
@@ -308,7 +274,7 @@ CREATE TABLE `hinhthucthanhtoan` (
 
 INSERT INTO `hinhthucthanhtoan` (`MaHinhThuc`, `TenHinhThucTT`) VALUES
 ('1', 'Thanh toán bằng thẻ ngân hàng'),
-('2', 'Thanh toán bằng thẻ ...'),
+('2', 'Thanh toán bằng thẻ Visa/Master Card'),
 ('3', 'Thanh toán lúc nhận hàng');
 
 -- --------------------------------------------------------

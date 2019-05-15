@@ -51,8 +51,10 @@
 					<input class="input100" type="password" name="pass" placeholder="Mật khẩu">
 					<span class="focus-input100"></span>
 				</div>
-				
-				<div class="wrap-input100  m-b-25" data-validate = "Nhập lại mật khẩu">
+				<div class="text-center">
+				<i>(Mật khẩu nhiều nhất 16 ký tự,ít nhất 6 ký tự)</i>
+				</div>
+				<div class="wrap-input100  m-b-25 m-t-5" data-validate = "Nhập lại mật khẩu">
 					<input class="input100" type="password" name="repass" placeholder="Nhập lại mật khẩu">
 					<span class="focus-input100"></span>
 				</div>

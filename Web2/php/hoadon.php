@@ -139,7 +139,6 @@
 
 		}
 		public static function KTHD($MaHD,$MaKH){
-			require 'DataProvider.php';
 			$sql="SELECT MAHD FROM `hoadon` WHERE MAKH='".$MaKH."' and MAHD='".$MaHD."'";
 			$result=DataProvider::executeQuery($sql);
 			$row=mysqli_fetch_array($result);
