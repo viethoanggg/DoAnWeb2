@@ -56,7 +56,7 @@
 				}	
 		//-----------------------------------------------------------------------------------------------------------------------------//
 			
-				$sql="INSERT INTO chitietsach(MaSach, NXB, KichThuoc, TrongLuong, SoTrang, DanhMuc, NgayPhatHanh, SoLuongTon, NoiDungGioiThieu ) VALUES ( ";
+				$sql="INSERT INTO chitietsach(MaSach, NXB, KichThuoc, TrongLuong, SoTrang, DanhMuc, NgayPhatHanh, SoLuongTon,SLTToiThieu, NoiDungGioiThieu ) VALUES ( ";
 				$sql=$sql."'".addslashes($_POST['masach'])."', ";
 				$sql=$sql."'".addslashes($_POST['nhaxuatban'])."', ";
 				$sql=$sql."'".addslashes($_POST['kichthuoc'])."', ";
@@ -65,6 +65,7 @@
 				$sql=$sql."'".addslashes($_POST['danhmuc'])."', ";
 				$sql=$sql."'".addslashes($_POST['ngayphathanh'])."', ";
 				$sql=$sql."'".addslashes($_POST['soluongton'])."', ";
+				$sql=$sql."'".addslashes($_POST['slttoithieu'])."', ";
 				$sql=$sql."'".addslashes($_POST['noidunggioithieusach'])."' )";
 				DataProvider::executeQuery($sql);
 				

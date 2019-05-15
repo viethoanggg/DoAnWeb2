@@ -168,6 +168,7 @@
 			$ngayphathanh=$row['NgayPhatHanh'];
 			$soluongton=$row['SoLuongTon'];
 			$hinhanh=$row['HinhAnh'];
+			$slttoithieu=$row['SLTToiThieu'];
 		}
 		else
 		{
@@ -185,6 +186,7 @@
 			$ngayphathanh="";
 			$soluongton="";
 			$hinhanh="";
+			$slttoithieu="";
 		}
 	?>
 			
@@ -251,11 +253,14 @@
 												<div class="form-group">
                                                     <label>Kích thước</label>
                                                     <input class="form-control" name="kichthuoc" value="<?php echo $kichthuoc; ?>">
+													<p><i>( nxn cm )</i></p>
 													<i style="color:red" id='loikichthuoc'></i>
+													
                                                 </div>
 												<div class="form-group">
                                                     <label>Trọng lượng</label>
                                                     <input class="form-control" name="trongluong" value="<?php echo $trongluong; ?>">
+													<p><i>( n g )</i></p>
 													<i style="color:red" id='loitrongluong'></i>
                                                 </div>
 												<div class="form-group">
@@ -278,6 +283,12 @@
                                                     <label>Số lượng tồn</label>
                                                     <input class="form-control" name="soluongton" value="<?php echo $soluongton; ?>">
 													<i style="color:red" id='loisoluongton'></i>
+                                                </div>
+												
+												<div class="form-group">
+                                                    <label>Số lượng tồn tối thiểu</label>
+                                                    <input class="form-control" name="slttoithieu" value="<?php echo $slttoithieu; ?>">
+													<i style="color:red" id='loislttoithieu'></i>
                                                 </div>
 												
 											</div>
