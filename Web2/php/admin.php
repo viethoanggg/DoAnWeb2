@@ -129,12 +129,39 @@
     <div id="page-wrapper">
         <div class="container-fluid">
 
-            <div class="row">
+            
+			<div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Trang chủ</h1>
+				<div class="panel panel-success">
+                    <div class="panel-heading">
+                       <h4>Thông tin</h4>
+                    </div>
+					<div class="panel-body">
+                    <p class="lead">Xin chào <?php echo $_SESSION['login']['HoTen']?></p>  
+					<p style="font-size:1.2em">Ngày đăng nhập: <?php $date = getdate();
+			echo " Ngày: ".$date['mday']." tháng: ".$date['mon']." năm: ".$date['year']."<br>
+			Thời gian đăng nhập: ".$date['hours']." giờ ".$date['minutes']." phút "
+			.$date['seconds']." giây";?></p>
+					<strong style="font-size:1.2em"> Vai trò: 
+					<?php 
+					if($_SESSION['login']['MaQuyen']=="1")
+						echo "Quản trị viên";
+					if($_SESSION['login']['MaQuyen']=="2")
+						echo "Nhân viên quản lý";
+					?>
+					</strong>
+					<p style="font-size:1.2em">Công việc: <?php 
+					if($_SESSION['login']['MaQuyen']=="1")
+						echo "Quản lý người dùng";
+					if($_SESSION['login']['MaQuyen']=="2")
+						echo "Quản lý đơn hàng, sản phẩm và thống kê sản phẩm";
+					?></p>	
+                    </div>
+                                <!-- /.panel-body -->
+                </div>	
                 </div>
             </div>
-
 			
 			
             <!-- ... Your content goes here ... -->
