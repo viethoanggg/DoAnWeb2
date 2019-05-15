@@ -24,7 +24,7 @@ if(isLogined()==true)
 		<script type="text/javascript" language="javascript" src="../js/giohang.js"></script>
 		<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
-		<link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
+	
 		<!--===============================================================================================-->
 		<link rel="stylesheet" type="text/css" href="../fonts/iconic/css/material-design-iconic-font.min.css">
 		<!--===============================================================================================-->
