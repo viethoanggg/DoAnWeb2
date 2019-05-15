@@ -214,10 +214,12 @@ class ShowBook
 							else if($tenTheLoai=="tuoiteen") $sql=$sql." and MaTheLoai='TT' ";
 							else if($tenTheLoai=="vanhoc") $sql=$sql." and MaTheLoai='VH' ";
 							
-							if(isset($_GET['giatu']) && isset($_GET['giaden']) && $_GET['giatu']!="" && $_GET['giaden']!="" )
-							{
-								$sql=$sql." and Gia BETWEEN '".$_GET['giatu']."' and '".$_GET['giaden']."' ";
-							}
+							if(is_numeric($giatu) && is_numeric($giaden) && $giatu != "" && $giaden !="")
+								$sql=$sql." and Gia BETWEEN '".$giatu."' and '".$giaden."' ";
+							else if( is_numeric($giatu) && $giatu != "" && $giaden =="")
+								$sql=$sql." and Gia >= ".$giatu;
+							else if( is_numeric($giaden) && $giatu == "" && $giaden !="")
+								$sql=$sql." and Gia <= ".$giaden;
 							$result=DataProvider::executeQuery($sql);
 							$row=mysqli_fetch_array($result);
 							$numRows=$row['numRows'];
@@ -246,10 +248,14 @@ class ShowBook
 							else if($tenTheLoai=="tuoiteen") $sql=$sql." and MaTheLoai='TT' ";
 							else if($tenTheLoai=="vanhoc") $sql=$sql." and MaTheLoai='VH' ";
 							
-							if(isset($_GET['giatu']) && isset($_GET['giaden']) && $_GET['giatu']!="" && $_GET['giaden']!="")
+							if(is_numeric($giatu) && is_numeric($giaden) && $giatu != "" && $giaden !="")
 							{
-								$sql=$sql." and Gia BETWEEN '".$_GET['giatu']."' and '".$_GET['giaden']."' ";
+								$sql=$sql." and Gia BETWEEN '".$giatu."' and '".$giaden."' ";
 							}
+							else if(is_numeric($giatu) && $giatu != "" && $giaden =="")
+								$sql=$sql." and Gia >= ".$giatu;
+							else if( is_numeric($giaden) && $giatu == "" && $giaden !="")
+								$sql=$sql." and Gia <= ".$giaden;
 							if(isset($_GET['sapxep']) && $_GET['sapxep']!="")
 							{
 								if($_GET['sapxep']=="giatangdan") $sql=$sql." order by Gia ASC ";
