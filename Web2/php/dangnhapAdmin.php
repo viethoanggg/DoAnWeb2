@@ -67,11 +67,7 @@
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Mật khẩu" name="matkhau" type="password">
                                     </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input name="remember" type="checkbox" value="nhomatkhau">Nhớ mật khẩu
-                                        </label>
-                                    </div><i style="color:red" id='loidn'><?php if(isset($_GET['loidangnhap']) && $_GET['loidangnhap']=="1" ) echo "Tên đăng nhập hoặc mật khẩu không đúng";
+                                    <i style="color:red" id='loidn'><?php if(isset($_GET['loidangnhap']) && $_GET['loidangnhap']=="1" ) echo "Tên đăng nhập hoặc mật khẩu không đúng";
 																				else if(isset($_GET['loitrangthai']) && $_GET['loitrangthai']=="1") echo "Tài khoản đang bị tạm khóa";
 																		  ?>
 									</i>

@@ -433,7 +433,9 @@ public static function showDetailBill()
 	{
 		//require('DataProvider.php');
 		//Tinh tong tien va so luong hoadon
-		$sql="select MaHD ,sum(TongTienCT) as Tien,sum(SoLuong) as SL from  chitiethoadon group by MaHD";
+		$sql="UPDATE hoadon SET TongTien=0, TongSoLuong=0 ";
+			DataProvider::executeQuery($sql);
+		$sql="select MaHD ,sum(TongTienCT) as Tien,sum(SoLuong) as SL from  chitiethoadon where TinhTrangCT='Đã giao hàng' or TinhTrangCT='Hàng đang nhập từ kho' or TinhTrangCT='Đang giao hàng' group by MaHD";
 		$result=DataProvider::executeQuery($sql);
 		while($row=mysqli_fetch_array($result))
 		{
