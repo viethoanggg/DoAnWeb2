@@ -249,28 +249,32 @@ function confirmxoa(){
 function checkinfo(){
 	ptnKyTuHopLe=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
 	ptnKyTu=/[\!@#\$%\^&\*_\=\+\-\<\>\?\\"\[\]\{\}\(\)]/gi;
-	//debugger;
-	if(document.forms['info']['hoten'].value==""||document.forms['info']['diachi'].value==""||document.forms['info']['sdt'].value==""||document.forms['info']['email'].value==""||ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true||ptnKyTu.test(document.forms['info']['diachi'].value)==true||/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value==false)||/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false){
+	if(document.forms['info']['hoten'].value==""||document.forms['info']['diachi'].value==""||document.forms['info']['sdt'].value==""||document.forms['info']['email'].value==""||ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true||ptnKyTu.test(document.forms['info']['diachi'].value)==true||/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value)==false||/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false){
+		debugger;
 		if(ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true||document.forms['info']['hoten'].value==""){
 			$('#hoten').text("*");
+			alert("Họ và tên không phù hợp!!");
 		}
 		else{
 			$('#hoten').text(" ");
 		}
 		if(ptnKyTu.test(document.forms['info']['diachi'].value)==true||document.forms['info']['diachi'].value==""){
 			$('#diachi').text("*");
+			alert("Địa chỉ không phù hợp!!");
 		}
 		else{
 			$('#diachi').text(" ");
 		}
 		if(/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value)==false||document.forms['info']['sdt'].value==""){
 			$('#sdt').text("*")
+			alert("Số điện thoại không phù hợp!!Số điện thoại gồm 10 số");
 		}
 		else{
 			$('#sdt').text(" ");
 		}
 		if(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false||document.forms['info']['email'].value==""){
 			$('#email').text("*");
+			alert("Email không phù hợp!!");
 		}
 		else{
 			$('#email').text(" ");
