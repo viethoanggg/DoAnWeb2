@@ -1,25 +1,42 @@
 function addCart(id,sl) {
+
 	if(sl>0) {
 		$.ajax({
 			type: "GET",
-			url: "addcart.php",
+			url: "kiemtraslmua.php",
 			data: {
-				"masach": id,
+				"masach": id,	
 				"sl": sl
 			}
 		}).done(function(data){
-			myFunction();
-			$.get('sl.php',{xh:1},function(data){
-				console.log(data);
-				$(".badge.badge-secondary ").html("<span>"+data+"</span>");	
-			})
-				// $(".badge.badge-secondary ").html("<span>"+s+"</span>");
-			})
+			if(Number(data) > Number($('#slt').val())){
+				alert("Số lượng sách chỉ có "+$('#slt').val()+" sản phẩm");
+				return false;
+			}else{
+				$.ajax({
+					type: "GET",
+					url: "addcart.php",
+					data: {
+						"masach": id,	
+						"sl": sl
+					}
+				}).done(function(data){
+					myFunction();
+					$.get('sl.php',{xh:1},function(data){
+						console.log(data);
+						$(".badge.badge-secondary ").html("<span>"+data+"</span>");	
+					})
+							// $(".badge.badge-secondary ").html("<span>"+s+"</span>");
+						})
+			}
+		});
+
 	}
 	else{
 		alert("Bạn nhập số lượng không phù hợp!!!");
 		$('#soluong').val('1');
 	}
+	
 }
 function xoasp(masach){
 	$.ajax({
@@ -84,6 +101,12 @@ function tang(id){
 	i++;
 	$("#"+id+" "+"input").val(i);
 	//$("#"+id+" "+"input").val();
+	if(i>Number($('#ma_'+id).val())){
+		alert("Số lượng sách chỉ có "+Number($('#ma_'+id).val())+" sản phẩm");
+		i=Number(1);
+		$("#"+id+" input:eq(0)").val(i);
+		ajax(id,i);
+	}
 	ajax(id,i);
 }
 function giam(id){
@@ -94,16 +117,27 @@ function giam(id){
 		i--;
 		$("#"+id+" "+"input").val(i);
 	}
+	if(i>Number($('#ma_'+id).val())){
+		alert("Số lượng sách chỉ có "+Number($('#ma_'+id).val())+" sản phẩm");
+		i=Number(1);
+		$("#"+id+" input:eq(0)").val(i);
+		ajax(id,i);
+	}
 	ajax(id,i);
 }
 function thaydoi(id){
 	var u=/^[0-9]+$/;
 	var i= $("#"+id+" "+"input").val();
 	if(i<1||i=="") {
-		debugger;
-		alert("Nhập số lượng không phù hợp!!!");
 		i=Number(1);
-		$("#"+id+" "+"input").val(i);
+		$("#"+id+" input:eq(0)").val(i);
+		ajax(id,i);
+	}
+	debugger;
+	if(i>Number($('#ma_'+id).val())){
+		alert("Số lượng sách chỉ có "+Number($('#ma_'+id).val())+" sản phẩm");
+		i=Number($('#ma_'+id).val());
+		$("#"+id+" input:eq(0)").val(i);
 		ajax(id,i);
 	}
 	Number(i);

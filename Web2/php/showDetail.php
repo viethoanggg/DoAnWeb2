@@ -145,6 +145,8 @@ class ShowDetail
 											.'</div>'
 										.'</div>';												
 								echo $s;
+								echo '<input id="slt" type="text" value="'.$row['SoLuongTon'].'">';
+								echo '<input id="tam" type="text" value="0">';
 					}		
 			}
 }
