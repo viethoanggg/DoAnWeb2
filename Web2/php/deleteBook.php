@@ -54,7 +54,8 @@
 						$imageURL="../images/tuoiteen/".$hinhanh;
 					else if($matheloai=="VH")
 						$imageURL="../images/vanhoc/".$hinhanh;
-				
+					unlink($imageURL);
+					
 				//xoa sach
 				$sql="DELETE FROM sach WHERE MaSach='".$_GET['masach']."'";
 				DataProvider::executeQuery($sql);

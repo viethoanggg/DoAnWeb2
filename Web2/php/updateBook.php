@@ -41,7 +41,11 @@
 				
 				if(isset($_FILES['hinhanh']) && $_FILES['hinhanh']['size'] < 2000000 )
 				{	
-					$tmp_name=$_FILES['hinhanh']['tmp_name'];
+					$file_ext=strtolower(end(explode('.',$_FILES['hinhanh']['name'])));
+					$expensions= array("jpeg","jpg","png");
+					 if(in_array($file_ext,$expensions)=== true)
+					 {
+						 $tmp_name=$_FILES['hinhanh']['tmp_name'];
 					$matheloai=$_POST['matheloai'];
 					if($matheloai=="NN")
 						$imageURL="../images/ngoaingu/".$_FILES['hinhanh']['name'];
@@ -60,6 +64,7 @@
 					else if($matheloai=="VH")
 						$imageURL="../images/vanhoc/".$_FILES['hinhanh']['name'];
 					move_uploaded_file($tmp_name,$imageURL);
+					 }
 				}
 				
 				//------------------------Sua trong database chi tiet sach-----------------------------------------------//
