@@ -184,11 +184,11 @@ function checkgh(){
 		}
 	}).done(function(data){
 		if(data==1){
-			$('#thongtingiaohang td:eq(10)').html(`<i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng (Giao hàng bình thường - 25.000đ)`);
+			$('#thongtingiaohang td:eq(10)').html(`<i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng (Giao hàng nhanh  50.000đ - Giao hàng từ 3-5 ngày)`);
 			$('#thongtingiaohang td:eq(17)').text("25.000 đ");
 		}
 		if(data==2){
-			$('#thongtingiaohang td:eq(10)').html(`<i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng (Giao hàng nhanh - 50.000đ)`);
+			$('#thongtingiaohang td:eq(10)').html(`<i class="fa fa-truck" aria-hidden="true"></i> Hình thức giao hàng (Giao hàng nhanh  50.000đ - Giao hàng từ 1-2 ngày)`);
 			$('#thongtingiaohang td:eq(17)').text("50.000 đ");
 		}
 	})
@@ -240,5 +240,60 @@ function ajaxhttt(x){
 			$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thanh toán khi nhận hàng)`);
 		}
 	})
+}
+function confirmxoa(){
+	var r = confirm("Bạn có chắc muốn xoá đơn hàng???");
+	if(r==true) return true;
+	if(r==false) return false;
+}
+function checkinfo(){
+	ptnKyTuHopLe=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
+	ptnKyTu=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
+	if(document.forms['info']['hoten'].value==""||document.forms['info']['diachi'].value==""||document.forms['info']['sdt'].value==""||document.forms['info']['email'].value==""||ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true||ptnKyTuHopLe.test(document.forms['info']['diachi'].value)==true||/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value)||/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false){
+		if(document.forms['info']['hoten'].value==""||ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true){
+			$('#hoten').text("*");
+		}
+		else{
+			$('#hoten').text(" ");
+		}
+		if(document.forms['info']['diachi'].value==""||ptnKyTuHopLe.test(document.forms['info']['diachi'].value)==true){
+			$('#diachi').text("*");
+		}
+		else{
+			$('#diachi').text(" ");
+		}
+		if(document.forms['info']['sdt'].value==""){
+			$('#sdt').text("*");
+		}
+		else{
+			$('#sdt').text(" ");
+		}
+		if(document.forms['info']['email'].value==""){
+			$('#email').text("*");
+		}
+		else{
+			$('#email').text(" ");
+		}
+		/*Check input phù hợp*/
+		if(/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value)==false){
+			alert("Số điện thoại không hợp lệ!!");
+			$('#sdt').text("*")
+		}
+		else{
+			$('#sdt').text(" ");
+		}
+		if(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false){
+			alert("Email không hợp lệ!!");
+			$('#email').text("*");
+		}
+		else{
+			$('#email').text(" ");
+		}
+		return false;
+	}
+	else{
+		return true;
+	}
+	
 }
 

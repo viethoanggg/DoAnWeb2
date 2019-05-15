@@ -245,7 +245,7 @@ if(isLogined()==true)
 			<hr style="border:1px solid black;">
 			<div class="row">
 				<div id="hoadon">
-					<form action="xulyxoadonhang.php" method="GET">
+					<form action="xulyxoadonhang.php" method="GET" onsubmit="return confirmxoa()">
 						<div class="col-md-12">
 							<?php 
 							if(empty($_SESSION['login'])){//Check xem có session login, nếu ko có thì bắt đăng nhập;
@@ -374,7 +374,7 @@ if(isLogined()==true)
 					."<ul class=\'dropdown-menu\'>"
 					.    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
 					.    "</li>"
-					.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
+					.    "<li><a href=\'chitiethd.php\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
 					.    "</li>"
 					.    "<li class=\'divider\'></li>"
 					.    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"

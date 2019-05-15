@@ -90,7 +90,9 @@ if(isLogined()==true)
 				width: 100%;
 				border: 1px solid #F2F2F2;
 			}
-
+			#md #hoten,#diachi,#sdt,#email{
+				color: red;
+			}
 		</style>
 	</head>
 	<body>
@@ -466,11 +468,11 @@ if(isLogined()==true)
 								include 'diachi.php';
 								if(!empty($_SESSION['login'])){
 									if($_SESSION['login']['htgh']==1) {
-										$htgh="Hình thức giao hàng (Giao hàng bình thường - 25.000đ)";
+										$htgh="Hình thức giao hàng (Giao hàng bình thường 25.000đ -Giao hàng từ 3-5 ngày )";
 										$ship=25000;
 									}
 									if($_SESSION['login']['htgh']==2) {
-										$htgh="Hình thức giao hàng (Giao hàng nhanh - 50.000đ)";
+										$htgh="Hình thức giao hàng (Giao hàng nhanh  50.000đ - Giao hàng từ 1-2 ngày)";
 										$ship=50000;
 									}
 									if($_SESSION['login']['httt']==1){
@@ -670,7 +672,7 @@ if(isLogined()==true)
 		}
 		?>
 		<div class="modal fade" id="md">
-			<form action="suainfo.php" method="POST">
+			<form name="info" action="suainfo.php" method="POST" onsubmit="return checkinfo()">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<form action=""></form>
@@ -687,27 +689,31 @@ if(isLogined()==true)
 							<input type="hidden" name="makhachhang" value="'.$_SESSION['login']['MaKH'].'">
 							<input type="hidden" name="tendangnhap" value="'.$_SESSION['login']['TenDangNhap'].'">
 							<label for="inputEmail3" class="col-sm-2 col-form-label">Họ tên</label>
-							<div class="col-sm-10">
+							<div class="col-sm-9">
 							<input type="text" name="hoten" class="form-control" id="inputEmail3" placeholder="Họ tên" value="'.$_SESSION['login']['HoTen'].'">
 							</div>
+							<div class="col-md-1"><span id="hoten"></span></div>
 							</div>
 							<div class="form-group row">
 							<label for="inputEmail3" class="col-sm-2 col-form-label">Địa chỉ</label>
-							<div class="col-sm-10">
+							<div class="col-sm-9">
 							<input type="text" class="form-control" id="inputEmail3" placeholder="Địa chỉ" value="'.$dc.'" name="diachi">
 							</div>
+							<div class="col-md-1"><span id="diachi"></span></div>
 							</div>
 							<div class="form-group row">
 							<label for="inputEmail3" class="col-sm-2 col-form-label">SĐT</label>
-							<div class="col-sm-10">
+							<div class="col-sm-9">
 							<input type="text" class="form-control" id="inputEmail3" placeholder="SĐT" name="sdt" value="'.$_SESSION['login']['SĐT'].'">
 							</div>
+							<div class="col-md-1"><span id="sdt"></span></div>
 							</div>
 							<div class="form-group row">
 							<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-							<div class="col-sm-10">
+							<div class="col-sm-9">
 							<input type="text" class="form-control" id="inputEmail3" placeholder="Email" name="email" value="'.$_SESSION['login']['Email'].'">
 							</div>
+							<div class="col-md-1"><span id="email"></span></div>
 							</div>
 							</div>';
 							?>
@@ -890,8 +896,8 @@ if(isLogined()==true)
 					<!-- Modal body -->
 					<div class="modal-body">
 						<div class="row" style="text-align: center;">
-							<div class="col-sm-6"> <input type="radio" class="form-check-input" id="radio1" checked name="gh" value="1" >Giao hàng bình thường - 25.000đ </div>
-							<div class="col-sm-6"> <input type="radio" class="form-check-input" id="radio1" name="gh"  value="2">Giao hàng nhanh - 50.000đ</div>
+							<div class="col-sm-6"> <input type="radio" class="form-check-input" id="radio1" checked name="gh" value="1" >Giao hàng bình thường 25.000đ (3-5 ngày)</div>
+							<div class="col-sm-6"> <input type="radio" class="form-check-input" id="radio1" name="gh"  value="2">Giao hàng nhanh 50.000đ (1-2 ngày)</div>
 						</div>
 						<!-- Modal footer -->
 						<div class="modal-footer">
@@ -910,9 +916,9 @@ if(isLogined()==true)
 </div>
 <script src="../js/Validate.js"></script>
 <?php
-echo '<pre/>';
-var_dump($_SESSION['login']);
-var_dump($_SESSION['cart']);
+// echo '<pre/>';
+// var_dump($_SESSION['login']);
+// var_dump($_SESSION['cart']);
 if(isLogined()==true)
 {
 	echo "<script>
@@ -924,7 +930,7 @@ if(isLogined()==true)
 	."<ul class=\'dropdown-menu\'>"
 	.    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
 	.    "</li>"
-	.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
+	.    "<li><a href=\'chitiethd.php\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
 	.    "</li>"
 	.    "<li class=\'divider\'></li>"
 	.    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"

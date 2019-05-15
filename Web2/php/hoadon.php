@@ -41,7 +41,7 @@
 				<td>'.$httt.'</td>
 				<td>'.$htgh.'</td>
 				<td>'.$row['TongSoLuong'].'</td>
-				<td>'.$row['TongTien'].'</td>
+				<td>'.number_format($row['TongTien']).'đ</td>
 				<td>'.$row['TinhTrang'].'</td> 
 				</tr>'	;
 			}
