@@ -248,15 +248,28 @@ function confirmxoa(){
 }
 function checkinfo(){
 	ptnKyTuHopLe=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
-	ptnKyTu=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
-	if(document.forms['info']['hoten'].value==""||document.forms['info']['diachi'].value==""||document.forms['info']['sdt'].value==""||document.forms['info']['email'].value==""||ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true||ptnKyTuHopLe.test(document.forms['info']['diachi'].value)==true||/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value)||/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false){
-		if(document.forms['info']['hoten'].value==""||ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true){
+	ptnKyTu=/[\!@#\$%\^&\*_\=\+\-\<\>\?\\"\[\]\{\}\(\)]/gi;
+	debugger;
+	if(document.forms['info']['hoten'].value==""||document.forms['info']['diachi'].value==""||document.forms['info']['sdt'].value==""||document.forms['info']['email'].value==""||ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true||ptnKyTu.test(document.forms['info']['diachi'].value)==true||/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value==false)||/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false){
+		if(document.forms['info']['hoten'].value==""){
 			$('#hoten').text("*");
 		}
 		else{
 			$('#hoten').text(" ");
 		}
-		if(document.forms['info']['diachi'].value==""||ptnKyTuHopLe.test(document.forms['info']['diachi'].value)==true){
+		if(ptnKyTuHopLe.test(document.forms['info']['hoten'].value)==true){
+			$('#hoten').text("*");
+		}
+		else{
+			$('#hoten').text(" ");
+		}
+		if(document.forms['info']['diachi'].value==""){
+			$('#diachi').text("*");
+		}
+		else{
+			$('#diachi').text(" ");
+		}
+		if(ptnKyTu.test(document.forms['info']['diachi'].value)==true){
 			$('#diachi').text("*");
 		}
 		else{
@@ -276,14 +289,12 @@ function checkinfo(){
 		}
 		/*Check input phù hợp*/
 		if(/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value)==false){
-			alert("Số điện thoại không hợp lệ!!");
 			$('#sdt').text("*")
 		}
 		else{
 			$('#sdt').text(" ");
 		}
 		if(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(document.forms['info']['email'].value)==false){
-			alert("Email không hợp lệ!!");
 			$('#email').text("*");
 		}
 		else{
@@ -294,6 +305,7 @@ function checkinfo(){
 	else{
 		return true;
 	}
+
 	
 }
 
