@@ -268,7 +268,7 @@ function ajaxhttt(x){
 			$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thẻ ngân hàng)`);
 		}
 		if(data==2){
-			$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thẻ...)`);
+			$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thẻ Visa/Master Card)`);
 		}
 		if(data==3){
 			$('#thongtingiaohang td:eq(8)').html(`<span class=\"glyphicon glyphicon-credit-card\"></span> Hình thức thanh toán (Thanh toán khi nhận hàng)`);
