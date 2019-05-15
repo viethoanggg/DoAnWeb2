@@ -22,7 +22,7 @@
 				//cap nhat trang thai chi tiet hoa don
 				$sql="UPDATE chitiethoadon SET TinhTrangCT='Đã hủy hàng' where chitiethoadon.MaHD='".$_GET['MaHD']."' and chitiethoadon.MaSach='".$_GET['MaSach']."'";
 				DataProvider::executeQuery($sql);
-				header("Location:ChiTietDonHang.php?MaHD=".$_GET['MaHD']."&MaKH=".$_SESSION['login']['MaKH']);
+				header("Location:DonHang.php");
 			}
 		}
 		
