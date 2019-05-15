@@ -294,7 +294,7 @@ function thongkesanpham(){
 								</center>";
 							///-------------------------------------------------//
 							
-							$sql="select Sum(SoLuong) as 'sl',Sum(TongTienCT) as 'tt' from chitiethoadon ct ,sach s where TinhTrangCT='Đã giao hàng' ";
+							$sql="select Sum(SoLuong) as 'sl',Sum(TongTienCT) as 'tt' from chitiethoadon ct ,sach s where TinhTrangCT='Đã giao hàng' and ct.MaSach=s.MaSach ";
 							if($nt!="" && $nd!="")
 								$sql=$sql." and NgayGiaoHang BETWEEN '".$nt."' and '".$nd."' ";
 							else if($nt!="" && $nd=="")

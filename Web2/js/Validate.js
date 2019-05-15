@@ -63,6 +63,11 @@ function ktdangnhap()
                     document.getElementById("kiemtra").innerHTML="Vui lòng nhập mật khẩu";
 					return false;
                 }
+			else if(mk.length<6 || mk.length>16)
+			{
+				document.getElementById("kiemtra").innerHTML="Mật khẩu không hợp lệ";
+					return false;
+			}
             else if(mk!=nlmk)
                 {
                     document.getElementById("kiemtra").innerHTML="Mật khẩu không khớp";
@@ -138,6 +143,11 @@ function ktdangnhap()
                     document.getElementById("kiemtra").innerHTML="Vui lòng nhập mật khẩu";
 					return false;
                 }
+			else if(mk.length<6 || mk.length>16)
+			{
+				document.getElementById("kiemtra").innerHTML="Mật khẩu không hợp lệ";
+					return false;
+			}	
             else if(mk!=nlmk)
                 {
                     document.getElementById("kiemtra").innerHTML="Mật khẩu không khớp";
