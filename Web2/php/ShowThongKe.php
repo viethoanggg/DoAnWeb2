@@ -499,4 +499,159 @@ function topsanphambanchay(){
 					}
 					
 }
+
+function thongketinhtrangsp(){
+		//require('DataProvider.php');
+		if(isset($_GET['theloai']))
+			$matheloai=addslashes($_GET['theloai']);
+		else $matheloai="";
+		if(isset($_GET['tinhtrangsp']))
+			$tinhtrangsp=$_GET['tinhtrangsp'];
+		else
+			$tinhtrangsp="";		
+						//  Đếm số lượng hóa đơn
+							$sql="select count(*) as 'numRows' from chitietsach ct,sach s where s.MaSach=ct.MaSach";
+							if($matheloai!="")
+								$sql=$sql." and s.MaTheLoai='".$matheloai."' ";
+							if($tinhtrangsp=="0")
+								$sql=$sql." and SoLuongTon=0 ";
+							else if($tinhtrangsp=="1")
+								$sql=$sql." and SoLuongTon>10 ";
+							else if($tinhtrangsp=="2")
+								$sql=$sql." and SoLuongTon>0 and SoLuongTon<=10 ";
+
+							$result=DataProvider::executeQuery($sql);
+							
+							$row=mysqli_fetch_array($result);
+							$numRows=$row['numRows'];
+							//  Xác định số hóa đơn tối đa hiện lên trong 1 trang
+							$rowsPerPage=10;
+							
+							//  Lấy số trang hiện hành
+							$pageNum=1;
+							if(isset($_GET['page']))
+							{
+								$pageNum=$_GET['page'];
+							}
+							
+							//  Lấy sản phẩm trong 1 trang
+							$offset=($pageNum-1)*$rowsPerPage;
+			
+							$sql="select * from chitietsach ct,sach s,theloai tl where s.MaSach=ct.MaSach and s.MaTheLoai=tl.MaTheLoai ";
+							if($matheloai!="")
+								$sql=$sql." and s.MaTheLoai='".$matheloai."' ";
+							if($tinhtrangsp=="0")
+								$sql=$sql." and SoLuongTon=0 ";
+							else if($tinhtrangsp=="1")
+								$sql=$sql." and SoLuongTon>10 ";
+							else if($tinhtrangsp=="2")
+								$sql=$sql." and SoLuongTon>0 and SoLuongTon<=10 ";
+							$sql=$sql." LIMIT ".$offset.",".$rowsPerPage;
+							//  Tính tổng số trang sẽ hiện thị
+							$maxPage=ceil($numRows/$rowsPerPage);
+							
+							//  Lấy link của trang
+							$sefl="thongkesanpham.php?theloai=".$matheloai."&tinhtrangsp=".$tinhtrangsp."&page=";
+							$nav="";
+							
+							for($page=1;$page<=$maxPage;$page++)
+							{
+								if($maxPage>=10 && $page>=$pageNum-2 && $page<=$pageNum+2)
+								{
+									if($page==$pageNum-2 && $page>1)
+										$nav=$nav."<li><span>...</span></li>";
+									if($page==$pageNum)
+										$nav=$nav."<li class='active'><span>". $page."</span></li>";
+									else
+										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
+									if($page==$pageNum+2 && $page<$maxPage)
+										$nav=$nav."<li><span>...</span></li>";
+								}
+								else if($maxPage<10)
+								{
+									if($page==$pageNum)
+										$nav=$nav."<li class='active'><span>". $page."</span></li>";
+									else
+										$nav=$nav."<li><a href='".$sefl.$page."'>". $page."</a></li>";
+								}
+							}
+							
+							if($pageNum>1)
+							{
+								$page=$pageNum-1;
+								$prev="<li><a href='".$sefl.$page."'><i class='fa fa-angle-left fa-fw'></i></a></li>";
+								$first="<li><a href='".$sefl."1'><i class='fa fa-angle-double-left fa-fw'></i></a></li>";
+							}
+							else
+							{
+								$prev="";
+								$first="";
+							}
+
+							if($pageNum<$maxPage)
+							{
+								$page=$pageNum+1;
+								$next="<li><a href='".$sefl.$page."'><i class='fa fa-angle-right fa-fw'></i></a></li>";
+								$last="<li><a href='".$sefl.$maxPage."'><i class='fa fa-angle-double-right fa-fw'></i></a></li>";
+							}
+							else
+							{
+								$next="";
+								$last="";
+							}		
+							
+							//  Hiện sản phẩm
+							$result=DataProvider::executeQuery($sql);
+							$i=$offset;
+							
+							$s="<div class='table-responsive' id='gg'>
+										<table class='table table-striped table-bordered table-hover'>
+											<thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Mã sách</th>
+                                                    <th>Tên sách</th>
+                                                     <th>Thể loại</th>
+													 <th>Số lượng tồn tối thiểu</th>
+                                                    <th>Số lượng tồn</th>
+													<th>Tình trạng</th>
+                                                </tr>
+											</thead>
+											<tbody>";
+							while($row=mysqli_fetch_array($result))
+							{
+								$s=$s. "<tr>"
+										."<td>".$i."</td>"
+										."<td>".$row['MaSach']."</td>"
+										."<td>".$row['TenSach']."</td>"
+										."<td>".$row['TenTheLoai']."</td>"
+										."<td>10</td>"
+										."<td>".$row['SoLuongTon']."</td>";
+										if($row['SoLuongTon']==0)
+											$s=$s."<td>Hết hàng</td>";
+										else if($row['SoLuongTon']>10)
+											$s=$s."<td>Còn hàng</td>";
+										else if($row['SoLuongTon']>0 && $row['SoLuongTon']<10)
+											$s=$s."<td>Cảnh báo</td>";
+										$s=$s."</tr>";
+								$i++;
+								
+							}
+							
+							$s=$s.			"</tbody>"
+										."</table>"
+									."</div>";
+												
+							
+							echo $s;
+							//  In phân trang
+							echo "<center>
+											<div id='phantrang' style='clear:both'>
+												<ul class='pagination'>".$first.$prev.$nav.$next.$last."</ul>
+											</div>
+								</center>";
+						
+					
+					
+}
 ?>

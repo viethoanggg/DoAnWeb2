@@ -1,7 +1,7 @@
 <?php 
 	ini_set('session.auto_start',0);
 	ini_set('session.cookie_lifetime',0);
-	include 'sl.php';
+	include('sl.php');
 	require('common.php');
 	if(isLogined()==false)
 	{
@@ -9,7 +9,7 @@
 	}
 	//đã đang nhập
 	if(isLogined()==true)
-		// kiểm tra đây là khách hàng thì về trang chủ kh
+		
 		if($_SESSION['login']['MaQuyen'] == "1" || $_SESSION['login']['MaQuyen'] == "2" )
 		{
 				header("Location:admin.php");
@@ -218,83 +218,99 @@
 	<!---------------------content sach ----------------------->
 	<div class="container" >
 		<div class="row">
-			
-			<div class="col-md-2 ">
-				<div class="list-group" style="margin-top:20px">
-					<a href="sanpham.php?theloai=hocngoaingu&page=1" class="list-group-item" >Học ngoại ngữ</a>
-					<a href="sanpham.php?theloai=kinhte&page=1" class="list-group-item" >Kinh tế</a>
-					<a href="sanpham.php?theloai=kynangsong&page=1" class="list-group-item" >Kỹ năng sống</a>
-					<a href="sanpham.php?theloai=lichsu&page=1" class="list-group-item" >Lịch sử</a>
-					<a href="sanpham.php?theloai=chuyennganh&page=1" class="list-group-item" >Sách chuyên ngành</a>
-					<a href="sanpham.php?theloai=thieunhi&page=1" class="list-group-item" >Sách thiếu nhi</a>
-					<a href="sanpham.php?theloai=tuoiteen&page=1" class="list-group-item" >Sách tuổi teen</a>
-					<a href="sanpham.php?theloai=vanhoc&page=1" class="list-group-item" >Sách văn học</a>
-				</div>
 
-				
-
-			</div>
-
-			<div class="col-md-10">
+			<div class="col-md-12">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Thông tin cá nhân</h1>
+						<h1 class="page-header">Chi tiết đơn hàng</h1>
 					</div>
 				</div>
-
-				<!-- ... Your content goes here ... -->
-				<div clas="row">
-					<div class="col-lg-12">
-						<div class="panel panel-default">
-							<div class="panel-body">
-								<div class="row">
-								<form name="suauser" action="updateUser.php" method="post"  onsubmit="return ValidateFormEditUser()">
-									<div class="col-lg-6">
-										
-											<div class="form-group">
-												<label>Mã khách hàng</label>
-												<input class="form-control" name="makhachhang" readonly value="<?php echo $_SESSION['login']['MaKH']; ?>">
-											</div>
-											<div class="form-group">
-												<label>Họ tên</label>
-												<input class="form-control" name="hoten" value="<?php echo $_SESSION['login']['HoTen']; ?>">
-												<i style="color:red" id='loihoten'></i>
-											</div>
-											
-											<div class="form-group">
-												<a href="doimatkhauUser.php"><i class='fa fa-lock fa-fw'></i>Đổi mật khẩu</a>
-											</div>
-										
-									</div>
-									<div class="col-lg-6">
-										
-											<div class="form-group">
-												<label>Email</label>
-												<input class="form-control" name="email" value="<?php echo $_SESSION['login']['Email']; ?>">
-												<i style="color:red" id='loiemail'></i>
-											</div>
-											<div class="form-group">
-												<label>Số điện thoại</label>
-												<input class="form-control" name="sdt" value="<?php echo $_SESSION['login']['SĐT']; ?>">
-												<i style="color:red" id='loisdt'></i>
-											</div>
-											
-										
-									</div>
-									<div class="row">
-											<div class="col-lg-12">
-												<center>
-													<button type="submit" class="btn btn-default">Sửa</button>
-													
-												</center>
+							<div class="row">
+								<form name="chitiethoadon">
+									<div class="col-lg-4" style="">
+									
+										<div class="panel panel-default">
+											<div class="panel-body">
+											<?php
+												require('DataProvider.php');
+												if(isset($_GET['MaHD']) && isset($_GET['MaKH']))
+												{
+													$sql="select * from hoadon hd,khachhang kh, hinhthucthanhtoan httt,hinhthucgiaohang htgh where kh.MaKH=hd.MaKH and hd.HinhThucThanhToan=httt.MaHinhThuc and  hd.HinhThucGiaoHang=htgh.MaHinhThuc and MaHD='".$_GET['MaHD']."'";
+													$result=DataProvider::executeQuery($sql);
+													$row=mysqli_fetch_array($result);
+													$tenkh=$row['HoTen'];
+													$ngaydathang=$row['NgayDatHang'];
+													$diachi=$row['DiaChi'];
+													$hinhthucthanhtoan=$row['TenHinhThucTT'];
+													$hinhthucgiaohang=$row['TenHinhThucGH'];
+													$sdt=$row['SĐT'];
+												}													
+												else 
+												{
+													$tenkh="";
+													$ngaydathang="";
+													$tenkh="";
+													$hinhthucthanhtoan="";
+													$hinhthucgiaohang="";
+													$sdt="";
+												}
+											?>
+												<div class="form-group">
+                                                    <label>Họ tên khách hàng</label>
+                                                    <input type="text" class="form-control" name="hoten" value="<?php echo $tenkh ?>">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Ngày đặt hàng</label>
+                                                    <input type="text" class="form-control" name="ngaydathang" value="<?php echo $ngaydathang ?>">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Số điện thoại</label>
+                                                    <input type="text" class="form-control" name="sdt" value="<?php echo $sdt ?>">
+                                                </div>
 											</div>
 										</div>
-								</form>
-								</div>
+										
+									</div>
+									
+									<div class="col-lg-8">
+										<div class="panel panel-default">
+											<div class="panel-body">
+												<div class="form-group">
+                                                    <label>Địa chỉ</label>
+                                                    <input type="text" class="form-control" name="diachi" value="<?php echo $diachi ?>">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Hình Thức thanh toán</label>
+                                                    <input type="text" class="form-control" name="hinhthucthanhtoan" value="<?php echo $hinhthucthanhtoan ?>">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Hình Thức giao hàng</label>
+                                                    <input type="text" class="form-control" name="hinhthucgiaohang" value="<?php echo $hinhthucgiaohang ?>">
+                                                </div>
+											</div>
+										</div>
+										
+									</div>
+								</form>	
 							</div>
-						</div>
+				<style>
+								#gg td,#gg th
+								{
+									text-align:center;
+									vertical-align:middle;
+									color:black;
+								}
+							</style>
+				<div class="row">
+					<div class="col-lg-12">
+						<?php
+							require('showDonHangUser.php');
+							UserBill::showDetailUserBill();
+						?>
 					</div>
 				</div>
+				<!-- ... Your content goes here ... -->
+				
 			
 			</div>
 			
@@ -335,59 +351,25 @@
 				</div>
 			</div>
 		
-		<script>
-		function ValidateFormEditUser()
-			{
-				var name=document.forms['suauser']['hoten'].value;
-				var emaill=document.forms['suauser']['email'].value;
-				var phone=document.forms['suauser']['sdt'].value;
-				
-				var s=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
-				var mail=/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
-				var dt=/0([1-9]{9}|[1-9][0-9]{8})$/;
-				
-				if(name=="")
-						{
-						document.getElementById("loihoten").innerHTML="Họ tên không được để trống";
-							return false;
-						}
-					else if(s.test(name)==true)
-						{
-						document.getElementById("loihoten").innerHTML="Họ tên không hợp lệ, vui lòng nhập lại.";
-							return false;
-						}			
-						
-					else if(emaill=="")
-						{
-							document.getElementById("loiemail").innerHTML="Email không được để trống";
-							return false;
-						}
-					else if(mail.test(emaill)==false)
-						{
-							document.getElementById("loiemail").innerHTML="Email không hợp lệ, vui lòng nhập lại.";	
-							return false;
-						}
-					
-					else if(phone=="")
-						{
-						document.getElementById("loisdt").innerHTML="Số điện thoại không được để trống";
-							return false;
-						}	
-					
-					else if(dt.test(phone)==false)
-						{
-						document.getElementById("loisdt").innerHTML="Số điện thoại không hợp lệ, vui lòng nhập lại.";	
-							return false;	
-						}
-					else 
-						{
-							if(confirm("Bạn có muốn sửa thông tin của mình ?")==false)
-							return false;
-						}
-			}
-	
+	<script>
+									function huychitiethoadon(mahd,masach)
+										{
+											if(confirm("Bạn có muốn hủy đơn hàng")==true)
+											{
+												window.location.href="huyChiTietDonHang.php?MaHD="+mahd+"&MaSach="+masach;
+											}
+										}
 	</script>
-		
+<script src="../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../js/admin/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../js/admin/startmin.js"></script>
 <?php
 	if(isLogined()==true)
 	{

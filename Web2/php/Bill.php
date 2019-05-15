@@ -322,7 +322,7 @@ public static function showDetailBill()
 							$maxPage=ceil($numRows/$rowsPerPage);
 							
 							//  Lấy link của trang
-							$sefl="showDetailBill.php?MaHD=".$_GET['MaHD']."&MaKH=".$_GET['MaHD']."page=";
+							$sefl="showDetailBill.php?MaHD=".$_GET['MaHD']."&MaKH=".$_GET['MaHD']."&page=";
 							$nav="";
 							
 							for($page=1;$page<=$maxPage;$page++)
@@ -404,6 +404,8 @@ public static function showDetailBill()
 										."<td><select name='tinhtrangcthd' onchange='capnhathoadon(this.value)' style='padding:5px'>"
 											."<option value='MaHD=".$row['MaHD']."&MaSach=".$row['MaSach']."&tinhtrang=Hàng đang nhập từ kho'"; if($row['TinhTrangCT']=="Hàng đang nhập từ kho") $s=$s."selected" ; $s=$s.">Hàng đang nhập từ kho</option>"
 											."<option value='MaHD=".$row['MaHD']."&MaSach=".$row['MaSach']."&tinhtrang=Đã giao hàng'"; if($row['TinhTrangCT']=="Đã giao hàng") $s=$s."selected" ; $s=$s.">Đã giao hàng</option>"
+											."<option value='MaHD=".$row['MaHD']."&MaSach=".$row['MaSach']."&tinhtrang=Đang giao hàng'"; if($row['TinhTrangCT']=="Đang giao hàng") $s=$s."selected" ; $s=$s.">Đang giao hàng</option>"
+											."<option value='MaHD=".$row['MaHD']."&MaSach=".$row['MaSach']."&tinhtrang=Đã hủy hàng'"; if($row['TinhTrangCT']=="Đã hủy hàng") $s=$s."selected" ; $s=$s.">Đã hủy hàng</option>"
 											."</select>"
 										."</td>"
 										."<td><font style='color:#337ab7;cursor:pointer' onclick='xoachitiethoadon(\"xoachitiethoadon=1&MaHD=".$row['MaHD']."&MaSach=".$row['MaSach']."\")'><i class='fa fa-trash fa-fw'></i> Xóa</font></td>"
@@ -453,7 +455,7 @@ public static function showDetailBill()
 			//xet trang thai cua chi iet hoa don
 			while($row2=mysqli_fetch_array($rs))
 			{
-				if($row2['TinhTrangCT']=="Hàng đang nhập từ kho")
+				if($row2['TinhTrangCT']=="Hàng đang nhập từ kho" || $row2['TinhTrangCT']=="Đang giao hàng")
 					$f=0;
 			}
 			//thay doi trang thai cua hoa don

@@ -97,8 +97,17 @@
                         <a href="quanlyhoadon.php" style="" class='mg' ><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn <span class='mg_i' style="float:right;color:red"></span></a> 
                     </li>
 					<li>
-                        <a href="thongke.php" style="" class='mg' ><i class="fa fa-table fa-fw"></i> Thống kê <span class='mg_i' style="float:right;color:red"></span> </a>
-                    </li>
+                        <a href="#" style="" class='mg' ><i class="fa fa-table fa-fw"></i> Thống kê <span class='mg_i' style="float:right;color:red"></span> </a>
+						<ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="thongke.php">Thống kê doanh thu</a>
+                                    </li>
+                                    <li>
+                                        <a href="thongkesanpham.php">Thống kê sản phẩm</a>
+                                    </li>                
+
+                        </ul>
+				   </li>
 					<li>
                         <a href="#" class='ad' style=""><i class="fa fa-user fa-fw"></i> Quản lý người dùng<span class="fa arrow"> <span class='ad_i' style="float:right;color:red"></span></span></a>
 						<ul class="nav nav-second-level">
@@ -146,7 +155,7 @@
 						<div class="panel-heading">
 							Danh sách nhân viên
 							<div style="float:right">
-								<a href="DangKy.php"><i class="fa fa-plus fa-fw"></i> Thêm nhân viên</a>
+								<a href="themNhanVien.php"><i class="fa fa-plus fa-fw"></i> Thêm nhân viên</a>
 							</div>
 						</div>
 						

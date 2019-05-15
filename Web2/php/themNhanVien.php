@@ -3,20 +3,15 @@
 	ini_set('session.cookie_lifetime',0);
 	session_start();
 	require('common.php');
-	//kiểm tra đã đăng nhập chưa
-	//chưa đn
 	if(isLogined()==false)
 	{
 			header("Location:dangnhapAdmin.php");
 	}
-	//đã đang nhập
-	else if(isLogined()==true)
-		// kiểm tra đây là khách hàng thì về trang chủ kh
+	if(isLogined()==true)
+	{
 		if($_SESSION['login']['MaQuyen'] != "1" && $_SESSION['login']['MaQuyen'] != "2" )
-		{
 				header("Location:../index.php");
-		}
-	
+	}
 	
 ?>
 <!DOCTYPE html>
@@ -92,7 +87,7 @@
                         <a href="quanlysanpham.php" style="" class='mg'><i class="fa fa-product-hunt fa-fw"></i> Quản lý sản phẩm <span class='mg_i' style="float:right;color:red"></span></a>
                     </li>
 					<li>
-                        <a href="quanlyhoadon.php" style="" class='mg' ><i class="fa fa-file-text-o fa-fw"></i> Quản lý đơn hàng <span class='mg_i' style="float:right;color:red"></span></a> 
+                        <a href="quanlyhoadon.php" style="" class='mg' ><i class="fa fa-file-text-o fa-fw"></i> Quản lý hóa đơn <span class='mg_i' style="float:right;color:red"></span></a> 
                     </li>
 					<li>
                         <a href="#" style="" class='mg' ><i class="fa fa-table fa-fw"></i> Thống kê <span class='mg_i' style="float:right;color:red"></span> </a>
@@ -129,47 +124,107 @@
     <div id="page-wrapper">
         <div class="container-fluid">
 
-            
-			<div class="row">
+            <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Trang chủ</h1>
-				<div class="panel panel-success">
-                    <div class="panel-heading">
-                       <h4>Thông tin</h4>
-                    </div>
-					<div class="panel-body">
-                    <p class="lead">Xin chào <?php echo $_SESSION['login']['HoTen']?></p>  
-					<p style="font-size:1.2em">Ngày đăng nhập: <?php $date = getdate();
-			echo " Ngày: ".$date['mday']." tháng: ".$date['mon']." năm: ".$date['year']."<br>
-			Thời gian đăng nhập: ".$date['hours']." giờ ".$date['minutes']." phút "
-			.$date['seconds']." giây";?></p>
-					<strong style="font-size:1.2em"> Vai trò: 
-					<?php 
-					if($_SESSION['login']['MaQuyen']=="1")
-						echo "Quản trị viên";
-					if($_SESSION['login']['MaQuyen']=="2")
-						echo "Nhân viên quản lý";
-					?>
-					</strong>
-					<p style="font-size:1.2em">Công việc: <?php 
-					if($_SESSION['login']['MaQuyen']=="1")
-						echo "Quản lý người dùng";
-					if($_SESSION['login']['MaQuyen']=="2")
-						echo "Quản lý đơn hàng, sản phẩm và thống kê sản phẩm";
-					?></p>	
-                    </div>
-                                <!-- /.panel-body -->
-                </div>	
+                    <h1 class="page-header">Thêm nhân viên</h1>
                 </div>
             </div>
-			
-			
+
             <!-- ... Your content goes here ... -->
-		
+			<div clas="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="row">
+							<form name="formdangky" action="xulythemNhanVien.php" method="get" onsubmit="return themnhanvien()">
+								<div class="col-lg-6">
+									
+										<div class="form-group">
+                                            <label>Tên đăng nhập</label>
+                                            <input class="form-control" name="username">
+                                        </div>
+										<div class="form-group">
+                                            <label>Họ tên</label>
+                                            <input class="form-control" name="name" >
+                                        </div>
+										<div class="form-group">
+                                            <label>Mật khẩu</label>
+                                            <input class="form-control" name="pass" type="password">
+                                        </div>
+										<div class="form-group">
+                                            <label>Nhập lại mật khẩu</label>
+                                            <input class="form-control" name="repass" type="password">
+                                        </div>
+										<i id="kiemtra" style="color:red"></i>
+									
+								</div>
+								<div class="col-lg-6">
+									
+										<div class="form-group">
+                                            <label>Email</label>
+                                            <input class="form-control" name="email" >
+                                        </div>
+										<div class="form-group">
+                                            <label>Số điện thoại</label>
+                                            <input class="form-control" name="phone" >
+                                        </div>
+										<div class="form-group">
+                                            <label>Mã nhân viên</label>
+                                            <input class="form-control" name="manv" value="" readonly>
+                                        </div>
+										
+										<div class="form-group">
+                                                    <label>Loại</label>
+                                                    <select class="form-control" name="loai" id="loai" onchange="hienthimanhanvien()">
+														<option value="">Chọn loại</option>
+                                                        <option value="admin">Quản lý</option>                     
+														<option value="manager">Quản trị viên</option>
+                                                    </select>
+													<i style="color:red" id='loiloai'></i>
+                                                </div>
+									
+								</div>
+								<div class="row">
+											<div class="col-lg-12">
+												<center>
+													<button type="submit" class="btn btn-default">Thêm</button>
+													
+												</center>
+											</div>
+										</div>
+							</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
         </div>
     </div>
 
 </div>
+
+<script>
+	function hienthimanhanvien() {
+		
+		var loai=document.forms['formdangky']['loai'].value;
+			if(loai!="")
+			{
+				var xhttp;
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			document.forms['formdangky']['manv'].value = this.responseText;
+				}
+			};
+			xhttp.open("GET","ngaunhienmaNV.php?cho=themnv&loai="+loai, true);
+			xhttp.send();
+			}
+			else alert("Hãy chọn loại nhân viên.");
+			
+			
+		}
+	
+</script>
 
 <?php
 	
@@ -204,7 +259,7 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="../js/admin/startmin.js"></script>
-
+<script src="../js/validateAdmin.js"></script>
 </body>
 </html>
 

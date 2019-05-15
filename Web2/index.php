@@ -264,7 +264,11 @@
                 ."<ul class=\'dropdown-menu\'>"
                 .    "<li><a href=\'php/thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
                 .    "</li>"
+<<<<<<< HEAD
 				.    "<li><a href=\'php/chitiethd.php\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
+=======
+				.    "<li><a href=\'php/DonHang.php\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
+>>>>>>> a3672f3b5578f1f7204321e8a6cf09ee204a0845
                 .    "</li>"
                 .    "<li class=\'divider\'></li>"
                 .    "<li><a href=\'php/xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"

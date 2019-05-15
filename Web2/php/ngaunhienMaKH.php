@@ -13,7 +13,7 @@
 	
 	function NgauNhienMaKH()
 	{
-			
+			$makh="";
 			$maso=rand(100,1000);
 			$makh="KH".$maso;
 			

@@ -262,7 +262,7 @@
                 ."<ul class=\'dropdown-menu\'>"
                 .    "<li><a href=\'thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
                 .    "</li>"
-				.    "<li><a href=\'#\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
+				.    "<li><a href=\'DonHang.php\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
                 .    "</li>"
                 .    "<li class=\'divider\'></li>"
                 .    "<li><a href=\'xulydangnhapUser.php?dangxuat=1\'><i class=\'glyphicon glyphicon-log-out\'></i> Đăng xuất </a>"
