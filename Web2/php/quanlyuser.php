@@ -113,7 +113,7 @@ class QuanLyUser
 															<th>Email</th>
 															<th>SĐT</th>
 															<th>Trạng_thái</th>
-															<th>Xem_đơn_hàng</th>
+															
 															<th>Sửa</th>								
 															<th>Khóa</th>
 														</tr>
@@ -137,7 +137,7 @@ class QuanLyUser
 												
 												
 												
-												$s=$s. "<td><a href='editBook.php?masach=".$row['MaKH']."'><i class='fa fa-file-o fa-fw'></i> Xem</a></td>"
+												$s=$s
 												. "<td><a href='#' ><i class='fa fa-pencil fa-fw'></i> Sửa</a></td>"
 												."<td><font style='color:#337ab7;cursor:pointer' onclick='khoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>"
 											."</tr>";

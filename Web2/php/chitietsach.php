@@ -139,38 +139,7 @@
 					<a href="sanpham.php?theloai=vanhoc&page=1" class="list-group-item" >Sách văn học</a>
 				</div>
 
-				<form name="timkiemnangcao">
-					<fieldset>
-						<legend style="font-size:1.33em">Tìm kiếm nâng cao</legend>
-
-						<legend style="font-size:1.2em;padding-left:10px">Thể loại</legend>
-						<select name ="theloai" style="padding:5px  10px;margin-left:3px">
-							<option>--Chọn--</option>
-							<option>Kinh tế</option>
-							<option>Kỹ năng sống</option>
-							<option>Sách thiếu nhi</option>
-							<option>Sách tuổi teen</option>
-							<option>Sách văn học</option>
-							<option>Học ngoại ngữ</option>
-							<option>Sách chuyên ngành</option>
-							<option>Sách lịch sử</option>
-						</select>
-
-						<legend style="font-size:1.2em;padding-left:10px;margin-top:20px">Nhập giá</legend>
-						Từ <input type="text" name="giatu" style="padding:5px  10px;margin-left:18px;width:125px;" ><br>
-						Đến <input type="text" name="giaden" style="padding:5px  10px;margin-left:10px;margin-top:10px;width:125px;" >
-
-						<legend style="font-size:1.2em;padding-left:10px;margin-top:20px">Sắp xếp</legend>
-						<select name="sapxep"style="padding:5px  10px">
-							<option>--Chọn--</option>
-							<option>Giá từ thấp tới cao</option>
-							<option>Giá từ cao đến thấp</option>
-							<option>Theo tên từ A đến Z</option>
-							<option>Theo tên từ Z đến A</option>
-						</select>
-
-					</fieldset>
-				</form>
+				
 
 			</div>
 
