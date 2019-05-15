@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2019 at 03:04 AM
+-- Generation Time: May 15, 2019 at 05:55 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -49,11 +49,13 @@ INSERT INTO `nhanvien` (`MaNhanVien`, `HoTen`, `TenDangNhap`, `MatKhau`, `Email`
 ('A2', 'Ninh Ngọc Hiếu', 'hieu123', '123456', 'hieua15@gmail.com', '0123124344', '0', '1'),
 ('A3', 'Võ Văn Đại', 'dai123', '654321', 'daia15@gmail.com', '0984357345', '0', '1'),
 ('A4', 'Bùi Tiến Thông', 'thong123', '123456789', 'thonga15@gmail.com', '0934327223', '0', '1'),
+('A5', 'admin', 'admin', 'admin', 'admin@gmail.com', '0123456789', '0', '1'),
 ('M0', 'Lê Đại Hành', 'hanh123', 'hanhhanh456', 'hanhaaa@gmail.com', '0128374634', '0', '2'),
 ('M1', 'Nguyễn Hùng Vương', 'vuong123', 'vuongnguyen444', 'vuong999@gmail.com', '0434253443', '0', '2'),
 ('M2', 'Trần Quốc Trung', 'trung123456', '123456', 'trungtran@gmail.com', '0165456789', '0', '2'),
 ('M3', 'Trần Quốc Tùng', 'tunglun123', 'tungtungtung', 'tungtrang@gmail.com', '0248390122', '0', '2'),
-('M4', 'Phạm Hùng Vĩ', 'vivuive123456', 'vivuvi123', 'vipham@gmail.com', '0988343472', '0', '2');
+('M4', 'Phạm Hùng Vĩ', 'vivuive123456', 'vivuvi123', 'vipham@gmail.com', '0988343472', '0', '2'),
+('M5', 'root', 'root', 'root', 'root@gmail.com', '0123456789', '0', '2');
 
 --
 -- Indexes for dumped tables

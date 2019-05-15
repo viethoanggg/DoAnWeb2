@@ -31,6 +31,6 @@ if(isset($_GET['MaKH'])){
 		DataProvider::executeQuery($insertCTHD);
 	}
 	unset($_SESSION['cart']);
-	header("Location:chitiethd.php");
+	header("Location:DonHang.php");
 }
 ?>

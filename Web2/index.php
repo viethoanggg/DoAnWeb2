@@ -265,7 +265,6 @@
                 .    "<li><a href=\'php/thongtincanhanUser.php\'><i class=\'glyphicon glyphicon-user\'></i> Thông tin tài khoản </a>"
                 .    "</li>"
 
-				.    "<li><a href=\'php/chitiethd.php\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
 				.    "<li><a href=\'php/DonHang.php\'><i class=\'glyphicon glyphicon-list-alt\'></i> Xem đơn hàng </a>"
 
                 .    "</li>"
