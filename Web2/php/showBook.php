@@ -118,6 +118,7 @@ class ShowBook
 												 ."<img src='../images/ngoaingu/" . $row['HinhAnh']  ."'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="KT")
@@ -126,6 +127,7 @@ class ShowBook
 												."<img src='../images/kinhte/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="KNS")
@@ -134,6 +136,7 @@ class ShowBook
 												."<img src='../images/kynangsong/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="LS")
@@ -142,6 +145,7 @@ class ShowBook
 												."<img src='../images/lichsu/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="CN")
@@ -150,6 +154,7 @@ class ShowBook
 												."<img src='../images/chuyennganh/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="TN")
@@ -158,6 +163,7 @@ class ShowBook
 												."<img src='../images/thieunhi/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="TT")
@@ -166,6 +172,7 @@ class ShowBook
 												."<img src='../images/tuoiteen/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="VH")
@@ -174,6 +181,7 @@ class ShowBook
 												."<img src='../images/vanhoc/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 											
@@ -206,10 +214,12 @@ class ShowBook
 							else if($tenTheLoai=="tuoiteen") $sql=$sql." and MaTheLoai='TT' ";
 							else if($tenTheLoai=="vanhoc") $sql=$sql." and MaTheLoai='VH' ";
 							
-							if(isset($_GET['giatu']) && isset($_GET['giaden']) && $_GET['giatu']!="" && $_GET['giaden']!="" )
-							{
-								$sql=$sql." and Gia BETWEEN '".$_GET['giatu']."' and '".$_GET['giaden']."' ";
-							}
+							if(is_numeric($giatu) && is_numeric($giaden) && $giatu != "" && $giaden !="")
+								$sql=$sql." and Gia BETWEEN '".$giatu."' and '".$giaden."' ";
+							else if( is_numeric($giatu) && $giatu != "" && $giaden =="")
+								$sql=$sql." and Gia >= ".$giatu;
+							else if( is_numeric($giaden) && $giatu == "" && $giaden !="")
+								$sql=$sql." and Gia <= ".$giaden;
 							$result=DataProvider::executeQuery($sql);
 							$row=mysqli_fetch_array($result);
 							$numRows=$row['numRows'];
@@ -238,10 +248,14 @@ class ShowBook
 							else if($tenTheLoai=="tuoiteen") $sql=$sql." and MaTheLoai='TT' ";
 							else if($tenTheLoai=="vanhoc") $sql=$sql." and MaTheLoai='VH' ";
 							
-							if(isset($_GET['giatu']) && isset($_GET['giaden']) && $_GET['giatu']!="" && $_GET['giaden']!="")
+							if(is_numeric($giatu) && is_numeric($giaden) && $giatu != "" && $giaden !="")
 							{
-								$sql=$sql." and Gia BETWEEN '".$_GET['giatu']."' and '".$_GET['giaden']."' ";
+								$sql=$sql." and Gia BETWEEN '".$giatu."' and '".$giaden."' ";
 							}
+							else if(is_numeric($giatu) && $giatu != "" && $giaden =="")
+								$sql=$sql." and Gia >= ".$giatu;
+							else if( is_numeric($giaden) && $giatu == "" && $giaden !="")
+								$sql=$sql." and Gia <= ".$giaden;
 							if(isset($_GET['sapxep']) && $_GET['sapxep']!="")
 							{
 								if($_GET['sapxep']=="giatangdan") $sql=$sql." order by Gia ASC ";
@@ -317,6 +331,7 @@ class ShowBook
 												 ."<img src='../images/ngoaingu/" . $row['HinhAnh']  ."'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="KT")
@@ -325,6 +340,7 @@ class ShowBook
 												."<img src='../images/kinhte/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="KNS")
@@ -333,6 +349,7 @@ class ShowBook
 												."<img src='../images/kynangsong/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="LS")
@@ -341,6 +358,7 @@ class ShowBook
 												."<img src='../images/lichsu/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="CN")
@@ -349,6 +367,7 @@ class ShowBook
 												."<img src='../images/chuyennganh/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="TN")
@@ -357,6 +376,7 @@ class ShowBook
 												."<img src='../images/thieunhi/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="TT")
@@ -365,6 +385,7 @@ class ShowBook
 												."<img src='../images/tuoiteen/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="VH")
@@ -373,6 +394,7 @@ class ShowBook
 												."<img src='../images/vanhoc/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 											

@@ -179,7 +179,7 @@
 									</div>
 							</div>
 						<!--------------------------------------------------------------------------------------------------------->
-										<div class="col-lg-6">
+										<div class="col-lg-3">
 											<label style="font-size:1.4em">Thể loại</label>
 											<div class="input-group" style="margin-top:24px;">
 												<select name="theloai" class="form-control">
@@ -200,6 +200,11 @@
 												</div>
 											</div>
 										</div>
+									<div class="col-lg-3">
+										<label style="font-size:1.4em">Nhập giá của 1 cuốn</label><br>
+										Từ <input type="text" name="giatu" style="padding:5px  10px;margin-left:18px;width:125px;" value="<?php if(isset($_GET['giatu'])) echo $_GET['giatu']; ?>"><br>
+										Đến <input type="text" name="giaden" style="padding:5px  10px;margin-left:10px;margin-top:10px;width:125px;" value="<?php if(isset($_GET['giaden'])) echo $_GET['giaden']; ?>"><br>
+									</div>
 						</div>
 					</div>
 				</div>
@@ -207,33 +212,33 @@
 					<div class="col-lg-4">
 						<div class="panel panel-default">
 							<div class="panel-body">
-								<p style="font-size:1.3em;">Tất cả loại sản phẩm</p>
+								<b style="font-size:1.3em;">Tất cả loại sản phẩm</b>
 								<hr>
 								<div class="input-group" >
-									<b style="font-size:1.2em;margin-right:20px">Tổng Số lượng :</b>
-									<font style="font-size:1.2em" id="AllSoLuong">123</font>
+									<b style="font-size:1.2em;margin-right:20px;color:#248f24;">Tổng Số lượng :</b>
+									<font style="font-size:1.2em" id="AllSoLuong"></font>
 								</div>
 								<div class="input-group" >
-									<b style="font-size:1.2em;margin-right:20px">Tổng doanh thu :</b>
-									<font style="font-size:1.2em" id="AllDoanhThu">123</font>
+									<b style="font-size:1.2em;margin-right:20px;color:#248f24;">Tổng doanh thu :</b>
+									<font style="font-size:1.2em" id="AllDoanhThu"></font>
 								</div>
 							</div>
 						</div>
 						<!----------------------------------------------------------------------------------->
 						<div class="panel panel-default">
 							<div class="panel-body">
-								<p style="font-size:1.3em;">Một loại sản phẩm</p>
+								<b style="font-size:1.3em;">Một loại sản phẩm</b>
 								<hr>
 								<div class="input-group" >
-									<b style="font-size:1.2em;margin-right:20px">Tổng Số lượng :</b>
+									<b style="font-size:1.2em;margin-right:20px;color:#248f24;">Tổng Số lượng :</b>
 									<font style="font-size:1.2em" id="SoLuong">123</font>
 								</div>
 								<div class="input-group" >
-									<b style="font-size:1.2em;margin-right:20px">Tổng doanh thu :</b>
+									<b style="font-size:1.2em;margin-right:20px;color:#248f24;">Tổng doanh thu :</b>
 									<font style="font-size:1.2em" id="DoanhThu">123</font>
 								</div>
 								<div class="input-group" >
-									<b style="font-size:1.2em;margin-right:20px">Chiếm tỉ lệ :</b>
+									<b style="font-size:1.2em;margin-right:20px;color:#248f24;">Chiếm tỉ lệ :</b>
 									<font style="font-size:1.2em" id="ChiemTiLe">123</font>
 								</div>
 							</div>

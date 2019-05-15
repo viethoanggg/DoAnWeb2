@@ -17,6 +17,7 @@
 												 ."<img src='images/ngoaingu/" . $row['HinhAnh']  ."'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="KT")
@@ -25,6 +26,7 @@
 												."<img src='images/kinhte/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="KNS")
@@ -33,6 +35,7 @@
 												."<img src='images/kynangsong/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="LS")
@@ -41,6 +44,7 @@
 												."<img src='images/lichsu/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="CN")
@@ -49,6 +53,7 @@
 												."<img src='images/chuyennganh/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="TN")
@@ -57,6 +62,7 @@
 												."<img src='images/thieunhi/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="TT")
@@ -65,6 +71,7 @@
 												."<img src='images/tuoiteen/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="VH")
@@ -73,6 +80,7 @@
 												."<img src='images/vanhoc/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 											
@@ -100,6 +108,7 @@
 												 ."<img src='images/ngoaingu/" . $row['HinhAnh']  ."'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="KT")
@@ -108,6 +117,7 @@
 												."<img src='images/kinhte/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="KNS")
@@ -116,6 +126,7 @@
 												."<img src='images/kynangsong/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="LS")
@@ -124,6 +135,7 @@
 												."<img src='images/lichsu/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="CN")
@@ -132,6 +144,7 @@
 												."<img src='images/chuyennganh/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="TN")
@@ -140,6 +153,7 @@
 												."<img src='images/thieunhi/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="TT")
@@ -148,6 +162,7 @@
 												."<img src='images/tuoiteen/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 										else if($row['MaTheLoai']=="VH")
@@ -156,6 +171,7 @@
 												."<img src='images/vanhoc/" . $row['HinhAnh'] . "'>"
 												 ."</a>"
 												 ."<div class='tensach'>" . $row['TenSach'] . "</div>"
+												 ."<div class='tacgia'>" . $row['TenTacGia'] . "</div>"
 												 ."<div class='gia'>" .  $row['Gia'] . "<sup>đ</sup></div>";
 										}
 											

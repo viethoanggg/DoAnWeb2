@@ -206,6 +206,14 @@
 							<div class="row" style="margin-top:10px">
 								
 								<div class="col-lg-12" id="sanpham">
+								<style>
+								#gg td,#gg th
+								{
+									text-align:center;
+									vertical-align:middle;
+									color:black;
+								}
+							</style>
 										<?php
 											require('quanlyuser.php');
 											QuanLyUser::QuanLyKhachHang();
@@ -256,7 +264,7 @@
 		function khoauser(value) {
 			if(confirm("Bạn chắc có muốn khóa")==true)
 			{
-				var a=value.split("&");
+				/*var a=value.split("&");
 				var b=a[0].split("\=");
 				var c=a[1].split("\=");
 				if(c[1]=="0")
@@ -266,7 +274,7 @@
 				else if(c[1]=="1")
 				{
 					document.getElementById(b[1]).setAttribute('class','fa fa-close');
-				}
+				}*/
 				var xhttp;						
 				var url="LockUser.php?"+value;
 				xhttp = new XMLHttpRequest();							
@@ -278,6 +286,47 @@
 				xhttp.open("GET",url, true);
 				xhttp.send();
 			}
+		}
+		
+		function mokhoauser(value)
+		{
+			if(confirm("Bạn chắc có muốn mở khóa")==true)
+			{
+				/*var a=value.split("&");
+				var b=a[0].split("\=");
+				var c=a[1].split("\=");
+				if(c[1]=="0")
+				{
+					document.getElementById(b[1]).setAttribute('class','fa fa-check');
+				}
+				else if(c[1]=="1")
+				{
+					document.getElementById(b[1]).setAttribute('class','fa fa-close');
+				}*/
+				var xhttp;						
+				var url="LockUser.php?"+value;
+				xhttp = new XMLHttpRequest();							
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					alert("Đã thay đổi trạng thái");							
+					}
+					};	
+				xhttp.open("GET",url, true);
+				xhttp.send();
+		}
+		
+		function datlaipass(value)
+		{
+			var xhttp;						
+				var url="ResetPassKH.php?"+value;
+				xhttp = new XMLHttpRequest();							
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					alert("Đã đặt lại mật khẩu");							
+					}
+					};	
+				xhttp.open("GET",url, true);
+				xhttp.send();
 		}
 </script>
 
