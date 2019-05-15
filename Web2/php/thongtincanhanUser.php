@@ -231,38 +231,7 @@
 					<a href="sanpham.php?theloai=vanhoc&page=1" class="list-group-item" >Sách văn học</a>
 				</div>
 
-				<form name="timkiemnangcao">
-					<fieldset>
-						<legend style="font-size:1.33em">Tìm kiếm nâng cao</legend>
-
-						<legend style="font-size:1.2em;padding-left:10px">Thể loại</legend>
-						<select name ="theloai" style="padding:5px  10px;margin-left:3px">
-							<option>--Chọn--</option>
-							<option>Kinh tế</option>
-							<option>Kỹ năng sống</option>
-							<option>Sách thiếu nhi</option>
-							<option>Sách tuổi teen</option>
-							<option>Sách văn học</option>
-							<option>Học ngoại ngữ</option>
-							<option>Sách chuyên ngành</option>
-							<option>Sách lịch sử</option>
-						</select>
-
-						<legend style="font-size:1.2em;padding-left:10px;margin-top:20px">Nhập giá</legend>
-						Từ <input type="text" name="giatu" style="padding:5px  10px;margin-left:18px;width:125px;" ><br>
-						Đến <input type="text" name="giaden" style="padding:5px  10px;margin-left:10px;margin-top:10px;width:125px;" >
-
-						<legend style="font-size:1.2em;padding-left:10px;margin-top:20px">Sắp xếp</legend>
-						<select name="sapxep"style="padding:5px  10px">
-							<option>--Chọn--</option>
-							<option>Giá từ thấp tới cao</option>
-							<option>Giá từ cao đến thấp</option>
-							<option>Theo tên từ A đến Z</option>
-							<option>Theo tên từ Z đến A</option>
-						</select>
-
-					</fieldset>
-				</form>
+				
 
 			</div>
 
@@ -291,12 +260,9 @@
 												<input class="form-control" name="hoten" value="<?php echo $_SESSION['login']['HoTen']; ?>">
 												<i style="color:red" id='loihoten'></i>
 											</div>
+											
 											<div class="form-group">
-												<label>Tên đăng nhập</label>
-												<input class="form-control" name="tendangnhap"  readonly value="<?php echo $_SESSION['login']['TenDangNhap']; ?>">
-											</div>
-											<div class="form-group">
-												<a href=""><i class='fa fa-lock fa-fw'></i>Đổi mật khẩu</a>
+												<a href="doimatkhauUser.php"><i class='fa fa-lock fa-fw'></i>Đổi mật khẩu</a>
 											</div>
 										
 									</div>
@@ -319,7 +285,7 @@
 											<div class="col-lg-12">
 												<center>
 													<button type="submit" class="btn btn-default">Sửa</button>
-													<button type="reset" class="btn btn-default">Đặt lại</button>
+													
 												</center>
 											</div>
 										</div>
@@ -419,6 +385,7 @@
 							return false;
 						}
 			}
+	
 	</script>
 		
 <?php

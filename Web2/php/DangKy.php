@@ -32,7 +32,7 @@
 	
 	<div class="container-login100" style="background-image: url('../images/bg-02.jpg');">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-40 p-b-30">
-			<form class="login100-form validate-form" name="formdangky"  action="" method="post"  onsubmit="return submitdangky()">
+			<form class="login100-form validate-form" name="formdangky"  action="xulydangkyKH.php" method="post"  onsubmit="return submitdangky()">
 				<span class="login100-form-title p-b-37">
 					Đăng Ký
 				</span>
@@ -73,6 +73,10 @@
 					</span>
 				</div>
 				
+				<div class="wrap-input100  m-b-25" >
+					<input class="input100"  name="makh" type="hidden">
+				</div>
+				
 				<div class="container-login100-form-btn p-b-20">
 					<input type="submit" class="login100-form-btn" value="Đăng ký">
 						
@@ -96,6 +100,24 @@
 	
 
 	<div id="dropDownSelect1"></div>
+	
+	<script>
+	function hienthimakh() {
+			var xhttp;
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			document.forms['formdangky']['makh'].value = this.responseText;
+				}
+			};
+			xhttp.open("GET","ngaunhienmaKH.php?cho=themkh", true);
+			xhttp.send();
+			
+			}
+		
+	window.onload=function(){hienthimakh()};
+			
+</script>
 	
 <!--===============================================================================================-->
 	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
