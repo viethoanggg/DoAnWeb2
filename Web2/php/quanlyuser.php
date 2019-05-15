@@ -101,7 +101,7 @@ class QuanLyUser
 									$result=DataProvider::executeQuery($sql);
 									$i=1;
 									
-									$s="<div class='table-responsive'>
+									$s="<div class='table-responsive' id='gg'>
 												<table class='table table-striped table-bordered table-hover'>
 													<thead>
 														<tr>
@@ -265,7 +265,7 @@ class QuanLyUser
 									$result=DataProvider::executeQuery($sql);
 									$i=1;
 									
-									$s="<div class='table-responsive'>
+									$s="<div class='table-responsive' id='gg'>
 												<table class='table table-striped table-bordered table-hover'>
 													<thead>
 														<tr>
@@ -427,7 +427,7 @@ class QuanLyUser
 									$result=DataProvider::executeQuery($sql);
 									$i=1;
 									
-									$s="<div class='table-responsive'>
+									$s="<div class='table-responsive' id='gg'>
 												<table class='table table-striped table-bordered table-hover'>
 													<thead>
 														<tr>
@@ -595,7 +595,7 @@ class QuanLyUser
 									$result=DataProvider::executeQuery($sql);
 									$i=1;
 									
-									$s="<div class='table-responsive'>
+									$s="<div class='table-responsive' id='gg'>
 												<table class='table table-striped table-bordered table-hover'>
 													<thead>
 														<tr>

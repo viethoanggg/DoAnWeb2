@@ -207,6 +207,14 @@
 							<div class="row" style="margin-top:10px">
 								
 								<div class="col-lg-12" id="sanpham">
+								<style>
+								#gg td,#gg th
+								{
+									text-align:center;
+									vertical-align:middle;
+									color:black;
+								}
+							</style>
 										<?php
 											require('quanlyuser.php');
 											QuanLyUser::QuanLyNhanVien();
