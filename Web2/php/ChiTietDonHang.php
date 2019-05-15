@@ -1,11 +1,15 @@
 <?php 
 	ini_set('session.auto_start',0);
 	ini_set('session.cookie_lifetime',0);
-	include 'sl.php';
+	include('sl.php');
 	require('common.php');
+	if(isLogined()==false)
+	{
+			header("Location:DangNhap.php");
+	}
 	//đã đang nhập
 	if(isLogined()==true)
-		// kiểm tra đây là khách hàng thì về trang chủ kh
+		
 		if($_SESSION['login']['MaQuyen'] == "1" || $_SESSION['login']['MaQuyen'] == "2" )
 		{
 				header("Location:admin.php");
@@ -23,6 +27,7 @@
 	<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/validateAdmin.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/chitietsach.css">
 	<link rel="stylesheet" type="text/css" href="../css/util.css">
 	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -71,11 +76,98 @@
 	</nav>
 
 	<!---------------- slder ----------------->
-	<div id="title-background" class="header-page header-shop" style="background:;background-size: cover;margin-top:-20px">
-		<div class="theme">
-			<div class="title-page tieude"></div>
+	<div id="carousel-1" class="carousel slide multi-item-carousel" data-ride="carousel" style="margin-top:-20px;height:350px">
+		<ol class="carousel-indicators">
+			<li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+			<li data-target="#carousel-1" data-slide-to="1"></li>
+			<li data-target="#carousel-1" data-slide-to="2"></li>
+			<li data-target="#carousel-1" data-slide-to="3"></li>
+			<li data-target="#carousel-1" data-slide-to="4"></li>
+			<li data-target="#carousel-1" data-slide-to="5"></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="item active" style="height:350px">
+				<div class="item__third" style="height:350px">
+					<img src="../images/qc/0.png" alt="" style="height:350px">
+				</div>
+			</div>
+			<div class="item" style="height:350px">
+				<div class="item__third" style="height:350px">
+					<img src="../images/qc/1.png" alt="" style="height:350px">
+				</div>
+			</div>
+			<div class="item" style="height:350px">
+				<div class="item__third" style="height:350px">
+					<img src="../images/qc/2.png" alt="" style="height:350px">
+				</div>
+			</div>
+			<div class="item" style="height:350px">
+				<div class="item__third" style="height:350px">
+					<img src="../images/qc/3.png" alt="" style="height:350px">
+				</div>
+			</div>
+			<div class="item" style="height:350px">
+				<div class="item__third" style="height:350px">
+					<img src="../images/qc/4.png" alt="" style="height:350px">
+				</div>
+			</div>
+			<div class="item" style="height:350px">
+				<div class="item__third" style="height:350px">
+					<img src="../images/qc/5.png" alt="" style="height:350px">
+				</div>
+			</div>
+
 		</div>
+		<a href="#carousel-1" class="left carousel-control" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+		<a href="#carousel-1" class="right carousel-control" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
 	</div>
+
+	<style>
+		.multi-item-carousel {
+			overflow: hidden;
+		}
+		.multi-item-carousel img {
+			height: auto;
+			width: 100%;
+		}
+		.multi-item-carousel .carousel-control.left, 
+		.multi-item-carousel .carousel-control.right {
+			background: rgba(255, 255, 255, 0.3);
+			width: 25%;
+		}
+		.multi-item-carousel .carousel-inner {
+			width: 150%;
+			left: -25%;
+		}
+		.carousel-inner > .item.next, 
+		.carousel-inner > .item.active.right {
+			-webkit-transform: translate3d(33%, 0, 0);
+			transform: translate3d(33%, 0, 0);
+		}
+		.carousel-inner > .item.prev, 
+		.carousel-inner > .item.active.left {
+			-webkit-transform: translate3d(-33%, 0, 0);
+			transform: translate3d(-33%, 0, 0);
+		}
+		.item__third {
+			float: left;
+			position: relative;  /* captions can now be added */
+			width: 33.33333333%;
+		}
+
+	</style>
+	<script>
+		$('.multi-item-carousel .item').each(function(){
+			var next = $(this).next();
+			if (!next.length) next = $(this).siblings(':first');
+			next.children(':first-child').clone().appendTo($(this));
+		});
+		$('.multi-item-carousel .item').each(function(){
+			var prev = $(this).prev();
+			if (!prev.length) prev = $(this).siblings(':last');
+			prev.children(':nth-last-child(2)').clone().prependTo($(this));
+		});
+	</script>
 
 
 	<!------------- navbar menu ---------------->
@@ -126,67 +218,104 @@
 	<!---------------------content sach ----------------------->
 	<div class="container" >
 		<div class="row">
-			
-			<div class="col-md-2 ">
-				<div class="list-group" style="margin-top:20px">
-					<a href="sanpham.php?theloai=hocngoaingu&page=1" class="list-group-item" >Học ngoại ngữ</a>
-					<a href="sanpham.php?theloai=kinhte&page=1" class="list-group-item" >Kinh tế</a>
-					<a href="sanpham.php?theloai=kynangsong&page=1" class="list-group-item" >Kỹ năng sống</a>
-					<a href="sanpham.php?theloai=lichsu&page=1" class="list-group-item" >Lịch sử</a>
-					<a href="sanpham.php?theloai=chuyennganh&page=1" class="list-group-item" >Sách chuyên ngành</a>
-					<a href="sanpham.php?theloai=thieunhi&page=1" class="list-group-item" >Sách thiếu nhi</a>
-					<a href="sanpham.php?theloai=tuoiteen&page=1" class="list-group-item" >Sách tuổi teen</a>
-					<a href="sanpham.php?theloai=vanhoc&page=1" class="list-group-item" >Sách văn học</a>
+
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">Chi tiết đơn hàng</h1>
+					</div>
 				</div>
-
-				<form name="timkiemnangcao">
-					<fieldset>
-						<legend style="font-size:1.33em">Tìm kiếm nâng cao</legend>
-
-						<legend style="font-size:1.2em;padding-left:10px">Thể loại</legend>
-						<select name ="theloai" style="padding:5px  10px;margin-left:3px">
-							<option>--Chọn--</option>
-							<option>Kinh tế</option>
-							<option>Kỹ năng sống</option>
-							<option>Sách thiếu nhi</option>
-							<option>Sách tuổi teen</option>
-							<option>Sách văn học</option>
-							<option>Học ngoại ngữ</option>
-							<option>Sách chuyên ngành</option>
-							<option>Sách lịch sử</option>
-						</select>
-
-						<legend style="font-size:1.2em;padding-left:10px;margin-top:20px">Nhập giá</legend>
-						Từ <input type="text" name="giatu" style="padding:5px  10px;margin-left:18px;width:125px;" ><br>
-						Đến <input type="text" name="giaden" style="padding:5px  10px;margin-left:10px;margin-top:10px;width:125px;" >
-
-						<legend style="font-size:1.2em;padding-left:10px;margin-top:20px">Sắp xếp</legend>
-						<select name="sapxep"style="padding:5px  10px">
-							<option>--Chọn--</option>
-							<option>Giá từ thấp tới cao</option>
-							<option>Giá từ cao đến thấp</option>
-							<option>Theo tên từ A đến Z</option>
-							<option>Theo tên từ Z đến A</option>
-						</select>
-
-					</fieldset>
-				</form>
-
-			</div>
-
-			<div class="col-md-10">
-				<?php 
-				include('showDetail.php');
-				ShowDetail::showChiTiet();
-				?>
-				<div id="snackbar">Đã thêm vào giỏ hàng</div>
+							<div class="row">
+								<form name="chitiethoadon">
+									<div class="col-lg-4" style="">
+									
+										<div class="panel panel-default">
+											<div class="panel-body">
+											<?php
+												require('DataProvider.php');
+												if(isset($_GET['MaHD']) && isset($_GET['MaKH']))
+												{
+													$sql="select * from hoadon hd,khachhang kh, hinhthucthanhtoan httt,hinhthucgiaohang htgh where kh.MaKH=hd.MaKH and hd.HinhThucThanhToan=httt.MaHinhThuc and  hd.HinhThucGiaoHang=htgh.MaHinhThuc and MaHD='".$_GET['MaHD']."'";
+													$result=DataProvider::executeQuery($sql);
+													$row=mysqli_fetch_array($result);
+													$tenkh=$row['HoTen'];
+													$ngaydathang=$row['NgayDatHang'];
+													$diachi=$row['DiaChi'];
+													$hinhthucthanhtoan=$row['TenHinhThucTT'];
+													$hinhthucgiaohang=$row['TenHinhThucGH'];
+													$sdt=$row['SĐT'];
+												}													
+												else 
+												{
+													$tenkh="";
+													$ngaydathang="";
+													$tenkh="";
+													$hinhthucthanhtoan="";
+													$hinhthucgiaohang="";
+													$sdt="";
+												}
+											?>
+												<div class="form-group">
+                                                    <label>Họ tên khách hàng</label>
+                                                    <input type="text" class="form-control" name="hoten" value="<?php echo $tenkh ?>">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Ngày đặt hàng</label>
+                                                    <input type="text" class="form-control" name="ngaydathang" value="<?php echo $ngaydathang ?>">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Số điện thoại</label>
+                                                    <input type="text" class="form-control" name="sdt" value="<?php echo $sdt ?>">
+                                                </div>
+											</div>
+										</div>
+										
+									</div>
+									
+									<div class="col-lg-8">
+										<div class="panel panel-default">
+											<div class="panel-body">
+												<div class="form-group">
+                                                    <label>Địa chỉ</label>
+                                                    <input type="text" class="form-control" name="diachi" value="<?php echo $diachi ?>">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Hình Thức thanh toán</label>
+                                                    <input type="text" class="form-control" name="hinhthucthanhtoan" value="<?php echo $hinhthucthanhtoan ?>">
+                                                </div>
+												<div class="form-group">
+                                                    <label>Hình Thức giao hàng</label>
+                                                    <input type="text" class="form-control" name="hinhthucgiaohang" value="<?php echo $hinhthucgiaohang ?>">
+                                                </div>
+											</div>
+										</div>
+										
+									</div>
+								</form>	
+							</div>
+				<style>
+								#gg td,#gg th
+								{
+									text-align:center;
+									vertical-align:middle;
+									color:black;
+								}
+							</style>
+				<div class="row">
+					<div class="col-lg-12">
+						<?php
+							require('showDonHangUser.php');
+							UserBill::showDetailUserBill();
+						?>
+					</div>
+				</div>
+				<!-- ... Your content goes here ... -->
+				
+			
 			</div>
 			
-				
-			<div class="tieude" style="color:white;background-color:white"></div>
-			<script>
-				showBook();
-			</script>                               <!---------------------- footer ----------------------->
+			
+			                              <!---------------------- footer ----------------------->
 			<div class="container">
 				<hr style="border:1px solid black;">
 				<div class="gioithieu">
@@ -221,18 +350,26 @@
 					Phương thức vận chuyển
 				</div>
 			</div>
-		</div>
-		<script>
-			(function ($) {
-				$('.spinner .btn:first-of-type').on('click', function() {
-					$('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);
-				});
-				$('.spinner .btn:last-of-type').on('click', function() {
-					$('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);
-				});
-			})(jQuery);
-		</script>
 		
+	<script>
+									function huychitiethoadon(mahd,masach)
+										{
+											if(confirm("Bạn có muốn hủy đơn hàng")==true)
+											{
+												window.location.href="huyChiTietDonHang.php?MaHD="+mahd+"&MaSach="+masach;
+											}
+										}
+	</script>
+<script src="../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../js/admin/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../js/admin/startmin.js"></script>
 <?php
 	if(isLogined()==true)
 	{
