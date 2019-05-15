@@ -3,6 +3,10 @@
 	ini_set('session.cookie_lifetime',0);
 	include 'sl.php';
 	require('common.php');
+	if(isLogined()==false)
+	{
+			header("Location:DangNhap.php");
+	}
 	//đã đang nhập
 	if(isLogined()==true)
 		// kiểm tra đây là khách hàng thì về trang chủ kh
@@ -23,6 +27,7 @@
 	<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/bootstrap.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/showBook.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/validateAdmin.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/chitietsach.css">
 	<link rel="stylesheet" type="text/css" href="../css/util.css">
 	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -71,11 +76,98 @@
 	</nav>
 
 	<!---------------- slder ----------------->
-	<div id="title-background" class="header-page header-shop" style="background:;background-size: cover;margin-top:-20px">
-		<div class="theme">
-			<div class="title-page tieude"></div>
+	<div id="carousel-1" class="carousel slide multi-item-carousel" data-ride="carousel" style="margin-top:-20px;height:350px">
+		<ol class="carousel-indicators">
+			<li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+			<li data-target="#carousel-1" data-slide-to="1"></li>
+			<li data-target="#carousel-1" data-slide-to="2"></li>
+			<li data-target="#carousel-1" data-slide-to="3"></li>
+			<li data-target="#carousel-1" data-slide-to="4"></li>
+			<li data-target="#carousel-1" data-slide-to="5"></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="item active" style="height:350px">
+				<div class="item__third" style="height:350px">
+					<img src="../images/qc/0.png" alt="" style="height:350px">
+				</div>
+			</div>
+			<div class="item" style="height:350px">
+				<div class="item__third" style="height:350px">
+					<img src="../images/qc/1.png" alt="" style="height:350px">
+				</div>
+			</div>
+			<div class="item" style="height:350px">
+				<div class="item__third" style="height:350px">
+					<img src="../images/qc/2.png" alt="" style="height:350px">
+				</div>
+			</div>
+			<div class="item" style="height:350px">
+				<div class="item__third" style="height:350px">
+					<img src="../images/qc/3.png" alt="" style="height:350px">
+				</div>
+			</div>
+			<div class="item" style="height:350px">
+				<div class="item__third" style="height:350px">
+					<img src="../images/qc/4.png" alt="" style="height:350px">
+				</div>
+			</div>
+			<div class="item" style="height:350px">
+				<div class="item__third" style="height:350px">
+					<img src="../images/qc/5.png" alt="" style="height:350px">
+				</div>
+			</div>
+
 		</div>
+		<a href="#carousel-1" class="left carousel-control" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+		<a href="#carousel-1" class="right carousel-control" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
 	</div>
+
+	<style>
+		.multi-item-carousel {
+			overflow: hidden;
+		}
+		.multi-item-carousel img {
+			height: auto;
+			width: 100%;
+		}
+		.multi-item-carousel .carousel-control.left, 
+		.multi-item-carousel .carousel-control.right {
+			background: rgba(255, 255, 255, 0.3);
+			width: 25%;
+		}
+		.multi-item-carousel .carousel-inner {
+			width: 150%;
+			left: -25%;
+		}
+		.carousel-inner > .item.next, 
+		.carousel-inner > .item.active.right {
+			-webkit-transform: translate3d(33%, 0, 0);
+			transform: translate3d(33%, 0, 0);
+		}
+		.carousel-inner > .item.prev, 
+		.carousel-inner > .item.active.left {
+			-webkit-transform: translate3d(-33%, 0, 0);
+			transform: translate3d(-33%, 0, 0);
+		}
+		.item__third {
+			float: left;
+			position: relative;  /* captions can now be added */
+			width: 33.33333333%;
+		}
+
+	</style>
+	<script>
+		$('.multi-item-carousel .item').each(function(){
+			var next = $(this).next();
+			if (!next.length) next = $(this).siblings(':first');
+			next.children(':first-child').clone().appendTo($(this));
+		});
+		$('.multi-item-carousel .item').each(function(){
+			var prev = $(this).prev();
+			if (!prev.length) prev = $(this).siblings(':last');
+			prev.children(':nth-last-child(2)').clone().prependTo($(this));
+		});
+	</script>
 
 
 	<!------------- navbar menu ---------------->
@@ -144,18 +236,72 @@
 			</div>
 
 			<div class="col-md-10">
-				<?php 
-				include('showDetail.php');
-				ShowDetail::showChiTiet();
-				?>
-				<div id="snackbar">Đã thêm vào giỏ hàng</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">Đổi mật khẩu</h1>
+					</div>
+				</div>
+
+				<!-- ... Your content goes here ... -->
+				<div clas="row">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="row">
+								<form name="suauser" action="XuLyDoiMatKhauUser.php" method="post" onsubmit="return ValidatePassword()" >
+									<div class="col-lg-3">
+									</div>
+									<div class="col-lg-6">
+										
+											<div class="form-group">
+												<label>Nhập mật khẩu cũ</label>
+												<input class="form-control" name="mkcu" type="password">
+												<i style="color:red" id='loimk'></i>
+											</div>
+											<div class="form-group">
+												<label>Nhập mật khẩu mới</label>
+												<input class="form-control" name="mkmoi" type="password">	
+											</div>
+											
+											<div class="form-group">
+												<label>Xác nhận mật khẩu</label>
+												<input class="form-control" name="xacnhanmkmoi" type="password">
+												<i style="color:red" id='loimk'></i>
+											</div>
+											
+											
+											<i style="color:red" id='loimk'>
+											<?php  if(isset($_GET['loitrangthai']) && $_GET['loitrangthai']=="1") echo "Mật khẩu không đúng";
+											else if(isset($_GET['loitrangthai']) && $_GET['loitrangthai']=="2") echo "Mật khẩu xác nhận chưa đúng";
+											 ?>
+											</i>
+											<div class="form-group">
+												<a href="thongtincanhanUser.php">Quay lại</a>
+											</div>
+										
+									</div>
+									<div class="col-lg-3">
+									</div>
+								
+									<div class="row">
+											<div class="col-lg-12">
+												<center>
+													<button type="submit" class="btn btn-default">Lưu</button>
+													
+												</center>
+											</div>
+										</div>
+								</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
 			</div>
 			
-				
-			<div class="tieude" style="color:white;background-color:white"></div>
-			<script>
-				showBook();
-			</script>                               <!---------------------- footer ----------------------->
+			
+			                              <!---------------------- footer ----------------------->
 			<div class="container">
 				<hr style="border:1px solid black;">
 				<div class="gioithieu">
@@ -190,17 +336,58 @@
 					Phương thức vận chuyển
 				</div>
 			</div>
-		</div>
+		
 		<script>
-			(function ($) {
-				$('.spinner .btn:first-of-type').on('click', function() {
-					$('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);
-				});
-				$('.spinner .btn:last-of-type').on('click', function() {
-					$('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);
-				});
-			})(jQuery);
-		</script>
+		function ValidateFormEditUser()
+			{
+				var name=document.forms['suauser']['hoten'].value;
+				var emaill=document.forms['suauser']['email'].value;
+				var phone=document.forms['suauser']['sdt'].value;
+				
+				var s=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
+				var mail=/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
+				var dt=/0([1-9]{9}|[1-9][0-9]{8})$/;
+				
+				if(name=="")
+						{
+						document.getElementById("loihoten").innerHTML="Họ tên không được để trống";
+							return false;
+						}
+					else if(s.test(name)==true)
+						{
+						document.getElementById("loihoten").innerHTML="Họ tên không hợp lệ, vui lòng nhập lại.";
+							return false;
+						}			
+						
+					else if(emaill=="")
+						{
+							document.getElementById("loiemail").innerHTML="Email không được để trống";
+							return false;
+						}
+					else if(mail.test(emaill)==false)
+						{
+							document.getElementById("loiemail").innerHTML="Email không hợp lệ, vui lòng nhập lại.";	
+							return false;
+						}
+					
+					else if(phone=="")
+						{
+						document.getElementById("loisdt").innerHTML="Số điện thoại không được để trống";
+							return false;
+						}	
+					
+					else if(dt.test(phone)==false)
+						{
+						document.getElementById("loisdt").innerHTML="Số điện thoại không hợp lệ, vui lòng nhập lại.";	
+							return false;	
+						}
+					else 
+						{
+							if(confirm("Bạn có muốn sửa thông tin của mình ?")==false)
+							return false;
+						}
+			}
+	</script>
 		
 <?php
 	if(isLogined()==true)

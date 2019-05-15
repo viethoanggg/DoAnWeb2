@@ -3,21 +3,14 @@
 	ini_set('session.cookie_lifetime',0);
 	session_start();
 	require('common.php');
-	//kiểm tra đã đăng nhập chưa
-	//chưa đn
 	if(isLogined()==false)
 	{
 			header("Location:dangnhapAdmin.php");
 	}
-	//đã đang nhập
-	else if(isLogined()==true)
+	if(isLogined()==true)
 	{
-		// kiểm tra đây là khách hàng thì về trang chủ kh
 		if($_SESSION['login']['MaQuyen'] != "1" && $_SESSION['login']['MaQuyen'] != "2" )
-			header("Location:../index.php");
-		//kiểm tra nếu là manager thì về trang admin.php,vì đây là trang của admin
-		else if($_SESSION['login']['MaQuyen']=="2")
-			header("Location:admin.php");
+				header("Location:../index.php");
 	}
 	
 ?>
@@ -45,7 +38,6 @@
 
     <!-- Custom Fonts -->
     <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -55,9 +47,10 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="navbar-header">
             <img src="../images/onepiece.PNG" style="" width="250px" height="52px" alt="logo-trang chủ">
+			
         </div>
 
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -124,154 +117,91 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Quản lý khách hàng</h1>
-                </div>
-            </div>
-			
-	<!---------------------------------hien san pham ----------------------------------->
-	
-			<div class="row">
-                <div class="col-lg-12">
-                    <div class="">
+                    <h1 class="page-header">Thêm khách hàng</h1>
                 </div>
             </div>
 
             <!-- ... Your content goes here ... -->
-			
-			
 			<div clas="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
-						
-						<div class="panel-heading">
-							Danh sách khách hàng
-							<div style="float:right">
-								<a href="themUser.php"><i class="fa fa-plus fa-fw"></i> Thêm khách hàng</a>
-							</div>
-						</div>
-						
 						<div class="panel-body">
-							
 							<div class="row">
-								<form name="timkiemkhachhang">
-							
-					
+							<form name="formdangky" action="xulythemUser.php" method="post" onsubmit="return themuser()">
+								<div class="col-lg-6">
 									
-									<div class="col-lg-6">
-										<div class="panel panel-default">
-											<div class="panel-body">
-												<div class="row">
-													<div class="col-lg-4">
-														<select name="timkiemtheothongtin" class="form-control" onchange="showUserAjax()">
-															<option value="">Chọn</option>
-															<option value="MaKH">Mã khách hàng</option>
-															<option value="HoTen">Họ tên</option>
-															<option value="Email">Email</option>
-														</select>
-													</div>
+										<div class="form-group">
+                                            <label>Tên đăng nhập</label>
+                                            <input class="form-control" name="username">
+                                        </div>
+										<div class="form-group">
+                                            <label>Họ tên</label>
+                                            <input class="form-control" name="name" >
+                                        </div>
+										<div class="form-group">
+                                            <label>Mật khẩu</label>
+                                            <input class="form-control" name="pass" type="password">
+                                        </div>
+										<div class="form-group">
+                                            <label>Nhập lại mật khẩu</label>
+                                            <input class="form-control" name="repass" type="password">
+                                        </div>
+										<i id="kiemtra" style="color:red"></i>
 									
+								</div>
+								<div class="col-lg-6">
+									
+										<div class="form-group">
+                                            <label>Email</label>
+                                            <input class="form-control" name="email" >
+                                        </div>
+										<div class="form-group">
+                                            <label>Số điện thoại</label>
+                                            <input class="form-control" name="phone" >
+                                        </div>
+										<div class="form-group">
+                                            <label>Mã khách hàng</label>
+                                            <input class="form-control" name="makh" value="" readonly>
+                                        </div>
 										
-													<div class="col-lg-8">
-											
-														<div class="input-group" >
-															<input type="text" class="form-control" placeholder="Tìm kiếm" name="timkiem" onkeyup="showUserAjax()">
-															<div class="input-group-btn">
-																<button class="btn btn-default" type="submit">
-																	<i class="glyphicon glyphicon-search"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-												</div>
+									
+								</div>
+								<div class="row">
+											<div class="col-lg-12">
+												<center>
+													<button type="submit" class="btn btn-default">Thêm</button>
+													
+												</center>
 											</div>
 										</div>
-									</div>
-									<div class="col-lg-3" style="margin-top:20px;">
-										<i style="color:red" id="thongbaoloi"></i>
-									</div>
-								</form>	
+							</form>
 							</div>
-							
-							<!------------------------table-------------------------------------------------------------->
-							
-							<div class="row" style="margin-top:10px">
-								
-								<div class="col-lg-12" id="sanpham">
-										<?php
-											require('quanlyuser.php');
-											QuanLyUser::QuanLyKhachHang();
-										?>
-			
-								</div>
-								<script>
-									
-									function showUserAjax() {
-										var xhttp;
-										
-										var loai=document.forms['timkiemkhachhang']['timkiemtheothongtin'].value;
-										var chuoitimkiem=document.forms['timkiemkhachhang']['timkiem'].value;
-										var url="showUserAjaxInAdmin.php?";
-										if(loai=="" && chuoitimkiem=="")
-											url=url+"timkiemtheothongtin=&timkiem=";
-										else 
-											url=url+"timkiemtheothongtin="+loai+"&timkiem="+chuoitimkiem;
-										if(loai=="" && chuoitimkiem!="")
-											document.getElementById("thongbaoloi").innerHTML ="Bạn phải chọn thông tin cần tìm kiếm.";
-										else document.getElementById("thongbaoloi").innerHTML ="";
-										
-										xhttp = new XMLHttpRequest();
-										xhttp.onreadystatechange = function() {
-										if (this.readyState == 4 && this.status == 200) {
-											document.getElementById("sanpham").innerHTML = this.responseText;
-											}
-										  };
-										  xhttp.open("GET",url, true);
-										  xhttp.send();
-										}
-								</script>
-							</div>
-							
 						</div>
 					</div>
 				</div>
 			</div>
-
         </div>
     </div>
 
 </div>
 
-
 <script>
-									
-		function khoauser(value) {
-			if(confirm("Bạn chắc có muốn khóa")==true)
-			{
-				var a=value.split("&");
-				var b=a[0].split("\=");
-				var c=a[1].split("\=");
-				if(c[1]=="0")
-				{
-					document.getElementById(b[1]).setAttribute('class','fa fa-check');
+	function hienthimakh() {
+			var xhttp;
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			document.forms['formdangky']['makh'].value = this.responseText;
 				}
-				else if(c[1]=="1")
-				{
-					document.getElementById(b[1]).setAttribute('class','fa fa-close');
-				}
-				var xhttp;						
-				var url="LockUser.php?"+value;
-				xhttp = new XMLHttpRequest();							
-				xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					alert("Đã thay đổi trạng thái");							
-					}
-					};	
-				xhttp.open("GET",url, true);
-				xhttp.send();
+			};
+			xhttp.open("GET","ngaunhienmaKH.php?cho=themkh", true);
+			xhttp.send();
+			
 			}
-		}
+		
+	window.onload=function(){hienthimakh()};
+			
 </script>
-
 
 <?php
 	
@@ -306,7 +236,7 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="../js/admin/startmin.js"></script>
-
+<script src="../js/Validate.js"></script>
 </body>
 </html>
 

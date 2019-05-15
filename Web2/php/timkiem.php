@@ -1,27 +1,49 @@
 <?php
 	require("DataProvider.php");
 	if(isset($_GET['cho']) && isset($_GET['ma']))
-		TimKiemTrongThemSP();
-	function TimKiemTrongThemSP()
 	{
-			$sql="select COUNT(*) as SoLuong from sach where MaTheLoai='".$_GET['ma']."'";
-			$result=DataProvider::executeQuery($sql);
-			$row=mysqli_fetch_array($result);
+		$masach=NgauNhienMaSach();
+		while(KiemTraTrung($masach)==false)
+		{
+			$masach=NgauNhienMaSach();
+		}
+		echo $masach;
+	}
+	
+	
+	function NgauNhienMaSach()
+	{
+			
+			$maso=rand(100,100000);
+			$masach="";
 			if($_GET['ma']=="NN")
-				echo "NN".($row['SoLuong']+1);
+				$masach= "NN".$maso;
 			else if($_GET['ma']=="KT")
-				echo "KT".($row['SoLuong']+1);
+				$masach= "KT".$maso;
 			else if($_GET['ma']=="KNS")
-				echo "KNS".($row['SoLuong']+1);
+				$masach= "KNS".$maso;
 			else if($_GET['ma']=="LS")
-				echo "LS".($row['SoLuong']+1);
+				$masach= "LS".$maso;
 			else if($_GET['ma']=="CN")
-				echo "CN".($row['SoLuong']+1);
+				$masach= "CN".$maso;
 			else if($_GET['ma']=="TN")
-				echo "TN".($row['SoLuong']+1);
+				$masach= "TN".$maso;
 			else if($_GET['ma']=="TT")
-				echo "TT".($row['SoLuong']+1);
+				$masach= "TT".$maso;
 			else if($_GET['ma']=="VH")
-				echo "VH".($row['SoLuong']+1);
+				$masach= "VH".$maso;
+			
+			return $masach;
+	}
+	function KiemTraTrung($masach)
+	{
+		$sql="select * from sach ";
+		$result=DataProvider::executeQuery($sql);
+		while($row=mysqli_fetch_array($result))
+		{
+			if($row['MaSach']==$masach)
+				return false;
+		}
+		return true;
 	}
 ?>
