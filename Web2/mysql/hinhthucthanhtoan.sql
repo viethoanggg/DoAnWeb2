@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 20, 2019 lúc 01:28 PM
+-- Thời gian đã tạo: Th5 15, 2019 lúc 06:45 PM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
--- Phiên bản PHP: 7.2.16
+-- Phiên bản PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -39,7 +39,7 @@ CREATE TABLE `hinhthucthanhtoan` (
 
 INSERT INTO `hinhthucthanhtoan` (`MaHinhThuc`, `TenHinhThucTT`) VALUES
 ('1', 'Thanh toán bằng thẻ ngân hàng'),
-('2', 'Thanh toán bằng thẻ ...'),
+('2', 'Thanh toán bằng thẻ Visa/Master Card'),
 ('3', 'Thanh toán lúc nhận hàng');
 
 --
