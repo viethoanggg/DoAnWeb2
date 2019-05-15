@@ -136,10 +136,21 @@ section {
 		padding:8px 10px 10px 20px;
 		height:45px;
 		overflow:hidden;
+		
+	}
+	.sach .tacgia{
+		margin-top:10px;
+		background-color:;
+		padding:2px 5px 10px 20px;
+		height:40px;
+		overflow:hidden;
+		color:#248f24;
+		font-weight:500;
+		
 	}
 	.sach .gia{
 		
-		margin-top:10px;
+		margin-top:5px;
 		background-color:;
 		padding:8px 10px 10px 20px;
 		height:35px;
