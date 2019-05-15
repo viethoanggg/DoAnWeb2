@@ -9,14 +9,14 @@ class QuanLyUser
 							
 							//  Hiện sản phẩm
 							if(isset($_GET['makhachhang']))
-								$MaKhachHang=$_GET['makhachhang'];
+								$MaKhachHang=addslashes($_GET['makhachhang']);
 							else $MaKhachHang="";
 								
 								if(isset($_GET['timkiemtheothongtin']))
-									$loai=$_GET['timkiemtheothongtin'];
+									$loai=addslashes($_GET['timkiemtheothongtin']);
 								else $loai="";
 								if(isset($_GET['timkiem']))
-									$chuoitimkiem=$_GET['timkiem'];
+									$chuoitimkiem=addslashes($_GET['timkiem']);
 								else $chuoitimkiem="";
 		
 
@@ -330,14 +330,14 @@ class QuanLyUser
 							
 							//  Hiện sản phẩm
 							if(isset($_GET['manhanvien']))
-								$MaNhanVien=$_GET['manhanvien'];
+								$MaNhanVien=addslashes($_GET['manhanvien']);
 							else $MaNhanVien="";
 								
 								if(isset($_GET['timkiemtheothongtin']))
-									$loai=$_GET['timkiemtheothongtin'];
+									$loai=addslashes($_GET['timkiemtheothongtin']);
 								else $loai="";
 								if(isset($_GET['timkiem']))
-									$chuoitimkiem=$_GET['timkiem'];
+									$chuoitimkiem=addslashes($_GET['timkiem']);
 								else $chuoitimkiem="";
 		
 
