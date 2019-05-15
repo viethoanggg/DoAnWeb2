@@ -92,7 +92,7 @@
                         <a href="quanlysanpham.php" style="" class='mg'><i class="fa fa-product-hunt fa-fw"></i> Quản lý sản phẩm <span class='mg_i' style="float:right;color:red"></span></a>
                     </li>
 					<li>
-                        <a href="quanlyhoadon.php" style="" class='mg' ><i class="fa fa-file-text-o fa-fw"></i> Quản lý đơn hàng <span class='mg_i' style="float:right;color:red"></span></a> 
+                        <a href="quanlyhoadon.php" style="" class='mg' ><i class="fa fa-file-text-o fa-fw"></i> Quản lý đơn hàng<span class='mg_i' style="float:right;color:red"></span></a> 
                     </li>
 					<li>
                         <a href="#" style="" class='mg' ><i class="fa fa-table fa-fw"></i> Thống kê <span class='mg_i' style="float:right;color:red"></span> </a>
@@ -131,19 +131,93 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Trang chủ</h1>
+                    <h1 class="page-header">Thống kê</h1>
                 </div>
             </div>
 
 			
 			
             <!-- ... Your content goes here ... -->
-		
-        </div>
-    </div>
+			<form name="thongke" action="" method="get">	
+						<div class="row" style="margin-bottom:24px;">
+						<!--------------------------------------------------------------------------------------------------------->
+										<div class="col-lg-4">
+											<div class="input-group" style="margin-top:24px;">
+												<select name="theloai" class="form-control" onchange="showthongkeAjax()" >
+													<option value="" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="") echo 'selected' ?> >Tất cả thể loại</option>
+													<option value="NN" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="NN") echo 'selected' ?>>Ngoại ngữ</option>
+													<option value="KT" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="KT") echo 'selected' ?>>Kinh tế</option>
+													<option value="KNS" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="KNS") echo 'selected' ?>>Kỹ năng sống</option>
+													<option value="LS" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="LS") echo 'selected' ?>>Lịch sử</option>
+													<option value="CN" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="CN") echo 'selected' ?>>Chuyên ngành</option>
+													<option value="TN" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="TN") echo 'selected' ?>>Thiếu nhi</option>
+													<option value="TT" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="TT") echo 'selected' ?>>Tuổi teen</option>
+													<option value="VH" <?php if(isset($_GET['theloai']) && $_GET['theloai']=="VH") echo 'selected' ?>>Văn học</option>
+												</select>
+											</div>
+										</div>
+										
+										<div class="col-lg-2" style="float:right">
+											<div class="input-group" style="margin-top:24px;">
+												<select name="tinhtrangsp" class="form-control" onchange="showthongkeAjax()" >
+													<option value="">Tình trạng</option>
+													<option value="0">Hết hàng</option>
+													<option value="1">Còn hàng</option>
+													<option value="2">Cảnh báo</option>
+												</select>
+											</div>
+										</div>
+						
+				</div>
+				
+					<!------------------------------------------------------------------------------------------->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-body" id="thongkesanpham">
+								<?php
+									require('DataProvider.php');
+									require('ShowThongKe.php');
+									thongketinhtrangsp();
+								?>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</form>
+		</div>
+	</div>
 
 </div>
-
+								<script>
+									
+									function showthongkeAjax() {
+										var xhttp;
+										var matheloai=document.forms['thongke']['theloai'].value;
+										var tinhtrangsp=document.forms['thongke']['tinhtrangsp'].value;
+										
+											
+										var url="showthongkeAjax.php?";
+										if (matheloai == "") 
+											url=url+"theloai=&";
+										else 
+											url=url+"theloai="+matheloai+"&";
+										if (tinhtrangsp == "") 
+											url=url+"tinhtrangsp=";
+										else 
+											url=url+"tinhtrangsp="+tinhtrangsp;
+										xhttp = new XMLHttpRequest();
+										xhttp.onreadystatechange = function() {
+										if (this.readyState == 4 && this.status == 200) {
+											document.getElementById("thongkesanpham").innerHTML = this.responseText;	
+											}
+										  };
+										  xhttp.open("GET",url, true);
+										  xhttp.send();
+									}
+								</script>
 <?php
 	
 	if($_SESSION['login']['MaQuyen']=="1")
@@ -177,7 +251,13 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="../js/admin/startmin.js"></script>
-
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-datetimepicker.css" />
+<script type="text/javascript" src="../js/moment.js"></script>
+<script type="text/javascript" src="../bootstrap/dist/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.js"></script>
+													<script type="text/javascript">
+														
+													</script>
 </body>
 </html>
 
