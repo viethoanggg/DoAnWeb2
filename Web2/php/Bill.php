@@ -9,15 +9,14 @@ class Bill
 		if(isset($_GET['tinhtrang']))
 			$tt=$_GET['tinhtrang'];
 		else $tt="";
-		if(isset($_GET['ngaytu']) && isset($_GET['ngayden']))
-		{
+		if(isset($_GET['ngaytu']))
 			$nt=addslashes($_GET['ngaytu']);
-			$nd=addslashes($_GET['ngayden']);
-		}
-		else{
+		else
 			$nt="";
+		if(isset($_GET['ngayden']))
+			$nd=addslashes($_GET['ngayden']);
+		else
 			$nd="";
-		}
 		if(isset($_GET['timkiem']))
 			$tk=addslashes($_GET['timkiem']);
 		else
@@ -154,8 +153,12 @@ class Bill
 						$sql="select COUNT(*) AS numRows from hoadon hd, khachhang kh  where hd.MaKH=kh.MaKH ";
 						if($tt != "")
 							$sql=$sql."and TinhTrang='".$tt."' ";
-						if($nt!="" && $nd!="" )
-							$sql=$sql."and NgayDatHang BETWEEN '".$nt."' and '".$nd."' ";
+							if($nt!="" && $nd!="")
+								$sql=$sql." and NgayDatHang BETWEEN '".$nt."' and '".$nd."' ";
+							else if($nt!="" && $nd=="")
+								$sql=$sql." and NgayDatHang >= '".$nt."' ";
+							else if($nt=="" && $nd!="")
+								$sql=$sql." and NgayDatHang <= '".$nd."' ";
 						if($tk!="")
 							$sql=$sql."and HoTen LIKE '%".$tk."%'";
 							
@@ -179,8 +182,12 @@ class Bill
 							$sql="select * from hoadon hd, khachhang kh  where hd.MaKH=kh.MaKH ";
 							if($tt != "")
 								$sql=$sql."and TinhTrang='".$tt."' ";
-							if($nt!="" && $nd!="" )
-								$sql=$sql."and NgayDatHang BETWEEN '".$nt."' and '".$nd."' ";
+							if($nt!="" && $nd!="")
+								$sql=$sql." and NgayDatHang BETWEEN '".$nt."' and '".$nd."' ";
+							else if($nt!="" && $nd=="")
+								$sql=$sql." and NgayDatHang >= '".$nt."' ";
+							else if($nt=="" && $nd!="")
+								$sql=$sql." and NgayDatHang <= '".$nd."' ";
 							if($tk!="")
 								$sql=$sql."and HoTen LIKE '%".$tk."%'";
 						
