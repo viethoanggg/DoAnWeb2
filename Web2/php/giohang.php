@@ -704,8 +704,17 @@ if(isLogined()==true)
 							</div>
 							<div class="form-group row">
 							<label for="inputEmail3" class="col-sm-2 col-form-label">Địa chỉ</label>
-							<div class="col-sm-9">
-							<input type="text" class="form-control" id="inputEmail3" placeholder="Địa chỉ" value="'.$dc.'" name="diachi">
+							<div class="col-sm-3">
+							<input type="text" class="form-control" id="inputEmail3" placeholder="Số đường" value="" name="duong">
+							</div>
+							<div class="col-sm-2">
+							<input type="text" class="form-control" id="inputEmail3" placeholder="Phường" value="" name="phuong">
+							</div>
+							<div class="col-sm-2">
+							<input type="text" class="form-control" id="inputEmail3" placeholder="Quận" value="" name="quan">
+							</div>
+							<div class="col-sm-2">
+							<input type="text" class="form-control" id="inputEmail3" placeholder="TP" value="" name="TP">
 							</div>
 							<div class="col-md-1"><span id="diachi"></span></div>
 							</div>

@@ -18,14 +18,19 @@ if(isset($_POST['makhachhang']))
 	.	"SĐT='".$_POST['sdt']."'  "
 	.	"WHERE MaKH='".$_POST['makhachhang']."'";
 	DataProvider::executeQuery($sql);
-
+	echo $_POST['duong'];
+	echo $_POST['phuong'];
+	echo $_POST['quan'];
+	echo $_POST['TP'];
+	$DiaChi=$_POST['duong'].", "."Phường ".$_POST['phuong'].", "."Quận ".$_POST['quan'].", ".$_POST['TP'];
+	echo $DiaChi;
 	$_SESSION['login']=array(	'MaKH' => $maKH,
 		'TenDangNhap' => $_POST['tendangnhap'],
 		'MaQuyen' => $_SESSION['login']['MaQuyen'],
 		'HoTen' => $_POST['hoten'],
 		'Email' => $_POST['email'],
 		'SĐT' => $_POST['sdt'],
-		'DiaChi' => $_POST['diachi'],
+		'DiaChi' => $DiaChi,
 		'htgh' => 1,
 		'httt' => 3);
 
