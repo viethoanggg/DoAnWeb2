@@ -609,6 +609,7 @@ class QuanLyUser
 															<th>Đặt_lại</th>								
 															<th>Khóa</th>
 														</tr>
+													</thead>
 														<tbody>
 															<div id='data-product'>";
 									
@@ -639,7 +640,7 @@ class QuanLyUser
 									
 									$s=$s					."</div>"
 														."</tbody>"
-													."</thead>"
+													
 												."</table>"
 											."</div>";
 									
