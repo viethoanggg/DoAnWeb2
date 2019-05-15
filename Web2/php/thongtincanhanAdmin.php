@@ -127,21 +127,19 @@
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<div class="row">
-							<form name="" action="" method="post">
+							<form name="suanv" action="updateNhanVien.php" method="post" onsubmit="return ValidateFormEditNhanVien()">
 								<div class="col-lg-6">
 									
 										<div class="form-group">
                                             <label>Mã nhân viên</label>
-                                            <input class="form-control" name="manhanhvien" readonly value="<?php echo $_SESSION['login']['MaNhanVien']; ?>">
+                                            <input class="form-control" name="manhanvien" readonly value="<?php echo $_SESSION['login']['MaNhanVien']; ?>">
                                         </div>
 										<div class="form-group">
                                             <label>Họ tên</label>
                                             <input class="form-control" name="hoten" value="<?php echo $_SESSION['login']['HoTen']; ?>">
+											<i style="color:red" id='loihoten'></i>
                                         </div>
-										<div class="form-group">
-                                            <label>Tên đăng nhập</label>
-                                            <input class="form-control" name="tendangnhap" value="<?php echo $_SESSION['login']['TenDangNhap']; ?>">
-                                        </div>
+										
 										<div class="form-group">
                                             <a href=""><i class='fa fa-lock fa-fw'></i>Đổi mật khẩu</a>
                                         </div>
@@ -150,23 +148,26 @@
 								<div class="col-lg-6">
 									
 										<div class="form-group">
-                                            <label>Email</label>
-                                            <input class="form-control" name="email" value="<?php echo $_SESSION['login']['Email']; ?>">
-                                        </div>
-										<div class="form-group">
-                                            <label>Số điện thoại</label>
-                                            <input class="form-control" name="sdt" value="<?php echo $_SESSION['login']['SĐT']; ?>">
-                                        </div>
-										<div class="form-group">
-                                            <label>Quyền</label>
-                                            <select class="form-control" name="quyen">
-												<option value="1" <?php if($_SESSION['login']['MaQuyen']=="1") echo "selected"; ?> >Quản trị viên</option>
-                                                <option value="2" <?php if($_SESSION['login']['MaQuyen']=="2") echo "selected"; ?>>Nhân viên quản lý</option>        
-                                            </select>
-													
-                                        </div>
+												<label>Email</label>
+												<input class="form-control" name="email" value="<?php echo $_SESSION['login']['Email']; ?>">
+												<i style="color:red" id='loiemail'></i>
+											</div>
+											<div class="form-group">
+												<label>Số điện thoại</label>
+												<input class="form-control" name="sdt" value="<?php echo $_SESSION['login']['SĐT']; ?>">
+												<i style="color:red" id='loisdt'></i>
+											</div>
+										
 									
 								</div>
+								<div class="row">
+											<div class="col-lg-12">
+												<center>
+													<button type="submit" class="btn btn-default">Sửa</button>
+													
+												</center>
+											</div>
+										</div>
 							</form>
 							</div>
 						</div>
@@ -177,6 +178,59 @@
     </div>
 
 </div>
+
+<script>
+		function ValidateFormEditNhanVien()
+			{
+				var name=document.forms['suanv']['hoten'].value;
+				var emaill=document.forms['suanv']['email'].value;
+				var phone=document.forms['suanv']['sdt'].value;
+				
+				var s=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
+				var mail=/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
+				var dt=/0([1-9]{9}|[1-9][0-9]{8})$/;
+				
+				if(name=="")
+						{
+						document.getElementById("loihoten").innerHTML="Họ tên không được để trống";
+							return false;
+						}
+					else if(s.test(name)==true)
+						{
+						document.getElementById("loihoten").innerHTML="Họ tên không hợp lệ, vui lòng nhập lại.";
+							return false;
+						}			
+						
+					else if(emaill=="")
+						{
+							document.getElementById("loiemail").innerHTML="Email không được để trống";
+							return false;
+						}
+					else if(mail.test(emaill)==false)
+						{
+							document.getElementById("loiemail").innerHTML="Email không hợp lệ, vui lòng nhập lại.";	
+							return false;
+						}
+					
+					else if(phone=="")
+						{
+						document.getElementById("loisdt").innerHTML="Số điện thoại không được để trống";
+							return false;
+						}	
+					
+					else if(dt.test(phone)==false)
+						{
+						document.getElementById("loisdt").innerHTML="Số điện thoại không hợp lệ, vui lòng nhập lại.";	
+							return false;	
+						}
+					else 
+						{
+							if(confirm("Bạn có muốn sửa thông tin của mình ?")==false)
+							return false;
+						}
+			}
+	
+	</script>
 
 <?php
 	
