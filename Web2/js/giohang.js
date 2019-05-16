@@ -96,18 +96,20 @@ function formatNumber(nStr, decSeperate, groupSeperate) {
 }
 function tang(id){
 	//alert(id);
+	debugger;
 	var i= Number($("#"+id+" "+"input").val());
 	//alert(i);
 	i++;
-	$("#"+id+" "+"input").val(i);
 	//$("#"+id+" "+"input").val();
 	if(i>Number($('#ma_'+id).val())){
 		alert("Số lượng sách chỉ có "+Number($('#ma_'+id).val())+" sản phẩm");
-		i=Number(1);
+		$("#"+id+" input:eq(0)").val($('#ma_'+id).val());
+		ajax(id,$('#ma_'+id).val());
+	}
+	else{
 		$("#"+id+" input:eq(0)").val(i);
 		ajax(id,i);
 	}
-	ajax(id,i);
 }
 function giam(id){
 	//alert(id);
@@ -115,11 +117,6 @@ function giam(id){
 	var i= Number($("#"+id+" "+"input").val());
 	if(i>1){
 		i--;
-		$("#"+id+" "+"input").val(i);
-	}
-	if(i>Number($('#ma_'+id).val())){
-		alert("Số lượng sách chỉ có "+Number($('#ma_'+id).val())+" sản phẩm");
-		i=Number(1);
 		$("#"+id+" input:eq(0)").val(i);
 		ajax(id,i);
 	}
@@ -292,36 +289,15 @@ function checkinfo(){
 		else{
 			$('#hoten').text(" ");
 		}
-		if(ptnKyTuHopLe.test(document.forms['info']['duong'].value)==true||document.forms['info']['duong'].value==""){
+		if(ptnKyTuHopLe.test(document.forms['info']['duong'].value)==true||document.forms['info']['duong'].value==""||ptnKyTuHopLe.test(document.forms['info']['phuong'].value)==true||document.forms['info']['phuong'].value==""||ptnKyTuHopLe.test(document.forms['info']['quan'].value)==true||document.forms['info']['quan'].value==""||ptnKyTuHopLe.test(document.forms['info']['TP'].value)==true||document.forms['info']['TP'].value==""){
 			$('#diachi').text("*");
-			alert("Số đường không hợp lệ!!")
-		}
-		else{
-			$('#diachi').text(" ");
-		}
-		if(ptnKyTuHopLe.test(document.forms['info']['phuong'].value)==true||document.forms['info']['phuong'].value==""){
-			$('#diachi').text("*");
-			alert("Địa chỉ phường không hợp lệ!!")
-		}
-		else{
-			$('#diachi').text(" ");
-		}
-		if(ptnKyTuHopLe.test(document.forms['info']['quan'].value)==true||document.forms['info']['quan'].value==""){
-			$('#diachi').text("*");
-			alert("Địa chỉ quận không hợp lệ!!")
-		}
-		else{
-			$('#diachi').text(" ");
-		}
-		if(ptnKyTuHopLe.test(document.forms['info']['TP'].value)==true||document.forms['info']['TP'].value==""){
-			$('#diachi').text("*");
-			alert("TP/Tỉnh không hợp lệ!!")
+			alert("Địa chỉ của bạn không hợp lệ!!");
 		}
 		else{
 			$('#diachi').text(" ");
 		}
 		if(/0([1-9]{9}|[1-9][0-9]{8})$/.test(document.forms['info']['sdt'].value)==false||document.forms['info']['sdt'].value==""){
-			$('#sdt').text("*")
+			$('#sdt').text("*");
 			alert("Số điện thoại không phù hợp!!Số điện thoại gồm 10 số");
 		}
 		else{
