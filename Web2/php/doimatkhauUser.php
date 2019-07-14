@@ -337,56 +337,8 @@
 				</div>
 			</div>
 		
-		<script>
-		function ValidateFormEditUser()
-			{
-				var name=document.forms['suauser']['hoten'].value;
-				var emaill=document.forms['suauser']['email'].value;
-				var phone=document.forms['suauser']['sdt'].value;
-				
-				var s=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
-				var mail=/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
-				var dt=/0([1-9]{9}|[1-9][0-9]{8})$/;
-				
-				if(name=="")
-						{
-						document.getElementById("loihoten").innerHTML="Họ tên không được để trống";
-							return false;
-						}
-					else if(s.test(name)==true)
-						{
-						document.getElementById("loihoten").innerHTML="Họ tên không hợp lệ, vui lòng nhập lại.";
-							return false;
-						}			
-						
-					else if(emaill=="")
-						{
-							document.getElementById("loiemail").innerHTML="Email không được để trống";
-							return false;
-						}
-					else if(mail.test(emaill)==false)
-						{
-							document.getElementById("loiemail").innerHTML="Email không hợp lệ, vui lòng nhập lại.";	
-							return false;
-						}
-					
-					else if(phone=="")
-						{
-						document.getElementById("loisdt").innerHTML="Số điện thoại không được để trống";
-							return false;
-						}	
-					
-					else if(dt.test(phone)==false)
-						{
-						document.getElementById("loisdt").innerHTML="Số điện thoại không hợp lệ, vui lòng nhập lại.";	
-							return false;	
-						}
-					else 
-						{
-							if(confirm("Bạn có muốn sửa thông tin của mình ?")==false)
-							return false;
-						}
-			}
+	<script>
+		
 	</script>
 		
 <?php

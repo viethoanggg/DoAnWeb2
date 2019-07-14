@@ -215,7 +215,7 @@
                                                 </div>
 												<div class="form-group">
                                                     <label>Thể loại</label>
-                                                    <select class="form-control" name="matheloai" id="theloai">
+                                                    <select class="form-control" name="matheloai" id="theloai" readonly>
                                                         <option value="NN" <?php if($matheloai=="NN") echo "selected" ?> >Học ngoại ngữ</option>
                                                         <option value="KT" <?php if($matheloai=="KT") echo "selected" ?> >Kinh tế</option>
                                                         <option value="KNS" <?php if($matheloai=="KNS") echo "selected" ?> >Kỹ năng sống</option>

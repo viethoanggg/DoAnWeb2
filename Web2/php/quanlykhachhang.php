@@ -313,6 +313,7 @@
 					};	
 				xhttp.open("GET",url, true);
 				xhttp.send();
+			}
 		}
 		
 		function datlaipass(value)

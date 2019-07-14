@@ -234,9 +234,6 @@
 											<?php
 
 												require('DataProvider.php');
-												include 'hoadon.php';
-												if(Chitiet::KTHD($_GET['MaHD'],$_GET['MaKH'])==1&& $_GET['MaKH']==$_SESSION['login']['MaKH']){
-												if(Chitiet::KTHD($_GET['MaHD'],$_GET['MaKH'])==1&& $_GET['MaKH']==$_SESSION['login']['MaKH']){
 												if(isset($_GET['MaHD']) && isset($_GET['MaKH']))
 												{
 													$sql="select * from hoadon hd,khachhang kh, hinhthucthanhtoan httt,hinhthucgiaohang htgh where kh.MaKH=hd.MaKH and hd.HinhThucThanhToan=httt.MaHinhThuc and  hd.HinhThucGiaoHang=htgh.MaHinhThuc and MaHD='".$_GET['MaHD']."'";
@@ -259,18 +256,7 @@
 													$sdt="";
 													$diachi="";
 												}
-											}
-											}
-											else 
-												{
-													$tenkh="";
-													$ngaydathang="";
-													$tenkh="";
-													$hinhthucthanhtoan="";
-													$hinhthucgiaohang="";
-													$sdt="";
-													$diachi="";
-												}
+										
 												
 											?>
 												<div class="form-group">

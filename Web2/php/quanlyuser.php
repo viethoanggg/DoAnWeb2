@@ -133,15 +133,13 @@ class QuanLyUser
 													$s=$s."<td><i class='fa fa-check' id='".$row['MaKH']."'></i></td>";
 												if($row['TrangThai']=="1")
 													$s=$s."<td><i class='fa fa-close' id='".$row['MaKH']."'></i></td>";	
+				
+												$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='datlaipass(\"MaKH=".$row['MaKH']."\")' ><i class='fa fa-pencil fa-fw'></i> Đặt lại</font></td>";
 												
-												
-												
-												$s=$s
-												. "<td><font style='color:#337ab7;cursor:pointer' onclick='datlaipass(\"MaKH=".$row['MaKH']."\")' data-id=><i class='fa fa-pencil fa-fw'></i> Đặt lại</a></td>";
 												if($row['TrangThai']=="0")
-												$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='khoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>";
+												$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='khoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' ><i class='fa fa-lock fa-fw'></i> Khóa</font></td>";
 												if($row['TrangThai']=="1")
-												$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='mokhoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-unlock fa-fw'></i>Mở khóa</font></td>";
+												$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='mokhoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' ><i class='fa fa-unlock fa-fw'></i>Mở khóa</font></td>";
 											$s=$s."</tr>";
 										$i++;
 									}
@@ -301,11 +299,11 @@ class QuanLyUser
 												
 												
 												$s=$s
-												. "<td><font style='color:#337ab7;cursor:pointer' onclick='datlaipass(\"MaKH=".$row['MaKH']."\")' data-id=><i class='fa fa-pencil fa-fw'></i> Đặt lại</a></td>";
+												. "<td><font style='color:#337ab7;cursor:pointer' onclick='datlaipass(\"MaKH=".$row['MaKH']."\")' ><i class='fa fa-pencil fa-fw'></i> Đặt lại</font></td>";
 												if($row['TrangThai']=="0")
-													$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='khoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>";
+													$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='khoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' ><i class='fa fa-lock fa-fw'></i> Khóa</font></td>";
 												if($row['TrangThai']=="1")
-													$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='mokhoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-unlock fa-fw'></i>Mở khóa</font></td>";
+													$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='mokhoauser(\"MaKH=".$row['MaKH']."&TrangThai=".$row['TrangThai']."\")' ><i class='fa fa-unlock fa-fw'></i>Mở khóa</font></td>";
 											$s=$s."</tr>";
 										$i++;
 									}
@@ -463,11 +461,11 @@ class QuanLyUser
 												$s=$s."<td>".$row['MaQuyen']."</td>";
 												
 												
-												$s=$s. "<td><font style='color:#337ab7;cursor:pointer' onclick='datlaipassnhanvien(\"MaNhanVien=".$row['MaNhanVien']."\")' data-id=><i class='fa fa-pencil fa-fw'></i> Đặt lại</a></td>";
+												$s=$s. "<td><font style='color:#337ab7;cursor:pointer' onclick='datlaipassnhanvien(\"MaNhanVien=".$row['MaNhanVien']."\")' ><i class='fa fa-pencil fa-fw'></i> Đặt lại</font></td>";
 												if($row['TrangThai']=="0")	
-													$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='khoanhanvien(\"MaNhanVien=".$row['MaNhanVien']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>";
+													$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='khoanhanvien(\"MaNhanVien=".$row['MaNhanVien']."&TrangThai=".$row['TrangThai']."\")' ><i class='fa fa-lock fa-fw'></i> Khóa</font></td>";
 												if($row['TrangThai']=="1")
-													$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='mokhoanhanvien(\"MaNhanVien=".$row['MaNhanVien']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-unlock fa-fw'></i>Mở khóa</font></td>";
+													$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='mokhoanhanvien(\"MaNhanVien=".$row['MaNhanVien']."&TrangThai=".$row['TrangThai']."\")' ><i class='fa fa-unlock fa-fw'></i>Mở khóa</font></td>";
 											$s=$s."</tr>";
 										$i++;
 									}
@@ -611,6 +609,7 @@ class QuanLyUser
 															<th>Đặt_lại</th>								
 															<th>Khóa</th>
 														</tr>
+													</thead>
 														<tbody>
 															<div id='data-product'>";
 									
@@ -630,18 +629,18 @@ class QuanLyUser
 													$s=$s."<td><i class='fa fa-close ' id='".$row['MaNhanVien']."'></i></td>";	
 												$s=$s."<td>".$row['MaQuyen']."</td>";
 												
-												$s=$s. "<td><font style='color:#337ab7;cursor:pointer' onclick='datlaipassnhanvien(\"MaNhanVien=".$row['MaNhanVien']."\")' data-id=><i class='fa fa-pencil fa-fw'></i> Đặt lại</a></td>";
+												$s=$s. "<td><font style='color:#337ab7;cursor:pointer' onclick='datlaipassnhanvien(\"MaNhanVien=".$row['MaNhanVien']."\")' ><i class='fa fa-pencil fa-fw'></i> Đặt lại</font></td>";
 												if($row['TrangThai']=="0")	
-													$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='khoanhanvien(\"MaNhanVien=".$row['MaNhanVien']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-lock fa-fw'></i> Khóa</font></td>";
+													$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='khoanhanvien(\"MaNhanVien=".$row['MaNhanVien']."&TrangThai=".$row['TrangThai']."\")' ><i class='fa fa-lock fa-fw'></i> Khóa</font></td>";
 												if($row['TrangThai']=="1")
-													$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='mokhoanhanvien(\"MaNhanVien=".$row['MaNhanVien']."&TrangThai=".$row['TrangThai']."\")' data-id=><i class='fa fa-unlock fa-fw'></i>Mở khóa</font></td>";
+													$s=$s."<td><font style='color:#337ab7;cursor:pointer' onclick='mokhoanhanvien(\"MaNhanVien=".$row['MaNhanVien']."&TrangThai=".$row['TrangThai']."\")' ><i class='fa fa-unlock fa-fw'></i>Mở khóa</font></td>";
 											$s=$s."</tr>";
 										$i++;
 									}
 									
 									$s=$s					."</div>"
 														."</tbody>"
-													."</thead>"
+													
 												."</table>"
 											."</div>";
 									

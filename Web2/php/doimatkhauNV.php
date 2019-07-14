@@ -132,114 +132,85 @@
 
             <!-- ... Your content goes here ... -->
 			<div clas="row">
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<div class="row">
-							<form name="suanv" action="updateNhanVien.php" method="post" onsubmit="return ValidateFormEditNhanVien()">
-								<div class="col-lg-6">
-									
-										<div class="form-group">
-                                            <label>Mã nhân viên</label>
-                                            <input class="form-control" name="manhanvien" readonly value="<?php echo $_SESSION['login']['MaNhanVien']; ?>">
-                                        </div>
-										<div class="form-group">
-                                            <label>Họ tên</label>
-                                            <input class="form-control" name="hoten" value="<?php echo $_SESSION['login']['HoTen']; ?>">
-											<i style="color:red" id='loihoten'></i>
-                                        </div>
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="row">
+								<form name="suauser" action="XuLyDoiMatKhauNV.php" method="post" onsubmit="return ValidatePassword()" >
+									<div class="col-lg-3">
+									</div>
+									<div class="col-lg-6">
 										
-										<div class="form-group">
-                                            <a href="doimatkhauNV.php"><i class='fa fa-lock fa-fw'></i>Đổi mật khẩu</a>
-                                        </div>
-									
-								</div>
-								<div class="col-lg-6">
-									
-										<div class="form-group">
-												<label>Email</label>
-												<input class="form-control" name="email" value="<?php echo $_SESSION['login']['Email']; ?>">
-												<i style="color:red" id='loiemail'></i>
+											<div class="form-group">
+												<label>Nhập mật khẩu cũ</label>
+												<input class="form-control" name="mkcu" type="password">
+												<i style="color:red" id='loimk'></i>
 											</div>
 											<div class="form-group">
-												<label>Số điện thoại</label>
-												<input class="form-control" name="sdt" value="<?php echo $_SESSION['login']['SĐT']; ?>">
-												<i style="color:red" id='loisdt'></i>
+												<label>Nhập mật khẩu mới</label>
+												<input class="form-control" name="mkmoi" type="password">	
+											</div>
+											
+											<div class="form-group">
+												<label>Xác nhận mật khẩu</label>
+												<input class="form-control" name="xacnhanmkmoi" type="password">
+												<i style="color:red" id='loimk'></i>
+											</div>
+											
+											
+											<i style="color:red" id='loimk'>
+											<?php  if(isset($_GET['loitrangthai']) && $_GET['loitrangthai']=="1") echo "Mật khẩu không đúng";
+											else if(isset($_GET['loitrangthai']) && $_GET['loitrangthai']=="2") echo "Mật khẩu xác nhận chưa đúng";
+											 ?>
+											</i>
+											<div class="form-group">
+												<a href="thongtincanhanAdmin.php">Quay lại</a>
 											</div>
 										
-									
-								</div>
-								<div class="row">
+									</div>
+									<div class="col-lg-3">
+									</div>
+								
+									<div class="row">
 											<div class="col-lg-12">
 												<center>
-													<button type="submit" class="btn btn-default">Sửa</button>
+													<button type="submit" class="btn btn-default">Lưu</button>
 													
 												</center>
 											</div>
 										</div>
-							</form>
+								</form>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
         </div>
     </div>
 
 </div>
 
 <script>
-		function ValidateFormEditNhanVien()
-			{
-				var name=document.forms['suanv']['hoten'].value;
-				var emaill=document.forms['suanv']['email'].value;
-				var phone=document.forms['suanv']['sdt'].value;
-				
-				var s=/[\!@#\$%\^&\*_\=\+\-\<\>,\?\/;\"\[\]\{\}\(\)]/gi;
-				var mail=/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
-				var dt=/0([1-9]{9}|[1-9][0-9]{8})$/;
-				
-				if(name=="")
-						{
-						document.getElementById("loihoten").innerHTML="Họ tên không được để trống";
-							return false;
-						}
-					else if(s.test(name)==true)
-						{
-						document.getElementById("loihoten").innerHTML="Họ tên không hợp lệ, vui lòng nhập lại.";
-							return false;
-						}			
-						
-					else if(emaill=="")
-						{
-							document.getElementById("loiemail").innerHTML="Email không được để trống";
-							return false;
-						}
-					else if(mail.test(emaill)==false)
-						{
-							document.getElementById("loiemail").innerHTML="Email không hợp lệ, vui lòng nhập lại.";	
-							return false;
-						}
-					
-					else if(phone=="")
-						{
-						document.getElementById("loisdt").innerHTML="Số điện thoại không được để trống";
-							return false;
-						}	
-					
-					else if(dt.test(phone)==false)
-						{
-						document.getElementById("loisdt").innerHTML="Số điện thoại không hợp lệ, vui lòng nhập lại.";	
-							return false;	
-						}
-					else 
-						{
-							if(confirm("Bạn có muốn sửa thông tin của mình ?")==false)
-							return false;
-						}
-			}
-	
-	</script>
+	function	ValidatePassword()
+	{
+		var mkcu=document.forms['suauser']['mkcu'].value;
+		var mkmoi=document.forms['suauser']['mkmoi'].value;
+		var xnmkmo=document.forms['suauser']['xacnhanmkmoi'].value;
+		
+		if(mkcu="")
+		{
+			alert("Mật khẩu cũ không được để trống.");
+		}
+		else if(mkmoi="")
+		{
+			alert("Mật khẩu mới không được để trống.");
+		}
+		else if(xnmkmoi="")
+		{
+			alert("Xác nhận mật khẩu mới không được để trống.");
+		}
+	}
+</script>
 
 <?php
 	

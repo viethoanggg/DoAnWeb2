@@ -375,6 +375,7 @@ function themnhanvien()
 			var s=/^[a-zA-Z0-9 ]*$/;
 			var mail=/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
 			var dt=/0([1-9]{9}|[1-9][0-9]{8})$/;
+			var ptnKyTuHopLe=/[\!@#\$%\^&\*\=\+\<\>\?\/;\"\[\]\{\}\(\)]/gi;
 			
 			if(user=="")
                 {
@@ -403,6 +404,11 @@ function themnhanvien()
                     document.getElementById("kiemtra").innerHTML="Vui lòng nhập mật khẩu";
 					return false;
                 }
+			else if(mk.length<6 || mk.length>16)
+			{
+				document.getElementById("kiemtra").innerHTML="Mật khẩu không hợp lệ";
+					return false;
+			}	
             else if(mk!=nlmk)
                 {
                     document.getElementById("kiemtra").innerHTML="Mật khẩu không khớp";
@@ -414,7 +420,7 @@ function themnhanvien()
                     document.getElementById("kiemtra").innerHTML="Họ tên không được để trống";
 					        return false;
                 }
-			else if(s.test(hoten)==false)
+			else if(ptnKyTuHopLe.test(hoten)==true)
 					{
 						document.getElementById("kiemtra").innerHTML="Họ tên không hợp lệ, vui lòng nhập lại.";
 						return false;
